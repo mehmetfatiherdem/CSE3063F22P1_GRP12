@@ -30,7 +30,7 @@ public abstract class Section {
                         collisions.add(new Tuple<Section,Section>(sec,s));
                     }
                 }
-
+                
                 continue;
             }
 
@@ -39,6 +39,32 @@ public abstract class Section {
         }
 
         return collisions;
+    }
+
+    public static long getCombinedClassHours(List<Section> sections){
+        long combinedSchedule = 0;
+
+        for(Section sec : sections){
+            combinedSchedule = combineSchedules(combinedSchedule, sec.classHours);
+        }
+
+        return combinedSchedule;
+    }
+
+    public Course getCourse(){
+        return course;
+    }
+
+    public void setCourse(Course course){
+        this.course = course;
+    }
+
+    public long getClassHours(){
+        return classHours;
+    }
+
+    public void setClassHours(long classHours){
+        this.classHours = classHours;
     }
 
     private static long combineSchedules(long sch1,long sch2){
