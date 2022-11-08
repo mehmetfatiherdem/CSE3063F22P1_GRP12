@@ -1,7 +1,6 @@
 package iteration1.src.course;
 
 import iteration1.src.human.Assistant;
-import iteration1.src.human.FacultyMember;
 
 public class LabSection extends Section{
 
