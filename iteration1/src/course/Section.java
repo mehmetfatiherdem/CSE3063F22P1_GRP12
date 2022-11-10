@@ -92,7 +92,7 @@ public abstract class Section {
         return (sch1 & sch2) != 0L;
     }
 
-    private static void TraverseBits(long bitmask, Consumer<Integer> setBitCallback) {
+    private static void traverseBits(long bitmask, Consumer<Integer> setBitCallback) {
         for (int i = 0; i < NO_OF_WEEKLY_CLASS_HOURS; i++) {
             if ((bitmask & 1L) == 1L) {
                 setBitCallback.accept(i);
