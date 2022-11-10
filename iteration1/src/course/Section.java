@@ -25,7 +25,7 @@ public abstract class Section {
         long collisionDetector = classSchedule & other.classSchedule;
         Consumer<Integer> collisionCallback = (Integer i) -> collisions.add(new Tuple<Integer, Integer>(i / 8, i % 8));
 
-        TraverseBits(collisionDetector, collisionCallback);
+        traverseBits(collisionDetector, collisionCallback);
 
         return collisions;
     }
@@ -66,7 +66,7 @@ public abstract class Section {
         for (Section sec : sections) {
             long schTemp = sec.classSchedule;
             Consumer<Integer> combineCallback = (Integer i) -> schedule.get(i / 8)[i % 8] = sec;
-            TraverseBits(schTemp, combineCallback);
+            traverseBits(schTemp, combineCallback);
         }
 
         return schedule;
