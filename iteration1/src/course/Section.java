@@ -2,76 +2,106 @@ package iteration1.src.course;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import iteration1.src.data_structures.Tuple;
 import iteration1.src.human.FacultyMember;
 
 public abstract class Section {
 
+    public static final int NO_OF_WEEKLY_CLASS_HOURS = 56;
     protected Course course;
-    protected long classHours;
+    protected long classSchedule;
     protected FacultyMember instructor;
 
-    protected Section(Course course,long classHours,FacultyMember instructor){
+    protected Section(Course course, long classSchedule, FacultyMember instructor) {
         this.course = course;
-        this.classHours = classHours;
+        this.classSchedule = classSchedule;
         this.instructor = instructor;
     }
 
-    public static ArrayList<Tuple<Section,Section>> checkForCollisions(List<Section> classes){
-        ArrayList<Section> combinedSections = new ArrayList<>();
-        ArrayList<Tuple<Section,Section>> collisions = new ArrayList<>();
+    public List<Tuple<Integer,Integer>> getCollisionsWith(Section other){
+        List<Tuple<Integer,Integer>> collisions = new ArrayList<>();
 
-        long combinedSchedule = 0;
+        long collisionDetector = classSchedule & other.classSchedule;
+        Consumer<Integer> collisionCallback = (Integer i) -> collisions.add(new Tuple<Integer,Integer>(i / 8, i % 8));
 
-        for(Section sec : classes){
-            if(checkCollision(combinedSchedule, sec.classHours)){
-                for(Section s : combinedSections){
-                    if(checkCollision(s.classHours, sec.classHours)){
-                        collisions.add(new Tuple<Section,Section>(sec,s));
+        TraverseBits(collisionDetector, collisionCallback);
+
+        return collisions;
+    }
+
+    public static List<Tuple<Section, Section>> checkForCollisions(List<Section> classes) {
+        List<Section> combinedSections = new ArrayList<>();
+        List<Tuple<Section, Section>> collisions = new ArrayList<>();
+
+        long combinedSchedule = 0L;
+
+        for (Section sec : classes) {
+            if (checkCollisionBetween(combinedSchedule,sec.classSchedule)){
+                for (Section s : combinedSections){
+                    if (checkCollisionBetween(s.classSchedule,sec.classSchedule)){
+                        collisions.add(new Tuple<Section, Section>(sec, s));
                     }
                 }
-                
-                continue;
             }
 
-            combinedSchedule = combineSchedules(combinedSchedule, sec.classHours);
+            combinedSchedule |= sec.classSchedule;
             combinedSections.add(sec);
         }
 
         return collisions;
     }
 
-    public static long getCombinedClassHours(List<Section> sections){
-        long combinedSchedule = 0;
+    public static List<Section[]> combineSchedules(List<Section> sections) {
+        if (checkForCollisions(sections).size() > 0)
+            return null;
 
-        for(Section sec : sections){
-            combinedSchedule = combineSchedules(combinedSchedule, sec.classHours);
+        List<Section[]> schedule = new ArrayList<>();
+
+        for (int i = 0; i < 7; i++) {
+            Section[] day = new Section[8];
+            schedule.add(day);
         }
 
-        return combinedSchedule;
+        for (Section sec : sections) {
+            long schTemp = sec.classSchedule;
+            Consumer<Integer> combineCallback = (Integer i) -> schedule.get(i / 8)[i % 8] = sec;
+            TraverseBits(schTemp,combineCallback);
+        }
+
+        return schedule;
     }
 
-    public Course getCourse(){
+    public Course getCourse() {
         return course;
     }
 
-    public void setCourse(Course course){
+    public void setCourse(Course course) {
         this.course = course;
     }
 
-    public long getClassHours(){
-        return classHours;
+    public long getClassSchedule() {
+        return classSchedule;
     }
 
-    public void setClassHours(long classHours){
-        this.classHours = classHours;
+    public void setClassSchedule(long classHours) {
+        this.classSchedule = classHours;
     }
 
-    private static long combineSchedules(long sch1,long sch2){
-        return sch1 | sch2;
+    private static boolean checkCollisionBetween(long sch1, long sch2){
+        return (sch1 & sch2) != 0L;
     }
 
-    private static Boolean checkCollision(long sch1,long sch2){
-        return (sch1 & sch2) != 0;
+    private static void TraverseBits(long bitmask, Consumer<Integer> setBitCallback){
+        for (int i = 0; i < NO_OF_WEEKLY_CLASS_HOURS; i++) {
+            if ((bitmask & 1L) == 1L) {
+                setBitCallback.accept(i);
+            }
+
+            bitmask >>= 1L;
+
+            if (bitmask == 0L)
+                return;
+        }
     }
 }
