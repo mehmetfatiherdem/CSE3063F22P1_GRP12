@@ -66,21 +66,64 @@ abstract class Course {
 
     //Setters
     public void setCode(String code) {
+        //The course code has at least 1 letter, 3 digit, 1 dot and 1 more digit.(MB302.6)
+        if(code.length() < 6){
+            System.out.println("Invalid course code.");
+        }
+        else{
+            this.code = code;
+        }
     }
     public void setCredits(int credits) {
+        //Course's credit can not be negative. YDI0001 has no credit
+        if(credits < 0){
+            System.out.println("Invalid Input");
+        }
+        else{
+            this.credits = credits;
+        }
     }
     public void setEcts(int ects) {
+        if(ects<0){
+            System.out.println("Invalid Input");
+        }
+        else{
+            this.ects = ects;
+        }
     }
     public void setTheoreticalHours(int theoreticalHours) {
+        if(theoreticalHours < 0){
+            System.out.println("Invalid input");
+        }
+        else{
+            this.theoreticalHours = theoreticalHours;
+        }
     }
     public void setAppliedHours(int appliedHours) {
+        if(appliedHours < 0){
+            System.out.println("Invalid input");
+        }
+        else{
+            this.appliedHours = appliedHours;
+        }
     }
     public void setFirstYearToTake(int firstYearToTake) {
+        //A student must complete entire university courses in 7 years. Students have right to defer enrolment for 4 season.
+        if(firstYearToTake<2013){
+            System.out.println("Invalid input.");
+        }
+        this.firstYearToTake = firstYearToTake;
     }
     public void setFirstSeasonToTake(Season firstSeasonToTake) {
         this.firstSeasonToTake = firstSeasonToTake;
     }
     public void setLecturer(List<Lecturer> lecturer) {
+        if(lecturer.isEmpty()){
+            System.out.println("Invalid input. Course must have a lecturer.");
+        }
+        else {
+            this.lecturer = lecturer;
+        }
     }
     public void setAssistants(List<Lecturer> assistants) {
         this.assistants = assistants;
@@ -98,4 +141,5 @@ abstract class Course {
     */
     //canStudentTakeCourse method should be implemented in subclasses
     public abstract Boolean canStudentTakeCourse(Student student);
+
 }
