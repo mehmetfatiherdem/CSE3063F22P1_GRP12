@@ -19,11 +19,11 @@ public abstract class Section {
         this.instructor = instructor;
     }
 
-    public List<Tuple<Integer,Integer>> getCollisionsWith(Section other){
-        List<Tuple<Integer,Integer>> collisions = new ArrayList<>();
+    public List<Tuple<Integer, Integer>> getCollisionsWith(Section other) {
+        List<Tuple<Integer, Integer>> collisions = new ArrayList<>();
 
         long collisionDetector = classSchedule & other.classSchedule;
-        Consumer<Integer> collisionCallback = (Integer i) -> collisions.add(new Tuple<Integer,Integer>(i / 8, i % 8));
+        Consumer<Integer> collisionCallback = (Integer i) -> collisions.add(new Tuple<Integer, Integer>(i / 8, i % 8));
 
         TraverseBits(collisionDetector, collisionCallback);
 
@@ -37,9 +37,9 @@ public abstract class Section {
         long combinedSchedule = 0L;
 
         for (Section sec : classes) {
-            if (checkCollisionBetween(combinedSchedule,sec.classSchedule)){
-                for (Section s : combinedSections){
-                    if (checkCollisionBetween(s.classSchedule,sec.classSchedule)){
+            if (checkCollisionBetween(combinedSchedule, sec.classSchedule)) {
+                for (Section s : combinedSections) {
+                    if (checkCollisionBetween(s.classSchedule, sec.classSchedule)) {
                         collisions.add(new Tuple<Section, Section>(sec, s));
                     }
                 }
@@ -66,7 +66,7 @@ public abstract class Section {
         for (Section sec : sections) {
             long schTemp = sec.classSchedule;
             Consumer<Integer> combineCallback = (Integer i) -> schedule.get(i / 8)[i % 8] = sec;
-            TraverseBits(schTemp,combineCallback);
+            TraverseBits(schTemp, combineCallback);
         }
 
         return schedule;
@@ -88,11 +88,11 @@ public abstract class Section {
         this.classSchedule = classHours;
     }
 
-    private static boolean checkCollisionBetween(long sch1, long sch2){
+    private static boolean checkCollisionBetween(long sch1, long sch2) {
         return (sch1 & sch2) != 0L;
     }
 
-    private static void TraverseBits(long bitmask, Consumer<Integer> setBitCallback){
+    private static void TraverseBits(long bitmask, Consumer<Integer> setBitCallback) {
         for (int i = 0; i < NO_OF_WEEKLY_CLASS_HOURS; i++) {
             if ((bitmask & 1L) == 1L) {
                 setBitCallback.accept(i);
