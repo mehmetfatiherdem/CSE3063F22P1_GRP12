@@ -41,6 +41,10 @@ public class CourseRecord {
         this.course = course;
     }
     public void setGrade(float grade) {
+       if(grade < 0){
+       // print error messages
+       return;
+       }
         this.grade = grade;
     }
     public void setYear(int year) {
