@@ -12,7 +12,7 @@ public class Department {
     private List<Student> students;
     private List<Lecturer> lecturers;
 
-    // Will be written after these courses finished
+    // Will be written after these classes finished
     public void assignLecturerToACourse(Lecturer lecturer,Course course){
 
     }
