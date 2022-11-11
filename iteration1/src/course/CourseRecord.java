@@ -3,7 +3,7 @@ package iteration1.src.course;
 public class CourseRecord {
     //DataFields
     public enum LetterGrade{
-        AA,BA,BB,CB,CC,DC,DD,FD,FF,ZZ
+        AA,BA,BB,CB,CC,DC,DD,FD,FF,ZZ,NOT_GRADED
     }
     private enum Season{
         FALL,SPRING,SUMMER
