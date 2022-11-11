@@ -1,8 +1,6 @@
 package iteration1.src;
 
-import java.util.ArrayList;
 import java.util.List;
-
 import iteration1.src.course.Course;
 import iteration1.src.course.CourseRecord;
 
