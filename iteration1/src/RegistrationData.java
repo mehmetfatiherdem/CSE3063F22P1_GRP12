@@ -2,6 +2,7 @@ package iteration1.src;
 
 import iteration1.src.course.Section;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrationData {
@@ -14,7 +15,7 @@ public class RegistrationData {
 
     private int year;
     private Season season;
-    private List<Section> openSections;
+    private List<Section> openSections = new ArrayList<>();
 
     public RegistrationData( int year, Season season, List<Section> openSections){
         this.year = year;
@@ -42,7 +43,8 @@ public class RegistrationData {
         return openSections;
     }
 
-    public void setOpenSections(List<Section> openSections) {
-        this.openSections = openSections;
+    public void addOpenSection(Section section){
+        this.addOpenSection(section);
     }
+
 }
