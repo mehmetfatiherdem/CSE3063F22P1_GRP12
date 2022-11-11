@@ -11,7 +11,7 @@ public class CourseRecord {
     private Course course;
     private LetterGrade lGrade;
     private Season season;
-    private float grade;
+    private Float grade;
     private int year;
     private Boolean isPassed;
 
