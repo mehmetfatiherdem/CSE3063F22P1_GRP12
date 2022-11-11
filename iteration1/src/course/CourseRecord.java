@@ -2,7 +2,7 @@ package iteration1.src.course;
 
 public class CourseRecord {
     //DataFields
-    private enum LetterGrade{
+    public enum LetterGrade{
         AA,BA,BB,CB,CC,DC,DD,FD,FF,ZZ
     }
     private enum Season{
