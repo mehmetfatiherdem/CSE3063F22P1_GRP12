@@ -8,7 +8,7 @@ import iteration1.src.course.CourseRecord;
 
 public class Transcript {
     private float GPA;
-    private List<CourseRecord> takenCourseRecords = new ArrayList<CourseRecord>();
+    private List<CourseRecord> takenCourseRecords;
     private enum Status{
         FAILED,PASSED
     }
