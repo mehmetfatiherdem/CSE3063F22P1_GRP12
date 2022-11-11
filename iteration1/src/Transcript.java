@@ -29,9 +29,7 @@ public class Transcript {
         }
         this.GPA = GPA;
     }
-    public void setTakenCourseRecords(List<CourseRecord> takenCourseRecords) {
-        this.takenCourseRecords = takenCourseRecords;
-    }
+    
 
     public String setCourseStatus(Course course,Status status){
         
