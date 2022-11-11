@@ -23,6 +23,10 @@ public class Transcript {
 
     //setters
     public void setGPA(float GPA) {
+        if(GPA < 0 || GPA > 4){
+        // print an error here to the console
+        return;
+        }
         this.GPA = GPA;
     }
     public void setTakenCourseRecords(List<CourseRecord> takenCourseRecords) {
