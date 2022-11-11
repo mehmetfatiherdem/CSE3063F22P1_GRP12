@@ -1,30 +1,23 @@
 package iteration1.src.course;
+import iteration1.src.human.Assistant;
 import iteration1.src.human.Lecturer;
 import iteration1.src.human.Student;
 import java.util.List;
 
-abstract class Course {
-    enum Season{
-        FALL,
-        SPRING,
-        SUMMER
-    }
+public abstract class Course {
+
     protected String code;
     protected int credits;
     protected int ects;
-    protected int quote;
+    protected int quota;
     protected int theoreticalHours;
     protected int appliedHours;
     protected int firstYearToTake;
     protected Season firstSeasonToTake;
-    protected List<Lecturer> lecturer;
-    protected List<Lecturer> assistants;
+    protected List<Lecturer> lecturers;
+    protected List<Assistant> assistants;
     protected List<Season> educationSeason;
-    protected List<Student> studentList;
-    //protected List<Section> studentList;
-
-
-
+    protected List<Section> studentList;
 
     //Getters
     public int getCredits() {
@@ -33,8 +26,8 @@ abstract class Course {
     public String getCode() {
         return code;
     }
-    public int getQuote() {
-        return quote;
+    public int getQuota() {
+        return quota;
     }
 
     public int getEcts() {
@@ -49,19 +42,19 @@ abstract class Course {
     public int getFirstYearToTake() {
         return firstYearToTake;
     }
-    public List<Lecturer> getLecturer() {
-        return lecturer;
+    public List<Lecturer> getLecturers() {
+        return lecturers;
     }
     public Season getFirstSeasonToTake() {
         return firstSeasonToTake;
     }
-    public List<Lecturer> getAssistants() {
+    public List<Assistant> getAssistants() {
         return assistants;
     }
     public List<Season> getEducationSeason() {
         return educationSeason;
     }
-    public List<Student> getStudentList() {
+    public List<Section> getStudentList() {
         return studentList;
     }
 
@@ -79,20 +72,20 @@ abstract class Course {
     public void setCredits(int credits) {
         //Course's credit can not be negative. YDI0001 has no credit.
         if(credits < 0){
-            System.out.println("Invalid Input");
+            System.out.println("Invalid course credits value");
         }
         else{
             this.credits = credits;
         }
     }
-    public void setQuote(int quote) {
-        //mandatory course and elective course have different rule about quote
-        this.quote = quote;
+    public void setQuota(int quota) {
+        //mandatory course and elective course have different rule about quota
+        this.quota = quota;
     }
 
     public void setEcts(int ects) {
         if(ects<0){
-            System.out.println("Invalid Input");
+            System.out.println("Invalid course ECTS value");
         }
         else{
             this.ects = ects;
@@ -100,7 +93,7 @@ abstract class Course {
     }
     public void setTheoreticalHours(int theoreticalHours) {
         if(theoreticalHours < 0){
-            System.out.println("Invalid input");
+            System.out.println("Invalid course theoretical hours value");
         }
         else{
             this.theoreticalHours = theoreticalHours;
@@ -108,7 +101,7 @@ abstract class Course {
     }
     public void setAppliedHours(int appliedHours) {
         if(appliedHours < 0){
-            System.out.println("Invalid input");
+            System.out.println("Invalid course applied hours value");
         }
         else{
             this.appliedHours = appliedHours;
@@ -117,7 +110,7 @@ abstract class Course {
     public void setFirstYearToTake(int firstYearToTake) {
         //A student must complete entire university courses in 7 years. Students have right to defer enrolment for 4 season.
         if(firstYearToTake<2013){
-            System.out.println("Invalid input.");
+            System.out.println("Invalid course firstYearToTake value.");
         }
         else{
             this.firstYearToTake = firstYearToTake;
@@ -126,21 +119,17 @@ abstract class Course {
     public void setFirstSeasonToTake(Season firstSeasonToTake) {
         this.firstSeasonToTake = firstSeasonToTake;
     }
-    public void setLecturer(List<Lecturer> lecturer) {
-        if(lecturer.isEmpty()){
-            System.out.println("Invalid input. Course must have a lecturer.");
-        }
-        else {
-            this.lecturer = lecturer;
-        }
+    public void addToLecturer(List<Lecturer> lecturers) {
+            this.lecturers = lecturers;
     }
-    public void setAssistants(List<Lecturer> assistants) {
+    public void addToAssistants(List<Assistant> assistants) {
         this.assistants = assistants;
     }
-    public void setEducationSeason(List<Season> educationSeason) {
+    public void addToEducationSeason(List<Season> educationSeason) {
         this.educationSeason = educationSeason;
     }
-    public void setStudentList(List<Student> studentList) {
+
+    public void addToStudentList(List<Section> studentList) {
         this.studentList = studentList;
     }
 
