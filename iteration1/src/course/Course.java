@@ -12,7 +12,7 @@ abstract class Course {
     protected String code;
     protected int credits;
     protected int ects;
-    //protected int quote;
+    protected int quote;
     protected int theoreticalHours;
     protected int appliedHours;
     protected int firstYearToTake;
@@ -33,6 +33,10 @@ abstract class Course {
     public String getCode() {
         return code;
     }
+    public int getQuote() {
+        return quote;
+    }
+
     public int getEcts() {
         return ects;
     }
@@ -60,9 +64,7 @@ abstract class Course {
     public List<Student> getStudentList() {
         return studentList;
     }
-    /* public int getQuote() {
-        return quote;
-    }*/
+
 
     //Setters
     public void setCode(String code) {
@@ -75,7 +77,7 @@ abstract class Course {
         }
     }
     public void setCredits(int credits) {
-        //Course's credit can not be negative. YDI0001 has no credit
+        //Course's credit can not be negative. YDI0001 has no credit.
         if(credits < 0){
             System.out.println("Invalid Input");
         }
@@ -83,6 +85,11 @@ abstract class Course {
             this.credits = credits;
         }
     }
+    public void setQuote(int quote) {
+        //mandatory course and elective course have different rule about quote
+        this.quote = quote;
+    }
+
     public void setEcts(int ects) {
         if(ects<0){
             System.out.println("Invalid Input");
@@ -112,7 +119,9 @@ abstract class Course {
         if(firstYearToTake<2013){
             System.out.println("Invalid input.");
         }
-        this.firstYearToTake = firstYearToTake;
+        else{
+            this.firstYearToTake = firstYearToTake;
+        }
     }
     public void setFirstSeasonToTake(Season firstSeasonToTake) {
         this.firstSeasonToTake = firstSeasonToTake;
@@ -134,12 +143,8 @@ abstract class Course {
     public void setStudentList(List<Student> studentList) {
         this.studentList = studentList;
     }
-    /*
-    public void setQuote(int quote) {
-        this.quote = quote;
-    }
-    */
-    //canStudentTakeCourse method should be implemented in subclasses
-    public abstract Boolean canStudentTakeCourse(Student student);
 
+    public  Boolean canStudentTakeCourse(Student student){
+        return null;
+    }
 }
