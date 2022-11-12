@@ -9,8 +9,8 @@ public class Department {
     private static Department instance;
     private String code;
     private List<Course> courses;
-    private List<Student> students;
-    private List<FacultyMember> facultyMembers;
+    private List<Student> students = new ArrayList<>();
+    private List<FacultyMember> facultyMembers new ArrayList<>();
 
     // Will be written after these classes finished
     public void assignLecturerToACourse(Lecturer lecturer,Course course){
@@ -62,15 +62,15 @@ public class Department {
         return students;
     }
 
-    public void addStudents(List<Student> students) {
-        this.students = students;
+    public void addStudents(Student student) {
+        this.students.add(student); 
     }
 
     public List<FacultyMember> getFacultyMembers() {
         return facultyMembers;
     }
 
-    public void addFacultyMembers(List<FacultyMember> facultyMembers) {
-        this.facultyMembers = facultyMembers;
+    public void addFacultyMembers(FacultyMember facultyMember) {
+        this.facultyMembers.add(facultyMember);
     }
 }
