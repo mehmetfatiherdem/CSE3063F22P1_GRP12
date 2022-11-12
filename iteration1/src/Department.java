@@ -10,7 +10,7 @@ public class Department {
     private String code;
     private List<Course> courses;
     private List<Student> students = new ArrayList<>();
-    private List<FacultyMember> facultyMembers new ArrayList<>();
+    private List<FacultyMember> facultyMembers = new ArrayList<>();
 
     // Will be written after these classes finished
     public void assignLecturerToACourse(Lecturer lecturer,Course course){
