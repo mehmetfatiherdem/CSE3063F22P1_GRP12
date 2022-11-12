@@ -62,11 +62,11 @@ public class Department {
         this.students = students;
     }
 
-    public List<Lecturer> getLecturers() {
-        return lecturers;
+    public List<FacultyMember> getFacultyMembers() {
+        return facultyMembers;
     }
 
-    public void setLecturers(List<Lecturer> lecturers) {
-        this.lecturers = lecturers;
+    public void addFacultyMembers(List<FacultyMember> facultyMembers) {
+        this.facultyMembers = facultyMembers;
     }
 }
