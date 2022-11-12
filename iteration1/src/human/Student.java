@@ -9,18 +9,11 @@ import java.util.List;
 
 public class Student extends Human{
 
-    public enum Level {
-        FRESHMAN,
-        SOPHOMORE,
-        JUNIOR,
-        SENIOR
-    }
-
     private String studentID;
     private Level level;
     private Advisor advisor;
     private Transcript transcript;
-    private List<Section> curriculum = new ArrayList<>();
+    private List<Section> enrolledCourseSections = new ArrayList<>();
 
     private final String[] classDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
 
@@ -38,30 +31,25 @@ public class Student extends Human{
     public void enrollCourseSections(List<Section> sections, int year, RegistrationData.Season season){
 
         for(Section s: sections){
-            this.addToCurriculum(s);
-            s.getCourse().addStudent(this);
+            s.getCourse().addToStudentList(this);
 
+
+            // TODO: uncomment and fix this when the transcript PR is merged
             // this.transcript.takenCourseRecords.add(new CourseRecord(s.course, LetterGrade.NOT_GRADED, null, data.season, data.year, false))
         }
 
-
-
     }
-    public void register(RegistrationData data,  List<Section> sectionsToRequestToEnroll){
+
+    public void register(RegistrationData data){
 
         List<Section> openSecs = data.getOpenSections();
 
         // checks
 
-        for(var s: sectionsToRequestToEnroll){
-            if(!openSecs.contains(s)){
-                System.out.println(s.getCourse().getCode() + " is not available to take this registration time");
-                return;
-            }
-        }
+        //TODO: these will be implemented after the course check pr is merged
 
         // check for collisions between the course sections the student wants to take
-        var collisions = Section.checkForCollisions(sectionsToRequestToEnroll);
+        var collisions = Section.checkForCollisions(enrolledCourseSections);
 
         for(var c : collisions){
             Section sec1 = c.GetKey();
@@ -75,6 +63,10 @@ public class Student extends Human{
 
                 System.out.println("There is a collision between " + sec1.getCourse().getCode()
                         + " and " + sec2.getCourse().getCode() + " on " + classDays[collisionDay] + " at " + classHours[collisionHour]);
+
+                // clear all the enrolled courses in the process
+                this.enrolledCourseSections.clear();
+                return;
             }
         }
 
@@ -83,7 +75,7 @@ public class Student extends Human{
 
         if(collisions.size() == 0){
 
-            enrollCourseSections(sectionsToRequestToEnroll, year, season);
+            enrollCourseSections(enrolledCourseSections, year, season);
 
             String schedule = generateWeeklySchedule();
             System.out.println(schedule);
@@ -95,7 +87,11 @@ public class Student extends Human{
 
         String program = this.getFullName() + "'s Weekly Schedule\n";
 
-        List<Section[]> schedule = Section.combineSchedules(this.curriculum);
+        if(this.enrolledCourseSections.size() == 0){
+            program = "The student " + this.getFullName() + " doesn't have any enrolled courses";
+        }
+
+        List<Section[]> schedule = Section.combineSchedules(this.enrolledCourseSections);
 
         for(int i = 0; i<schedule.size(); i++){
 
@@ -126,6 +122,7 @@ public class Student extends Human{
         return studentID;
     }
 
+    //TODO: We could have logic checks here
     public void setStudentID(String studentID) {
         this.studentID = studentID;
     }
@@ -154,12 +151,12 @@ public class Student extends Human{
         this.transcript = transcript;
     }
 
-    public List<Section> getCurriculum() {
-        return curriculum;
+    public List<Section> getEnrolledCourses() {
+        return enrolledCourseSections;
     }
 
-    public void addToCurriculum(Section section){
-        this.curriculum.add(section);
+    public void addToEnrolledCourseSections(Section section){
+        this.enrolledCourseSections.add(section);
     }
 
 }
