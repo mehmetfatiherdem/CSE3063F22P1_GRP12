@@ -42,7 +42,12 @@ public class Department {
     }
 
     public void setCode(String code) {
-        this.code = code;
+        if(code.length() < 6){
+            System.out.println("Invalid course code.");
+        }
+        else{
+            this.code = code;
+        }
     }
 
     public List<Course> getCourses() {
@@ -57,7 +62,7 @@ public class Department {
         return students;
     }
 
-    public void setStudents(List<Student> students) {
+    public void addStudents(List<Student> students) {
         this.students = students;
     }
 
