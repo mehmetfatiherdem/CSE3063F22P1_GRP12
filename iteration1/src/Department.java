@@ -22,10 +22,7 @@ public class Department {
     public void assignAssistantToALabCourse(Assistan lecturer,Course course){
 
     }
-
-
-
-
+    
     private Department() {
     }
 
