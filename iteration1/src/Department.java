@@ -26,15 +26,14 @@ public class Department {
 
 
 
-    private Department Department() {
-        return this;
-    }
-
-    public static void setInstance(Department instance) {
-        Department.instance = instance;
+    private Department() {
     }
 
     public static Department getInstance() {
+        if (instance == null)
+        {
+            instance = new Department();
+        }
         return instance;
     }
 
