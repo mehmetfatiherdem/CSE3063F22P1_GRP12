@@ -1,17 +1,12 @@
 package iteration1.src;
 
+import iteration1.src.course.Season;
 import iteration1.src.course.Section;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrationData {
-
-    public enum Season {
-        FALL,
-        SPRING,
-        SUMMER
-    }
 
     private int year;
     private Season season;

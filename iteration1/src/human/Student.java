@@ -2,6 +2,7 @@ package iteration1.src.human;
 
 import iteration1.src.RegistrationData;
 import iteration1.src.Transcript;
+import iteration1.src.course.Season;
 import iteration1.src.course.Section;
 
 import java.util.ArrayList;
@@ -28,7 +29,7 @@ public class Student extends Human{
         super(firstName, lastName);
     }
 
-    public void enrollCourseSections(List<Section> sections, int year, RegistrationData.Season season){
+    public void enrollCourseSections(List<Section> sections, int year, Season season){
 
         for(Section s: sections){
             s.getCourse().addToStudentList(this);
@@ -71,7 +72,7 @@ public class Student extends Human{
         }
 
         int year = data.getYear();
-        RegistrationData.Season season = data.getSeason();
+        Season season = data.getSeason();
 
         if(collisions.size() == 0){
 
