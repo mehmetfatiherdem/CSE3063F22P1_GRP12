@@ -39,7 +39,7 @@ public class RegistrationData {
     }
 
     public void addOpenSection(Section section){
-        this.addOpenSection(section);
+        this.openSections.add(section);
     }
 
 }
