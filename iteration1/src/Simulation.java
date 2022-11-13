@@ -73,21 +73,21 @@ public class Simulation {
         Student st1 = students.get(0);
         Student st2 = students.get(1);
 
-        st1.addToEnrolledCourseSections(sec1);
-        st1.addToEnrolledCourseSections(sec2);
-        st1.addToEnrolledCourseSections(sec3);
-        st1.addToEnrolledCourseSections(sec4);
-        st1.addToEnrolledCourseSections(sec5);
-        st1.addToEnrolledCourseSections(sec6);
+        st1.addToRegistrationList(sec1);
+        st1.addToRegistrationList(sec2);
+        st1.addToRegistrationList(sec3);
+        st1.addToRegistrationList(sec4);
+        st1.addToRegistrationList(sec5);
+        st1.addToRegistrationList(sec6);
 
         st1.register(data);
 
-        st2.addToEnrolledCourseSections(sec1);
-        st2.addToEnrolledCourseSections(sec2);
-        st2.addToEnrolledCourseSections(sec3);
-        st2.addToEnrolledCourseSections(sec4);
-        st2.addToEnrolledCourseSections(sec5);
-        st2.addToEnrolledCourseSections(sec6);
+        st2.addToRegistrationList(sec1);
+        st2.addToRegistrationList(sec2);
+        st2.addToRegistrationList(sec3);
+        st2.addToRegistrationList(sec4);
+        st2.addToRegistrationList(sec5);
+        st2.addToRegistrationList(sec6);
 
         st2.register(data);
 

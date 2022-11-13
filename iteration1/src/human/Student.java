@@ -179,7 +179,7 @@ public class Student extends Human{
         return enrolledCourseSections;
     }
 
-    public void addToEnrolledCourseSections(Section section){
+    public void addToRegistrationList(Section section){
         if(section.isSectionFull()){
 
             System.out.println("This section of " + section.getCourse().getCode() + " is already full");
