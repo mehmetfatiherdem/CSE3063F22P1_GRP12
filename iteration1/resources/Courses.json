@@ -1,0 +1,1698 @@
+[
+  {
+    "CourseCode": "ATA121",
+    "CourseName": "Atatürk İlkeleri ve İnkılap Tarihi I",
+    "CourseType": "Mandatory",
+    "Credits": 2,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "MBG1201",
+    "CourseName": "Introduction to Modern Biology",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE1200",
+    "CourseName": "Introduction to Computer Engineering",
+    "CourseType": "Mandatory",
+    "Credits": 4,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE1241",
+    "CourseName": "Computer Programming I",
+    "CourseType": "Mandatory",
+    "Credits": 6,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "MATH1001",
+    "CourseName": "Calculus I",
+    "CourseType": "Mandatory",
+    "Credits": 6,
+    "TheoreticalHours": 4,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "PHYS1101",
+    "CourseName": "Physics I",
+    "CourseType": "Mandatory",
+    "Credits": 4,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "PHYS1103",
+    "CourseName": "Physics Lab I",
+    "CourseType": "Mandatory",
+    "Credits": 2,
+    "TheoreticalHours": 0,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "TRD121",
+    "CourseName": "Türk Dili I",
+    "CourseType": "Mandatory",
+    "Credits": 2,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "ATA122",
+    "CourseName": "Atatürk İlkeleri ve İnkılap Tarihi II",
+    "CourseType": "Mandatory",
+    "Credits": 2,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE1242",
+    "CourseName": "Computer Programming II",
+    "CourseType": "Mandatory",
+    "Credits": 6,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [
+      "CSE1241"
+    ],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MATH1002",
+    "CourseName": "Calculus II",
+    "CourseType": "Mandatory",
+    "Credits": 6,
+    "TheoreticalHours": 4,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MATH2256",
+    "CourseName": "Linear Algebra for Computer Engineering",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "PHYS1102",
+    "CourseName": "Physics II",
+    "CourseType": "Mandatory",
+    "Credits": 4,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "PHYS1104",
+    "CourseName": "Physics Lab II",
+    "CourseType": "Mandatory",
+    "Credits": 2,
+    "TheoreticalHours": 0,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "TRD122",
+    "CourseName": "Türk Dili II",
+    "CourseType": "Mandatory",
+    "Credits": 2,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE2023",
+    "CourseName": "Discrete Computational Structures",
+    "CourseType": "Mandatory",
+    "Credits": 6,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE2225",
+    "CourseName": "Data Structures",
+    "CourseType": "Mandatory",
+    "Credits": 7,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [
+      "CSE1242"
+    ],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "ECON2004",
+    "CourseName": "Engineering Economy",
+    "CourseType": "Mandatory",
+    "Credits": 4,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "EE2031",
+    "CourseName": "Electric Circuits",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "PHYS1102"
+    ],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "MATH2055",
+    "CourseName": "Differential Equations",
+    "CourseType": "Mandatory",
+    "Credits": 4,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "MATH2059",
+    "CourseName": "Numerical Methods",
+    "CourseType": "Mandatory",
+    "Credits": 4,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "MATH1001"
+    ],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE2246",
+    "CourseName": "Analysis of Algorithms",
+    "CourseType": "Mandatory",
+    "Credits": 6,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [
+      "CSE2225"
+    ],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE2138",
+    "CourseName": "Systems Programming",
+    "CourseType": "Mandatory",
+    "Credits": 7,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE2260",
+    "CourseName": "Principles of Programming Languages",
+    "CourseType": "Mandatory",
+    "Credits": 4,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [
+      "CSE1242"
+    ],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "EE2032",
+    "CourseName": "Electronics",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [
+      "EE2031"
+    ],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "STAT2253",
+    "CourseName": "Introduction to Probability and Statistics",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SOPHOMORE",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE3215",
+    "CourseName": "Digital Logic Design",
+    "CourseType": "Mandatory",
+    "Credits": 6,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE3033",
+    "CourseName": "Operating Systems",
+    "CourseType": "Mandatory",
+    "Credits": 7,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [
+      "CSE2225"
+    ],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE3055",
+    "CourseName": "Database Systems",
+    "CourseType": "Mandatory",
+    "Credits": 7,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [
+      "CSE2225"
+    ],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE3063",
+    "CourseName": "Object-Oriented Software Design",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "CSE1242"
+    ],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "IE3081",
+    "CourseName": "Modeling and Discrete Simulation",
+    "CourseType": "Mandatory",
+    "Credits": 4,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "STAT2253"
+    ],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE3038",
+    "CourseName": "Computer Organization",
+    "CourseType": "Mandatory",
+    "Credits": 7,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [
+      "CSE2138",
+      "CSE3215"
+    ],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE3044",
+    "CourseName": "Software Engineering",
+    "CourseType": "Mandatory",
+    "Credits": 7,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [
+      "CSE3055"
+    ],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE3048",
+    "CourseName": "Introduction to Signals and Systems",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "MATH2055"
+    ],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE3264",
+    "CourseName": "Formal Languages and Automata Theory",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "CSE2023"
+    ],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "IE3235",
+    "CourseName": "Operations Research",
+    "CourseType": "Mandatory",
+    "Credits": 4,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "MATH2256"
+    ],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "COM2202",
+    "CourseName": "Technical Comm. and Entrepreneurship",
+    "CourseType": "Mandatory",
+    "Credits": 2,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "JUNIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE4074",
+    "CourseName": "Computer Networks",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4219",
+    "CourseName": "Principles of Embedded System Design",
+    "CourseType": "Mandatory",
+    "Credits": 6,
+    "TheoreticalHours": 3,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [
+      "CSE3038"
+    ],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4297",
+    "CourseName": "Engineering Project I",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 0,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "ISG121",
+    "CourseName": "İş Sağlığı ve Güvenliği I",
+    "CourseType": "Mandatory",
+    "Credits": 2,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4288",
+    "CourseName": "Introduction to Machine Learning",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "STAT2253",
+      "MATH2256"
+    ],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4298",
+    "CourseName": "Engineering Project II",
+    "CourseType": "Mandatory",
+    "Credits": 5,
+    "TheoreticalHours": 0,
+    "AppliedHours": 2,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "ISG122",
+    "CourseName": "İş Sağlığı ve Güvenliği II",
+    "CourseType": "Mandatory",
+    "Credits": 2,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "BIOE4072",
+    "CourseName": "Planning and Management of Research",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CHE4060",
+    "CourseName": "Cost Management in Chemical Industries",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CHE4068",
+    "CourseName": "Financial Engineering",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CHE4080",
+    "CourseName": "Chemical Engineering for Sustainable Biosphere",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE4044_2",
+    "CourseName": "Software Project Management",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE4056_2",
+    "CourseName": "Management of Information Systems",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE4062_2",
+    "CourseName": "Introduction to Data Science and Analytics",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "EE4056",
+    "CourseName": "Introduction to Information Systems Management",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "EE4062",
+    "CourseName": "Introduction to Image Processing",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "ENVE4062",
+    "CourseName": "Energy and the Environment",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "ENVE4063",
+    "CourseName": "Construction Materials for Environmental Engineering",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "IE4055",
+    "CourseName": "Design of Experiments",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "IE4087",
+    "CourseName": "Introduction to Total Quality Management",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "ME3004",
+    "CourseName": "Mathematical Modeling in Mechanical Engineering",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "ME3022",
+    "CourseName": "Mechatronics",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "ME4018",
+    "CourseName": "Introduction to Robotics",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "ME4022",
+    "CourseName": "Control Systems",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "ME4033",
+    "CourseName": "Designing Quality Products",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "ME4051",
+    "CourseName": "Automotive Engineering",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MGT4076",
+    "CourseName": "Quality Management System in Automotive Industry",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MGT4082",
+    "CourseName": "Advanced innovative Design Management for Entrepreneurship",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MGT4084",
+    "CourseName": "Innovation and New Product Development Management",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MGT4086",
+    "CourseName": "Managing Engineering and Technology",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MGT4088",
+    "CourseName": "Project Management for Engineers",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MSE4073",
+    "CourseName": "Materials Engineering Economics and Plant Design",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MSE4074",
+    "CourseName": "Total Quality Management in Materials Engineering",
+    "CourseType": "Faculty Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CSE4026",
+    "CourseName": "Introduction to Robotics and Control Theory",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4032",
+    "CourseName": "Introduction to Distributed Systems",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4038",
+    "CourseName": "Introduction to Parallel Processing",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4040",
+    "CourseName": "Cloud Computing",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4044",
+    "CourseName": "Software Project Management",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4053",
+    "CourseName": "Information Systems: Analysis and Design",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4056",
+    "CourseName": "Management of Information Systems",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4057",
+    "CourseName": "Information Systems Security",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4058",
+    "CourseName": "Fundamentals of Electronic Commerce",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4059",
+    "CourseName": "Internet Programming",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4062",
+    "CourseName": "Introduction to Data Science and Analytics",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4063",
+    "CourseName": "Fundamentals of Data Mining",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4065",
+    "CourseName": "Introduction to Computational Genomics",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4066",
+    "CourseName": "Introduction to Cryptography",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4067",
+    "CourseName": "Introduction to Blockchain Programming",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4070",
+    "CourseName": "Software Frameworks",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4082",
+    "CourseName": "Artificial Intelligence",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4083",
+    "CourseName": "Computer Graphics",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4084",
+    "CourseName": "Multimedia Systems",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4085",
+    "CourseName": "Human Computer Interaction",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4086",
+    "CourseName": "Mobile Device Programming",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4093",
+    "CourseName": "Special Topics in Computer Engineering I",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4094",
+    "CourseName": "Special Topics in Computer Engineering II",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4095",
+    "CourseName": "Special Topics in Computer Engineering III",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4096",
+    "CourseName": "Special Topics in Computer Engineering IV",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4075",
+    "CourseName": "Wireless and Mobile Networks",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "CSE4074"
+    ],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4034",
+    "CourseName": "Advanced Unix Programming",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "CSE3033"
+    ],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4061",
+    "CourseName": "Compiler Design",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "CSE3264"
+    ],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "CSE4217",
+    "CourseName": "Microprocessors",
+    "CourseType": "Technical Elective",
+    "Credits": 5,
+    "TheoreticalHours": 3,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [
+      "CSE3038"
+    ],
+    "FirstGradeToTake": "SENIOR",
+    "FirstSeasonToTake": "FALL"
+  },
+  {
+    "CourseCode": "BUS1003",
+    "CourseName": "Entrepreneurship and Innovation",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "BUS1004",
+    "CourseName": "Strategic Entrepreneurship",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "BUS2005",
+    "CourseName": "International Business",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CAS1001",
+    "CourseName": "Self Management",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CAS1010",
+    "CourseName": "Our Biosphere",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CAS1061",
+    "CourseName": "Geometric Origami",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CAS2001",
+    "CourseName": "Energy for Physical Activity",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CAS2002",
+    "CourseName": "Human Performance and Nutrition",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CAS2003",
+    "CourseName": "Cardiopulmonary Resuscitation and First Aid Basics",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CAS2004",
+    "CourseName": "Interpersonal Relations and Communication",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CAS2005",
+    "CourseName": "Trekking and Orienteering",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CAS3001",
+    "CourseName": "Earthquake and Rescue Principles",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "CAS3044",
+    "CourseName": "Positive Thinking",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "COMM2060",
+    "CourseName": "Communication Models and Techniques",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "FNCE3003",
+    "CourseName": "Investment Planning",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "HR1013",
+    "CourseName": "Career Development",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "HR4001",
+    "CourseName": "Career Orientation",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "HSS3002",
+    "CourseName": "Ethics in Engineering and Science",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "IKT1054",
+    "CourseName": "Industrial and Economic Sociology",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "INF1001",
+    "CourseName": "Information Literacy in Engineering",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "LAW2004",
+    "CourseName": "Labor Law",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MAN1001",
+    "CourseName": "Principles of Managerial Economics & Financial Management",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MGT1021",
+    "CourseName": "Design, Innovation and Entrepreneurship",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MGT3082",
+    "CourseName": "Creativity And Innovation Management",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MRK3082",
+    "CourseName": "Integrated Marketing Communication",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "MRK3084",
+    "CourseName": "Brand Creation/Branding",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1002",
+    "CourseName": "Effects of Human Behaviour on Environment",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1003",
+    "CourseName": "The Culture of Radiation Safety",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1004",
+    "CourseName": "World Cultures",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1006",
+    "CourseName": "Basic Principles of Accessibility in Informatics and Technology",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1008",
+    "CourseName": "Cinema",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1010",
+    "CourseName": "Introduction to Finance for Engineers",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1011",
+    "CourseName": "Business Communication",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1012",
+    "CourseName": "Introduction to Corporate Governance for Engineers",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1013",
+    "CourseName": "Business Intelligence for Managers",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1014",
+    "CourseName": "Introduction to Strategic Human Resources Management",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1015",
+    "CourseName": "Introduction to Leadership & Management for Engineers",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "NTE1016",
+    "CourseName": "Introduction to Strategy for Engineers",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "OB2040",
+    "CourseName": "Industrial Psychology",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "OB2041",
+    "CourseName": "Behavioral Sciences for Engineers",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "OB3043",
+    "CourseName": "Organizational Behaviour",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "SOC3082",
+    "CourseName": "Environmental Sociology",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "YDA1001",
+    "CourseName": "German for Beginners",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "YDA1002",
+    "CourseName": "German",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "YDA1003",
+    "CourseName": "German Communication",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "YDA2001",
+    "CourseName": "Seminars in German",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "YDF1001",
+    "CourseName": "French for Beginners",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "YDF1002",
+    "CourseName": "French",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "YDI1004",
+    "CourseName": "Report Writing in English",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "YDIS1001",
+    "CourseName": "Spanish for Beginners",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  },
+  {
+    "CourseCode": "YDIS1002",
+    "CourseName": "Spanish",
+    "CourseType": "Non-Technical Elective | University Elective",
+    "Credits": 3,
+    "TheoreticalHours": 2,
+    "AppliedHours": 0,
+    "PrerequisiteCodes": [],
+    "FirstGradeToTake": "FRESHMAN",
+    "FirstSeasonToTake": "SPRING"
+  }
+]

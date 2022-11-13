@@ -1,0 +1,146 @@
+{
+  "ID": "150121148",
+  "Grade": "SOPHOMORE",
+  "AdvisorName": "Ince KILIÇ",
+  "CourseRecords": [
+    {
+      "CourseCode": "MBG1201",
+      "LetterGrade": "FD",
+      "Grade": 33.643806,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "CSE1200",
+      "LetterGrade": "CC",
+      "Grade": 55.256325,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE1241",
+      "LetterGrade": "DC",
+      "Grade": 49.000145,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH1001",
+      "LetterGrade": "AA",
+      "Grade": 88.50998,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1101",
+      "LetterGrade": "CB",
+      "Grade": 63.540623,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1103",
+      "LetterGrade": "CC",
+      "Grade": 58.10874,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "TRD121",
+      "LetterGrade": "AA",
+      "Grade": 87.246315,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MBG1201",
+      "LetterGrade": "FD",
+      "Grade": 36.608303,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "ATA121",
+      "LetterGrade": "FF",
+      "Grade": 22.595043,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "ATA122",
+      "LetterGrade": "BB",
+      "Grade": 70.97656,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE1242",
+      "LetterGrade": "CC",
+      "Grade": 52.93776,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH1002",
+      "LetterGrade": "BA",
+      "Grade": 80.7565,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH2256",
+      "LetterGrade": "CB",
+      "Grade": 65.7464,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1102",
+      "LetterGrade": "AA",
+      "Grade": 83.4819,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1104",
+      "LetterGrade": "CB",
+      "Grade": 66.10613,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "TRD122",
+      "LetterGrade": "BA",
+      "Grade": 78.338776,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CAS2005",
+      "LetterGrade": "AA",
+      "Grade": 95.97531,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    }
+  ],
+  "FirstName": "Meleksah",
+  "MiddleName": "Orgül",
+  "LastName": "ALBOGA"
+}
