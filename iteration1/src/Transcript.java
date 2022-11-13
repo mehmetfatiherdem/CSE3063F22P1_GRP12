@@ -12,10 +12,13 @@ public class Transcript {
     private float GPA;
     private List<CourseRecord> takenCourseRecords;
 
+    //TODO:add constructor and take course records as parameters as they'll be parsed from json data, and calll calculateGPA inside the constructor
  
     public float getGPA() {
         return GPA;
     }
+
+    //TODO:This shouldn't be directly accessible to outside world,delete this and write several needed query methods
     public List<CourseRecord> getTakenCourseRecords() {
         return takenCourseRecords;
     }

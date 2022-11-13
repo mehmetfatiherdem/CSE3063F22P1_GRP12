@@ -2,22 +2,29 @@ package iteration1.src.course;
 import iteration1.src.human.Assistant;
 import iteration1.src.human.Lecturer;
 import iteration1.src.human.Student;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Course {
 
+    //static minquota,maxquota
+    //quota
     protected String code;
     protected int credits;
     protected int ects;
-    protected int quota;
     protected int theoreticalHours;
     protected int appliedHours;
     protected int firstYearToTake;
     protected Season firstSeasonToTake;
-    protected List<Lecturer> lecturers;
-    protected List<Assistant> assistants;
+    protected List<Lecturer> lecturers = new ArrayList<>();
+    protected List<Assistant> assistants = new ArrayList<>();
     protected List<Season> educationSeason;
-    protected List<Section> studentList;
+    private List<Section> sectionList = new ArrayList<>();
+
+    public Course(String code){
+        this.code = code;
+    }
 
     //Getters
     public int getCredits() {
@@ -25,9 +32,6 @@ public abstract class Course {
     }
     public String getCode() {
         return code;
-    }
-    public int getQuota() {
-        return quota;
     }
 
     public int getEcts() {
@@ -54,10 +58,6 @@ public abstract class Course {
     public List<Season> getEducationSeason() {
         return educationSeason;
     }
-    public List<Section> getStudentList() {
-        return studentList;
-    }
-
 
     //Setters
     public void setCode(String code) {
@@ -77,10 +77,6 @@ public abstract class Course {
         else{
             this.credits = credits;
         }
-    }
-    public void setQuota(int quota) {
-        //mandatory course and elective course have different rule about quota
-        this.quota = quota;
     }
 
     public void setEcts(int ects) {
@@ -119,21 +115,25 @@ public abstract class Course {
     public void setFirstSeasonToTake(Season firstSeasonToTake) {
         this.firstSeasonToTake = firstSeasonToTake;
     }
-    public void addToLecturer(List<Lecturer> lecturers) {
-            this.lecturers = lecturers;
+    public void addToLecturer(Lecturer lecturer) {
+            this.lecturers.add(lecturer);
     }
-    public void addToAssistants(List<Assistant> assistants) {
-        this.assistants = assistants;
+    public void addToAssistants(Assistant assistant) {
+        this.assistants.add(assistant);
     }
-    public void addToEducationSeason(List<Season> educationSeason) {
-        this.educationSeason = educationSeason;
-    }
-
-    public void addToStudentList(List<Section> studentList) {
-        this.studentList = studentList;
+    public void addToEducationSeason(Season educationSeason) {
+        this.educationSeason.add(educationSeason);
     }
 
     public  Boolean canStudentTakeCourse(Student student){
-        return null;
+        return true;
+    }
+
+    public void addToSectionList(Section section){
+        this.sectionList.add(section);
+    }
+
+    public List<Section> getSectionList() {
+        return sectionList;
     }
 }

@@ -5,12 +5,21 @@ import java.util.List;
 import java.util.function.Consumer;
 import iteration1.src.data_structures.Tuple;
 import iteration1.src.human.FacultyMember;
+import iteration1.src.human.Student;
 
 public abstract class Section {
 
     //Number of class hours in a week
     public static final int NO_OF_WEEKLY_CLASS_HOURS = 56;
+    public static final String[] CLASS_DAYS = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
+
+    public static final String[] CLASS_HOURS = {"8.30-9.20", "9.30-10.20", "10.30-11.20", "11.30-12.20",
+            "13.00-13.50", "14.00-14.50", "15.00-15.50", "16.00-16.50", };
+
+
     protected Course course;
+
+    //TODO:move quota to course because it's more central
 
     /*
      * Bitmask for the schedule of this section, there are 8 classes per day and 7 days in a week,
@@ -19,6 +28,9 @@ public abstract class Section {
      */
     protected long classSchedule;
     protected FacultyMember instructor;
+    protected int quota;
+
+    protected List<Student> studentList = new ArrayList<>();
 
     protected Section(Course course, long classSchedule, FacultyMember instructor) {
         this.course = course;
@@ -137,4 +149,25 @@ public abstract class Section {
                 return;
         }
     }
+
+    public int getQuota() {
+        return quota;
+    }
+
+    public void setQuota(int quota) {
+        this.quota = quota;
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void addToStudentList(Student student) {
+        this.studentList.add(student);
+    }
+
+    public boolean isSectionFull(){
+        return this.getQuota() <= this.getStudentList().size();
+    }
+
 }
