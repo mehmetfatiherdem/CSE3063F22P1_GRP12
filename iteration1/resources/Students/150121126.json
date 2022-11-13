@@ -1,0 +1,138 @@
+{
+  "ID": "150121126",
+  "Grade": "SOPHOMORE",
+  "AdvisorName": "Zülâl KÖSE",
+  "CourseRecords": [
+    {
+      "CourseCode": "ATA121",
+      "LetterGrade": "DD",
+      "Grade": 45.09368,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MBG1201",
+      "LetterGrade": "CB",
+      "Grade": 62.242325,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE1200",
+      "LetterGrade": "BB",
+      "Grade": 69.16896,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH1001",
+      "LetterGrade": "FF",
+      "Grade": 23.564005,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "PHYS1101",
+      "LetterGrade": "AA",
+      "Grade": 90.18452,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1103",
+      "LetterGrade": "CB",
+      "Grade": 66.96274,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "TRD121",
+      "LetterGrade": "DC",
+      "Grade": 48.72002,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH1001",
+      "LetterGrade": "AA",
+      "Grade": 86.851074,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE1241",
+      "LetterGrade": "BB",
+      "Grade": 69.017715,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "ATA122",
+      "LetterGrade": "BA",
+      "Grade": 82.06238,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH1002",
+      "LetterGrade": "BB",
+      "Grade": 68.799614,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH2256",
+      "LetterGrade": "FF",
+      "Grade": 3.1462429,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "PHYS1102",
+      "LetterGrade": "CB",
+      "Grade": 64.31858,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1104",
+      "LetterGrade": "BA",
+      "Grade": 79.6306,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "TRD122",
+      "LetterGrade": "DC",
+      "Grade": 49.33223,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CAS1010",
+      "LetterGrade": "AA",
+      "Grade": 94.94722,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    }
+  ],
+  "FirstName": "Miyeser",
+  "MiddleName": null,
+  "LastName": "YÜKSEL"
+}
