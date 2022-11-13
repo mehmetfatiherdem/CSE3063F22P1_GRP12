@@ -1,4 +1,4 @@
 package iteration1.src.human;
 
-public class Assistant {
+public class Assistant extends FacultyMember{
 }
