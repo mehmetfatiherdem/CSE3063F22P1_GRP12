@@ -1,8 +1,11 @@
 package iteration1.src;
 
 import iteration1.src.course.Course;
-
-
+import iteration1.src.human.Assistant;
+import iteration1.src.human.FacultyMember;
+import iteration1.src.human.Lecturer;
+import iteration1.src.human.Student;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Department {
@@ -19,7 +22,7 @@ public class Department {
     public void assignLecturerToACourseSection(Lecturer lecturer,Course course){
 
     }
-    public void assignAssistantToALabCourse(Assistan lecturer,Course course){
+    public void assignAssistantToALabCourse(Assistant lecturer,Course course){
 
     }
     

@@ -1,13 +1,8 @@
 package iteration1.src.course;
 
+
 public class CourseRecord {
     //DataFields
-    public enum LetterGrade{
-        AA,BA,BB,CB,CC,DC,DD,FD,FF,ZZ,NOT_GRADED
-    }
-    private enum Season{
-        FALL,SPRING,SUMMER
-    }
     private Course course;
     private LetterGrade lGrade;
     private Season season;
@@ -60,6 +55,15 @@ public class CourseRecord {
         this.season = season;
     }
 
+    public CourseRecord(Course course,LetterGrade lGrade,Season season,Float grade,int year,Boolean isPassed){
+        this.course=course;
+        this.lGrade=lGrade;
+        this.season=season;
+        this.grade=grade;
+        this.year=year;
+        this.isPassed=isPassed;
+
+    }
     //Get season details Method
     public void getFullSeasonDetails(){
 
