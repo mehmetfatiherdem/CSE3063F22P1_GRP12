@@ -9,8 +9,8 @@ public class MandatoryCourse extends Course{
 
     private List<MandatoryCourse> prerequisites = new ArrayList<>();
 
-    public MandatoryCourse(String code){
-        super(code);
+    public MandatoryCourse(String code, int quota){
+        super(code, quota);
     }
 
     @Override

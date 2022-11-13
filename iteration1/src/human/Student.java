@@ -10,7 +10,7 @@ import java.util.List;
 public class Student extends Human{
 
     private String studentID;
-    private Level level;//TODO:Season
+    private Grade grade;
     private Advisor advisor;
     private Transcript transcript;
     private List<Section> enrolledCourseSections = new ArrayList<>();
@@ -24,13 +24,13 @@ public class Student extends Human{
         super(firstName, lastName);
     }
 
-    public void enrollCourseSections(List<Section> sections, int year, Season season){
+    public void enrollCourseSections(List<Section> sections, Season season){
 
         for(Section s: sections){
             s.addToStudentList(this);
 
-            //TODO:Use transcript.addCourseRecord instead
-            this.transcript.getTakenCourseRecords().add(new CourseRecord(s.getCourse(), LetterGrade.NOT_GRADED, season, null, year, false));
+            //TODO: you can uncomment after you create a transcript for the student
+            // this.transcript.addCourseRecord(s.getCourse(), LetterGrade.NOT_GRADED, season, null, this.getGrade(), false);
         }
 
     }
@@ -92,7 +92,7 @@ public class Student extends Human{
 
         if(collisions.size() == 0){
 
-            enrollCourseSections(enrolledCourseSections, year, season);
+            enrollCourseSections(enrolledCourseSections, season);
 
             System.out.println();
 
@@ -151,12 +151,12 @@ public class Student extends Human{
         this.studentID = studentID;
     }
 
-    public Level getLevel() {
-        return level;
+    public Grade getGrade() {
+        return grade;
     }
 
-    public void setLevel(Level level) {
-        this.level = level;
+    public void setGrade(Grade grade) {
+        this.grade = grade;
     }
 
     public Advisor getAdvisor() {

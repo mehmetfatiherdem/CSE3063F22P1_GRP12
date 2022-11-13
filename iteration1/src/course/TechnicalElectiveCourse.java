@@ -6,8 +6,8 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
 
     public static final int REQUIRED_CREDITS = 155;
 
-    public TechnicalElectiveCourse(String code){
-        super(code);
+    public TechnicalElectiveCourse(String code, int quota){
+        super(code, quota);
     }
 
     @Override

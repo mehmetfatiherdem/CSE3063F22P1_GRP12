@@ -19,8 +19,6 @@ public abstract class Section {
 
     protected Course course;
 
-    //TODO:move quota to course because it's more central
-
     /*
      * Bitmask for the schedule of this section, there are 8 classes per day and 7 days in a week,
      * so each bit represents the class hour that corresponds to that bit's position in the bitmask.
@@ -28,7 +26,6 @@ public abstract class Section {
      */
     protected long classSchedule;
     protected FacultyMember instructor;
-    protected int quota;
 
     protected List<Student> studentList = new ArrayList<>();
 
@@ -150,14 +147,6 @@ public abstract class Section {
         }
     }
 
-    public int getQuota() {
-        return quota;
-    }
-
-    public void setQuota(int quota) {
-        this.quota = quota;
-    }
-
     public List<Student> getStudentList() {
         return studentList;
     }
@@ -167,7 +156,7 @@ public abstract class Section {
     }
 
     public boolean isSectionFull(){
-        return this.getQuota() <= this.getStudentList().size();
+        return course.getQuota() <= studentList.size();
     }
 
 }

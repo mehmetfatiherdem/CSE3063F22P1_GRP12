@@ -16,17 +16,17 @@ public class Simulation {
     public static void runSimulation(List<Student> students){
 
         // 0000000000000000000000000000001000000110
-        Course c1 = new MandatoryCourse("CSE3063");
+        Course c1 = new MandatoryCourse("CSE3063", 1);
         // 0000000000000000000000100000110011000000
-        Course c2 = new MandatoryCourse("CSE3015");
+        Course c2 = new MandatoryCourse("CSE3015", 2);
         // 0000110000000000000000000000000000111000
-        Course c3 = new MandatoryCourse("CSE3033");
+        Course c3 = new MandatoryCourse("CSE3033", 2);
         // 0000000000001000000011001100000000000000
-        Course c4 = new MandatoryCourse("CSE3055");
+        Course c4 = new MandatoryCourse("CSE3055", 2);
         // 0000001000000110000000000000000000000000
-        Course c5 = new MandatoryCourse("IE3081");
+        Course c5 = new MandatoryCourse("IE3081", 2);
         // 0000000000000000001000000000000000000000
-        Course c6 = new ElectiveCourse("GER2022");
+        Course c6 = new ElectiveCourse("GER2022", 2);
 
         Section sec1 = new CourseSection(c1,
                 518l, new Lecturer("n1", "l1"));
@@ -43,12 +43,6 @@ public class Simulation {
 
 
 
-        sec1.setQuota(2);
-        sec2.setQuota(2);
-        sec3.setQuota(2);
-        sec4.setQuota(2);
-        sec5.setQuota(2);
-        sec6.setQuota(1);
 
         sec1.setCourse(c1);
         sec2.setCourse(c2);

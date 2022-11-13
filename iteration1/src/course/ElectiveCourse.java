@@ -3,8 +3,8 @@ package iteration1.src.course;
 
 public class ElectiveCourse extends Course {
 
-    public ElectiveCourse(String code){
-        super(code);
+    public ElectiveCourse(String code, int quota){
+        super(code, quota);
     }
 
     @Override

@@ -5,6 +5,7 @@ import iteration1.src.course.Course;
 import iteration1.src.course.CourseRecord;
 import iteration1.src.course.LetterGrade;
 import iteration1.src.course.Season;
+import iteration1.src.human.Grade;
 
 
 public class Transcript {
@@ -24,9 +25,9 @@ public class Transcript {
     }
 
     
-    public void addCourseRecord(Course course,LetterGrade lGrade,Season season,Float grade,int year,Boolean isPassed){
+    public void addCourseRecord(Course course, LetterGrade lGrade, Season season, Float score, Grade grade, Boolean isPassed){
         
-        CourseRecord courserecord = new CourseRecord(course,lGrade,season,grade,year,isPassed);
+        CourseRecord courserecord = new CourseRecord(course,lGrade,season,grade, score, isPassed);
         takenCourseRecords.add(courserecord);
 
     }

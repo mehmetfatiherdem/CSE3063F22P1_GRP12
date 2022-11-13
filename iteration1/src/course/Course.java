@@ -9,7 +9,6 @@ import java.util.List;
 public abstract class Course {
 
     //static minquota,maxquota
-    //quota
     protected String code;
     protected int credits;
     protected int ects;
@@ -17,13 +16,15 @@ public abstract class Course {
     protected int appliedHours;
     protected int firstYearToTake;
     protected Season firstSeasonToTake;
+    protected int quota;
     protected List<Lecturer> lecturers = new ArrayList<>();
     protected List<Assistant> assistants = new ArrayList<>();
     protected List<Season> educationSeason;
     private List<Section> sectionList = new ArrayList<>();
 
-    public Course(String code){
+    public Course(String code, int quota){
         this.code = code;
+        this.quota = quota;
     }
 
     //Getters
@@ -136,4 +137,9 @@ public abstract class Course {
     public List<Section> getSectionList() {
         return sectionList;
     }
+
+    public int getQuota() {
+        return quota;
+    }
+
 }

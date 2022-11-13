@@ -6,8 +6,8 @@ public class EngineeringProject extends Course{
 
     public static final int REQUIRED_CREDITS = 165;
 
-    public EngineeringProject(String code) {
-        super(code);
+    public EngineeringProject(String code, int quota){
+        super(code, quota);
     }
 
     @Override

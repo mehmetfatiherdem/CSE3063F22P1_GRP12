@@ -1,24 +1,23 @@
 package iteration1.src.course;
 
 
+import iteration1.src.human.Grade;
+
 public class CourseRecord {
     //DataFields
     private Course course;
     private LetterGrade lGrade;
     private Season season;
-    private Float grade;
-    private int year;
+    private Float score;
+    private Grade grade;
     private Boolean isPassed;
 
     //Getters
     public Course getCourse() {
         return course;
     }
-    public float getGrade() {
-        return grade;
-    }
-    public int getYear() {
-        return year;
+    public float getScore() {
+        return score;
     }
     public Boolean getIsPassed() {
         return isPassed;
@@ -35,15 +34,12 @@ public class CourseRecord {
     public void setCourse(Course course) {
         this.course = course;
     }
-    public void setGrade(float grade) {
-       if(grade < 0){
+    public void setScore(float score) {
+       if(score < 0){
        // print error messages
        return;
        }
-        this.grade = grade;
-    }
-    public void setYear(int year) {
-        this.year = year;
+        this.score = score;
     }
     public void setIsPassed(Boolean isPassed) {
         this.isPassed = isPassed;
@@ -55,12 +51,16 @@ public class CourseRecord {
         this.season = season;
     }
 
-    public CourseRecord(Course course,LetterGrade lGrade,Season season,Float grade,int year,Boolean isPassed){
+    public Grade getGrade() {
+        return grade;
+    }
+
+    public CourseRecord(Course course, LetterGrade lGrade, Season season, Grade grade, Float score, Boolean isPassed){
         this.course=course;
         this.lGrade=lGrade;
         this.season=season;
-        this.grade=grade;
-        this.year=year;
+        this.grade = grade;
+        this.score = score;
         this.isPassed=isPassed;
 
     }
