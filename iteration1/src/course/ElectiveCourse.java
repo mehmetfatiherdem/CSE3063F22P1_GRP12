@@ -37,6 +37,12 @@ public class ElectiveCourse extends Course {
 
     @Override
     public void addToSectionList(Section section) {
-        System.out.println("You cannot add a new section to an elective course..");
+
+        if(this.getSectionList().size() < 1){
+            this.getSectionList().add(section);
+        }else{
+            System.out.println("You cannot add more than one section to an elective course..");
+        }
+
     }
 }
