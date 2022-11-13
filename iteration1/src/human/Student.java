@@ -46,9 +46,6 @@ public class Student extends Human{
 
         // sections to be removed and added from the enrolledsections due to full quota
 
-        List<Section> secToRemove = new ArrayList<>();
-        List<Section> secToAdd = new ArrayList<>();
-
         for(Section sec: enrolledCourseSections) {
 
             Course c = sec.getCourse();
