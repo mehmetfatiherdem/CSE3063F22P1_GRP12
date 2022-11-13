@@ -2,8 +2,14 @@ package iteration1.src.course;
 
 import iteration1.src.human.Student;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MandatoryCourse extends Course{
 
+    public MandatoryCourse(String code){
+        super(code);
+    }
 
     @Override
     public Boolean canStudentTakeCourse(Student student) {
@@ -20,17 +26,26 @@ public class MandatoryCourse extends Course{
         boolean arePrerequisitesPassed = true;
         // var takenCourses = student.getTranscript().getTakenCourseRecords()
         // for(CourseRecord c: takenCourses){
-        //      if(!c.isPassed) return c.isPassed;
-        //}
-        System.out.println("You don't meet the prerequisite requirement for the " + this.getCode());
+        //      if(!c.isPassed){
+        //      System.out.println("You don't meet the prerequisite requirement for the " + this.getCode());
+        //      return c.isPassed;
+        //  }
+        // }
         return arePrerequisitesPassed;
     }
 
-    public MandatoryCourse openANewSection(){
-        if(this.getQuota()==this.getStudentList().size()){
-            return new MandatoryCourse(); //TODO: add the name like CODE.2/3/4/..
+    public Section openANewSection(Section section){
+         /*
+        if(getQuota()==this.getStudentList().size()){
+
+            if(){
+
+            }
+            return new Cou; //TODO: add the name like CODE.2/3/4/..
+
         }
 
+          */
         return null;
     }
 }

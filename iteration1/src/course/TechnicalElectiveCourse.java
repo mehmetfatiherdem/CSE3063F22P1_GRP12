@@ -4,6 +4,10 @@ import iteration1.src.human.Student;
 
 public class TechnicalElectiveCourse extends ElectiveCourse{
 
+    public TechnicalElectiveCourse(String code){
+        super(code);
+    }
+
     @Override
     public Boolean canStudentTakeCourse(Student student) {
 

@@ -11,7 +11,6 @@ public abstract class Course {
     protected String code;
     protected int credits;
     protected int ects;
-    protected int quota;
     protected int theoreticalHours;
     protected int appliedHours;
     protected int firstYearToTake;
@@ -20,6 +19,11 @@ public abstract class Course {
     protected List<Assistant> assistants = new ArrayList<>();
     protected List<Season> educationSeason;
     protected List<Student> studentList = new ArrayList<>();
+    private List<Section> sectionList = new ArrayList<>();
+
+    public Course(String code){
+        this.code = code;
+    }
 
     //Getters
     public int getCredits() {
@@ -27,9 +31,6 @@ public abstract class Course {
     }
     public String getCode() {
         return code;
-    }
-    public int getQuota() {
-        return quota;
     }
 
     public int getEcts() {
@@ -78,10 +79,6 @@ public abstract class Course {
         else{
             this.credits = credits;
         }
-    }
-    public void setQuota(int quota) {
-        //mandatory course and elective course have different rule about quota
-        this.quota = quota;
     }
 
     public void setEcts(int ects) {
@@ -136,5 +133,10 @@ public abstract class Course {
 
     public  Boolean canStudentTakeCourse(Student student){
         return null;
+    }
+
+
+    public void addToSectionList(Section section){
+        this.sectionList.add(section);
     }
 }

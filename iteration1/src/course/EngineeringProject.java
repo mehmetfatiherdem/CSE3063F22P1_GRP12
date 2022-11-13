@@ -4,6 +4,10 @@ import iteration1.src.human.Student;
 
 public class EngineeringProject extends Course{
 
+    public EngineeringProject(String code) {
+        super(code);
+    }
+
     @Override
     public Boolean canStudentTakeCourse(Student student) {
 
