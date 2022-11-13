@@ -38,39 +38,27 @@ public class Student extends Human{
 
     public void register(RegistrationData data){
 
+        System.out.println("Registration process of " + this.getFullName() + " started");
+        System.out.println();
+
         // checks
 
-        for(Section sec: enrolledCourseSections){
+        // sections to be removed and added from the enrolledsections due to full quota
+
+        List<Section> secToRemove = new ArrayList<>();
+        List<Section> secToAdd = new ArrayList<>();
+
+        for(Section sec: enrolledCourseSections) {
 
             Course c = sec.getCourse();
 
             // checks
             // if one of the requirement is not met then close the program
-             if(!c.canStudentTakeCourse(this)){
-                 return;
-             }
-
-            //TODO: handle a mandatory course section is full so open a new one
-/*
-            if(c instanceof MandatoryCourse){
-                var isFull = sec.isSectionFull();
-
-                if(isFull){
-                    Section newSec = ((MandatoryCourse) c).openANewSection();
-                    c.addToSectionList(newSec);
-
-                    // section is full so remove that from the enrolled course list
-                    this.enrolledCourseSections.remove(sec);
-
-                    // add the new section instead
-                    this.enrolledCourseSections.add(newSec);
-
-                }
+            if (!c.canStudentTakeCourse(this)) {
+                return;
             }
 
- */
         }
-
 
         // check for collisions between the course sections the student wants to take
         var collisions = Section.checkForCollisions(enrolledCourseSections);
@@ -90,6 +78,13 @@ public class Student extends Human{
 
                 // clear all the enrolled courses in the process
                 this.enrolledCourseSections.clear();
+
+                System.out.println();
+
+                System.out.println("Registration process of " + this.getFullName() + " ended");
+
+                System.out.println();
+                System.out.println();
                 return;
             }
         }
@@ -102,9 +97,16 @@ public class Student extends Human{
 
             enrollCourseSections(enrolledCourseSections, year, season);
 
+            System.out.println();
+
             String schedule = generateWeeklySchedule();
             System.out.println(schedule);
         }
+
+        System.out.println("Registration process of " + this.getFullName() + " ended");
+
+        System.out.println();
+        System.out.println();
 
     }
 
@@ -181,6 +183,31 @@ public class Student extends Human{
     }
 
     public void addToEnrolledCourseSections(Section section){
+        if(section.isSectionFull()){
+
+            System.out.println("This section of the class is already full");
+
+            //TODO: handle a mandatory course section is full so open a new one
+
+            Course c = section.getCourse();
+
+            if(c instanceof MandatoryCourse){
+                    for(Section s: c.getSectionList()){
+                        if(!s.isSectionFull()){
+                            this.enrolledCourseSections.add(s);
+                            return;
+                        }
+                    }
+                    Section newSec = ((MandatoryCourse) c).openANewSection();
+                    c.addToSectionList(newSec);
+
+                    this.enrolledCourseSections.add(newSec);
+
+            }
+
+            return;
+        }
+
         this.enrolledCourseSections.add(section);
     }
 

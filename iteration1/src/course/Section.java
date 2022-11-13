@@ -163,7 +163,6 @@ public abstract class Section {
     }
 
     public boolean isSectionFull(){
-        System.out.println("This section of the class is already full. You can try different sections.");
         return this.getQuota() <= this.getStudentList().size();
     }
 

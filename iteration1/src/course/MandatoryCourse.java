@@ -1,6 +1,5 @@
 package iteration1.src.course;
 
-import iteration1.src.human.Lecturer;
 import iteration1.src.human.Student;
 
 import java.util.ArrayList;
@@ -40,7 +39,9 @@ public class MandatoryCourse extends Course{
     // TODO: check this logic, maybe we can change it to a more elegant way
     public Section openANewSection(){
 
-        return new CourseSection(this, 16, (Lecturer) this.getLecturers().get(0)); //TODO: add the name like CODE.2/3/4/..
+        System.out.println("opening new section for " + this.getCode());
+
+        return new CourseSection(this, 16, null); //TODO: add the name like CODE.2/3/4/..
 
     }
 
