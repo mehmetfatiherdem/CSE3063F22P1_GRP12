@@ -38,6 +38,7 @@ public class Student extends Human{
 
     public void register(RegistrationData data){
 
+        System.out.println();
         System.out.println("Registration process of " + this.getFullName() + " started");
         System.out.println();
 
@@ -185,7 +186,7 @@ public class Student extends Human{
     public void addToEnrolledCourseSections(Section section){
         if(section.isSectionFull()){
 
-            System.out.println("This section of the class is already full");
+            System.out.println("This section of " + section.getCourse().getCode() + " is already full");
 
             //TODO: handle a mandatory course section is full so open a new one
 
@@ -202,6 +203,9 @@ public class Student extends Human{
                     c.addToSectionList(newSec);
 
                     this.enrolledCourseSections.add(newSec);
+
+            }else if(c instanceof ElectiveCourse){
+                    System.exit(0);
 
             }
 

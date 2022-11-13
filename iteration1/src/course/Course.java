@@ -124,7 +124,7 @@ public abstract class Course {
     }
 
     public  Boolean canStudentTakeCourse(Student student){
-        return null;
+        return true;
     }
 
     public void addToSectionList(Section section){
