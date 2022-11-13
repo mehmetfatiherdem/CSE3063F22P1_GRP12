@@ -6,7 +6,7 @@ public class Lecturer extends FacultyMember{
         super(firstName, lastName);
     }
 
-    protected Lecturer(String firstName, String middleName, String lastName) {
+    public Lecturer(String firstName, String middleName, String lastName) {
         super(firstName, middleName, lastName);
     }
 
