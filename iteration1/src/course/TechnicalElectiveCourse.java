@@ -2,7 +2,18 @@ package iteration1.src.course;
 
 import iteration1.src.human.Student;
 
-public class TechnicalElectiveCourse {
+public class TechnicalElectiveCourse extends ElectiveCourse{
+
+    @Override
+    public Boolean canStudentTakeCourse(Student student) {
+
+        boolean isStudentAbleToTake = true;
+        if(!isCreditsRequirementMet(student) || isMaxChoosableNumberExceeded(student)){
+            isStudentAbleToTake = false;
+        }
+
+        return isStudentAbleToTake;
+    }
 
     public boolean isCreditsRequirementMet(Student student){
        // return REQUIRED_CREDITS <= student.getTranscript().getCompletedCredits()

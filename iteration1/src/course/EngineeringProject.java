@@ -2,7 +2,18 @@ package iteration1.src.course;
 
 import iteration1.src.human.Student;
 
-public class EngineeringProject {
+public class EngineeringProject extends Course{
+
+    @Override
+    public Boolean canStudentTakeCourse(Student student) {
+
+        boolean isStudentAbleToTake = true;
+        if(!isCreditsRequirementMet(student)){
+            isStudentAbleToTake = false;
+        }
+
+        return isStudentAbleToTake;
+    }
 
 
     public boolean isCreditsRequirementMet(Student student){

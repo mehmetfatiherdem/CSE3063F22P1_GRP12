@@ -2,8 +2,7 @@ package iteration1.src.human;
 
 import iteration1.src.RegistrationData;
 import iteration1.src.Transcript;
-import iteration1.src.course.Season;
-import iteration1.src.course.Section;
+import iteration1.src.course.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,11 +42,19 @@ public class Student extends Human{
 
     public void register(RegistrationData data){
 
-        List<Section> openSecs = data.getOpenSections();
-
         // checks
 
-        //TODO: these will be implemented after the course check pr is merged
+        for(Section sec: enrolledCourseSections){
+
+            Course c = sec.getCourse();
+
+            // checks
+            // if one of the requirement is not met then close the program
+             if(!c.canStudentTakeCourse(this)){
+                 return;
+             }
+
+        }
 
         // check for collisions between the course sections the student wants to take
         var collisions = Section.checkForCollisions(enrolledCourseSections);
