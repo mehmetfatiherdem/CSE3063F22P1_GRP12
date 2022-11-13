@@ -1,6 +1,5 @@
 package iteration1.src.course;
 
-import iteration1.src.human.Student;
 
 public class ElectiveCourse extends Course {
 
