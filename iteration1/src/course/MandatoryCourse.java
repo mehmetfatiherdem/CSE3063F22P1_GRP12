@@ -1,5 +1,6 @@
 package iteration1.src.course;
 
+import iteration1.src.human.Lecturer;
 import iteration1.src.human.Student;
 
 import java.util.ArrayList;
@@ -36,19 +37,11 @@ public class MandatoryCourse extends Course{
         return arePrerequisitesPassed;
     }
 
-    public Section openANewSection(Section section){
-         /*
-        if(getQuota()==this.getStudentList().size()){
+    // TODO: check this logic, maybe we can change it to a more elegant way
+    public Section openANewSection(){
 
-            if(){
+        return new CourseSection(this, 16, (Lecturer) this.getLecturers().get(0)); //TODO: add the name like CODE.2/3/4/..
 
-            }
-            return new Cou; //TODO: add the name like CODE.2/3/4/..
-
-        }
-
-          */
-        return null;
     }
 
     public List<MandatoryCourse> getPrerequisites() {

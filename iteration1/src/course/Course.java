@@ -18,7 +18,6 @@ public abstract class Course {
     protected List<Lecturer> lecturers = new ArrayList<>();
     protected List<Assistant> assistants = new ArrayList<>();
     protected List<Season> educationSeason;
-    protected List<Student> studentList = new ArrayList<>();
     private List<Section> sectionList = new ArrayList<>();
 
     public Course(String code){
@@ -56,9 +55,6 @@ public abstract class Course {
     }
     public List<Season> getEducationSeason() {
         return educationSeason;
-    }
-    public List<Student> getStudentList() {
-        return studentList;
     }
 
     //Setters
@@ -127,16 +123,15 @@ public abstract class Course {
         this.educationSeason.add(educationSeason);
     }
 
-    public void addToStudentList(Student student) {
-        this.studentList.add(student);
-    }
-
     public  Boolean canStudentTakeCourse(Student student){
         return null;
     }
 
-
     public void addToSectionList(Section section){
         this.sectionList.add(section);
+    }
+
+    public List<Section> getSectionList() {
+        return sectionList;
     }
 }

@@ -27,7 +27,7 @@ public class Student extends Human{
     public void enrollCourseSections(List<Section> sections, int year, Season season){
 
         for(Section s: sections){
-            s.getCourse().addToStudentList(this);
+            s.addToStudentList(this);
 
 
             // TODO: uncomment and fix this when the transcript PR is merged
@@ -40,8 +40,6 @@ public class Student extends Human{
 
         // checks
 
-
-
         for(Section sec: enrolledCourseSections){
 
             Course c = sec.getCourse();
@@ -53,9 +51,26 @@ public class Student extends Human{
              }
 
             //TODO: handle a mandatory course section is full so open a new one
+/*
+            if(c instanceof MandatoryCourse){
+                var isFull = sec.isSectionFull();
 
+                if(isFull){
+                    Section newSec = ((MandatoryCourse) c).openANewSection();
+                    c.addToSectionList(newSec);
 
+                    // section is full so remove that from the enrolled course list
+                    this.enrolledCourseSections.remove(sec);
+
+                    // add the new section instead
+                    this.enrolledCourseSections.add(newSec);
+
+                }
+            }
+
+ */
         }
+
 
         // check for collisions between the course sections the student wants to take
         var collisions = Section.checkForCollisions(enrolledCourseSections);

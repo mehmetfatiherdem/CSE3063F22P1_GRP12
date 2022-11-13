@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.function.Consumer;
 import iteration1.src.data_structures.Tuple;
 import iteration1.src.human.FacultyMember;
+import iteration1.src.human.Student;
 
 public abstract class Section {
 
@@ -23,8 +24,9 @@ public abstract class Section {
      */
     protected long classSchedule;
     protected FacultyMember instructor;
-
     protected int quota;
+
+    protected List<Student> studentList = new ArrayList<>();
 
     protected Section(Course course, long classSchedule, FacultyMember instructor) {
         this.course = course;
@@ -150,6 +152,19 @@ public abstract class Section {
 
     public void setQuota(int quota) {
         this.quota = quota;
+    }
+
+    public List<Student> getStudentList() {
+        return studentList;
+    }
+
+    public void addToStudentList(Student student) {
+        this.studentList.add(student);
+    }
+
+    public boolean isSectionFull(){
+        System.out.println("This section of the class is already full. You can try different sections.");
+        return this.getQuota() <= this.getStudentList().size();
     }
 
 }

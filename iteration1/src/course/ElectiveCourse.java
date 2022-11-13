@@ -22,7 +22,9 @@ public class ElectiveCourse extends Course {
     }
 
     public boolean isQuotaFull(){
-        return this.getQuota() <= this.getStudentList().size();
+        // electives have only 1 section
+        System.out.println("The quota for the elective course " + this.getCode() + " is already full. So, you cannot take this.");
+        return this.getQuota() <= this.getSectionList().get(0).getStudentList().size();
     }
 
     public int getQuota() {
@@ -31,5 +33,10 @@ public class ElectiveCourse extends Course {
 
     public void setQuota(int quota) {
         this.quota = quota;
+    }
+
+    @Override
+    public void addToSectionList(Section section) {
+        System.out.println("You cannot add a new section to an elective course..");
     }
 }
