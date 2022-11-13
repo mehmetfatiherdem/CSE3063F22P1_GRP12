@@ -5,8 +5,6 @@ import iteration1.src.human.Assistant;
 import iteration1.src.human.FacultyMember;
 import iteration1.src.human.Lecturer;
 import iteration1.src.human.Student;
-
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +16,13 @@ public class Department {
     private List<FacultyMember> facultyMembers = new ArrayList<>();
 
     // Will be written after these classes finished
-    public void assignLecturerToACourse(Lecturer lecturer, Course course){
+    public void assignLecturerToACourse(Lecturer lecturer,Course course){
 
     }
     public void assignLecturerToACourseSection(Lecturer lecturer,Course course){
 
     }
-    public void assignAssistantToALabCourse(Assistant lecturer, Course course){
+    public void assignAssistantToALabCourse(Assistant lecturer,Course course){
 
     }
     
