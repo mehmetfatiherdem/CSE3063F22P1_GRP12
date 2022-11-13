@@ -15,6 +15,7 @@ public class EngineeringProject extends Course{
 
         boolean isStudentAbleToTake = true;
         if(!isCreditsRequirementMet(student)){
+            System.out.println("You must complete " + REQUIRED_CREDITS + " to take Engineering Project(" + this.getCode() + ")");
             isStudentAbleToTake = false;
         }
 
@@ -23,7 +24,6 @@ public class EngineeringProject extends Course{
 
 
     public boolean isCreditsRequirementMet(Student student){
-        // return REQUIRED_CREDITS <= student.getTranscript().getCompletedCredits()
-        return true;
+        return REQUIRED_CREDITS <= student.getTranscript().getCompletedCredits();
     }
 }

@@ -15,6 +15,7 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
 
         boolean isStudentAbleToTake = true;
         if(!isCreditsRequirementMet(student) || isMaxChoosableNumberExceeded(student)){
+            System.out.println("You must complete " + REQUIRED_CREDITS + " to take TE(" + this.getCode() + ")");
             isStudentAbleToTake = false;
         }
 
@@ -22,8 +23,7 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
     }
 
     public boolean isCreditsRequirementMet(Student student){
-       // return REQUIRED_CREDITS <= student.getTranscript().getCompletedCredits()
-        return true;
+        return REQUIRED_CREDITS <= student.getTranscript().getCompletedCredits();
     }
 
     public boolean isMaxChoosableNumberExceeded(Student student){

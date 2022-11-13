@@ -29,9 +29,7 @@ public class Student extends Human{
         for(Section s: sections){
             s.addToStudentList(this);
 
-
-            // TODO: uncomment and fix this when the transcript PR is merged
-            // this.transcript.takenCourseRecords.add(new CourseRecord(s.course, LetterGrade.NOT_GRADED, null, data.season, data.year, false))
+            this.transcript.getTakenCourseRecords().add(new CourseRecord(s.getCourse(), LetterGrade.NOT_GRADED, season, null, year, false));
         }
 
     }
@@ -184,8 +182,6 @@ public class Student extends Human{
         if(section.isSectionFull()){
 
             System.out.println("This section of " + section.getCourse().getCode() + " is already full");
-
-            //TODO: handle a mandatory course section is full so open a new one
 
             Course c = section.getCourse();
 
