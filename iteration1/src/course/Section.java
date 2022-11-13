@@ -15,7 +15,11 @@ public abstract class Section {
 
     public static final String[] CLASS_HOURS = {"8.30-9.20", "9.30-10.20", "10.30-11.20", "11.30-12.20",
             "13.00-13.50", "14.00-14.50", "15.00-15.50", "16.00-16.50", };
+
+
     protected Course course;
+
+    //TODO:move quota to course because it's more central
 
     /*
      * Bitmask for the schedule of this section, there are 8 classes per day and 7 days in a week,

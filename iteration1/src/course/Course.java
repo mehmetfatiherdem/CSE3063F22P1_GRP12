@@ -8,6 +8,8 @@ import java.util.List;
 
 public abstract class Course {
 
+    //static minquota,maxquota
+    //quota
     protected String code;
     protected int credits;
     protected int ects;

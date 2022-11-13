@@ -10,7 +10,7 @@ import java.util.List;
 public class Student extends Human{
 
     private String studentID;
-    private Level level;
+    private Level level;//TODO:Season
     private Advisor advisor;
     private Transcript transcript;
     private List<Section> enrolledCourseSections = new ArrayList<>();
@@ -29,6 +29,7 @@ public class Student extends Human{
         for(Section s: sections){
             s.addToStudentList(this);
 
+            //TODO:Use transcript.addCourseRecord instead
             this.transcript.getTakenCourseRecords().add(new CourseRecord(s.getCourse(), LetterGrade.NOT_GRADED, season, null, year, false));
         }
 
@@ -185,6 +186,7 @@ public class Student extends Human{
 
             Course c = section.getCourse();
 
+            //TODO: move logic to Course classes (with polymorphism)
             if(c instanceof MandatoryCourse){
                     for(Section s: c.getSectionList()){
                         if(!s.isSectionFull()){

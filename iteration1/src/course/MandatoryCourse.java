@@ -24,6 +24,7 @@ public class MandatoryCourse extends Course{
         return isStudentAbleToTake;
     }
 
+    //Move to transcript
     public boolean checkIfPrerequisitesArePassed(Student student){
         boolean arePrerequisitesPassed = true;
         // var takenCourses = student.getTranscript().getTakenCourseRecords()
