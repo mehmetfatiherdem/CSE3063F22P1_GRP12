@@ -7,6 +7,8 @@ import java.util.List;
 
 public class MandatoryCourse extends Course{
 
+    private List<MandatoryCourse> prerequisites = new ArrayList<>();
+
     public MandatoryCourse(String code){
         super(code);
     }
@@ -47,5 +49,13 @@ public class MandatoryCourse extends Course{
 
           */
         return null;
+    }
+
+    public List<MandatoryCourse> getPrerequisites() {
+        return prerequisites;
+    }
+
+    public void addToPrerequisites(MandatoryCourse course){
+        this.prerequisites.add(course);
     }
 }

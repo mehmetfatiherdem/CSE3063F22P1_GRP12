@@ -4,6 +4,8 @@ import iteration1.src.human.Student;
 
 public class EngineeringProject extends Course{
 
+    public static final int REQUIRED_CREDITS = 165;
+
     public EngineeringProject(String code) {
         super(code);
     }

@@ -4,6 +4,8 @@ import iteration1.src.human.Student;
 
 public class TechnicalElectiveCourse extends ElectiveCourse{
 
+    public static final int REQUIRED_CREDITS = 155;
+
     public TechnicalElectiveCourse(String code){
         super(code);
     }
