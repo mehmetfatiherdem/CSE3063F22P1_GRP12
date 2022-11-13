@@ -7,7 +7,7 @@ public class Assistant extends FacultyMember{
         
     }
 
-    protected Assistant(String firstName, String middleName, String lastName) {
+    public Assistant(String firstName, String middleName, String lastName) {
         super(firstName, middleName, lastName);
     }
    
