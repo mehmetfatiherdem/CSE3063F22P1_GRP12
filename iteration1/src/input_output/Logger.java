@@ -1,15 +1,11 @@
 package iteration1.src.input_output;
 
-import org.json.simple.JSONObject;
-
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
-import java.util.Date;
 
+//TODO:Change all sysout calls to Logger.log calls
 public class Logger {
-
     private static final String logTxt = "iteration1/output/log.txt";
 
     private Logger(){
