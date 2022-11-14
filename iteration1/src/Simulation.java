@@ -48,7 +48,8 @@ public class Simulation {
                 2097152l, new Lecturer("n6", "l6"));
 
 
-
+        // TODO: remove this
+        System.out.println("trying force push");
 
         sec1.setCourse(c1);
         sec2.setCourse(c2);
