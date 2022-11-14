@@ -3,14 +3,13 @@ package iteration1.src;
 import iteration1.src.course.Season;
 import iteration1.src.course.Section;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrationData {
 
     private int year;
     private Season season;
-    private List<Section> openSections = new ArrayList<>();
+    private List<Section> openSections;
 
     public RegistrationData( int year, Season season, List<Section> openSections){
         this.year = year;

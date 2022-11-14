@@ -1,6 +1,6 @@
 package iteration1.src.human;
 
-public enum Level {
+public enum Grade {
     FRESHMAN,
     SOPHOMORE,
     JUNIOR,

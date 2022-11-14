@@ -29,6 +29,8 @@ tomcat
 .idea/
 out/
 
+target/
+
 # Visual Studio Code
 .vscode/
 .code-workspace

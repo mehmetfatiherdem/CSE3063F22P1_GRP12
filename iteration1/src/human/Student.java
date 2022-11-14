@@ -2,8 +2,7 @@ package iteration1.src.human;
 
 import iteration1.src.RegistrationData;
 import iteration1.src.Transcript;
-import iteration1.src.course.Season;
-import iteration1.src.course.Section;
+import iteration1.src.course.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,15 +10,11 @@ import java.util.List;
 public class Student extends Human{
 
     private String studentID;
-    private Level level;
+    private Grade grade;
     private Advisor advisor;
     private Transcript transcript;
     private List<Section> enrolledCourseSections = new ArrayList<>();
 
-    private final String[] classDays = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-
-    private final String[] classHours = {"8.30-9.20", "9.30-10.20", "10.30-11.20", "11.30-12.20",
-            "13.00-13.50", "14.00-14.50", "15.00-15.50", "16.00-16.50", };
 
     public Student(String firstName, String middleName, String lastName){
         super(firstName, middleName, lastName);
@@ -29,25 +24,38 @@ public class Student extends Human{
         super(firstName, lastName);
     }
 
-    public void enrollCourseSections(List<Section> sections, int year, Season season){
+    public void enrollCourseSections(List<Section> sections, Season season){
 
         for(Section s: sections){
-            s.getCourse().addToStudentList(this);
+            s.addToStudentList(this);
 
-
-            // TODO: uncomment and fix this when the transcript PR is merged
-            // this.transcript.takenCourseRecords.add(new CourseRecord(s.course, LetterGrade.NOT_GRADED, null, data.season, data.year, false))
+            //TODO: you can uncomment after you create a transcript for the student
+            // this.transcript.addCourseRecord(s.getCourse(), LetterGrade.NOT_GRADED, season, null, this.getGrade(), false);
         }
 
     }
 
     public void register(RegistrationData data){
 
-        List<Section> openSecs = data.getOpenSections();
+        System.out.println();
+        System.out.println("Registration process of " + this.getFullName() + " started");
+        System.out.println();
 
         // checks
 
-        //TODO: these will be implemented after the course check pr is merged
+        // sections to be removed and added from the enrolledsections due to full quota
+
+        for(Section sec: enrolledCourseSections) {
+
+            Course c = sec.getCourse();
+
+            // checks
+            // if one of the requirement is not met then close the program
+            if (!c.canStudentTakeCourse(this)) {
+                return;
+            }
+
+        }
 
         // check for collisions between the course sections the student wants to take
         var collisions = Section.checkForCollisions(enrolledCourseSections);
@@ -63,10 +71,17 @@ public class Student extends Human{
                 int collisionHour = d.GetValue();
 
                 System.out.println("There is a collision between " + sec1.getCourse().getCode()
-                        + " and " + sec2.getCourse().getCode() + " on " + classDays[collisionDay] + " at " + classHours[collisionHour]);
+                        + " and " + sec2.getCourse().getCode() + " on " + Section.CLASS_DAYS[collisionDay] + " at " + Section.CLASS_HOURS[collisionHour]);
 
                 // clear all the enrolled courses in the process
                 this.enrolledCourseSections.clear();
+
+                System.out.println();
+
+                System.out.println("Registration process of " + this.getFullName() + " ended");
+
+                System.out.println();
+                System.out.println();
                 return;
             }
         }
@@ -74,13 +89,21 @@ public class Student extends Human{
         int year = data.getYear();
         Season season = data.getSeason();
 
+
         if(collisions.size() == 0){
 
-            enrollCourseSections(enrolledCourseSections, year, season);
+            enrollCourseSections(enrolledCourseSections, season);
+
+            System.out.println();
 
             String schedule = generateWeeklySchedule();
             System.out.println(schedule);
         }
+
+        System.out.println("Registration process of " + this.getFullName() + " ended");
+
+        System.out.println();
+        System.out.println();
 
     }
 
@@ -96,7 +119,7 @@ public class Student extends Human{
 
         for(int i = 0; i<schedule.size(); i++){
 
-            program += classDays[i] + ": ";
+            program += Section.CLASS_DAYS[i] + ": ";
 
             Section[] day = schedule.get(i);
 
@@ -110,7 +133,7 @@ public class Student extends Human{
 
                 program += sec.getCourse().getCode();
 
-                program += "(" + classHours[j%8] + ") ";
+                program += "(" + Section.CLASS_HOURS[j%8] + ") ";
 
             }
             program += "\n";
@@ -128,12 +151,12 @@ public class Student extends Human{
         this.studentID = studentID;
     }
 
-    public Level getLevel() {
-        return level;
+    public Grade getGrade() {
+        return grade;
     }
 
-    public void setLevel(Level level) {
-        this.level = level;
+    public void setGrade(Grade grade) {
+        this.grade = grade;
     }
 
     public Advisor getAdvisor() {
@@ -156,7 +179,34 @@ public class Student extends Human{
         return enrolledCourseSections;
     }
 
-    public void addToEnrolledCourseSections(Section section){
+    public void addToRegistrationList(Section section){
+        if(section.isSectionFull()){
+
+            System.out.println("This section of " + section.getCourse().getCode() + " is already full");
+
+            Course c = section.getCourse();
+
+            //TODO: move logic to Course classes (with polymorphism)
+            if(c instanceof MandatoryCourse){
+                    for(Section s: c.getSectionList()){
+                        if(!s.isSectionFull()){
+                            this.enrolledCourseSections.add(s);
+                            return;
+                        }
+                    }
+                    Section newSec = ((MandatoryCourse) c).openANewSection();
+                    c.addToSectionList(newSec);
+
+                    this.enrolledCourseSections.add(newSec);
+
+            }else if(c instanceof ElectiveCourse){
+                    System.exit(0);
+
+            }
+
+            return;
+        }
+
         this.enrolledCourseSections.add(section);
     }
 
