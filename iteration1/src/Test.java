@@ -1,4 +1,6 @@
 package iteration1.src;
+import iteration1.src.course.Course;
+import iteration1.src.course.MandatoryCourse;
 import iteration1.src.human.Assistant;
 import iteration1.src.human.Lecturer;
 import iteration1.src.human.Student;
@@ -18,5 +20,20 @@ public class Test {
         System.out.println(student.getFullName());
 
     }
+    public static void CourseTest(){
+        System.out.println("Trying to set course code as abc");
+        System.out.println("");
+        Course course = new MandatoryCourse("cse3034",70);
+        System.out.println("Trying to call a course code");
+        System.out.println(course.getCode());
+
+
+
+
+    }
+
+
+
+
 }
 
