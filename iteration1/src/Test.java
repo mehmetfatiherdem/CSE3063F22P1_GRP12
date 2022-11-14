@@ -16,6 +16,7 @@ public class Test {
 
         departmentTest();
         humanTest();
+        CourseTest();
     }
 
 
@@ -23,10 +24,12 @@ public class Test {
         System.out.println("Trying to set department code as abc");
         Department.getInstance().setCode("Department code is set to " + "abc");
         System.out.println();
+
         System.out.println("Trying to set department code as absdsadsa");
         Department.getInstance().setCode("absdsadsa");
         System.out.println("Department code is set to " + Department.getInstance().getCode());
         System.out.println();
+
         System.out.println("Trying to set department code as ' '");
         Department.getInstance().setCode(" ");
         System.out.println();
@@ -38,16 +41,20 @@ public class Test {
         Human student = new Student("Ahmet","Şahin");
         System.out.println("Name of the student is " + student.getFullName());
         System.out.println();
+
         System.out.println("Calling the constructor of student class with full name");
         Human student2 = new Student("Mehmet","Kemal","Demir");
         System.out.println("Name of the student is " + student2.getFullName());
         System.out.println();
+
         System.out.println("Trying to set the first name to blank");
         student2.setFirstName("");
         System.out.println();
+
         System.out.println("Trying to set the last name to blank");
         student2.setLastName("");
         System.out.println();
+
         System.out.println("Trying to call the constructor of student class without name");
         Human student3 = new Student("","");
         System.out.println("Name of the student is " + student3.getFullName());
