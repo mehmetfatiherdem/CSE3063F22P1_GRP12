@@ -2,6 +2,7 @@ package iteration1.src;
 
 import iteration1.src.course.*;
 import iteration1.src.human.*;
+import iteration1.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +11,12 @@ public class Simulation {
     //TODO:Delete test methods when u done with them
     public static void main(String[] args) {
 
-        runSimulation(init());
+        Logger.log("Suppp");
+        Logger.log("Whatsupppp");
+        Logger.log("Whatsupppp");
+        Logger.log("Whatsupppp");
+
+        //runSimulation(init());
     }
 
     public static void runSimulation(List<Student> students){
