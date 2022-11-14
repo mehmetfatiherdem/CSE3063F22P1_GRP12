@@ -13,18 +13,18 @@ public class Transcript {
     private float GPA;
     private List<CourseRecord> takenCourseRecords;
 
-    //TODO:add constructor and take course records as parameters as they'll be parsed from json data, and calll calculateGPA inside the constructor
- 
+    //TODO:add constructor and take course records as parameters as they'll be parsed from json data, and call calculateGPA inside the constructor
+    public Transcript(List<CourseRecord> takenCourseRecords){
+        this.takenCourseRecords = takenCourseRecords;
+
+        calculateGPA();
+    }
+
+    //Getters
     public float getGPA() {
         return GPA;
     }
 
-    //TODO:This shouldn't be directly accessible to outside world,delete this and write several needed query methods
-    public List<CourseRecord> getTakenCourseRecords() {
-        return takenCourseRecords;
-    }
-
-    
     public void addCourseRecord(Course course, LetterGrade lGrade, Season season, Float score, Grade grade, Boolean isPassed){
         
         CourseRecord courserecord = new CourseRecord(course,lGrade,season,grade, score, isPassed);
@@ -32,7 +32,8 @@ public class Transcript {
 
     }
 
-    public Float calculateGPA(Course course){
+    //TODO: Remove the course param
+    public Float calculateGPA(){
         float gpa=0;
         int credits=0;
         float temp=0;
@@ -53,5 +54,35 @@ public class Transcript {
             }
         }
         return completedCredits;
+    }
+
+    public Boolean checkIfPrerequisitesArePassed(Course course){
+
+        for (Course c : course.getPrerequisites()){
+            if(!didStudentPass(course)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private Boolean didStudentPass(Course course){
+
+        Boolean passed = true;
+
+        CourseRecord mostRecent = null;
+        for (CourseRecord record : takenCourseRecords){
+            if(record.getCourse() == course){
+                mostRecent = record;
+            }
+        }
+
+        return mostRecent.getIsPassed();
+    }
+
+
+    public List<CourseRecord> getTakenCourseRecords(){
+        return takenCourseRecords;
     }
 }

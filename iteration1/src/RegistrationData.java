@@ -17,25 +17,25 @@ public class RegistrationData {
         this.openSections = openSections;
     }
 
+    //Getters
     public Integer getYear() {
         return year;
     }
-
-    public void setYear(Integer year) {
-        this.year = year;
-    }
-
     public Season getSeason() {
         return season;
     }
+    public List<Section> getOpenSections() {
+        return openSections;
+    }
 
+    //Setters
+    public void setYear(Integer year) {
+        this.year = year;
+    }
     public void setSeason(Season season) {
         this.season = season;
     }
 
-    public List<Section> getOpenSections() {
-        return openSections;
-    }
 
     public void addOpenSection(Section section){
         this.openSections.add(section);

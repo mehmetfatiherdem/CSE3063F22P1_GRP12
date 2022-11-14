@@ -1,13 +1,20 @@
 package iteration1.src.course;
 
+import iteration1.src.human.Grade;
 import iteration1.src.human.Student;
 
 public class TechnicalElectiveCourse extends ElectiveCourse{
 
     public static final int REQUIRED_CREDITS = 155;
 
-    public TechnicalElectiveCourse(String code, int quota){
-        super(code, quota);
+    public TechnicalElectiveCourse(String code, String name, int credits, int theoreticalHours, int appliedHours,
+                                   Grade firstYearToTake, Season firstSeasonToTake){
+        super(code,name,credits,theoreticalHours,appliedHours,firstYearToTake,firstSeasonToTake);
+    }
+
+    @Override
+    public void addPrerequisite(Course prerequisite){
+        prerequisites.add(prerequisite);
     }
 
     @Override

@@ -28,6 +28,9 @@ public class CourseRecord {
     public LetterGrade getlGrade() {
         return lGrade;
     }
+    public Grade getGrade() {
+        return grade;
+    }
     
 
     //Setters
@@ -51,9 +54,6 @@ public class CourseRecord {
         this.season = season;
     }
 
-    public Grade getGrade() {
-        return grade;
-    }
 
     public CourseRecord(Course course, LetterGrade lGrade, Season season, Grade grade, Float score, Boolean isPassed){
         this.course=course;

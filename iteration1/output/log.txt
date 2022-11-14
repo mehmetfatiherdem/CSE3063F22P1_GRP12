@@ -1,4 +1,260 @@
-Suppp
-Whatsupppp
-Whatsupppp
-Whatsupppp
+Student Id : 150118001
+Student name : Çagri IRIS
+Advisor name : Aysemin ÖRDEK
+Grade : SENIOR
+Completed Credits : 163
+
+Transcript
+0.th Record
+Course Code : ATA121
+Course Name : Atatürk İlkeleri ve İnkılap Tarihi I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 80.423454
+Letter Grade : BA
+Is Passed : true
+
+1.th Record
+Course Code : MBG1201
+Course Name : Introduction to Modern Biology
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 66.714905
+Letter Grade : CB
+Is Passed : true
+
+2.th Record
+Course Code : CSE1200
+Course Name : Introduction to Computer Engineering
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 70.1437
+Letter Grade : BB
+Is Passed : true
+
+3.th Record
+Course Code : CSE1241
+Course Name : Computer Programming I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 79.96663
+Letter Grade : BA
+Is Passed : true
+
+4.th Record
+Course Code : MATH1001
+Course Name : Calculus I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 59.382435
+Letter Grade : CC
+Is Passed : true
+
+Student Id : 150118004
+Student name : Akide SERBEST
+Advisor name : Ince KILIÇ
+Grade : SENIOR
+Completed Credits : 177
+
+Transcript
+0.th Record
+Course Code : MBG1201
+Course Name : Introduction to Modern Biology
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 44.96499
+Letter Grade : DD
+Is Passed : false
+
+1.th Record
+Course Code : CSE1200
+Course Name : Introduction to Computer Engineering
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 94.05553
+Letter Grade : AA
+Is Passed : true
+
+2.th Record
+Course Code : CSE1241
+Course Name : Computer Programming I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 48.51381
+Letter Grade : DC
+Is Passed : true
+
+3.th Record
+Course Code : MATH1001
+Course Name : Calculus I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 71.31249
+Letter Grade : BB
+Is Passed : true
+
+4.th Record
+Course Code : PHYS1101
+Course Name : Physics I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 55.87596
+Letter Grade : CC
+Is Passed : true
+
+Student Id : 150118010
+Student name : Aydagül AZAP
+Advisor name : Esmine ULUBASOGLU
+Grade : SENIOR
+Completed Credits : 170
+
+Transcript
+0.th Record
+Course Code : MBG1201
+Course Name : Introduction to Modern Biology
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 83.41464
+Letter Grade : AA
+Is Passed : true
+
+1.th Record
+Course Code : CSE1200
+Course Name : Introduction to Computer Engineering
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 79.652405
+Letter Grade : BA
+Is Passed : true
+
+2.th Record
+Course Code : CSE1241
+Course Name : Computer Programming I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 11.356653
+Letter Grade : FF
+Is Passed : false
+
+3.th Record
+Course Code : MATH1001
+Course Name : Calculus I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 53.027275
+Letter Grade : CC
+Is Passed : true
+
+4.th Record
+Course Code : PHYS1101
+Course Name : Physics I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 59.479298
+Letter Grade : CC
+Is Passed : true
+
+Student Id : 150118018
+Student name : Çetiner YILMAZ
+Advisor name : Yalçiner ATCI
+Grade : SENIOR
+Completed Credits : 132
+
+Transcript
+0.th Record
+Course Code : ATA121
+Course Name : Atatürk İlkeleri ve İnkılap Tarihi I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 27.336855
+Letter Grade : FF
+Is Passed : false
+
+1.th Record
+Course Code : MBG1201
+Course Name : Introduction to Modern Biology
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 49.282158
+Letter Grade : DC
+Is Passed : true
+
+2.th Record
+Course Code : CSE1200
+Course Name : Introduction to Computer Engineering
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 60.088406
+Letter Grade : CB
+Is Passed : true
+
+3.th Record
+Course Code : CSE1241
+Course Name : Computer Programming I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 78.19622
+Letter Grade : BA
+Is Passed : true
+
+4.th Record
+Course Code : MATH1001
+Course Name : Calculus I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 27.518883
+Letter Grade : FF
+Is Passed : false
+
+Student Id : 150118021
+Student name : Bayman Öngör SAHBAZ
+Advisor name : Esmine ULUBASOGLU
+Grade : SENIOR
+Completed Credits : 115
+
+Transcript
+0.th Record
+Course Code : ATA121
+Course Name : Atatürk İlkeleri ve İnkılap Tarihi I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 18.499039
+Letter Grade : FF
+Is Passed : false
+
+1.th Record
+Course Code : MBG1201
+Course Name : Introduction to Modern Biology
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 96.31871
+Letter Grade : AA
+Is Passed : true
+
+2.th Record
+Course Code : CSE1200
+Course Name : Introduction to Computer Engineering
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 53.494644
+Letter Grade : CC
+Is Passed : true
+
+3.th Record
+Course Code : MATH1001
+Course Name : Calculus I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 89.06721
+Letter Grade : AA
+Is Passed : true
+
+4.th Record
+Course Code : PHYS1101
+Course Name : Physics I
+Grade Taken : FRESHMAN
+Semester Taken : FALL
+Numeric Grade : 46.250988
+Letter Grade : DD
+Is Passed : true
+

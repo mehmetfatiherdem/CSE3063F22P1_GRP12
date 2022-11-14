@@ -3,6 +3,7 @@ package iteration1.src.human;
 import iteration1.src.RegistrationData;
 import iteration1.src.Transcript;
 import iteration1.src.course.*;
+import iteration1.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,12 +17,25 @@ public class Student extends Human{
     private List<Section> enrolledCourseSections = new ArrayList<>();
 
 
-    public Student(String firstName, String middleName, String lastName){
+    public Student(String firstName, String middleName, String lastName,String studentID,Grade grade ,Advisor advisor,List<CourseRecord> transcript){
         super(firstName, middleName, lastName);
+
+        this.studentID = studentID;
+        this.grade = grade;
+        this.advisor = advisor;
+        this.transcript = new Transcript(transcript);
     }
 
-    public Student(String firstName, String lastName){
+    public Student(String firstName, String lastName,String studentID, Grade grade ,Advisor advisor, List<CourseRecord> transcript){
         super(firstName, lastName);
+
+        this.grade = grade;
+        this.advisor = advisor;
+        this.transcript = new Transcript(transcript);
+    }
+
+    public Boolean checkIfPrerequisitesArePassed(Course course){
+        return transcript.checkIfPrerequisitesArePassed(course);
     }
 
     public void enrollCourseSections(List<Section> sections, Season season){
@@ -29,10 +43,8 @@ public class Student extends Human{
         for(Section s: sections){
             s.addToStudentList(this);
 
-            //TODO: you can uncomment after you create a transcript for the student
-            // this.transcript.addCourseRecord(s.getCourse(), LetterGrade.NOT_GRADED, season, null, this.getGrade(), false);
+            transcript.addCourseRecord(s.getCourse(), LetterGrade.NOT_GRADED, season, null, this.getGrade(), false);
         }
-
     }
 
     public void register(RegistrationData data){
@@ -104,7 +116,6 @@ public class Student extends Human{
 
         System.out.println();
         System.out.println();
-
     }
 
     public String generateWeeklySchedule(){
@@ -146,68 +157,42 @@ public class Student extends Human{
         return studentID;
     }
 
-    //TODO: We could have logic checks here
-    public void setStudentID(String studentID) {
-        this.studentID = studentID;
-    }
-
     public Grade getGrade() {
         return grade;
-    }
-
-    public void setGrade(Grade grade) {
-        this.grade = grade;
     }
 
     public Advisor getAdvisor() {
         return advisor;
     }
 
-    public void setAdvisor(Advisor advisor) {
-        this.advisor = advisor;
-    }
-
-    public Transcript getTranscript() {
-        return transcript;
-    }
-
-    public void setTranscript(Transcript transcript) {
-        this.transcript = transcript;
-    }
-
     public List<Section> getEnrolledCourses() {
         return enrolledCourseSections;
+    }
+
+    public int getCompletedCredits(){
+        return transcript.getCompletedCredits();
+    }
+
+    public void setGrade(Grade grade) {
+        this.grade = grade;
+    }
+
+    public void setAdvisor(Advisor advisor) {
+        this.advisor = advisor;
     }
 
     public void addToRegistrationList(Section section){
         if(section.isSectionFull()){
 
-            System.out.println("This section of " + section.getCourse().getCode() + " is already full");
-
-            Course c = section.getCourse();
-
-            //TODO: move logic to Course classes (with polymorphism)
-            if(c instanceof MandatoryCourse){
-                    for(Section s: c.getSectionList()){
-                        if(!s.isSectionFull()){
-                            this.enrolledCourseSections.add(s);
-                            return;
-                        }
-                    }
-                    Section newSec = ((MandatoryCourse) c).openANewSection();
-                    c.addToSectionList(newSec);
-
-                    this.enrolledCourseSections.add(newSec);
-
-            }else if(c instanceof ElectiveCourse){
-                    System.exit(0);
-
-            }
-
+            Logger.log("This section of " + section.getCourse().getCode() + " is already full");
             return;
         }
 
         this.enrolledCourseSections.add(section);
+    }
+
+    public Transcript getTranscript(){
+        return transcript;
     }
 
 }

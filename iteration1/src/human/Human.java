@@ -26,6 +26,14 @@ public abstract class Human {
         return firstName;
     }
 
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
     public void setFirstName(String firstName) {
         if(firstName == null || firstName.trim().length() <= 0){
             System.out.println("Human: Human first name must exist and have a length greater than 0");
@@ -34,16 +42,8 @@ public abstract class Human {
         this.firstName = firstName.trim();
     }
 
-    public String getMiddleName() {
-        return middleName;
-    }
-
     public void setMiddleName(String middleName) {
         this.middleName = middleName.trim();
-    }
-
-    public String getLastName() {
-        return lastName;
     }
 
     public void setLastName(String lastName) {

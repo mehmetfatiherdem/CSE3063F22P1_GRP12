@@ -2,25 +2,56 @@ package iteration1.src;
 
 import iteration1.src.course.*;
 import iteration1.src.human.*;
+import iteration1.src.input_output.JsonParser;
 import iteration1.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Simulation {
-    //TODO:Delete test methods when u done with them
     public static void main(String[] args) {
 
-        Logger.log("Suppp");
-        Logger.log("Whatsupppp");
-        Logger.log("Whatsupppp");
-        Logger.log("Whatsupppp");
+        var advisors = JsonParser.parseAdvisors();
+        var courses = JsonParser.parseCourses();
+        var students = JsonParser.parseStudents(advisors,courses);
+
+        for (int i = 0;i < 5; i++){
+            Student s = students.get(i);
+
+            Logger.log("Student Id : " + s.getStudentID());
+            Logger.log("Student name : " + s.getFullName());
+            Logger.log("Advisor name : " + s.getAdvisor().getFullName());
+            Logger.log("Grade : " + s.getGrade().toString());
+            Logger.log("Completed Credits : " + s.getCompletedCredits());
+
+            List<CourseRecord> records = s.getTranscript().getTakenCourseRecords();
+
+            Logger.log("");
+            Logger.log("Transcript");
+
+            if(records.size() > 5){
+                for(int j=0;j<5;j++){
+                    CourseRecord record = records.get(j);
+
+                    Logger.log(j + ".th Record");
+                    Logger.log("Course Code : " + record.getCourse().getCode());
+                    Logger.log("Course Name : " + record.getCourse().getName());
+                    Logger.log("Grade Taken : " + record.getGrade().toString());
+                    Logger.log("Semester Taken : " + record.getSeason().toString());
+                    Logger.log("Numeric Grade : " + record.getScore());
+                    Logger.log("Letter Grade : " + record.getlGrade().toString());
+                    Logger.log("Is Passed : " + record.getIsPassed());
+                    Logger.log("");
+                }
+            }
+        }
 
         //runSimulation(init());
     }
 
     public static void runSimulation(List<Student> students){
 
+        /*
         // 0000000000000000000000000000001000000110
         Course c1 = new MandatoryCourse("CSE3063", 1);
         // 0000000000000000000000100000110011000000
@@ -46,10 +77,6 @@ public class Simulation {
                 8690597888l, new Lecturer("n5", "l5"));
         Section sec6= new CourseSection(c6,
                 2097152l, new Lecturer("n6", "l6"));
-
-
-        // TODO: remove this
-        System.out.println("trying force push");
 
         sec1.setCourse(c1);
         sec2.setCourse(c2);
@@ -97,19 +124,19 @@ public class Simulation {
         st2.addToRegistrationList(sec6);
 
         st2.register(data);
-
+        */
     }
 
     public static List<Student> init(){
 
         List<Student> l = new ArrayList<>();
 
-        Student s1 = new Student("John", "Dogan");
+        //Student s1 = new Student("John", "Dogan", null);
 
-        Student s2 = new Student("Tunahan", "Bas");
+        //Student s2 = new Student("Tunahan", "Bas", null);
 
-        l.add(s1);
-        l.add(s2);
+        //l.add(s1);
+        //l.add(s2);
 
         return l;
     }
