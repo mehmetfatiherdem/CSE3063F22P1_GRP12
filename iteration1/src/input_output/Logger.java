@@ -14,12 +14,12 @@ public class Logger {
     public static void log(String message){
         System.out.println(message);
 
-        var writer = OpenLogFile();
+        var writer = openLogFile();
         writer.append(message + "\n");
-        CloseLogFile(writer);
+        closeLogFile(writer);
     }
 
-    private static PrintWriter OpenLogFile(){
+    private static PrintWriter openLogFile(){
         PrintWriter writer = null;
 
         try{
@@ -31,7 +31,7 @@ public class Logger {
         return writer;
     }
 
-    private static void CloseLogFile(PrintWriter writer){
+    private static void closeLogFile(PrintWriter writer){
         writer.flush();
         writer.close();
     }
