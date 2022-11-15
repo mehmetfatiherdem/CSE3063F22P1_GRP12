@@ -16,7 +16,7 @@ public class CourseRecord {
     public Course getCourse() {
         return course;
     }
-    public float getScore() {
+    public Float getScore() {
         return score;
     }
     public Boolean getIsPassed() {

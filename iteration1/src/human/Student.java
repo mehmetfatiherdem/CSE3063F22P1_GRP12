@@ -186,6 +186,10 @@ public class Student extends Human{
         return transcript.getCompletedCredits();
     }
 
+    public Transcript getTranscript(){
+        return transcript;
+    }
+
     public void setGrade(Grade grade) {
         this.grade = grade;
     }

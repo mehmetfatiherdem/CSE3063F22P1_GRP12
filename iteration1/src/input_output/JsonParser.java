@@ -2,6 +2,7 @@ package iteration1.src.input_output;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -185,6 +186,45 @@ public class JsonParser {
 
         return studentList;
     }
+
+    public void serializeStudents(List<Student> students){
+
+        for(Student s : students){
+            List<CourseRecord> records = s.getTranscript().getTakenCourseRecords();
+
+            JSONArray recordsJson = new JSONArray();
+
+            for(CourseRecord r : records){
+                JSONObject record = new JSONObject();
+
+                Float grade = r.getScore();
+                grade = grade == null ? -1 : grade;
+
+                record.put("CourseCode", r.getCourse().getCode());
+                record.put("LetterGrade",r.getlGrade().toString());
+                record.put("Grade",grade);
+                record.put("Season",r.getSeason().toString());
+                record.put("RecordYear",r.getGrade().toString());
+                record.put("Passed",r.getIsPassed());
+
+                recordsJson.add(record);
+            }
+
+            JSONObject studentJson = new JSONObject();
+            String mName = s.getMiddleName() == null ? "null" : s.getMiddleName();
+
+            studentJson.put("ID",s.getStudentID());
+            studentJson.put("Grade",s.getGrade().toString());
+            studentJson.put("AdvisorName",s.getAdvisor().getFullName());
+            studentJson.put("CourseRecords",recordsJson);
+            studentJson.put("FirstName",s.getFirstName());
+            studentJson.put("MiddleName",mName);
+            studentJson.put("LastName",s.getLastName());
+
+            String jsonString = studentJson.toJSONString();
+            writeToFile(jsonString,studentsDir + s.getStudentID() + ".json");
+        }
+    }
     private void parseHuman(JSONObject obj, StringBuilder firstName, StringBuilder middleName, StringBuilder lastName){
 
         firstName.append((String)obj.get("FirstName"));
@@ -238,6 +278,8 @@ public class JsonParser {
             Grade recordYear = Grade.valueOf((String) record.get("RecordYear"));
             Boolean passed = (Boolean) record.get("Passed");
 
+            grade = grade < 0 ? null : grade;
+
             courseRecords.add(new CourseRecord(course,letterGrade,season,recordYear,grade,passed));
         }
 
@@ -265,10 +307,21 @@ public class JsonParser {
         {
             //Read JSON file
             jsonObj = parser.parse(reader);
+            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return jsonObj;
+    }
+
+    private void writeToFile(String str,String fileName){
+        try(FileWriter writer = new FileWriter(fileName)){
+            writer.write(str);
+            writer.flush();
+            writer.close();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }

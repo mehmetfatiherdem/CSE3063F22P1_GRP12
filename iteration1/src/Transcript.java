@@ -76,4 +76,8 @@ public class Transcript {
 
         return mostRecent.getIsPassed();
     }
+
+    public List<CourseRecord> getTakenCourseRecords(){
+        return takenCourseRecords;
+    }
 }

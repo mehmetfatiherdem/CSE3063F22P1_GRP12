@@ -3,6 +3,7 @@ package iteration1.src;
 import iteration1.src.course.*;
 import iteration1.src.human.*;
 import iteration1.src.input_output.JsonParser;
+import iteration1.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -71,6 +72,12 @@ public class Simulation {
 
             s.register();
         }
+
+        JsonParser parser = new JsonParser();
+        parser.serializeStudents(students);
+
+        Logger.log("");
+        Logger.log("Registration has ended");
     }
 
     private static int tryToRegister(Student student,Course course, int counter){
