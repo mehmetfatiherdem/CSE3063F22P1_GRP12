@@ -1,30 +1,120 @@
 package iteration1.src.course;
+import iteration1.src.Department;
+import iteration1.src.Helper;
 import iteration1.src.human.Assistant;
+import iteration1.src.human.Grade;
 import iteration1.src.human.Lecturer;
 import iteration1.src.human.Student;
+import iteration1.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public abstract class Course {
+    private static final int minQuota = 40;
+    private static final int maxQuota = 80;
 
-    //static minquota,maxquota
     protected String code;
+    protected String name;
     protected int credits;
     protected int ects;
     protected int theoreticalHours;
     protected int appliedHours;
-    protected int firstYearToTake;
+    protected Grade firstYearToTake;
     protected Season firstSeasonToTake;
     protected int quota;
+
+    protected List<Course> prerequisites = new ArrayList<>();
     protected List<Lecturer> lecturers = new ArrayList<>();
     protected List<Assistant> assistants = new ArrayList<>();
-    protected List<Season> educationSeason;
-    private List<Section> sectionList = new ArrayList<>();
+    protected List<Section> sectionList = new ArrayList<>();
 
-    public Course(String code, int quota){
+    public Course(String code, String name, int credits, int theoreticalHours
+            , int appliedHours, Grade firstYearToTake,Season firstSeasonToTake){
         this.code = code;
-        this.quota = quota;
+        this.name = name;
+        this.credits = credits;
+        this.theoreticalHours = theoreticalHours;
+        this.appliedHours = appliedHours;
+        this.firstYearToTake = firstYearToTake;
+        this.firstSeasonToTake = firstSeasonToTake;
+
+        Random rng = new Random();
+        this.quota = Helper.generateRandomBetween(minQuota,maxQuota);
+
+        //Each and every semester, at least one section of all mandatory courses should be registerable without any collision
+    }
+
+    public Boolean isAnyCourseSectionAvailable(){
+        for(Section s: sectionList){
+            if(s instanceof CourseSection && !s.isSectionFull()){
+                return  true;
+            }
+        }
+
+        return false;
+    }
+    public  Boolean isAnyLabSectionAvailable(){
+        for(Section s:sectionList){
+            if(s instanceof LabSection && !s.isSectionFull())
+                return true;
+        }
+
+        return false;
+    }
+    public void addPrerequisite(Course prerequisite){
+        prerequisites.add(prerequisite);
+    }
+    public void assignLecturer(Lecturer lecturer) {
+        this.lecturers.add(lecturer);
+    }
+    public void assignAssistants(Assistant assistant) {
+        this.assistants.add(assistant);
+    }
+    public void addCourseSection(long schedule){
+        sectionList.add(new CourseSection(this,schedule,null));
+    }
+
+    public void addLabSection(long schedule){
+        sectionList.add(new LabSection(this,schedule,null));
+    }
+
+    public Boolean canStudentTakeCourse(Student student){
+        if((student.getGrade().getValue() < firstYearToTake.getValue()
+                || (student.getGrade().getValue() == firstYearToTake.getValue()
+                && Department.getInstance().getCurrentSeason().getValue() < firstSeasonToTake.getValue()))
+                || student.didStudentPass(this) || !student.checkIfPrerequisitesArePassed(this)){
+            Logger.log("In order to take " + code + " a student grade should be greater than or equal to " + firstYearToTake
+                    + ", the current season must be " + firstSeasonToTake + " and the student shouldn't pass the this course in the past semesters");
+            return false;
+        }
+
+        return true;
+    }
+
+
+    public List<CourseSection> getAvailableCourseSections(){
+        List<CourseSection> sections = new ArrayList<>();
+
+        for (Section s: sectionList){
+            if(s instanceof CourseSection && !s.isSectionFull()){
+                sections.add((CourseSection) s);
+            }
+        }
+
+        return sections;
+    }
+    public List<LabSection> getAvailableLabSections(){
+        List<LabSection> sections = new ArrayList<>();
+
+        for(Section s: sectionList){
+            if(s instanceof LabSection && !s.isSectionFull()){
+                sections.add((LabSection) s);
+            }
+        }
+
+        return sections;
     }
 
     //Getters
@@ -34,7 +124,12 @@ public abstract class Course {
     public String getCode() {
         return code;
     }
-
+    public String getName(){
+        return name;
+    }
+    public List<Course> getPrerequisites() {
+        return prerequisites;
+    }
     public int getEcts() {
         return ects;
     }
@@ -44,7 +139,7 @@ public abstract class Course {
     public int getAppliedHours() {
         return appliedHours;
     }
-    public int getFirstYearToTake() {
+    public Grade getFirstYearToTake() {
         return firstYearToTake;
     }
     public List<Lecturer> getLecturers() {
@@ -56,90 +151,10 @@ public abstract class Course {
     public List<Assistant> getAssistants() {
         return assistants;
     }
-    public List<Season> getEducationSeason() {
-        return educationSeason;
-    }
-
-    //Setters
-    public void setCode(String code) {
-        //The course code has at least 1 letter, 3 digit, 1 dot and 1 more digit.(MB302.6)
-        if(code.length() < 6){
-            System.out.println("Invalid course code.");
-        }
-        else{
-            this.code = code;
-        }
-    }
-    public void setCredits(int credits) {
-        //Course's credit can not be negative. YDI0001 has no credit.
-        if(credits < 0){
-            System.out.println("Invalid course credits value");
-        }
-        else{
-            this.credits = credits;
-        }
-    }
-
-    public void setEcts(int ects) {
-        if(ects<0){
-            System.out.println("Invalid course ECTS value");
-        }
-        else{
-            this.ects = ects;
-        }
-    }
-    public void setTheoreticalHours(int theoreticalHours) {
-        if(theoreticalHours < 0){
-            System.out.println("Invalid course theoretical hours value");
-        }
-        else{
-            this.theoreticalHours = theoreticalHours;
-        }
-    }
-    public void setAppliedHours(int appliedHours) {
-        if(appliedHours < 0){
-            System.out.println("Invalid course applied hours value");
-        }
-        else{
-            this.appliedHours = appliedHours;
-        }
-    }
-    public void setFirstYearToTake(int firstYearToTake) {
-        //A student must complete entire university courses in 7 years. Students have right to defer enrolment for 4 season.
-        if(firstYearToTake<2013){
-            System.out.println("Invalid course firstYearToTake value.");
-        }
-        else{
-            this.firstYearToTake = firstYearToTake;
-        }
-    }
-    public void setFirstSeasonToTake(Season firstSeasonToTake) {
-        this.firstSeasonToTake = firstSeasonToTake;
-    }
-    public void addToLecturer(Lecturer lecturer) {
-            this.lecturers.add(lecturer);
-    }
-    public void addToAssistants(Assistant assistant) {
-        this.assistants.add(assistant);
-    }
-    public void addToEducationSeason(Season educationSeason) {
-        this.educationSeason.add(educationSeason);
-    }
-
-    public  Boolean canStudentTakeCourse(Student student){
-        return true;
-    }
-
-    public void addToSectionList(Section section){
-        this.sectionList.add(section);
-    }
-
     public List<Section> getSectionList() {
         return sectionList;
     }
-
     public int getQuota() {
         return quota;
     }
-
 }

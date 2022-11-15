@@ -3,6 +3,8 @@ package iteration1.src.course;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+
+import iteration1.src.Helper;
 import iteration1.src.data_structures.Tuple;
 import iteration1.src.human.FacultyMember;
 import iteration1.src.human.Student;
@@ -12,21 +14,18 @@ public abstract class Section {
     //Number of class hours in a week
     public static final int NO_OF_WEEKLY_CLASS_HOURS = 56;
     public static final String[] CLASS_DAYS = {"Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"};
-
     public static final String[] CLASS_HOURS = {"8.30-9.20", "9.30-10.20", "10.30-11.20", "11.30-12.20",
             "13.00-13.50", "14.00-14.50", "15.00-15.50", "16.00-16.50", };
-
-
-    protected Course course;
 
     /*
      * Bitmask for the schedule of this section, there are 8 classes per day and 7 days in a week,
      * so each bit represents the class hour that corresponds to that bit's position in the bitmask.
      * For example 17th bit would be the first class hour on Wednesday. 1 means there's a section at that classhour, and 0 means there is not
      */
+
+    protected Course course;
     protected long classSchedule;
     protected FacultyMember instructor;
-
     protected List<Student> studentList = new ArrayList<>();
 
     protected Section(Course course, long classSchedule, FacultyMember instructor) {
@@ -109,18 +108,21 @@ public abstract class Section {
         return schedule;
     }
 
+    // Getters
     public Course getCourse() {
         return course;
     }
-
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
     public long getClassSchedule() {
         return classSchedule;
     }
+    public List<Student> getStudentList() {
+        return studentList;
+    }
 
+    //Setters
+    public void setCourse(Course course) {
+        this.course = course;
+    }
     public void setClassSchedule(long classHours) {
         this.classSchedule = classHours;
     }
@@ -147,10 +149,6 @@ public abstract class Section {
         }
     }
 
-    public List<Student> getStudentList() {
-        return studentList;
-    }
-
     public void addToStudentList(Student student) {
         this.studentList.add(student);
     }
@@ -159,4 +157,19 @@ public abstract class Section {
         return course.getQuota() <= studentList.size();
     }
 
+    public static long getScheduleAtPosition(int position, int count){
+        long schedule = Helper.getSumOfPowersOfTwoUpTo(count);
+        schedule <<= position;
+
+        return schedule;
+    }
+
+    public static long getScheduleAtRandomPositions(int[] positions){
+        long schedule = 0;
+        for(int pos: positions){
+            schedule |= (1 << pos);
+        }
+
+        return schedule;
+    }
 }

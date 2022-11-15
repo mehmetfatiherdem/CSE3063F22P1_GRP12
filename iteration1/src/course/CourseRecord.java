@@ -16,7 +16,7 @@ public class CourseRecord {
     public Course getCourse() {
         return course;
     }
-    public float getScore() {
+    public Float getScore() {
         return score;
     }
     public Boolean getIsPassed() {
@@ -28,6 +28,9 @@ public class CourseRecord {
     public LetterGrade getlGrade() {
         return lGrade;
     }
+    public Grade getGrade() {
+        return grade;
+    }
     
 
     //Setters
@@ -36,7 +39,6 @@ public class CourseRecord {
     }
     public void setScore(float score) {
        if(score < 0){
-       // print error messages
        return;
        }
         this.score = score;
@@ -51,9 +53,6 @@ public class CourseRecord {
         this.season = season;
     }
 
-    public Grade getGrade() {
-        return grade;
-    }
 
     public CourseRecord(Course course, LetterGrade lGrade, Season season, Grade grade, Float score, Boolean isPassed){
         this.course=course;
@@ -62,10 +61,6 @@ public class CourseRecord {
         this.grade = grade;
         this.score = score;
         this.isPassed=isPassed;
-
-    }
-    //Get season details Method
-    public void getFullSeasonDetails(){
 
     }
     

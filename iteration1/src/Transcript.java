@@ -9,22 +9,15 @@ import iteration1.src.human.Grade;
 
 
 public class Transcript {
-    private LetterGrade lGrade;
-    private float GPA;
     private List<CourseRecord> takenCourseRecords;
 
-    //TODO:add constructor and take course records as parameters as they'll be parsed from json data, and calll calculateGPA inside the constructor
- 
-    public float getGPA() {
-        return GPA;
+    //TODO:add constructor and take course records as parameters as they'll be parsed from json data, and call calculateGPA inside the constructor
+    public Transcript(List<CourseRecord> takenCourseRecords){
+        this.takenCourseRecords = takenCourseRecords;
+
+        calculateGPA();
     }
 
-    //TODO:This shouldn't be directly accessible to outside world,delete this and write several needed query methods
-    public List<CourseRecord> getTakenCourseRecords() {
-        return takenCourseRecords;
-    }
-
-    
     public void addCourseRecord(Course course, LetterGrade lGrade, Season season, Float score, Grade grade, Boolean isPassed){
         
         CourseRecord courserecord = new CourseRecord(course,lGrade,season,grade, score, isPassed);
@@ -32,7 +25,8 @@ public class Transcript {
 
     }
 
-    public Float calculateGPA(Course course){
+
+    public Float calculateGPA(){
         float gpa=0;
         int credits=0;
         float temp=0;
@@ -53,5 +47,37 @@ public class Transcript {
             }
         }
         return completedCredits;
+    }
+
+    public Boolean checkIfPrerequisitesArePassed(Course course){
+
+        for (Course c : course.getPrerequisites()){
+            if(!didStudentPass(course)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public Boolean didStudentPass(Course course){
+
+        Boolean passed = true;
+
+        CourseRecord mostRecent = null;
+        for (CourseRecord record : takenCourseRecords){
+            if(record.getCourse() == course){
+                mostRecent = record;
+            }
+        }
+
+        if(mostRecent == null)
+            return false;
+
+        return mostRecent.getIsPassed();
+    }
+
+    public List<CourseRecord> getTakenCourseRecords(){
+        return takenCourseRecords;
     }
 }
