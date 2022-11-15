@@ -24,7 +24,7 @@ public class MandatoryCourse extends Course{
     @Override
     public Boolean isAnyCourseSectionAvailable(){
         if(!super.isAnyCourseSectionAvailable()){
-            //Section newSection = new CourseSection(this);
+
         }
 
         return true;
@@ -33,7 +33,7 @@ public class MandatoryCourse extends Course{
     @Override
     public Boolean isAnyLabSectionAvailable(){
         if(!super.isAnyLabSectionAvailable()){
-            //
+
         }
         return true;
     }
