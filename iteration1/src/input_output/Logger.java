@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 
-//TODO:Change all sysout calls to Logger.log calls
 public class Logger {
     private static final String logTxt = "iteration1/output/log.txt";
 

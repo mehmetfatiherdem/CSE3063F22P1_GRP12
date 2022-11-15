@@ -13,24 +13,24 @@ import org.json.simple.parser.JSONParser;
 
 public class JsonParser {
 
-    private static final String advisorsFile = "iteration1/resources/Advisors.json";
-    private static final String assistantsFile = "iteration1/resources/Assistants.json";
-    private static final String lecturersFile = "iteration1/resources/Lecturers.json";
-    private static final String coursesFile = "iteration1/resources/Courses.json";
-    private static final String semesterFile = "iteration1/resources/Semester.json";
-    private static final String studentsDir = "iteration1/resources/students/";
+    private final String advisorsFile = "iteration1/resources/Advisors.json";
+    private final String assistantsFile = "iteration1/resources/Assistants.json";
+    private final String lecturersFile = "iteration1/resources/Lecturers.json";
+    private final String coursesFile = "iteration1/resources/Courses.json";
+    private final String semesterFile = "iteration1/resources/Semester.json";
+    private final String studentsDir = "iteration1/resources/students/";
 
-    private JsonParser(){
+    public JsonParser(){
 
     }
 
-    public static Season parseSemester(){
+    public Season parseSemester(){
 
         String semester = (String) readJsonFile(semesterFile);
         return Season.valueOf(semester);
     }
 
-    public static List<Advisor> parseAdvisors(){
+    public List<Advisor> parseAdvisors(){
 
         JSONArray arr = (JSONArray) readJsonFile(advisorsFile);
 
@@ -53,7 +53,7 @@ public class JsonParser {
         return advisorList;
     }
 
-    public static List<Assistant> parseAssistants() {
+    public List<Assistant> parseAssistants() {
 
         JSONArray arr = (JSONArray) readJsonFile(assistantsFile);
 
@@ -76,7 +76,7 @@ public class JsonParser {
         return assistantList;
     }
 
-    public static List<Lecturer> parseLecturers(){
+    public List<Lecturer> parseLecturers(){
 
         JSONArray arr = (JSONArray) readJsonFile(lecturersFile);
 
@@ -99,7 +99,7 @@ public class JsonParser {
         return lecturerList;
     }
 
-    public static List<Course> parseCourses(){
+    public List<Course> parseCourses(){
 
         JSONArray arr = (JSONArray) readJsonFile(coursesFile);
 
@@ -153,7 +153,7 @@ public class JsonParser {
         return courseList;
     }
 
-    public static List<Student> parseStudents(List<Advisor> advisors, List<Course> courses){
+    public List<Student> parseStudents(List<Advisor> advisors, List<Course> courses){
 
         List<Student> studentList = new ArrayList<>();
 
@@ -185,17 +185,17 @@ public class JsonParser {
 
         return studentList;
     }
-    private static void parseHuman(JSONObject obj, StringBuilder firstName, StringBuilder middleName, StringBuilder lastName){
+    private void parseHuman(JSONObject obj, StringBuilder firstName, StringBuilder middleName, StringBuilder lastName){
 
         firstName.append((String)obj.get("FirstName"));
         middleName.append((String) obj.get("MiddleName"));
         lastName.append((String) obj.get("LastName"));
     }
-    private static boolean isNull(String s){
+    private boolean isNull(String s){
         return s.equals("null");
     }
 
-    private static void assignPrerequisitesToCourses(List<Course> courses,List<JSONArray> prerequisiteCodes){
+    private void assignPrerequisitesToCourses(List<Course> courses,List<JSONArray> prerequisiteCodes){
         int len = courses.size();
 
         for(int i = 0; i < len; i++){
@@ -209,7 +209,7 @@ public class JsonParser {
             }
         }
     }
-    private static Course findCourseWithCode(List<Course> courses,String courseCode){
+    private Course findCourseWithCode(List<Course> courses,String courseCode){
         int len = courses.size();
         Course course = null;
 
@@ -222,7 +222,7 @@ public class JsonParser {
         return course;
     }
 
-    private static List<CourseRecord> parseCourseRecords(JSONArray recordsJson,List<Course> courses){
+    private List<CourseRecord> parseCourseRecords(JSONArray recordsJson,List<Course> courses){
 
         List<CourseRecord> courseRecords = new ArrayList<>();
 
@@ -244,7 +244,7 @@ public class JsonParser {
         return courseRecords;
     }
 
-    private static Advisor findAdvisorByName(List<Advisor> advisors,String advisorName){
+    private Advisor findAdvisorByName(List<Advisor> advisors,String advisorName){
         for(var adv : advisors){
             if(adv.getFullName().equals(advisorName)){
                 return adv;
@@ -253,11 +253,11 @@ public class JsonParser {
 
         return null;
     }
-    private static Object readJsonFile(String fileName){
+    private Object readJsonFile(String fileName){
         return readJsonFile(new File(fileName));
     }
 
-    private static Object readJsonFile(File file){
+    private Object readJsonFile(File file){
         JSONParser parser = new JSONParser();
         Object jsonObj = null;
         // read from a json file to parse

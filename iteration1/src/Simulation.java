@@ -17,12 +17,13 @@ public class Simulation {
 
     public static List<Student> init(){
 
-        var lecturers = JsonParser.parseLecturers();
-        var assistants = JsonParser.parseAssistants();
-        var advisors = JsonParser.parseAdvisors();
-        var courses = JsonParser.parseCourses();
-        var students = JsonParser.parseStudents(advisors,courses);
-        var season = JsonParser.parseSemester();
+        JsonParser parser = new JsonParser();
+        var lecturers = parser.parseLecturers();
+        var assistants = parser.parseAssistants();
+        var advisors = parser.parseAdvisors();
+        var courses = parser.parseCourses();
+        var students = parser.parseStudents(advisors,courses);
+        var season = parser.parseSemester();
 
         lecturers.addAll(advisors);
 
