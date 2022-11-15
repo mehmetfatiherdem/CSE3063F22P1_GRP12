@@ -1,12 +1,10 @@
 package iteration1.src;
 
 import iteration1.src.course.Course;
-import iteration1.src.course.MandatoryCourse;
 import iteration1.src.course.Season;
 import iteration1.src.course.Section;
 import iteration1.src.human.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Department {
@@ -70,7 +68,7 @@ public class Department {
 
 
     private void assignFacultyMembersToCourses(){
-        //TODO:write this
+        //TODO: will be added in the future iterations
     }
 
     private void generateWeeklyScheduleForAllCourses(){

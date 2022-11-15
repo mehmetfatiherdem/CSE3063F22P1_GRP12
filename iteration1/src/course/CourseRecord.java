@@ -39,7 +39,6 @@ public class CourseRecord {
     }
     public void setScore(float score) {
        if(score < 0){
-       // print error messages
        return;
        }
         this.score = score;
