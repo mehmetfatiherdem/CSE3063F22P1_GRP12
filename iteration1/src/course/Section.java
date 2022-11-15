@@ -3,6 +3,8 @@ package iteration1.src.course;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+
+import iteration1.src.Helper;
 import iteration1.src.data_structures.Tuple;
 import iteration1.src.human.FacultyMember;
 import iteration1.src.human.Student;
@@ -155,4 +157,19 @@ public abstract class Section {
         return course.getQuota() <= studentList.size();
     }
 
+    public static long getScheduleAtPosition(int position, int count){
+        long schedule = Helper.getSumOfPowersOfTwoUpTo(count);
+        schedule <<= position;
+
+        return schedule;
+    }
+
+    public static long getScheduleAtRandomPositions(int[] positions){
+        long schedule = 0;
+        for(int pos: positions){
+            schedule |= (1 << pos);
+        }
+
+        return schedule;
+    }
 }

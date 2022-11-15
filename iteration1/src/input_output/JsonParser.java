@@ -3,7 +3,6 @@ package iteration1.src.input_output;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 import iteration1.src.course.*;
@@ -141,7 +140,7 @@ public class JsonParser {
                             theoreticalHours,appliedHours,firstGradeToTake,firstSeasonToTake);
                     break;
                 case "Non-Technical Elective | University Elective":
-                    course = new NonTechnicalCourse(courseCode,courseName,credits,
+                    course = new NonTechnicalElectiveCourse(courseCode,courseName,credits,
                             theoreticalHours,appliedHours,firstGradeToTake,firstSeasonToTake);
                     break;
             }

@@ -1,5 +1,6 @@
 package iteration1.src.course;
 import iteration1.src.Department;
+import iteration1.src.Helper;
 import iteration1.src.human.Assistant;
 import iteration1.src.human.Grade;
 import iteration1.src.human.Lecturer;
@@ -27,10 +28,7 @@ public abstract class Course {
     protected List<Course> prerequisites = new ArrayList<>();
     protected List<Lecturer> lecturers = new ArrayList<>();
     protected List<Assistant> assistants = new ArrayList<>();
-
-    //TODO:Remove education season
-    protected List<Season> educationSeason;
-    private List<Section> sectionList = new ArrayList<>();
+    protected List<Section> sectionList = new ArrayList<>();
 
     public Course(String code, String name, int credits, int theoreticalHours
             , int appliedHours, Grade firstYearToTake,Season firstSeasonToTake){
@@ -43,7 +41,7 @@ public abstract class Course {
         this.firstSeasonToTake = firstSeasonToTake;
 
         Random rng = new Random();
-        this.quota = rng.nextInt(maxQuota - minQuota + 1) + minQuota - 1;
+        this.quota = Helper.generateRandomBetween(minQuota,maxQuota);
 
         //Each and every semester, at least one section of all mandatory courses should be registerable without any collision
     }
@@ -68,24 +66,27 @@ public abstract class Course {
     public void addPrerequisite(Course prerequisite){
         prerequisites.add(prerequisite);
     }
-    public void addToLecturer(Lecturer lecturer) {
+    public void assignLecturer(Lecturer lecturer) {
         this.lecturers.add(lecturer);
     }
-    public void addToAssistants(Assistant assistant) {
+    public void assignAssistants(Assistant assistant) {
         this.assistants.add(assistant);
     }
-    public void addToEducationSeason(Season educationSeason) {
-        this.educationSeason.add(educationSeason);
+    public void addCourseSection(long schedule){
+        sectionList.add(new CourseSection(this,schedule,null));
     }
-    public void addToSectionList(LabSection section){
-        this.sectionList.add(section);
+
+    public void addLabSection(long schedule){
+        sectionList.add(new LabSection(this,schedule,null));
     }
-    public void addToSectionList(CourseSection section) { this.sectionList.add(section); }
+
     public Boolean canStudentTakeCourse(Student student){
-        if(student.getGrade().getValue() < firstYearToTake.getValue()
+        if((student.getGrade().getValue() < firstYearToTake.getValue()
                 || (student.getGrade().getValue() == firstYearToTake.getValue()
-                && Department.getInstance().getCurrentSemester().getValue() < firstSeasonToTake.getValue())){
-            //TODO: add a log
+                && Department.getInstance().getCurrentSeason().getValue() < firstSeasonToTake.getValue()))
+                || student.didStudentPass(this) || !student.checkIfPrerequisitesArePassed(this)){
+            Logger.log("In order to take " + code + " a student grade should be greater than or equal to " + firstYearToTake
+                    + ", the current season must be " + firstSeasonToTake + " and the student shouldn't pass the this course in the past semesters");
             return false;
         }
 
@@ -93,7 +94,6 @@ public abstract class Course {
     }
 
 
-    //Getters
     public List<CourseSection> getAvailableCourseSections(){
         List<CourseSection> sections = new ArrayList<>();
 
@@ -116,6 +116,8 @@ public abstract class Course {
 
         return sections;
     }
+
+    //Getters
     public int getCredits() {
         return credits;
     }
@@ -148,9 +150,6 @@ public abstract class Course {
     }
     public List<Assistant> getAssistants() {
         return assistants;
-    }
-    public List<Season> getEducationSeason() {
-        return educationSeason;
     }
     public List<Section> getSectionList() {
         return sectionList;

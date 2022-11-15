@@ -1,5 +1,7 @@
 package iteration1.src.human;
 
+import iteration1.src.input_output.Logger;
+
 public class Advisor extends Lecturer {
 
     public Advisor(String firstName, String lastName) {
@@ -11,7 +13,7 @@ public class Advisor extends Lecturer {
     }
     
     public void approveRegistration() {
-        System.out.println("Advisor approved all courses.");
+        Logger.log("Advisor approved all courses.");
         
     }
     

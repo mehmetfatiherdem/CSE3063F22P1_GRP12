@@ -2,6 +2,7 @@ package iteration1.src.course;
 
 import iteration1.src.human.Grade;
 import iteration1.src.human.Student;
+import iteration1.src.input_output.Logger;
 
 public class TechnicalElectiveCourse extends ElectiveCourse{
 
@@ -22,7 +23,7 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
 
         boolean isStudentAbleToTake = true;
         if(!isCreditsRequirementMet(student) || isMaxChoosableNumberExceeded(student)){
-            System.out.println("You must complete " + REQUIRED_CREDITS + " to take TE(" + this.getCode() + ")");
+            Logger.log("You must complete " + REQUIRED_CREDITS + " to take TE(" + this.getCode() + ")");
             isStudentAbleToTake = false;
         }
 
@@ -30,7 +31,7 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
     }
 
     public boolean isCreditsRequirementMet(Student student){
-        return REQUIRED_CREDITS <= student.getTranscript().getCompletedCredits();
+        return REQUIRED_CREDITS <= student.getCompletedCredits();
     }
 
     public boolean isMaxChoosableNumberExceeded(Student student){

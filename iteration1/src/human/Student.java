@@ -1,6 +1,6 @@
 package iteration1.src.human;
 
-import iteration1.src.RegistrationData;
+import iteration1.src.Department;
 import iteration1.src.Transcript;
 import iteration1.src.course.*;
 import iteration1.src.input_output.Logger;
@@ -14,7 +14,7 @@ public class Student extends Human{
     private Grade grade;
     private Advisor advisor;
     private Transcript transcript;
-    private List<Section> enrolledCourseSections = new ArrayList<>();
+    private List<Section> enrolledSections = new ArrayList<>();
 
 
     public Student(String firstName, String middleName, String lastName,String studentID,Grade grade ,Advisor advisor,List<CourseRecord> transcript){
@@ -38,6 +38,10 @@ public class Student extends Human{
         return transcript.checkIfPrerequisitesArePassed(course);
     }
 
+    public Boolean didStudentPass(Course course) {
+        return transcript.didStudentPass(course);
+    }
+
     public void enrollCourseSections(List<Section> sections, Season season){
 
         for(Section s: sections){
@@ -47,17 +51,17 @@ public class Student extends Human{
         }
     }
 
-    public void register(RegistrationData data){
+    public void register(){
 
-        System.out.println();
-        System.out.println("Registration process of " + this.getFullName() + " started");
-        System.out.println();
+        Logger.log("");
+        Logger.log("Registration process of " + this.getFullName() + " started");
+        Logger.log("");
 
         // checks
 
         // sections to be removed and added from the enrolledsections due to full quota
 
-        for(Section sec: enrolledCourseSections) {
+        for(Section sec: enrolledSections) {
 
             Course c = sec.getCourse();
 
@@ -70,7 +74,7 @@ public class Student extends Human{
         }
 
         // check for collisions between the course sections the student wants to take
-        var collisions = Section.checkForCollisions(enrolledCourseSections);
+        var collisions = Section.checkForCollisions(enrolledSections);
 
         for(var c : collisions){
             Section sec1 = c.GetKey();
@@ -82,51 +86,50 @@ public class Student extends Human{
                 int collisionDay = d.GetKey();
                 int collisionHour = d.GetValue();
 
-                System.out.println("There is a collision between " + sec1.getCourse().getCode()
+                Logger.log("There is a collision between " + sec1.getCourse().getCode()
                         + " and " + sec2.getCourse().getCode() + " on " + Section.CLASS_DAYS[collisionDay] + " at " + Section.CLASS_HOURS[collisionHour]);
 
                 // clear all the enrolled courses in the process
-                this.enrolledCourseSections.clear();
+                //this.enrolledCourseSections.clear();
+                this.enrolledSections.remove(sec1);
 
-                System.out.println();
+                Logger.log("Student is taking " + sec2.getCourse().getCode());
 
-                System.out.println("Registration process of " + this.getFullName() + " ended");
+                //Logger.log("Registration process of " + this.getFullName() + " ended");
 
-                System.out.println();
-                System.out.println();
-                return;
+                Logger.log("");
+                Logger.log("");
             }
         }
 
-        int year = data.getYear();
-        Season season = data.getSeason();
 
+        collisions.clear();
 
         if(collisions.size() == 0){
 
-            enrollCourseSections(enrolledCourseSections, season);
+            enrollCourseSections(enrolledSections, Department.getInstance().getCurrentSeason());
 
-            System.out.println();
+            Logger.log("");
 
             String schedule = generateWeeklySchedule();
-            System.out.println(schedule);
+            Logger.log(schedule);
         }
 
-        System.out.println("Registration process of " + this.getFullName() + " ended");
+        Logger.log("Registration process of " + this.getFullName() + " ended");
 
-        System.out.println();
-        System.out.println();
+        Logger.log("");
+        Logger.log("");
     }
 
     public String generateWeeklySchedule(){
 
         String program = this.getFullName() + "'s Weekly Schedule\n";
 
-        if(this.enrolledCourseSections.size() == 0){
+        if(this.enrolledSections.size() == 0){
             program = "The student " + this.getFullName() + " doesn't have any enrolled courses";
         }
 
-        List<Section[]> schedule = Section.combineSchedules(this.enrolledCourseSections);
+        List<Section[]> schedule = Section.combineSchedules(this.enrolledSections);
 
         for(int i = 0; i<schedule.size(); i++){
 
@@ -153,6 +156,16 @@ public class Student extends Human{
         return program;
     }
 
+    public void addToRegistrationList(Section section){
+        if(section.isSectionFull()){
+
+            Logger.log("This section of " + section.getCourse().getCode() + " is already full");
+            return;
+        }
+
+        this.enrolledSections.add(section);
+    }
+
     public String getStudentID() {
         return studentID;
     }
@@ -166,7 +179,7 @@ public class Student extends Human{
     }
 
     public List<Section> getEnrolledCourses() {
-        return enrolledCourseSections;
+        return enrolledSections;
     }
 
     public int getCompletedCredits(){
@@ -181,18 +194,5 @@ public class Student extends Human{
         this.advisor = advisor;
     }
 
-    public void addToRegistrationList(Section section){
-        if(section.isSectionFull()){
-
-            Logger.log("This section of " + section.getCourse().getCode() + " is already full");
-            return;
-        }
-
-        this.enrolledCourseSections.add(section);
-    }
-
-    public Transcript getTranscript(){
-        return transcript;
-    }
 
 }

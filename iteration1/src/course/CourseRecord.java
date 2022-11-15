@@ -64,10 +64,6 @@ public class CourseRecord {
         this.isPassed=isPassed;
 
     }
-    //Get season details Method
-    public void getFullSeasonDetails(){
-
-    }
     
 
 }

@@ -9,8 +9,6 @@ import iteration1.src.human.Grade;
 
 
 public class Transcript {
-    private LetterGrade lGrade;
-    private float GPA;
     private List<CourseRecord> takenCourseRecords;
 
     //TODO:add constructor and take course records as parameters as they'll be parsed from json data, and call calculateGPA inside the constructor
@@ -20,11 +18,6 @@ public class Transcript {
         calculateGPA();
     }
 
-    //Getters
-    public float getGPA() {
-        return GPA;
-    }
-
     public void addCourseRecord(Course course, LetterGrade lGrade, Season season, Float score, Grade grade, Boolean isPassed){
         
         CourseRecord courserecord = new CourseRecord(course,lGrade,season,grade, score, isPassed);
@@ -32,7 +25,7 @@ public class Transcript {
 
     }
 
-    //TODO: Remove the course param
+
     public Float calculateGPA(){
         float gpa=0;
         int credits=0;
@@ -67,7 +60,7 @@ public class Transcript {
         return true;
     }
 
-    private Boolean didStudentPass(Course course){
+    public Boolean didStudentPass(Course course){
 
         Boolean passed = true;
 
@@ -78,11 +71,9 @@ public class Transcript {
             }
         }
 
+        if(mostRecent == null)
+            return false;
+
         return mostRecent.getIsPassed();
-    }
-
-
-    public List<CourseRecord> getTakenCourseRecords(){
-        return takenCourseRecords;
     }
 }

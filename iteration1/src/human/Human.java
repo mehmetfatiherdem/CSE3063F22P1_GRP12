@@ -1,5 +1,7 @@
 package iteration1.src.human;
 
+import iteration1.src.input_output.Logger;
+
 public abstract class Human {
 
     protected String firstName;
@@ -36,7 +38,7 @@ public abstract class Human {
 
     public void setFirstName(String firstName) {
         if(firstName == null || firstName.trim().length() <= 0){
-            System.out.println("Human: Human first name must exist and have a length greater than 0");
+            Logger.log("Human: Human first name must exist and have a length greater than 0");
             return;
         }
         this.firstName = firstName.trim();
@@ -48,7 +50,7 @@ public abstract class Human {
 
     public void setLastName(String lastName) {
         if(lastName == null || lastName.trim().length() <= 0){
-            System.out.println("Human: Human last name must exist and have a length greater than 0");
+            Logger.log("Human: Human last name must exist and have a length greater than 0");
             return;
         }
         this.lastName = lastName.trim();
