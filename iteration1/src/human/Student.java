@@ -29,6 +29,7 @@ public class Student extends Human{
     public Student(String firstName, String lastName,String studentID, Grade grade ,Advisor advisor, List<CourseRecord> transcript){
         super(firstName, lastName);
 
+        this.studentID = studentID;
         this.grade = grade;
         this.advisor = advisor;
         this.transcript = new Transcript(transcript);
