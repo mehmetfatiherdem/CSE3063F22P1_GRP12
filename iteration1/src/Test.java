@@ -80,7 +80,7 @@ public class Test {
             System.out.println("Information About Assistant");
             System.out.println();
 
-            System.out.print("Asistant Name and Surname: ");
+            System.out.print("Assistant Name and Surname: ");
             System.out.println(r.getFullName());
         }
         for(var r:advisors){
