@@ -13,7 +13,7 @@ import iteration1.src.human.Student;
 public class Test {
     public static void main(String[] args) {
 
-        //departmentTest();
+        departmentTest();
         humanTest();
         CourseTest();
     }
