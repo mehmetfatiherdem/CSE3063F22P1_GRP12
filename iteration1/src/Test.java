@@ -17,6 +17,101 @@ public class Test {
         humanTest();
         CourseTest();
     }
+    public static void departmentTest(){
+        // Tests about department class
+        System.out.println();
+        System.out.println("Starting department test");
+        System.out.println();
+
+
+        List<CourseRecord> records = new ArrayList<>();
+        List<Course> courses = new ArrayList<>();
+        List<Lecturer> lecturers = new ArrayList<>();
+        List<Assistant> assistants = new ArrayList<>();
+        List<Advisor> advisors = new ArrayList<>();
+        List<Student> students = new ArrayList<>();
+
+        Department department = Department.getInstance();
+        department.initialize(Season.FALL,courses,lecturers,assistants,advisors,students);
+
+        records.add(new CourseRecord(new MandatoryCourse("CSE 4074","Computer Networks",5,3,0,Grade.SENIOR,Season.FALL),LetterGrade.AA,Season.FALL,Grade.FRESHMAN,90F,Boolean.TRUE));
+        courses.add(new MandatoryCourse("CSE 4074","Computer Networks",5,3,0,Grade.SENIOR,Season.FALL));
+        lecturers.add(new Lecturer("Ömer","Korçak"));
+        assistants.add(new Assistant("No","Assistant"));
+        advisors.add(new Advisor("Mesut","Yılmaz"));
+        students.add(new Student("Mehmet","Erdem ","150115655", Grade.FRESHMAN , new Advisor("Mustafa","Ağaoğlu"),records));
+
+        for(var r:courses){
+
+            System.out.println("Information about Department");
+
+            System.out.print("Course Code: ");
+            System.out.println(r.getCode());
+
+            System.out.print("Course Name: ");
+            System.out.println(r.getName());
+
+            System.out.print("Course Credits: ");
+            System.out.println(r.getCredits());
+
+            System.out.print("Number of theoretical hours of the course: ");
+            System.out.println(r.getTheoreticalHours());
+
+            System.out.print("Number of Applied hours of the course: ");
+            System.out.println(r.getAppliedHours());
+
+            System.out.print("Grade of course: ");
+            System.out.println(r.getFirstYearToTake());
+
+            System.out.print("Season of course: ");
+            System.out.println(r.getFirstSeasonToTake());
+        }
+        for(var r:lecturers){
+            System.out.println();
+            System.out.println("Information About Lecturers");
+            System.out.println();
+
+            System.out.print("Lecturer Name and Surname: ");
+            System.out.println(r.getFullName());
+
+        }
+        for(var r:assistants){
+            System.out.println();
+            System.out.println("Information About Assitant");
+            System.out.println();
+
+            System.out.print("Asistant Name and Surname: ");
+            System.out.println(r.getFullName());
+        }
+        for(var r:advisors){
+            System.out.println();
+            System.out.println("Information About Advisor");
+            System.out.println();
+
+            System.out.print("Advisor Name and Surname: ");
+            System.out.println(r.getFullName());
+        }
+        for(var r:students){
+            System.out.println();
+            System.out.println("Information About Students");
+            System.out.println();
+
+            System.out.print("Student Name and Surname: ");
+            System.out.println(r.getFullName());
+
+            System.out.print("Student ID: ");
+            System.out.println(r.getStudentID());
+
+            System.out.print("Student Grade: ");
+            System.out.println(r.getGrade());
+
+            System.out.print("Student Name and Surname: ");
+            System.out.println(r.getFullName());
+
+            System.out.print("Student Advisor: ");
+            System.out.println(r.getAdvisor().getFullName());
+        }
+    }
     public static void humanTest(){
         // Tests about student class
         List<CourseRecord> records = new ArrayList<>();
