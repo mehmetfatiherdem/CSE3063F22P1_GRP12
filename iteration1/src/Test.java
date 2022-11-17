@@ -177,7 +177,7 @@ public class Test {
     public static void CourseTest(){
         System.out.println();
         System.out.println("Course Test Starting...");
-        System.out.println("");
+        System.out.println();
 
         Course course = new MandatoryCourse("cse3063","Object Oriented Software Design",5,3,0,Grade.SENIOR, Season.FALL);
         System.out.print(" Course code:");
