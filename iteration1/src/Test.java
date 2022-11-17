@@ -77,7 +77,7 @@ public class Test {
         }
         for(var r:assistants){
             System.out.println();
-            System.out.println("Information About Assitant");
+            System.out.println("Information About Assistant");
             System.out.println();
 
             System.out.print("Asistant Name and Surname: ");
