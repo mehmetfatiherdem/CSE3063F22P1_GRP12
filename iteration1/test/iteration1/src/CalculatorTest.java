@@ -1,9 +1,12 @@
-package iteration1.src;
+package iteration1.test.iteration1.src;
 
+import iteration1.src.Calculator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
+
+//TODO: Remove this before submitting
 
 class CalculatorTest {
 
