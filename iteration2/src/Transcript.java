@@ -1,0 +1,83 @@
+package iteration2.src;
+
+import java.util.List;
+import iteration2.src.course.Course;
+import iteration2.src.course.CourseRecord;
+import iteration2.src.course.LetterGrade;
+import iteration2.src.course.Season;
+import iteration2.src.human.Grade;
+
+
+public class Transcript {
+    private List<CourseRecord> takenCourseRecords;
+
+    //TODO:add constructor and take course records as parameters as they'll be parsed from json data, and call calculateGPA inside the constructor
+    public Transcript(List<CourseRecord> takenCourseRecords){
+        this.takenCourseRecords = takenCourseRecords;
+
+        calculateGPA();
+    }
+
+    public void addCourseRecord(Course course, LetterGrade lGrade, Season season, Float score, Grade grade, Boolean isPassed){
+        
+        CourseRecord courserecord = new CourseRecord(course,lGrade,season,grade, score, isPassed);
+        takenCourseRecords.add(courserecord);
+
+    }
+
+
+    public Float calculateGPA(){
+        float gpa=0;
+        int credits=0;
+        float temp=0;
+        for(CourseRecord r: takenCourseRecords){
+            temp+=r.getlGrade().getNumVal()*r.getCourse().getCredits();
+            credits+=r.getCourse().getCredits();
+        }
+        gpa=temp/credits;
+        return gpa;
+    }
+
+    public int getCompletedCredits(){
+        int completedCredits=0;
+        
+        for (CourseRecord r: takenCourseRecords){
+            if(r.getIsPassed()){
+                completedCredits += r.getCourse().getCredits();
+            }
+        }
+        return completedCredits;
+    }
+
+    public Boolean checkIfPrerequisitesArePassed(Course course){
+
+        for (Course c : course.getPrerequisites()){
+            if(!didStudentPass(course)){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    public Boolean didStudentPass(Course course){
+
+        Boolean passed = true;
+
+        CourseRecord mostRecent = null;
+        for (CourseRecord record : takenCourseRecords){
+            if(record.getCourse() == course){
+                mostRecent = record;
+            }
+        }
+
+        if(mostRecent == null)
+            return false;
+
+        return mostRecent.getIsPassed();
+    }
+
+    public List<CourseRecord> getTakenCourseRecords(){
+        return takenCourseRecords;
+    }
+}
