@@ -1,1 +1,266 @@
-{"AdvisorName":"Ince KILIÇ","FirstName":"Hafiza","CourseRecords":[{"Passed":false,"LetterGrade":"FD","CourseCode":"ATA121","Grade":32.85892,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"CB","CourseCode":"MBG1201","Grade":65.80928,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"FF","CourseCode":"CSE1200","Grade":4.691986,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"AA","CourseCode":"CSE1241","Grade":84.071754,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"DC","CourseCode":"MATH1001","Grade":50.74871,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"DC","CourseCode":"PHYS1101","Grade":52.32593,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"CB","CourseCode":"PHYS1103","Grade":63.07551,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"CB","CourseCode":"TRD121","Grade":65.95418,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"DC","CourseCode":"ATA121","Grade":49.34955,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"BB","CourseCode":"CSE1200","Grade":73.23398,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"CB","CourseCode":"ATA122","Grade":63.8966,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"CC","CourseCode":"CSE1242","Grade":59.0138,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"CC","CourseCode":"MATH1002","Grade":54.502285,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"AA","CourseCode":"MATH2256","Grade":84.3099,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"BB","CourseCode":"PHYS1102","Grade":69.50451,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"AA","CourseCode":"PHYS1104","Grade":89.44711,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"DC","CourseCode":"TRD122","Grade":51.807625,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"AA","CourseCode":"YDA1003","Grade":88.80119,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"FD","CourseCode":"CSE2023","Grade":38.076504,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":true,"LetterGrade":"AA","CourseCode":"CSE2225","Grade":84.51893,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":true,"LetterGrade":"CB","CourseCode":"ECON2004","Grade":64.28889,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":true,"LetterGrade":"DC","CourseCode":"EE2031","Grade":51.042522,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"DD","CourseCode":"MATH2055","Grade":41.07419,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"FD","CourseCode":"MATH2059","Grade":34.947308,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"FF","CourseCode":"CSE2023","Grade":14.409318,"Season":"SPRING","RecordYear":"SOPHOMORE"},{"Passed":true,"LetterGrade":"AA","CourseCode":"MATH2055","Grade":83.307724,"Season":"SPRING","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"FF","CourseCode":"MATH2059","Grade":21.665232,"Season":"SPRING","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"FF","CourseCode":"CSE2246","Grade":23.909815,"Season":"SPRING","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"FF","CourseCode":"CSE2138","Grade":28.215218,"Season":"SPRING","RecordYear":"SOPHOMORE"},{"Passed":true,"LetterGrade":"AA","CourseCode":"CSE2260","Grade":85.69949,"Season":"SPRING","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"FF","CourseCode":"EE2032","Grade":22.681448,"Season":"SPRING","RecordYear":"SOPHOMORE"},{"Passed":true,"LetterGrade":"BB","CourseCode":"STAT2253","Grade":68.44278,"Season":"SPRING","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"CSE2023","Grade":-1.0,"Season":"FALL","RecordYear":"JUNIOR"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"CSE2023","Grade":-1.0,"Season":"FALL","RecordYear":"JUNIOR"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"CSE2138","Grade":-1.0,"Season":"FALL","RecordYear":"JUNIOR"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"CSE2138","Grade":-1.0,"Season":"FALL","RecordYear":"JUNIOR"}],"Grade":"JUNIOR","ID":"150120282","LastName":"BAYRAMOGLU","MiddleName":"null"}
+{
+  "ID": "150120282",
+  "Grade": "JUNIOR",
+  "AdvisorName": "Ince KILIÇ",
+  "CourseRecords": [
+    {
+      "CourseCode": "ATA121",
+      "LetterGrade": "FD",
+      "Grade": 32.85892,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "MBG1201",
+      "LetterGrade": "CB",
+      "Grade": 65.80928,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE1200",
+      "LetterGrade": "FF",
+      "Grade": 4.691986,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "CSE1241",
+      "LetterGrade": "AA",
+      "Grade": 84.071754,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH1001",
+      "LetterGrade": "DC",
+      "Grade": 50.74871,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1101",
+      "LetterGrade": "DC",
+      "Grade": 52.32593,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1103",
+      "LetterGrade": "CB",
+      "Grade": 63.07551,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "TRD121",
+      "LetterGrade": "CB",
+      "Grade": 65.95418,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "ATA121",
+      "LetterGrade": "DC",
+      "Grade": 49.34955,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE1200",
+      "LetterGrade": "BB",
+      "Grade": 73.23398,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "ATA122",
+      "LetterGrade": "CB",
+      "Grade": 63.8966,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE1242",
+      "LetterGrade": "CC",
+      "Grade": 59.0138,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH1002",
+      "LetterGrade": "CC",
+      "Grade": 54.502285,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH2256",
+      "LetterGrade": "AA",
+      "Grade": 84.3099,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1102",
+      "LetterGrade": "BB",
+      "Grade": 69.50451,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1104",
+      "LetterGrade": "AA",
+      "Grade": 89.44711,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "TRD122",
+      "LetterGrade": "DC",
+      "Grade": 51.807625,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "YDA1003",
+      "LetterGrade": "AA",
+      "Grade": 88.80119,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE2023",
+      "LetterGrade": "FD",
+      "Grade": 38.076504,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "CSE2225",
+      "LetterGrade": "AA",
+      "Grade": 84.51893,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "ECON2004",
+      "LetterGrade": "CB",
+      "Grade": 64.28889,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "EE2031",
+      "LetterGrade": "DC",
+      "Grade": 51.042522,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH2055",
+      "LetterGrade": "DD",
+      "Grade": 41.07419,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "MATH2059",
+      "LetterGrade": "FD",
+      "Grade": 34.947308,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "CSE2023",
+      "LetterGrade": "FF",
+      "Grade": 14.409318,
+      "Season": "SPRING",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "MATH2055",
+      "LetterGrade": "AA",
+      "Grade": 83.307724,
+      "Season": "SPRING",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH2059",
+      "LetterGrade": "FF",
+      "Grade": 21.665232,
+      "Season": "SPRING",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "CSE2246",
+      "LetterGrade": "FF",
+      "Grade": 23.909815,
+      "Season": "SPRING",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "CSE2138",
+      "LetterGrade": "FF",
+      "Grade": 28.215218,
+      "Season": "SPRING",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "CSE2260",
+      "LetterGrade": "AA",
+      "Grade": 85.69949,
+      "Season": "SPRING",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "EE2032",
+      "LetterGrade": "FF",
+      "Grade": 22.681448,
+      "Season": "SPRING",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "STAT2253",
+      "LetterGrade": "BB",
+      "Grade": 68.44278,
+      "Season": "SPRING",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    }
+  ],
+  "FirstName": "Hafiza",
+  "MiddleName": null,
+  "LastName": "BAYRAMOGLU"
+}

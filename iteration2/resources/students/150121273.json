@@ -1,1 +1,154 @@
-{"AdvisorName":"Aysemin ÖRDEK","FirstName":"Batihan","CourseRecords":[{"Passed":false,"LetterGrade":"FD","CourseCode":"ATA121","Grade":38.48575,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"BB","CourseCode":"MBG1201","Grade":73.21176,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"BB","CourseCode":"CSE1200","Grade":68.09776,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"AA","CourseCode":"CSE1241","Grade":88.717964,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"DC","CourseCode":"MATH1001","Grade":52.147434,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"FF","CourseCode":"PHYS1101","Grade":6.2978754,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"DC","CourseCode":"PHYS1103","Grade":49.214207,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"DC","CourseCode":"TRD121","Grade":50.291588,"Season":"FALL","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"FF","CourseCode":"ATA121","Grade":26.15327,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"FD","CourseCode":"PHYS1101","Grade":33.351204,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"FF","CourseCode":"ATA122","Grade":20.064539,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"FF","CourseCode":"CSE1242","Grade":2.263992,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"AA","CourseCode":"MATH1002","Grade":89.42915,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"FF","CourseCode":"MATH2256","Grade":32.482246,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"FD","CourseCode":"PHYS1102","Grade":34.766518,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"FF","CourseCode":"PHYS1104","Grade":6.2542562,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"CC","CourseCode":"TRD122","Grade":58.78751,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":true,"LetterGrade":"CC","CourseCode":"HR4001","Grade":54.60979,"Season":"SPRING","RecordYear":"FRESHMAN"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"ATA121","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"ATA121","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"PHYS1101","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"PHYS1101","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"ATA122","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"ATA122","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"MATH2256","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"MATH2256","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"PHYS1102","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"PHYS1104","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"CSE2023","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"ECON2004","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"},{"Passed":false,"LetterGrade":"NOT_GRADED","CourseCode":"MATH2055","Grade":-1.0,"Season":"FALL","RecordYear":"SOPHOMORE"}],"Grade":"SOPHOMORE","ID":"150121273","LastName":"ARGON","MiddleName":"null"}
+{
+  "ID": "150121273",
+  "Grade": "SOPHOMORE",
+  "AdvisorName": "Aysemin ÖRDEK",
+  "CourseRecords": [
+    {
+      "CourseCode": "ATA121",
+      "LetterGrade": "FD",
+      "Grade": 38.48575,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "MBG1201",
+      "LetterGrade": "BB",
+      "Grade": 73.21176,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE1200",
+      "LetterGrade": "BB",
+      "Grade": 68.09776,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE1241",
+      "LetterGrade": "AA",
+      "Grade": 88.717964,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH1001",
+      "LetterGrade": "DC",
+      "Grade": 52.147434,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1101",
+      "LetterGrade": "FF",
+      "Grade": 6.2978754,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "PHYS1103",
+      "LetterGrade": "DC",
+      "Grade": 49.214207,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "TRD121",
+      "LetterGrade": "DC",
+      "Grade": 50.291588,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "ATA121",
+      "LetterGrade": "FF",
+      "Grade": 26.15327,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "PHYS1101",
+      "LetterGrade": "FD",
+      "Grade": 33.351204,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "ATA122",
+      "LetterGrade": "FF",
+      "Grade": 20.064539,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "CSE1242",
+      "LetterGrade": "FF",
+      "Grade": 2.263992,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "MATH1002",
+      "LetterGrade": "AA",
+      "Grade": 89.42915,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH2256",
+      "LetterGrade": "FF",
+      "Grade": 32.482246,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "PHYS1102",
+      "LetterGrade": "FD",
+      "Grade": 34.766518,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "PHYS1104",
+      "LetterGrade": "FF",
+      "Grade": 6.2542562,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "TRD122",
+      "LetterGrade": "CC",
+      "Grade": 58.78751,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "HR4001",
+      "LetterGrade": "CC",
+      "Grade": 54.60979,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    }
+  ],
+  "FirstName": "Batihan",
+  "MiddleName": null,
+  "LastName": "ARGON"
+}
