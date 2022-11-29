@@ -166,6 +166,23 @@ public class Student extends Human{
 
         this.enrolledSections.add(section);
     }
+    public static int tryToRegister(Student student,Course course, int counter){
+
+        var courseSections = course.getAvailableCourseSections();
+
+        if(courseSections.size() == 0)
+            return counter;
+
+        student.addToRegistrationList(courseSections.get(0));
+
+        var labSections = course.getAvailableLabSections();
+
+        if(labSections.size() > 0){
+            student.addToRegistrationList(labSections.get(0));
+        }
+
+        return counter + 1;
+    }
 
     public String getStudentID() {
         return studentID;

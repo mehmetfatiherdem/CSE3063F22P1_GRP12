@@ -51,21 +51,21 @@ public class Simulation {
 
                 if(c.canStudentTakeCourse(s)){
                     if(c instanceof MandatoryCourse){
-                        tryToRegister(s,c,0);
+                        s.tryToRegister(s,c,0);
                     } else if(c instanceof NonTechnicalElectiveCourse
                             && ((s.getGrade() == Grade.FRESHMAN && currentSeason == Season.SPRING)
                             || (s.getGrade() == Grade.SENIOR && currentSeason == Season.FALL)
                             || (s.getGrade() == Grade.SENIOR && currentSeason == Season.SPRING)) && nteCounter == 0){
-                            nteCounter = tryToRegister(s,c,nteCounter);
+                            nteCounter = s.tryToRegister(s,c,nteCounter);
                     }else if(c instanceof TechnicalElectiveCourse
                             && s.getGrade() == Grade.SENIOR && currentSeason == Season.FALL && teCounter == 0) {
-                        teCounter = tryToRegister(s,c,teCounter);
+                        teCounter = s.tryToRegister(s,c,teCounter);
                     }else if(c instanceof FacultyTechnicalElectiveCourse
                             && s.getGrade() == Grade.SENIOR && currentSeason == Season.SPRING && fteCounter == 0){
-                        fteCounter = tryToRegister(s,c,fteCounter);
+                        fteCounter = s.tryToRegister(s,c,fteCounter);
                     }else if(c instanceof TechnicalElectiveCourse
                             && s.getGrade() == Grade.SENIOR && currentSeason == Season.SPRING && teCounter < 2){
-                        teCounter = tryToRegister(s,c,teCounter);
+                        teCounter = s.tryToRegister(s,c,teCounter);
                     }
                 }
             }
@@ -78,23 +78,5 @@ public class Simulation {
 
         Logger.log("");
         Logger.log("Registration has ended");
-    }
-
-    private static int tryToRegister(Student student,Course course, int counter){
-
-        var courseSections = course.getAvailableCourseSections();
-
-        if(courseSections.size() == 0)
-            return counter;
-
-        student.addToRegistrationList(courseSections.get(0));
-
-        var labSections = course.getAvailableLabSections();
-
-        if(labSections.size() > 0){
-            student.addToRegistrationList(labSections.get(0));
-        }
-
-        return counter + 1;
     }
 }
