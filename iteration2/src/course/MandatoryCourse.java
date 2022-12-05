@@ -1,6 +1,6 @@
 package iteration2.src.course;
 
-import iteration2.src.Helper;
+import iteration2.src.Department;
 import iteration2.src.human.Grade;
 import iteration2.src.human.Student;
 
@@ -43,11 +43,8 @@ public class MandatoryCourse extends Course{
         var sections = super.getAvailableCourseSections();
 
         if(sections.size() == 0){
-            int[] classes = Helper.generateDistinctClassHours(theoreticalHours);
-            long schedule = Section.getScheduleAtRandomPositions(classes);
-            CourseSection newSection = new CourseSection(this,schedule,null);
-            sectionList.add(newSection);
-            sections.add(newSection);
+            Department.getInstance().addNewCourseSection(this);
+            sections = super.getAvailableCourseSections();
         }
 
         return sections;
@@ -58,11 +55,8 @@ public class MandatoryCourse extends Course{
         var sections = super.getAvailableLabSections();
 
         if(sections.size() == 0){
-            int[] classes = Helper.generateDistinctClassHours(appliedHours);
-            long schedule = Section.getScheduleAtRandomPositions(classes);
-            LabSection newSection = new LabSection(this,schedule,null);
-            sectionList.add(newSection);
-            sections.add(newSection);
+            Department.getInstance().addNewLabSection(this);
+            sections = super.getAvailableLabSections();
         }
 
         return sections;

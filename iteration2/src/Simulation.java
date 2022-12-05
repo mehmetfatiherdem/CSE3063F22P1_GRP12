@@ -13,8 +13,7 @@ public class Simulation {
     //TODO:Revise these implementations ,of which some are unwise, and move them into their related classes in the next iteration
     //TODO:Do something about brute forcing of trying to take electives and hence the long long lines of unnecessary logs
     public static void main(String[] args) {
-        init();
-        //runSimulation(init());
+        runSimulation(init());
     }
 
     public static List<Student> init(){

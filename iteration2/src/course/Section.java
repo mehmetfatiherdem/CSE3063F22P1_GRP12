@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import iteration2.src.Helper;
 import iteration2.src.data_structures.Tuple;
 import iteration2.src.human.FacultyMember;
 import iteration2.src.human.Student;
@@ -123,9 +122,6 @@ public abstract class Section {
     public void setCourse(Course course) {
         this.course = course;
     }
-    public void setClassSchedule(long classHours) {
-        this.classSchedule = classHours;
-    }
 
     //Checks if there's any collision between two schedules
     private static boolean checkCollisionBetween(long sch1, long sch2) {
@@ -155,21 +151,5 @@ public abstract class Section {
 
     public boolean isSectionFull(){
         return course.getQuota() <= studentList.size();
-    }
-
-    public static long getScheduleAtPosition(int position, int count){
-        long schedule = -1L;
-        schedule >>>= (64 - count);
-        schedule <<= position;
-        return schedule;
-    }
-
-    public static long getScheduleAtRandomPositions(int[] positions){
-        long schedule = 0;
-        for(int pos: positions){
-            schedule |= (1 << pos);
-        }
-
-        return schedule;
     }
 }

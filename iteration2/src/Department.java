@@ -30,6 +30,8 @@ public class Department {
         return instance;
     }
 
+
+
     public void initialize(Season currentSeason,List<Course> courses,
                            List<Lecturer> lecturers,List<Assistant> assistants,List<Advisor> advisors,List<Student> students){
         if(initialized)
@@ -51,6 +53,16 @@ public class Department {
         generateWeeklyScheduleForAllCourses();
     }
 
+    public void addNewCourseSection(MandatoryCourse course){
+        long schedule = getNewSectionSchedule(course,course.getTheoreticalHours());
+        course.addCourseSection(schedule);
+    }
+
+    public void addNewLabSection(MandatoryCourse course){
+        long schedule = getNewSectionSchedule(course,course.getAppliedHours());
+        course.addLabSection(schedule);
+    }
+
     // Getters
     public String getCode() {
         return code;
@@ -58,18 +70,46 @@ public class Department {
     public Season getCurrentSeason(){
         return currentSeason;
     }
-    public List<Course> getCourses() {
-        return courses;
-    }
     public List<Student> getStudents() {
         return students;
     }
-
+    public List<Course> getCourses() {
+        return courses;
+    }
 
     private void assignFacultyMembersToCourses(){
         //TODO: will be added in the future iterations
     }
 
+    private long getNewSectionSchedule(MandatoryCourse course, int classHours){
+        List<MandatoryCourse> semesterCourses = new ArrayList<>();
+
+        for(Course c : courses)
+            if(c instanceof MandatoryCourse && course.getFirstYearToTake() == c.getFirstYearToTake() && course.getFirstSeasonToTake() == c.getFirstSeasonToTake())
+                semesterCourses.add((MandatoryCourse) c);
+
+        long availableClassHours = getScheduleAtPosition(0,40);
+
+        for(MandatoryCourse c : semesterCourses)
+            for(Section s : c.getSectionList())
+                availableClassHours ^= s.getClassSchedule();
+
+        List<Integer> division = getDivision(classHours);
+        long schedule = getRandomDividedScheduleFrom(availableClassHours,division);
+
+        int checker = 0;
+
+        for(int i = 0; i < 40; i++)
+            if((schedule & (1 << i)) > 0)
+                checker++;
+
+        if(checker < classHours){
+            availableClassHours = getScheduleAtPosition(0,40);
+            schedule = getRandomDividedScheduleFrom(availableClassHours,division);
+        }
+
+        return schedule;
+    }
     private void generateWeeklyScheduleForAllCourses(){
         List<Course> mandatoryCourses = new ArrayList<>();
         List<Course> nonTechnicalElectiveCourses = new ArrayList<>();
@@ -117,7 +157,7 @@ public class Department {
         long availableClassHours;
 
         for(Course c : nonTechnicalElectives){
-            availableClassHours = Section.getScheduleAtPosition(0,48);
+            availableClassHours = getScheduleAtPosition(0,48);
             long schedule = getRandomScheduleFrom(availableClassHours,c.getTheoreticalHours());
             c.addCourseSection(schedule);
         }
@@ -129,16 +169,8 @@ public class Department {
         for(int i = 0; i < len ; i++){
             var division = divisions.get(i);
             List<Integer> theoreticalDivision = division.GetKey();
-
-            long schedule = 0L;
-            availableClassHours = Section.getScheduleAtPosition(0,40);
-
-            for(int noOfClassHours : theoreticalDivision){
-                long divisionSchedule = getRandomScheduleFrom(availableClassHours, noOfClassHours);
-                availableClassHours ^= divisionSchedule;
-                schedule |= divisionSchedule;
-            }
-
+            availableClassHours = getScheduleAtPosition(0,40);
+            long schedule = getRandomDividedScheduleFrom(availableClassHours,theoreticalDivision);
             technicalElectives.get(i).addCourseSection(schedule);
         }
     }
@@ -156,7 +188,7 @@ public class Department {
             failedAttempt = false;
             courseSchedules = new ArrayList<>();
 
-            availableClassHours = Section.getScheduleAtPosition(0,40);
+            availableClassHours = getScheduleAtPosition(0,40);
 
             for (int i = 0; i < len; i++){
                 var courseDivisions = courseDivisons.get(i);
@@ -268,7 +300,7 @@ public class Department {
             int randomStartingHour = RandomNumberGenerator.randomIntegerBetween(0,availableHours.size());
             randomStartingHour = availableHours.get(randomStartingHour);
 
-            long scheduleForTheseHours = Section.getScheduleAtPosition(randomStartingHour,noOfHours);
+            long scheduleForTheseHours = getScheduleAtPosition(randomStartingHour,noOfHours);
             sectionSchedule |= scheduleForTheseHours;
         }
 
@@ -281,7 +313,7 @@ public class Department {
 
         for(int i = 0; i < 5; i++){
             int position = i * 8;
-            long requestedHours = Section.getScheduleAtPosition(position,count);
+            long requestedHours = getScheduleAtPosition(position,count);
 
             for(int j = 0; j < limit; j++){
                 if((schedule & requestedHours) == requestedHours){
@@ -297,7 +329,7 @@ public class Department {
     }
     private List<Integer> getAvailablePositionsOnDay(long schedule, int dayIndex, int count){
         int position = dayIndex * 8;
-        long requestedHours = Section.getScheduleAtPosition(position,count);
+        long requestedHours = getScheduleAtPosition(position,count);
 
         List<Integer> availablePositions = new ArrayList<>();
 
@@ -319,8 +351,31 @@ public class Department {
             availablePositions.addAll(getAvailablePositionsOnDay(availableClassHours,day,noOfClassHours));
 
         int randomPosition = RandomNumberGenerator.randomIntegerBetween(0,availablePositions.size());
-        randomPosition = availablePositions.get(randomPosition);
 
-        return Section.getScheduleAtPosition(randomPosition,noOfClassHours);
+        try {
+            randomPosition = availablePositions.get(randomPosition);
+        }catch (Exception e){
+            availableClassHours = getScheduleAtPosition(0,40);
+            return getRandomScheduleFrom(availableClassHours,noOfClassHours);
+        }
+
+        return getScheduleAtPosition(randomPosition,noOfClassHours);
+    }
+    private long getRandomDividedScheduleFrom(long availableClassHours, List<Integer> division){
+        long schedule = 0L;
+
+        for(int noOfClassHours : division){
+            long divisionSchedule = getRandomScheduleFrom(availableClassHours, noOfClassHours);
+            availableClassHours ^= divisionSchedule;
+            schedule |= divisionSchedule;
+        }
+
+        return schedule;
+    }
+    private long getScheduleAtPosition(int position, int count){
+        long schedule = -1L;
+        schedule >>>= (64 - count);
+        schedule <<= position;
+        return schedule;
     }
 }
