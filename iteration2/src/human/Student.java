@@ -172,13 +172,26 @@ public class Student extends Human{
 
         if(courseSections.size() == 0)
             return counter;
-
-        student.addToRegistrationList(courseSections.get(0));
+       if(courseSections.size() > 0){
+            for(int i = 0; i < courseSections.size(); i++){
+                if(!courseSections.get(i).isSectionFull()){
+                    student.addToRegistrationList(courseSections.get(i));
+                    break;
+                }
+            }
+        }
 
         var labSections = course.getAvailableLabSections();
 
         if(labSections.size() > 0){
-            student.addToRegistrationList(labSections.get(0));
+            for(int i = 0; i < labSections.size(); i++){
+                if(!labSections.get(i).isSectionFull()){
+
+                    student.addToRegistrationList(labSections.get(i));
+                    break;
+                }
+            }
+
         }
 
         return counter + 1;
