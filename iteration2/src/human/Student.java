@@ -166,7 +166,7 @@ public class Student extends Human{
 
         this.enrolledSections.add(section);
     }
-    public static int tryToRegister(Student student,Course course, int counter){
+    public  int tryToRegister(Student student,Course course, int counter){
 
         var courseSections = course.getAvailableCourseSections();
 
