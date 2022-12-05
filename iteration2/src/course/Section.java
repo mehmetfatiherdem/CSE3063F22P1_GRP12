@@ -158,9 +158,9 @@ public abstract class Section {
     }
 
     public static long getScheduleAtPosition(int position, int count){
-        long schedule = Helper.getSumOfPowersOfTwoUpTo(count);
+        long schedule = -1L;
+        schedule >>>= (64 - count);
         schedule <<= position;
-
         return schedule;
     }
 
