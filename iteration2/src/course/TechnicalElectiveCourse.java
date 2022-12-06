@@ -46,7 +46,7 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
 
         //TODO: add an else if when we find out about the Spring requirement
         if(season == Season.FALL){
-            isExceeded = student.getChosenCourseTypeCounterInFall().get("TE") >= MAX_CHOOSABLE_NUMBER_IN_FALL;
+            isExceeded = student.getChosenCourseTypeCounterInFall().get("TE") > MAX_CHOOSABLE_NUMBER_IN_FALL;
         }
         return isExceeded;
     }
