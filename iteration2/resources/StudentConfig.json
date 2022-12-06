@@ -1,0 +1,8 @@
+{
+  "MinFailChance": 0.03,
+  "MaxFailChance": 0.31,
+  "MinRetakeChance": 0.44,
+  "MaxRetakeChance": 0.91,
+  "MinNotTakeChance": 0.02,
+  "MaxNotTakeChance": 0.05
+}

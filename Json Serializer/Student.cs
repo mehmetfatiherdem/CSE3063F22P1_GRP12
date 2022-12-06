@@ -6,12 +6,12 @@ public class Student : Person
     private static Random rng;
     public readonly static int CurrentSemester;
 
-    private const float minFailChance = 0.04f;
-    private const float maxFailChance = 0.45f;
-    private const float minRetakeChance = 0.41f;
-    private const float maxRetakeChance = 0.87f;
-    private const float minNotTakeChance = 0.02f;
-    private const float maxNotTakeChance = 0.06f;
+    private const float MinFailChance = 0.03f;
+    private const float MaxFailChance = 0.31f;
+    private const float MinRetakeChance = 0.44f;
+    private const float MaxRetakeChance = 0.91f;
+    private const float MinNotTakeChance = 0.02f;
+    private const float MaxNotTakeChance = 0.05f;
 
     //Serializable
     public string ID { get; set; }
@@ -39,6 +39,11 @@ public class Student : Person
         GenerateStudentHistory();
     }
 
+    public static object GetStudentStatistics()
+    {
+        return new { MinFailChance, MaxFailChance, MinRetakeChance, MaxRetakeChance, MinNotTakeChance, MaxNotTakeChance };
+    }
+
     private (string ID, Grade grade) GenerateStudentIDAndGrade()
     {
         StringBuilder idBuilder;
@@ -50,7 +55,7 @@ public class Student : Person
 
             idBuilder.Append(rng.Next(18, 23));
 
-            string last3 = rng.Next(1, 300).ToString();
+            string last3 = rng.Next(1, 1000).ToString();
 
             for (int i = 0; i < 3 - last3.Length; i++)
             {
@@ -73,9 +78,9 @@ public class Student : Person
 
     private void GenerateStudentHistory()
     {
-        float failChance = RandomBetween(minFailChance, maxFailChance);
-        float retakeChance = RandomBetween(minRetakeChance, maxRetakeChance);
-        float notTakechance = RandomBetween(minNotTakeChance, maxNotTakeChance);
+        float failChance = RandomBetween(MinFailChance, MaxFailChance);
+        float retakeChance = RandomBetween(MinRetakeChance, MaxRetakeChance);
+        float notTakechance = RandomBetween(MinNotTakeChance, MaxNotTakeChance);
 
         Grade grade = Grade.FRESHMAN;
         int semester = 0;
