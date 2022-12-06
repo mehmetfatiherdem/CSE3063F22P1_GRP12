@@ -53,7 +53,7 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
 
     @Override
     public boolean isStudentGradeRequirementMet(Student s, Season currentSeason) {
-        return (s.getGrade() == Grade.SENIOR && currentSeason == Season.SPRING);
+        return (s.getGrade() == Grade.SENIOR && (currentSeason == Season.SPRING || currentSeason == Season.FALL));
     }
 
 
