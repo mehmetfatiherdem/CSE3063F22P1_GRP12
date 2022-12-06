@@ -41,27 +41,20 @@ public class Simulation {
 
         for(Student s: students){
 
-            int nteCounter = 0;
-            int teCounter = 0;
-            int fteCounter = 0;
-
             for(Course c : courses){
 
                 if(c.canStudentTakeCourse(s)){
                     if(c instanceof MandatoryCourse){
-                        tryToRegister(s,c,0);
+                        tryToRegister(s,c);
                     } else if(c instanceof NonTechnicalElectiveCourse
-                            && c.isStudentGradeRequirementMet(s, currentSeason) && nteCounter == 0){
-                            nteCounter = tryToRegister(s,c,nteCounter);
+                            && c.isStudentGradeRequirementMet(s, currentSeason)){
+                        tryToRegister(s,c);
                     }else if(c instanceof TechnicalElectiveCourse
-                            && c.isStudentGradeRequirementMet(s, currentSeason) && teCounter == 0) {
-                        teCounter = tryToRegister(s,c,teCounter);
+                            && c.isStudentGradeRequirementMet(s, currentSeason) && ((TechnicalElectiveCourse) c).isCreditsRequirementMet(s)) {
+                        tryToRegister(s,c);
                     }else if(c instanceof FacultyTechnicalElectiveCourse
-                            && c.isStudentGradeRequirementMet(s, currentSeason) && fteCounter == 0){
-                        fteCounter = tryToRegister(s,c,fteCounter);
-                    }else if(c instanceof TechnicalElectiveCourse
-                            && c.isStudentGradeRequirementMet(s, currentSeason) && teCounter < 2){
-                        teCounter = tryToRegister(s,c,teCounter);
+                            && c.isStudentGradeRequirementMet(s, currentSeason)){
+                        tryToRegister(s,c);
                     }
                 }
             }
@@ -76,12 +69,26 @@ public class Simulation {
         Logger.log("Registration has ended");
     }
 
-    private static int tryToRegister(Student student,Course course, int counter){
+    private static void tryToRegister(Student student, Course course){
+
+        String courseTypeOfTheCounter = "";
+
+        if(course instanceof NonTechnicalElectiveCourse){
+            courseTypeOfTheCounter = "NTE";
+        } else if(course instanceof TechnicalElectiveCourse){
+            courseTypeOfTheCounter = "TE";
+        }else if(course instanceof FacultyTechnicalElectiveCourse){
+            courseTypeOfTheCounter = "FTE";
+        }else if(course instanceof MandatoryCourse){
+            courseTypeOfTheCounter = "Mandatory";
+        }
+
+        int counter = student.getChosenCourseTypeCounterInFall().get(courseTypeOfTheCounter);
 
         var courseSections = course.getAvailableCourseSections();
 
         if(courseSections.size() == 0)
-            return counter;
+            return;
 
         student.addToRegistrationList(courseSections.get(0));
 
@@ -91,6 +98,6 @@ public class Simulation {
             student.addToRegistrationList(labSections.get(0));
         }
 
-        return counter + 1;
+        student.getChosenCourseTypeCounterInFall().put(courseTypeOfTheCounter, counter + 1);
     }
 }

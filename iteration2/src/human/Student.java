@@ -6,7 +6,9 @@ import iteration2.src.course.*;
 import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Student extends Human{
 
@@ -15,6 +17,12 @@ public class Student extends Human{
     private Advisor advisor;
     private Transcript transcript;
     private List<Section> enrolledSections = new ArrayList<>();
+    private Map<String, Integer> chosenCourseTypeCounterInFall = new HashMap<>(){{
+        put("Mandatory", 0);
+        put("NTE", 0);
+        put("TE", 0);
+        put("FTE", 0);
+    }};
 
 
     public Student(String firstName, String middleName, String lastName,String studentID,Grade grade ,Advisor advisor,List<CourseRecord> transcript){
@@ -189,6 +197,10 @@ public class Student extends Human{
 
     public Transcript getTranscript(){
         return transcript;
+    }
+
+    public Map<String, Integer> getChosenCourseTypeCounterInFall() {
+        return chosenCourseTypeCounterInFall;
     }
 
     public void setGrade(Grade grade) {
