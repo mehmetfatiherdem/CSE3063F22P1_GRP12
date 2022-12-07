@@ -1,6 +1,7 @@
 package iteration2.src.human;
 
 import iteration2.src.Department;
+import iteration2.src.RandomNumberGenerator;
 import iteration2.src.Transcript;
 import iteration2.src.course.*;
 import iteration2.src.input_output.Logger;
@@ -9,13 +10,22 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Student extends Human{
+    public static float minFailChance;
+    public static float maxFailChance;
+    public static float minRetakeChance;
+    public static float maxRetakeChance;
+    public static float minNotTakeChance;
+    public static float maxNotTakeChance;
 
     private String studentID;
     private Grade grade;
     private Advisor advisor;
+
+    private float failChance;
+    private float retakeChance;
+    private float notTakeChance;
     private Transcript transcript;
     private List<Section> enrolledSections = new ArrayList<>();
-
 
     public Student(String firstName, String middleName, String lastName,String studentID,Grade grade ,Advisor advisor,List<CourseRecord> transcript){
         super(firstName, middleName, lastName);
@@ -24,15 +34,14 @@ public class Student extends Human{
         this.grade = grade;
         this.advisor = advisor;
         this.transcript = new Transcript(transcript);
+
+        failChance = RandomNumberGenerator.RandomFloatBetween(minFailChance, maxFailChance);
+        retakeChance = RandomNumberGenerator.RandomFloatBetween(minRetakeChance, maxRetakeChance);
+        notTakeChance = RandomNumberGenerator.RandomFloatBetween(minNotTakeChance, maxNotTakeChance);
     }
 
     public Student(String firstName, String lastName,String studentID, Grade grade ,Advisor advisor, List<CourseRecord> transcript){
-        super(firstName, lastName);
-
-        this.studentID = studentID;
-        this.grade = grade;
-        this.advisor = advisor;
-        this.transcript = new Transcript(transcript);
+        this(firstName,null,lastName,studentID,grade,advisor,transcript);
     }
 
     public Boolean checkIfPrerequisitesArePassed(Course course){
@@ -190,14 +199,19 @@ public class Student extends Human{
     public Transcript getTranscript(){
         return transcript;
     }
+    public float getFailChance(){
+        return failChance;
+    }
+
+    public float getRetakeChance(){
+        return retakeChance;
+    }
+
+    public float getNotTakeChance(){
+        return notTakeChance;
+    }
 
     public void setGrade(Grade grade) {
         this.grade = grade;
     }
-
-    public void setAdvisor(Advisor advisor) {
-        this.advisor = advisor;
-    }
-
-
 }

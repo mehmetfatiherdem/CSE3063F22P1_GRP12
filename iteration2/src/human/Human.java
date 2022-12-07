@@ -15,8 +15,7 @@ public abstract class Human {
     }
 
     protected Human(String firstName, String lastName){
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this(firstName,null,lastName);
     }
 
 

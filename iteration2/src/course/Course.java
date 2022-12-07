@@ -29,8 +29,8 @@ public abstract class Course {
     protected List<Assistant> assistants = new ArrayList<>();
     protected List<Section> sectionList = new ArrayList<>();
 
-    public Course(String code, String name, int credits, int theoreticalHours
-            , int appliedHours, Grade firstYearToTake,Season firstSeasonToTake){
+    public Course(String code, String name, int credits, int theoreticalHours, int appliedHours,
+                  Grade firstYearToTake,Season firstSeasonToTake, List<Lecturer> lecturers, List<Assistant> assistants){
         this.code = code;
         this.name = name;
         this.credits = credits;
@@ -38,6 +38,8 @@ public abstract class Course {
         this.appliedHours = appliedHours;
         this.firstYearToTake = firstYearToTake;
         this.firstSeasonToTake = firstSeasonToTake;
+        this.lecturers = lecturers;
+        this.assistants = assistants;
         this.quota = RandomNumberGenerator.randomIntegerBetween(minQuota,maxQuota + 1);
 
         //Each and every semester, at least one section of all mandatory courses should be registrable without any collision

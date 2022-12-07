@@ -19,6 +19,7 @@ public class JsonParser {
     private final String coursesFile = "iteration2/resources/Courses.json";
     private final String semesterFile = "iteration2/resources/Semester.json";
     private final String studentsDir = "iteration2/resources/students/";
+    private final String studentConfigFile = "iteration2/resources/StudentConfig.json";
 
     public JsonParser(){
 
@@ -72,7 +73,7 @@ public class JsonParser {
         return lecturerList;
     }
 
-    public List<Course> parseCourses(){
+    public List<Course> parseCourses(List<Lecturer> lecturers,List<Assistant> assistants){
         JSONArray arr = (JSONArray) readJsonFile(coursesFile);
 
         List<JSONArray> prerequisiteCodes = new ArrayList<>();
@@ -93,26 +94,31 @@ public class JsonParser {
 
             Grade firstGradeToTake = Grade.valueOf((String) courseJson.get("FirstGradeToTake"));
             Season firstSeasonToTake = Season.valueOf((String) courseJson.get("FirstSeasonToTake"));
+            JSONArray lecturersJson = (JSONArray)courseJson.get("Lecturers");
+            JSONArray assistantsJson = (JSONArray)courseJson.get("Assistants");
+
+            List<Lecturer> lecturersOfThisCourse = findLecturersFrom(lecturersJson,lecturers);
+            List<Assistant> assistantsOfThisCourse = findAssistantsFrom(assistantsJson,assistants);
 
             // add to list
             Course course = null;
 
             switch (courseType){
                 case "Mandatory":
-                    course = new MandatoryCourse(courseCode,courseName,credits,
-                            theoreticalHours,appliedHours,firstGradeToTake,firstSeasonToTake);
+                    course = new MandatoryCourse(courseCode,courseName,credits, theoreticalHours,
+                            appliedHours,firstGradeToTake,firstSeasonToTake,lecturersOfThisCourse,assistantsOfThisCourse);
                     break;
                 case "Faculty Technical Elective":
-                    course = new FacultyTechnicalElectiveCourse(courseCode,courseName,credits,
-                            theoreticalHours,appliedHours,firstGradeToTake,firstSeasonToTake);
+                    course = new FacultyTechnicalElectiveCourse(courseCode,courseName,credits, theoreticalHours,
+                            appliedHours,firstGradeToTake,firstSeasonToTake,lecturersOfThisCourse,assistantsOfThisCourse);
                     break;
                 case "Technical Elective":
-                    course = new TechnicalElectiveCourse(courseCode,courseName,credits,
-                            theoreticalHours,appliedHours,firstGradeToTake,firstSeasonToTake);
+                    course = new TechnicalElectiveCourse(courseCode,courseName,credits, theoreticalHours,
+                            appliedHours,firstGradeToTake,firstSeasonToTake,lecturersOfThisCourse,assistantsOfThisCourse);
                     break;
                 case "Non-Technical Elective | University Elective":
-                    course = new NonTechnicalElectiveCourse(courseCode,courseName,credits,
-                            theoreticalHours,appliedHours,firstGradeToTake,firstSeasonToTake);
+                    course = new NonTechnicalElectiveCourse(courseCode,courseName,credits, theoreticalHours,
+                            appliedHours,firstGradeToTake,firstSeasonToTake,lecturersOfThisCourse,assistantsOfThisCourse);
                     break;
             }
 
@@ -124,6 +130,8 @@ public class JsonParser {
     }
 
     public List<Student> parseStudents(List<Advisor> advisors, List<Course> courses){
+        parseStudentConfig();
+
         List<Student> studentList = new ArrayList<>();
 
         File studentsFolder = new File(studentsDir);
@@ -188,6 +196,17 @@ public class JsonParser {
         }
     }
 
+    private void parseStudentConfig(){
+        JSONObject configJson = (JSONObject) readJsonFile(studentConfigFile);
+
+        Student.maxRetakeChance = (float) (double) configJson.get("MaxRetakeChance");
+        Student.minRetakeChance = (float) (double) configJson.get("MinRetakeChance");
+        Student.maxFailChance = (float) (double) configJson.get("MaxFailChance");
+        Student.minFailChance = (float) (double) configJson.get("MinFailChance");
+        Student.maxNotTakeChance = (float) (double) configJson.get("MaxNotTakeChance");
+        Student.minNotTakeChance = (float) (double) configJson.get("MinNotTakeChance");
+    }
+
     private String[] parseHuman(JSONObject obj){
         String[] names = new String[3];
 
@@ -201,33 +220,6 @@ public class JsonParser {
         names[2] = (String) obj.get("LastName");
 
         return names;
-    }
-
-    private void assignPrerequisitesToCourses(List<Course> courses,List<JSONArray> prerequisiteCodes){
-        int len = courses.size();
-
-        for(int i = 0; i < len; i++){
-            Course course = courses.get(i);
-            JSONArray codes = prerequisiteCodes.get(i);
-
-            for(int j = 0; j < codes.size(); j++){
-                String code = (String) codes.get(j);
-                Course prerequisite = findCourseWithCode(courses,code);
-                course.addPrerequisite(prerequisite);
-            }
-        }
-    }
-    private Course findCourseWithCode(List<Course> courses,String courseCode){
-        int len = courses.size();
-        Course course = null;
-
-        for(int i = 0; i < len; i++){
-            course = courses.get(i);
-
-            if(course.getCode().equals(courseCode))
-                break;
-        }
-        return course;
     }
 
     private List<CourseRecord> parseCourseRecords(JSONArray recordsJson,List<Course> courses){
@@ -252,6 +244,61 @@ public class JsonParser {
         return courseRecords;
     }
 
+    private List<String> parseNames(JSONArray namesJson){
+        List<String> names = new ArrayList<>();
+        for(Object n : namesJson){
+            String name = (String)n;
+            names.add(name);
+        }
+
+        return names;
+    }
+
+    private Course findCourseWithCode(List<Course> courses,String courseCode){
+        int len = courses.size();
+        Course course = null;
+
+        for(int i = 0; i < len; i++){
+            course = courses.get(i);
+
+            if(course.getCode().equals(courseCode))
+                break;
+        }
+        return course;
+    }
+
+    private List<Assistant> findAssistantsFrom(JSONArray assistantsJson, List<Assistant> assistants){
+        List<Assistant> assistantsFound = new ArrayList<>();
+        List<String> assistantNames = parseNames(assistantsJson);
+
+        for(String astName : assistantNames){
+            for(Assistant ast : assistants){
+                if(ast.getFullName().equals(astName)){
+                    assistantsFound.add(ast);
+                    break;
+                }
+            }
+        }
+
+        return assistantsFound;
+    }
+
+    private List<Lecturer> findLecturersFrom(JSONArray lecturersJson, List<Lecturer> lecturers){
+        List<Lecturer> lecturersFound = new ArrayList<>();
+        List<String> lecturerNames = parseNames(lecturersJson);
+
+        for(String lecName : lecturerNames){
+            for(Lecturer lec : lecturers){
+                if(lec.getFullName().equals(lecName)){
+                    lecturersFound.add(lec);
+                    break;
+                }
+            }
+        }
+
+        return lecturersFound;
+    }
+
     private Advisor findAdvisorByName(List<Advisor> advisors,String advisorName){
         for(var adv : advisors){
             if(adv.getFullName().equals(advisorName)){
@@ -261,6 +308,22 @@ public class JsonParser {
 
         return null;
     }
+
+    private void assignPrerequisitesToCourses(List<Course> courses,List<JSONArray> prerequisiteCodes){
+        int len = courses.size();
+
+        for(int i = 0; i < len; i++){
+            Course course = courses.get(i);
+            JSONArray codes = prerequisiteCodes.get(i);
+
+            for(int j = 0; j < codes.size(); j++){
+                String code = (String) codes.get(j);
+                Course prerequisite = findCourseWithCode(courses,code);
+                course.addPrerequisite(prerequisite);
+            }
+        }
+    }
+
     private Object readJsonFile(String fileName){
         return readJsonFile(new File(fileName));
     }
@@ -273,7 +336,6 @@ public class JsonParser {
         {
             //Read JSON file
             jsonObj = parser.parse(reader);
-            reader.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -285,7 +347,6 @@ public class JsonParser {
         try(FileWriter writer = new FileWriter(fileName)){
             writer.write(str);
             writer.flush();
-            writer.close();
         }catch (Exception e){
             e.printStackTrace();
         }

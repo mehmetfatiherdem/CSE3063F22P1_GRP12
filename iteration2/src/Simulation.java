@@ -19,13 +19,13 @@ public class Simulation {
     public static List<Student> init(){
         JsonParser parser = new JsonParser();
         var lecturers = parser.parseLecturers();
-        var assistants = parser.parseAssistants();
         var advisors = parser.parseAdvisors();
-        var courses = parser.parseCourses();
+        lecturers.addAll(advisors);
+        var assistants = parser.parseAssistants();
+        var courses = parser.parseCourses(lecturers,assistants);
         var students = parser.parseStudents(advisors,courses);
         var season = parser.parseSemester();
 
-        lecturers.addAll(advisors);
 
         List<Human> humans = new ArrayList<>();
         humans.addAll(lecturers);
