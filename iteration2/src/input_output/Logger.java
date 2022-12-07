@@ -29,6 +29,17 @@ public class Logger {
         closeLogFile(writer);
     }
 
+    public static void log(Object obj){
+        if(!enabled)
+            return;
+
+        System.out.println(obj);
+
+        var writer = openLogFile();
+        writer.append(obj + "\n");
+        closeLogFile(writer);
+    }
+
     private static PrintWriter openLogFile(){
         PrintWriter writer = null;
 
