@@ -5,6 +5,7 @@ import iteration2.src.human.*;
 import iteration2.src.input_output.JsonParser;
 import iteration2.src.input_output.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Simulation {
@@ -16,7 +17,6 @@ public class Simulation {
     }
 
     public static List<Student> init(){
-
         JsonParser parser = new JsonParser();
         var lecturers = parser.parseLecturers();
         var assistants = parser.parseAssistants();
@@ -27,6 +27,12 @@ public class Simulation {
 
         lecturers.addAll(advisors);
 
+        List<Human> humans = new ArrayList<>();
+        humans.addAll(lecturers);
+        humans.addAll(assistants);
+        humans.addAll(advisors);
+        humans.addAll(students);
+
         Department department = Department.getInstance();
         department.initialize(season,courses,lecturers,assistants,advisors,students);
 
@@ -34,7 +40,6 @@ public class Simulation {
     }
 
     public static void runSimulation(List<Student> students){
-
         Department department = Department.getInstance();
         Season currentSeason = department.getCurrentSeason();
         List<Course> courses = department.getCourses();
@@ -52,7 +57,7 @@ public class Simulation {
                         tryToRegister(s,c,0);
                     } else if(c instanceof NonTechnicalElectiveCourse
                             && c.isStudentGradeRequirementMet(s, currentSeason) && nteCounter == 0){
-                            nteCounter = tryToRegister(s,c,nteCounter);
+                        nteCounter = tryToRegister(s,c,nteCounter);
                     }else if(c instanceof TechnicalElectiveCourse
                             && c.isStudentGradeRequirementMet(s, currentSeason) && teCounter == 0) {
                         teCounter = tryToRegister(s,c,teCounter);
@@ -77,7 +82,6 @@ public class Simulation {
     }
 
     private static int tryToRegister(Student student,Course course, int counter){
-
         var courseSections = course.getAvailableCourseSections();
 
         if(courseSections.size() == 0)

@@ -6,11 +6,22 @@ import java.io.PrintWriter;
 
 public class Logger {
     private static final String logTxt = "iteration2/output/log.txt";
+    private static boolean enabled = true;
 
     private Logger(){
     }
 
+    public static void enable(){
+        enabled = true;
+    }
+
+    public static void disable(){
+        enabled = false;
+    }
     public static void log(String message){
+        if(!enabled)
+            return;
+
         System.out.println(message);
 
         var writer = openLogFile();

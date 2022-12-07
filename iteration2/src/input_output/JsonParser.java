@@ -13,7 +13,6 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class JsonParser {
-
     private final String advisorsFile = "iteration2/resources/Advisors.json";
     private final String assistantsFile = "iteration2/resources/Assistants.json";
     private final String lecturersFile = "iteration2/resources/Lecturers.json";
@@ -26,89 +25,60 @@ public class JsonParser {
     }
 
     public Season parseSemester(){
-
         String semester = (String) readJsonFile(semesterFile);
         return Season.valueOf(semester);
     }
 
     public List<Advisor> parseAdvisors(){
-
         JSONArray arr = (JSONArray) readJsonFile(advisorsFile);
 
         //parse each advisor
-
         List<Advisor> advisorList = new ArrayList<>();
 
         for (Object adv : arr){
 
-            StringBuilder firstName = new StringBuilder();
-            StringBuilder middleName = new StringBuilder();
-            StringBuilder lastName = new StringBuilder();
-            parseHuman((JSONObject)adv,firstName,middleName,lastName);
-
-            String mName = isNull(middleName.toString()) ? null : middleName.toString();
-
-            advisorList.add(new Advisor(firstName.toString(),mName,lastName.toString()));
+            String[] names = parseHuman((JSONObject)adv);
+            advisorList.add(new Advisor(names[0],names[1],names[2]));
         }
 
         return advisorList;
     }
 
     public List<Assistant> parseAssistants() {
-
         JSONArray arr = (JSONArray) readJsonFile(assistantsFile);
 
         //parse each assistant
-
         List<Assistant> assistantList = new ArrayList<>();
 
         for (Object adv : arr) {
-
-            StringBuilder firstName = new StringBuilder();
-            StringBuilder middleName = new StringBuilder();
-            StringBuilder lastName = new StringBuilder();
-            parseHuman((JSONObject) adv, firstName, middleName, lastName);
-
-            String mName = isNull(middleName.toString()) ? null : middleName.toString();
-
-            assistantList.add(new Assistant(firstName.toString(), mName, lastName.toString()));
+            String[] names = parseHuman((JSONObject) adv);
+            assistantList.add(new Assistant(names[0], names[1], names[2]));
         }
 
         return assistantList;
     }
 
     public List<Lecturer> parseLecturers(){
-
         JSONArray arr = (JSONArray) readJsonFile(lecturersFile);
 
         //parse each lecturer
-
         List<Lecturer> lecturerList = new ArrayList<>();
 
         for (Object adv : arr){
-
-            StringBuilder firstName = new StringBuilder();
-            StringBuilder middleName = new StringBuilder();
-            StringBuilder lastName = new StringBuilder();
-            parseHuman((JSONObject)adv,firstName,middleName,lastName);
-
-            String mName = isNull(middleName.toString()) ? null : middleName.toString();
-
-            lecturerList.add(new Lecturer(firstName.toString(),mName,lastName.toString()));
+            String[] names = parseHuman((JSONObject)adv);
+            lecturerList.add(new Lecturer(names[0],names[1],names[2]));
         }
 
         return lecturerList;
     }
 
     public List<Course> parseCourses(){
-
         JSONArray arr = (JSONArray) readJsonFile(coursesFile);
 
         List<JSONArray> prerequisiteCodes = new ArrayList<>();
         List<Course> courseList = new ArrayList<>();
 
         for (Object c : arr){
-
             JSONObject courseJson = (JSONObject)c;
             String courseCode = (String) courseJson.get("CourseCode");
             String courseName = (String) courseJson.get("CourseName");
@@ -150,12 +120,10 @@ public class JsonParser {
         }
 
         assignPrerequisitesToCourses(courseList,prerequisiteCodes);
-
         return courseList;
     }
 
     public List<Student> parseStudents(List<Advisor> advisors, List<Course> courses){
-
         List<Student> studentList = new ArrayList<>();
 
         File studentsFolder = new File(studentsDir);
@@ -172,23 +140,17 @@ public class JsonParser {
             String advisorName = (String) studentJson.get("AdvisorName");
             Advisor advisor = findAdvisorByName(advisors,advisorName);
 
-            StringBuilder firstName = new StringBuilder();
-            StringBuilder middleName = new StringBuilder();
-            StringBuilder lastName = new StringBuilder();
-            parseHuman(studentJson,firstName,middleName,lastName);
+            String[] names = parseHuman(studentJson);
             JSONArray courseRecordsJson = (JSONArray)studentJson.get("CourseRecords");
             List<CourseRecord> courseRecords = parseCourseRecords(courseRecordsJson,courses);
 
-            String mName = isNull(middleName.toString()) ? null : middleName.toString();
-
-            studentList.add(new Student(firstName.toString(),mName,lastName.toString(),studentID,grade,advisor,courseRecords));
+            studentList.add(new Student(names[0],names[1],names[2],studentID,grade,advisor,courseRecords));
         }
 
         return studentList;
     }
 
     public void serializeStudents(List<Student> students){
-
         for(Student s : students){
             List<CourseRecord> records = s.getTranscript().getTakenCourseRecords();
 
@@ -225,14 +187,20 @@ public class JsonParser {
             writeToFile(jsonString,studentsDir + s.getStudentID() + ".json");
         }
     }
-    private void parseHuman(JSONObject obj, StringBuilder firstName, StringBuilder middleName, StringBuilder lastName){
 
-        firstName.append((String)obj.get("FirstName"));
-        middleName.append((String) obj.get("MiddleName"));
-        lastName.append((String) obj.get("LastName"));
-    }
-    private boolean isNull(String s){
-        return s.equals("null");
+    private String[] parseHuman(JSONObject obj){
+        String[] names = new String[3];
+
+        names[0] = (String)obj.get("FirstName");
+        String mName = (String) obj.get("MiddleName");
+
+        if(mName != null && mName.equals("null"))
+            mName = null;
+
+        names[1] = mName;
+        names[2] = (String) obj.get("LastName");
+
+        return names;
     }
 
     private void assignPrerequisitesToCourses(List<Course> courses,List<JSONArray> prerequisiteCodes){
@@ -263,11 +231,9 @@ public class JsonParser {
     }
 
     private List<CourseRecord> parseCourseRecords(JSONArray recordsJson,List<Course> courses){
-
         List<CourseRecord> courseRecords = new ArrayList<>();
 
         for(Object r : recordsJson){
-
             JSONObject record = (JSONObject) r;
 
             String courseCode = (String) record.get("CourseCode");
