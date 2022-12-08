@@ -26,7 +26,7 @@ public class MandatoryCourse extends Course{
     @Override
     public Boolean isAnyCourseSectionAvailable(){
         if(!super.isAnyCourseSectionAvailable()){
-
+            Department.getInstance().addNewCourseSection(this);
         }
 
         return true;
@@ -35,7 +35,7 @@ public class MandatoryCourse extends Course{
     @Override
     public Boolean isAnyLabSectionAvailable(){
         if(!super.isAnyLabSectionAvailable()){
-
+            Department.getInstance().addNewLabSection(this);
         }
         return true;
     }
@@ -44,7 +44,7 @@ public class MandatoryCourse extends Course{
     public List<CourseSection> getAvailableCourseSections(){
         var sections = super.getAvailableCourseSections();
 
-        if(sections.size() == 0){
+        if(sections.size() == 0 && theoreticalHours > 0){
             Department.getInstance().addNewCourseSection(this);
             sections = super.getAvailableCourseSections();
         }
@@ -56,7 +56,7 @@ public class MandatoryCourse extends Course{
     public List<LabSection> getAvailableLabSections(){
         var sections = super.getAvailableLabSections();
 
-        if(sections.size() == 0){
+        if(sections.size() == 0 && appliedHours > 0){
             Department.getInstance().addNewLabSection(this);
             sections = super.getAvailableLabSections();
         }

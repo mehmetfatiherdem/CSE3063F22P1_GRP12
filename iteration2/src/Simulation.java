@@ -26,13 +26,6 @@ public class Simulation {
         var students = parser.parseStudents(advisors,courses);
         var season = parser.parseSemester();
 
-
-        List<Human> humans = new ArrayList<>();
-        humans.addAll(lecturers);
-        humans.addAll(assistants);
-        humans.addAll(advisors);
-        humans.addAll(students);
-
         Department department = Department.getInstance();
         department.initialize(season,courses,lecturers,assistants,advisors,students);
 
@@ -43,6 +36,26 @@ public class Simulation {
         Department department = Department.getInstance();
         Season currentSeason = department.getCurrentSeason();
         List<Course> courses = department.getCourses();
+
+        for(var c : courses){
+            Logger.log("Course : " + c.getName());
+            var courseSections =  c.getAvailableCourseSections();
+            var labSections = c.getAvailableLabSections();
+
+            Logger.log("    Course Sections : ");
+            for (var s : courseSections){
+                Logger.log("        Section : " + s.toString());
+                Logger.log("        Lecturer : " + s.getLecturer().getFullName());
+            }
+
+            Logger.log("    Lab Sections : ");
+            for (var s : labSections){
+                Logger.log("        Section : " + s.toString());
+                Logger.log("        Assistant : " + s.getAssistant().getFullName());
+            }
+        }
+
+        Logger.disable();
 
         for(Student s: students){
 

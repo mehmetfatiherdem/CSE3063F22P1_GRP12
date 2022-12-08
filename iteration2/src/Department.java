@@ -30,8 +30,6 @@ public class Department {
         return instance;
     }
 
-
-
     public void initialize(Season currentSeason,List<Course> courses,
                            List<Lecturer> lecturers,List<Assistant> assistants,List<Advisor> advisors,List<Student> students){
         if(initialized)
@@ -49,7 +47,6 @@ public class Department {
 
         initialized = true;
 
-        assignFacultyMembersToCourses();
         generateWeeklyScheduleForAllCourses();
     }
 
@@ -77,10 +74,6 @@ public class Department {
         return courses;
     }
 
-    private void assignFacultyMembersToCourses(){
-        //TODO: will be added in the future iterations
-    }
-
     private long getNewSectionSchedule(MandatoryCourse course, int classHours){
         List<MandatoryCourse> semesterCourses = new ArrayList<>();
 
@@ -91,7 +84,7 @@ public class Department {
         long availableClassHours = getScheduleAtPosition(0,40);
 
         for(MandatoryCourse c : semesterCourses)
-            for(Section s : c.getSectionList())
+            for(Section s : c.getAllSections())
                 availableClassHours ^= s.getClassSchedule();
 
         List<Integer> division = getDivision(classHours);
@@ -145,11 +138,8 @@ public class Department {
                 Course course = mandatoryCoursesForSemester.get(i);
                 var schedules = courseSchedules.get(i);
 
-                if(course.getTheoreticalHours() != 0)
-                    course.addCourseSection(schedules.GetKey());
-
-                if(course.getAppliedHours() != 0)
-                    course.addLabSection(schedules.GetValue());
+                course.addCourseSection(schedules.GetKey());
+                course.addLabSection(schedules.GetValue());
             }
         }
     }

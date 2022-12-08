@@ -21,16 +21,18 @@ public abstract class Section {
      * so each bit represents the class hour that corresponds to that bit's position in the bitmask.
      * For example 17th bit would be the first class hour on Wednesday. 1 means there's a section at that classhour, and 0 means there is not
      */
+    private String sectionCode;
 
     protected Course course;
     protected long classSchedule;
     protected FacultyMember instructor;
     protected List<Student> studentList = new ArrayList<>();
 
-    protected Section(Course course, long classSchedule, FacultyMember instructor) {
+    protected Section(Course course,String sectionCode ,long classSchedule, FacultyMember instructor) {
         this.course = course;
         this.classSchedule = classSchedule;
         this.instructor = instructor;
+        this.sectionCode = sectionCode;
     }
 
     //Returns each collision between two sections by their collision days as the key, and their collision hours as the value in the Tuple
@@ -111,6 +113,10 @@ public abstract class Section {
     public Course getCourse() {
         return course;
     }
+
+    public String getSectionCode(){
+        return sectionCode;
+    }
     public long getClassSchedule() {
         return classSchedule;
     }
@@ -151,5 +157,10 @@ public abstract class Section {
 
     public boolean isSectionFull(){
         return course.getQuota() <= studentList.size();
+    }
+
+    @Override
+    public String toString(){
+        return course.getCode() + "." + sectionCode;
     }
 }
