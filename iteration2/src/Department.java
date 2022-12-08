@@ -12,7 +12,10 @@ public class Department {
 
     private final String code = "CSE";
     private Season currentSeason;
-    private List<Course> courses;
+    private List<MandatoryCourse> mandatoryCourses;
+    private List<TechnicalElectiveCourse> technicalElectiveCourses;
+    private List<FacultyTechnicalElectiveCourse> facultyTechnicalElectiveCourses;
+    private List<NonTechnicalElectiveCourse> nonTechnicalElectiveCourses;
     private List<Student> students;
     private List<Lecturer> lecturers;
     private List<Assistant> assistants;
@@ -39,11 +42,26 @@ public class Department {
             return;
 
         this.currentSeason = currentSeason;
-        this.courses = courses;
         this.lecturers = lecturers;
         this.assistants = assistants;
         this.advisors = advisors;
         this.students = students;
+
+        mandatoryCourses = new ArrayList<>();
+        technicalElectiveCourses = new ArrayList<>();
+        facultyTechnicalElectiveCourses = new ArrayList<>();
+        nonTechnicalElectiveCourses = new ArrayList<>();
+
+        for (Course c : courses){
+            if(c instanceof MandatoryCourse)
+                mandatoryCourses.add((MandatoryCourse) c);
+            else if(c instanceof TechnicalElectiveCourse)
+                technicalElectiveCourses.add((TechnicalElectiveCourse) c);
+            else if(c instanceof FacultyTechnicalElectiveCourse)
+                facultyTechnicalElectiveCourses.add((FacultyTechnicalElectiveCourse) c);
+            else if(c instanceof NonTechnicalElectiveCourse)
+                nonTechnicalElectiveCourses.add((NonTechnicalElectiveCourse) c);
+        }
 
         initialized = true;
 
@@ -70,16 +88,37 @@ public class Department {
     public List<Student> getStudents() {
         return students;
     }
-    public List<Course> getCourses() {
+    public List<Course> getAllCourses() {
+        List<Course> courses = new ArrayList<>(mandatoryCourses);
+        courses.addAll(technicalElectiveCourses);
+        courses.addAll(facultyTechnicalElectiveCourses);
+        courses.addAll(nonTechnicalElectiveCourses);
+
         return courses;
+    }
+
+    public List<MandatoryCourse> getMandatoryCourses(){
+        return mandatoryCourses;
+    }
+
+    public List<TechnicalElectiveCourse> getTechnicalElectiveCourses(){
+        return technicalElectiveCourses;
+    }
+
+    public List<FacultyTechnicalElectiveCourse> getFacultyTechnicalElectiveCourses(){
+        return facultyTechnicalElectiveCourses;
+    }
+
+    public List<NonTechnicalElectiveCourse> getNonTechnicalElectiveCourses(){
+        return nonTechnicalElectiveCourses;
     }
 
     private long getNewSectionSchedule(MandatoryCourse course, int classHours){
         List<MandatoryCourse> semesterCourses = new ArrayList<>();
 
-        for(Course c : courses)
-            if(c instanceof MandatoryCourse && course.getFirstYearToTake() == c.getFirstYearToTake() && course.getFirstSeasonToTake() == c.getFirstSeasonToTake())
-                semesterCourses.add((MandatoryCourse) c);
+        for(MandatoryCourse c : mandatoryCourses)
+            if(course.getFirstYearToTake() == c.getFirstYearToTake() && course.getFirstSeasonToTake() == c.getFirstSeasonToTake())
+                semesterCourses.add(c);
 
         long availableClassHours = getScheduleAtPosition(0,40);
 
@@ -104,22 +143,11 @@ public class Department {
         return schedule;
     }
     private void generateWeeklyScheduleForAllCourses(){
-        List<Course> mandatoryCourses = new ArrayList<>();
-        List<Course> nonTechnicalElectiveCourses = new ArrayList<>();
-        List<Course> technicalElectiveCourses = new ArrayList<>();
-
-        for(Course c : courses){
-            if(c instanceof MandatoryCourse)
-                mandatoryCourses.add(c);
-            else
-                nonTechnicalElectiveCourses.add(c);
-        }
-
-        generateWeeklyScheduleForMandatoryCourses(mandatoryCourses);
-        generateWeeklyScheduleForElectiveCourses(nonTechnicalElectiveCourses, technicalElectiveCourses);
+        generateWeeklyScheduleForMandatoryCourses();
+        generateWeeklyScheduleForElectiveCourses();
     }
 
-    private void generateWeeklyScheduleForMandatoryCourses(List<Course> mandatoryCourses){
+    private void generateWeeklyScheduleForMandatoryCourses(){
         for(int semester = 0; semester < 8; semester++){
             int grade = semester/2;
             int season = semester % 2;
@@ -143,10 +171,13 @@ public class Department {
             }
         }
     }
-    private void generateWeeklyScheduleForElectiveCourses(List<Course> nonTechnicalElectives, List<Course> technicalElectives){
+    private void generateWeeklyScheduleForElectiveCourses(){
+        List<Course> technicalElectives = new ArrayList<>(technicalElectiveCourses);
+        technicalElectives.addAll(facultyTechnicalElectiveCourses);
+
         long availableClassHours;
 
-        for(Course c : nonTechnicalElectives){
+        for(Course c : nonTechnicalElectiveCourses){
             availableClassHours = getScheduleAtPosition(0,48);
             long schedule = getRandomScheduleFrom(availableClassHours,c.getTheoreticalHours());
             c.addCourseSection(schedule);

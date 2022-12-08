@@ -5,7 +5,6 @@ import iteration2.src.human.*;
 import iteration2.src.input_output.JsonParser;
 import iteration2.src.input_output.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Simulation {
@@ -35,27 +34,7 @@ public class Simulation {
     public static void runSimulation(List<Student> students){
         Department department = Department.getInstance();
         Season currentSeason = department.getCurrentSeason();
-        List<Course> courses = department.getCourses();
-
-        for(var c : courses){
-            Logger.log("Course : " + c.getName());
-            var courseSections =  c.getAvailableCourseSections();
-            var labSections = c.getAvailableLabSections();
-
-            Logger.log("    Course Sections : ");
-            for (var s : courseSections){
-                Logger.log("        Section : " + s.toString());
-                Logger.log("        Lecturer : " + s.getLecturer().getFullName());
-            }
-
-            Logger.log("    Lab Sections : ");
-            for (var s : labSections){
-                Logger.log("        Section : " + s.toString());
-                Logger.log("        Assistant : " + s.getAssistant().getFullName());
-            }
-        }
-
-        Logger.disable();
+        List<Course> courses = department.getAllCourses();
 
         for(Student s: students){
 
