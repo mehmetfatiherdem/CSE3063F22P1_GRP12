@@ -37,14 +37,12 @@ class StudentTest {
         assertEquals(4, Calculator.add(2, 2));
 
     }
-
     @Test
     void didStudentPass() {
         for (var record:records) {
             assertEquals(true,record.getIsPassed());
         }
     }
-
     @Test
     void enrollCourseSections() {
         for(Section s: courseSection){
@@ -65,12 +63,10 @@ class StudentTest {
         assertEquals(courseSection.get(0), ((Student)student).getEnrolledCourses().get(1));
 
     }
-
     @Test
     void register() {
         // will be added after refactoring
     }
-
     @Test
     void generateWeeklySchedule() {
         String program = ((Student)student).getFullName() + "'s Weekly Schedule\n";
@@ -104,19 +100,15 @@ class StudentTest {
         }
         assertEquals(program,"Ahmet Şahin 's Weekly Schedule\nMonday: MATH2055(8.30-9.20) MATH2055(9.30-10.20) \nTuesday: \nWednesday: \nThursday: \nFriday: \nSaturday: \nSunday: \n");
     }
-
-
     @Test
     void getStudentID() {
         assertEquals("150115655", ((Student) student).getStudentID());
 
     }
-
     @Test
     void getGrade() {
         assertEquals(Grade.FRESHMAN,((Student) student).getGrade());
     }
-
     @Test
     void getAdvisor() {
         assertEquals(("Mustafa Ağaoğlu"), ((Student) student).getAdvisor().getFullName());
@@ -187,7 +179,6 @@ class StudentTest {
             assertEquals(true,record.getIsPassed());
         }
     }
-
     @Test
     void getCompletedCredits() {
         int completedCredits=0;
@@ -199,7 +190,6 @@ class StudentTest {
         assertEquals(12,completedCredits);
 
     }
-
     @Test
     void getTranscript() {
         //Since I created a new transcript object, I compared the inside of transcripts
