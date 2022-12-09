@@ -175,6 +175,36 @@ public class Student extends Human{
 
         this.enrolledSections.add(section);
     }
+    public  int tryToRegister(Student student,Course course, int counter){
+
+        var courseSections = course.getAvailableCourseSections();
+
+        if(courseSections.size() == 0)
+            return counter;
+       if(courseSections.size() > 0){
+            for(int i = 0; i < courseSections.size(); i++){
+                if(!courseSections.get(i).isSectionFull()){
+                    student.addToRegistrationList(courseSections.get(i));
+                    break;
+                }
+            }
+        }
+
+        var labSections = course.getAvailableLabSections();
+
+        if(labSections.size() > 0){
+            for(int i = 0; i < labSections.size(); i++){
+                if(!labSections.get(i).isSectionFull()){
+
+                    student.addToRegistrationList(labSections.get(i));
+                    break;
+                }
+            }
+
+        }
+
+        return counter + 1;
+    }
 
     public String getStudentID() {
         return studentID;

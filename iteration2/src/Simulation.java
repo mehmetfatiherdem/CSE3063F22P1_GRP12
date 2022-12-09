@@ -46,19 +46,20 @@ public class Simulation {
 
                 if(c.canStudentTakeCourse(s)){
                     if(c instanceof MandatoryCourse){
-                        tryToRegister(s,c,0);
+                        s.tryToRegister(s,c,0);
                     } else if(c instanceof NonTechnicalElectiveCourse
                             && c.isStudentGradeRequirementMet(s, currentSeason) && nteCounter == 0){
-                        nteCounter = tryToRegister(s,c,nteCounter);
+                            nteCounter = s.tryToRegister(s,c,nteCounter);
                     }else if(c instanceof TechnicalElectiveCourse
                             && c.isStudentGradeRequirementMet(s, currentSeason) && teCounter == 0) {
-                        teCounter = tryToRegister(s,c,teCounter);
+                        teCounter = s.tryToRegister(s,c,teCounter);
                     }else if(c instanceof FacultyTechnicalElectiveCourse
                             && c.isStudentGradeRequirementMet(s, currentSeason) && fteCounter == 0){
-                        fteCounter = tryToRegister(s,c,fteCounter);
+                        fteCounter = s.tryToRegister(s,c,fteCounter);
                     }else if(c instanceof TechnicalElectiveCourse
                             && c.isStudentGradeRequirementMet(s, currentSeason) && teCounter < 2){
-                        teCounter = tryToRegister(s,c,teCounter);
+                        teCounter = s.tryToRegister(s,c,teCounter);
+
                     }
                 }
             }
@@ -71,22 +72,5 @@ public class Simulation {
 
         Logger.log("");
         Logger.log("Registration has ended");
-    }
-
-    private static int tryToRegister(Student student,Course course, int counter){
-        var courseSections = course.getAvailableCourseSections();
-
-        if(courseSections.size() == 0)
-            return counter;
-
-        student.addToRegistrationList(courseSections.get(0));
-
-        var labSections = course.getAvailableLabSections();
-
-        if(labSections.size() > 0){
-            student.addToRegistrationList(labSections.get(0));
-        }
-
-        return counter + 1;
     }
 }
