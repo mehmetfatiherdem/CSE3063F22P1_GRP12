@@ -5,7 +5,6 @@ import iteration2.src.human.*;
 import iteration2.src.input_output.JsonParser;
 import iteration2.src.input_output.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Simulation {
@@ -41,7 +40,6 @@ public class Simulation {
         List<Course> courses = department.getCourses();
 
         for(Student s: students){
-            List<Course> studentCurriculum = new ArrayList<>();
 
             int nteCounter = 0;
             int teCounter = 0;
@@ -53,19 +51,18 @@ public class Simulation {
                     if(c instanceof MandatoryCourse){
                         s.tryToRegister(s,c,0);
                     } else if(c instanceof NonTechnicalElectiveCourse
-                            && ((s.getGrade() == Grade.FRESHMAN && currentSeason == Season.SPRING)
-                            || (s.getGrade() == Grade.SENIOR && currentSeason == Season.FALL)
-                            || (s.getGrade() == Grade.SENIOR && currentSeason == Season.SPRING)) && nteCounter == 0){
+                            && c.isStudentGradeRequirementMet(s, currentSeason) && nteCounter == 0){
                             nteCounter = s.tryToRegister(s,c,nteCounter);
                     }else if(c instanceof TechnicalElectiveCourse
-                            && s.getGrade() == Grade.SENIOR && currentSeason == Season.FALL && teCounter == 0) {
+                            && c.isStudentGradeRequirementMet(s, currentSeason) && teCounter == 0) {
                         teCounter = s.tryToRegister(s,c,teCounter);
                     }else if(c instanceof FacultyTechnicalElectiveCourse
-                            && s.getGrade() == Grade.SENIOR && currentSeason == Season.SPRING && fteCounter == 0){
+                            && c.isStudentGradeRequirementMet(s, currentSeason) && fteCounter == 0){
                         fteCounter = s.tryToRegister(s,c,fteCounter);
                     }else if(c instanceof TechnicalElectiveCourse
-                            && s.getGrade() == Grade.SENIOR && currentSeason == Season.SPRING && teCounter < 2){
+                            && c.isStudentGradeRequirementMet(s, currentSeason) && teCounter < 2){
                         teCounter = s.tryToRegister(s,c,teCounter);
+
                     }
                 }
             }

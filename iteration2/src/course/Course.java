@@ -1,6 +1,6 @@
 package iteration2.src.course;
 import iteration2.src.Department;
-import iteration2.src.Helper;
+import iteration2.src.RandomNumberGenerator;
 import iteration2.src.human.Assistant;
 import iteration2.src.human.Grade;
 import iteration2.src.human.Lecturer;
@@ -9,7 +9,6 @@ import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public abstract class Course {
     private static final int minQuota = 40;
@@ -39,11 +38,9 @@ public abstract class Course {
         this.appliedHours = appliedHours;
         this.firstYearToTake = firstYearToTake;
         this.firstSeasonToTake = firstSeasonToTake;
+        this.quota = RandomNumberGenerator.randomIntegerBetween(minQuota,maxQuota + 1);
 
-        Random rng = new Random();
-        this.quota = Helper.generateRandomBetween(minQuota,maxQuota);
-
-        //Each and every semester, at least one section of all mandatory courses should be registerable without any collision
+        //Each and every semester, at least one section of all mandatory courses should be registrable without any collision
     }
 
     public Boolean isAnyCourseSectionAvailable(){
@@ -78,6 +75,10 @@ public abstract class Course {
 
     public void addLabSection(long schedule){
         sectionList.add(new LabSection(this,schedule,null));
+    }
+
+    public boolean isStudentGradeRequirementMet(Student s, Season currentSeason){
+        return true;
     }
 
     public Boolean canStudentTakeCourse(Student student){
