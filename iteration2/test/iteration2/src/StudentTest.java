@@ -37,6 +37,7 @@ class StudentTest {
         System.out.println("Student test starting...");
         System.out.println();
     }
+
     @Test
     void checkIfPrerequisitesArePassed() {
         assertEquals(true,transcript.checkIfPrerequisitesArePassed(records.get(0).getCourse()));
