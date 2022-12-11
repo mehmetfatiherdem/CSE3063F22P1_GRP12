@@ -1,16 +1,20 @@
 package iteration2.src.course;
 
+import iteration2.src.human.Assistant;
 import iteration2.src.human.Grade;
+import iteration2.src.human.Lecturer;
 import iteration2.src.human.Student;
 import iteration2.src.input_output.Logger;
+
+import java.util.List;
 
 public class TechnicalElectiveCourse extends ElectiveCourse{
 
     public static final int REQUIRED_CREDITS = 155;
 
     public TechnicalElectiveCourse(String code, String name, int credits, int theoreticalHours, int appliedHours,
-                                   Grade firstYearToTake, Season firstSeasonToTake){
-        super(code,name,credits,theoreticalHours,appliedHours,firstYearToTake,firstSeasonToTake);
+                                   Grade firstYearToTake, Season firstSeasonToTake, List<Lecturer> lecturers, List<Assistant> assistants){
+        super(code,name,credits,theoreticalHours,appliedHours,firstYearToTake,firstSeasonToTake,lecturers,assistants);
     }
 
     @Override

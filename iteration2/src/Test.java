@@ -34,10 +34,12 @@ public class Test {
         Department department = Department.getInstance();
         department.initialize(Season.FALL,courses,lecturers,assistants,advisors,students);
 
-        records.add(new CourseRecord(new MandatoryCourse("CSE 4074","Computer Networks",5,3,0,Grade.SENIOR,Season.FALL),LetterGrade.AA,Season.FALL,Grade.FRESHMAN,90F,Boolean.TRUE));
-        courses.add(new MandatoryCourse("CSE 4074","Computer Networks",5,3,0,Grade.SENIOR,Season.FALL));
         lecturers.add(new Lecturer("Ömer","Korçak"));
         assistants.add(new Assistant("No","Assistant"));
+
+        records.add(new CourseRecord(new MandatoryCourse("CSE 4074","Computer Networks",5,3,0,Grade.SENIOR,Season.FALL,lecturers,assistants),LetterGrade.AA,Season.FALL,Grade.FRESHMAN,90F,Boolean.TRUE));
+        courses.add(new MandatoryCourse("CSE 4074","Computer Networks",5,3,0,Grade.SENIOR,Season.FALL,lecturers,assistants));
+
         advisors.add(new Advisor("Mesut","Yılmaz"));
         students.add(new Student("Mehmet","Erdem ","150115655", Grade.FRESHMAN , new Advisor("Mustafa","Ağaoğlu"),records));
 
@@ -115,7 +117,7 @@ public class Test {
     public static void humanTest(){
         // Tests about student class
         List<CourseRecord> records = new ArrayList<>();
-        records.add(new CourseRecord(new MandatoryCourse("CSE 2025","Data Structures",8,3,2,Grade.JUNIOR,Season.FALL),LetterGrade.AA,Season.FALL,Grade.FRESHMAN,90F,Boolean.TRUE));
+        records.add(new CourseRecord(new MandatoryCourse("CSE 2025","Data Structures",8,3,2,Grade.JUNIOR,Season.FALL,null,null),LetterGrade.AA,Season.FALL,Grade.FRESHMAN,90F,Boolean.TRUE));
         Human student = new Student("Ahmet","Şahin ","150115655", Grade.FRESHMAN , new Advisor("Mustafa","Ağaoğlu"),records);
 
         System.out.println();
@@ -179,7 +181,7 @@ public class Test {
         System.out.println("Course Test Starting...");
         System.out.println();
 
-        Course course = new MandatoryCourse("cse3063","Object Oriented Software Design",5,3,0,Grade.SENIOR, Season.FALL);
+        Course course = new MandatoryCourse("cse3063","Object Oriented Software Design",5,3,0,Grade.SENIOR, Season.FALL,null,null);
         System.out.print(" Course code:");
         System.out.println(course.getCode());
         System.out.print(" Course Name:");

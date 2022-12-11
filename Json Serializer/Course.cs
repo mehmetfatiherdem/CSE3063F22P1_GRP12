@@ -1,4 +1,5 @@
-﻿
+﻿using ExtensionMethods;
+
 [Serializable]
 public class Course
 {
@@ -27,6 +28,8 @@ public class Course
     public List<string> PrerequisiteCodes { get; set; }
     public Grade FirstGradeToTake { get; set; }
     public Season FirstSeasonToTake { get; set; }
+    public List<string> Lecturers { get; set; }
+    public List<string> Assistants { get; set; }
 
 
     static Course()
@@ -37,6 +40,59 @@ public class Course
         NonTechnicalElective_UniversityElective = new List<Course>();
         SetupCourses();
         type = string.Empty;
+    }
+
+    public static void AssignFacultyMembersToCourses(List<Person> mandatoryLecturers,List<Person> otherLecturers, List<Person> assistants)
+    {
+        Random rng = new Random();
+
+        mandatoryLecturers.Shuffle();
+        otherLecturers.Shuffle();
+        assistants.Shuffle();
+
+        foreach (var course in Mandatory)
+        {
+            int noOfLecturers = rng.Next(1, 4);
+            List<Person> temp = new List<Person>();
+
+            for (int i = 0; i < noOfLecturers; i++)
+            {
+                int randomIndex = rng.Next(mandatoryLecturers.Count);
+                Person lecturer = mandatoryLecturers[randomIndex];
+                course.Lecturers.Add(lecturer.ToString());
+                mandatoryLecturers.RemoveAt(randomIndex);
+                temp.Add(lecturer);
+            }
+
+            mandatoryLecturers.AddRange(temp);
+        }
+
+        var appliedCourses = Mandatory.Where(m => m.AppliedHours > 0).ToList();
+
+        int noOfAssistants = assistants.Count;
+
+        foreach (var course in appliedCourses)
+        {
+            course.Assistants.Add(assistants[rng.Next(noOfAssistants)].ToString());
+        }
+
+        foreach (var course in TechnicalElective)
+        {
+            course.Lecturers.Add(otherLecturers[0].ToString());
+            otherLecturers.RemoveAt(0);
+        }
+
+        foreach (var course in FacultyTechnicalElective)
+        {
+            course.Lecturers.Add(otherLecturers[0].ToString());
+            otherLecturers.RemoveAt(0);
+        }
+
+        foreach (var course in NonTechnicalElective_UniversityElective)
+        {
+            course.Lecturers.Add(otherLecturers[0].ToString());
+            otherLecturers.RemoveAt(0);
+        }
     }
 
     private Course(string courseCode, Grade firstGradeToTake, Season firstSeasonToTake, string courseName, int credits,
@@ -52,6 +108,8 @@ public class Course
         CourseType = type;
         prerequisites = new List<Course>();
         PrerequisiteCodes = new List<string>();
+        Lecturers = new List<string>();
+        Assistants = new List<string>();
     }
 
     private void AddPrerequisite(Course course)

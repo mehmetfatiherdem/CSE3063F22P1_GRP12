@@ -16,16 +16,14 @@ public class Simulation {
     }
 
     public static List<Student> init(){
-
         JsonParser parser = new JsonParser();
         var lecturers = parser.parseLecturers();
-        var assistants = parser.parseAssistants();
         var advisors = parser.parseAdvisors();
-        var courses = parser.parseCourses();
+        lecturers.addAll(advisors);
+        var assistants = parser.parseAssistants();
+        var courses = parser.parseCourses(lecturers,assistants);
         var students = parser.parseStudents(advisors,courses);
         var season = parser.parseSemester();
-
-        lecturers.addAll(advisors);
 
         Department department = Department.getInstance();
         department.initialize(season,courses,lecturers,assistants,advisors,students);
@@ -34,10 +32,9 @@ public class Simulation {
     }
 
     public static void runSimulation(List<Student> students){
-
         Department department = Department.getInstance();
         Season currentSeason = department.getCurrentSeason();
-        List<Course> courses = department.getCourses();
+        List<Course> courses = department.getAllCourses();
 
         for(Student s: students){
 
