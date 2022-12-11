@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
-import iteration2.src.Helper;
 import iteration2.src.data_structures.Tuple;
 import iteration2.src.human.FacultyMember;
 import iteration2.src.human.Student;
@@ -22,16 +21,18 @@ public abstract class Section {
      * so each bit represents the class hour that corresponds to that bit's position in the bitmask.
      * For example 17th bit would be the first class hour on Wednesday. 1 means there's a section at that classhour, and 0 means there is not
      */
+    private String sectionCode;
 
     protected Course course;
     protected long classSchedule;
     protected FacultyMember instructor;
     protected List<Student> studentList = new ArrayList<>();
 
-    protected Section(Course course, long classSchedule, FacultyMember instructor) {
+    protected Section(Course course,String sectionCode ,long classSchedule, FacultyMember instructor) {
         this.course = course;
         this.classSchedule = classSchedule;
         this.instructor = instructor;
+        this.sectionCode = sectionCode;
     }
 
     //Returns each collision between two sections by their collision days as the key, and their collision hours as the value in the Tuple
@@ -112,6 +113,10 @@ public abstract class Section {
     public Course getCourse() {
         return course;
     }
+
+    public String getSectionCode(){
+        return sectionCode;
+    }
     public long getClassSchedule() {
         return classSchedule;
     }
@@ -122,9 +127,6 @@ public abstract class Section {
     //Setters
     public void setCourse(Course course) {
         this.course = course;
-    }
-    public void setClassSchedule(long classHours) {
-        this.classSchedule = classHours;
     }
 
     //Checks if there's any collision between two schedules
@@ -157,19 +159,8 @@ public abstract class Section {
         return course.getQuota() <= studentList.size();
     }
 
-    public static long getScheduleAtPosition(int position, int count){
-        long schedule = Helper.getSumOfPowersOfTwoUpTo(count);
-        schedule <<= position;
-
-        return schedule;
-    }
-
-    public static long getScheduleAtRandomPositions(int[] positions){
-        long schedule = 0;
-        for(int pos: positions){
-            schedule |= (1 << pos);
-        }
-
-        return schedule;
+    @Override
+    public String toString(){
+        return course.getCode() + "." + sectionCode;
     }
 }
