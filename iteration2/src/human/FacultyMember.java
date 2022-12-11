@@ -7,8 +7,7 @@ public abstract class FacultyMember extends Human {
     protected Department department;
 
     protected FacultyMember(String firstName, String lastName) {
-        super(firstName, lastName);
-        department = Department.getInstance();
+        this(firstName,null,lastName);
     }
 
     protected FacultyMember(String firstName,String middleName,String lastName){

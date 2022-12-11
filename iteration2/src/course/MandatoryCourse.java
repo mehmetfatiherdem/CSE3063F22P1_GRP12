@@ -1,16 +1,18 @@
 package iteration2.src.course;
 
-import iteration2.src.Helper;
+import iteration2.src.Department;
+import iteration2.src.human.Assistant;
 import iteration2.src.human.Grade;
+import iteration2.src.human.Lecturer;
 import iteration2.src.human.Student;
 
 import java.util.List;
 
 public class MandatoryCourse extends Course{
 
-    public MandatoryCourse(String code, String name, int credits, int theoreticalHours
-            , int appliedHours, Grade firstYearToTake, Season firstSeasonToTake){
-        super(code,name,credits,theoreticalHours,appliedHours,firstYearToTake,firstSeasonToTake);
+    public MandatoryCourse(String code, String name, int credits, int theoreticalHours, int appliedHours,
+                           Grade firstYearToTake, Season firstSeasonToTake, List<Lecturer> lecturers, List<Assistant> assistants){
+        super(code,name,credits,theoreticalHours,appliedHours,firstYearToTake,firstSeasonToTake,lecturers,assistants);
     }
 
     @Override
@@ -24,7 +26,7 @@ public class MandatoryCourse extends Course{
     @Override
     public Boolean isAnyCourseSectionAvailable(){
         if(!super.isAnyCourseSectionAvailable()){
-
+            Department.getInstance().addNewCourseSection(this);
         }
 
         return true;
@@ -33,7 +35,7 @@ public class MandatoryCourse extends Course{
     @Override
     public Boolean isAnyLabSectionAvailable(){
         if(!super.isAnyLabSectionAvailable()){
-
+            Department.getInstance().addNewLabSection(this);
         }
         return true;
     }
@@ -42,12 +44,9 @@ public class MandatoryCourse extends Course{
     public List<CourseSection> getAvailableCourseSections(){
         var sections = super.getAvailableCourseSections();
 
-        if(sections.size() == 0){
-            int[] classes = Helper.generateDistinctClassHours(theoreticalHours);
-            long schedule = Section.getScheduleAtRandomPositions(classes);
-            CourseSection newSection = new CourseSection(this,schedule,null);
-            sectionList.add(newSection);
-            sections.add(newSection);
+        if(sections.size() == 0 && theoreticalHours > 0){
+            Department.getInstance().addNewCourseSection(this);
+            sections = super.getAvailableCourseSections();
         }
 
         return sections;
@@ -57,12 +56,9 @@ public class MandatoryCourse extends Course{
     public List<LabSection> getAvailableLabSections(){
         var sections = super.getAvailableLabSections();
 
-        if(sections.size() == 0){
-            int[] classes = Helper.generateDistinctClassHours(appliedHours);
-            long schedule = Section.getScheduleAtRandomPositions(classes);
-            LabSection newSection = new LabSection(this,schedule,null);
-            sectionList.add(newSection);
-            sections.add(newSection);
+        if(sections.size() == 0 && appliedHours > 0){
+            Department.getInstance().addNewLabSection(this);
+            sections = super.getAvailableLabSections();
         }
 
         return sections;

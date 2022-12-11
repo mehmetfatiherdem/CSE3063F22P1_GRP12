@@ -1,44 +1,44 @@
 {
   "ID": "150120243",
   "Grade": "JUNIOR",
-  "AdvisorName": "Yalçiner ATCI",
+  "AdvisorName": "Fatma Corut ERGİN",
   "CourseRecords": [
     {
       "CourseCode": "ATA121",
-      "LetterGrade": "AA",
-      "Grade": 97.21021,
+      "LetterGrade": "BB",
+      "Grade": 74.96725,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "MBG1201",
-      "LetterGrade": "BA",
-      "Grade": 78.67376,
+      "LetterGrade": "AA",
+      "Grade": 83.78861,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "CSE1200",
-      "LetterGrade": "AA",
-      "Grade": 83.44674,
+      "LetterGrade": "BA",
+      "Grade": 76.16744,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "CSE1241",
-      "LetterGrade": "FF",
-      "Grade": 0.34517455,
+      "LetterGrade": "CB",
+      "Grade": 65.27144,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
-      "Passed": false
+      "Passed": true
     },
     {
       "CourseCode": "MATH1001",
       "LetterGrade": "AA",
-      "Grade": 86.23381,
+      "Grade": 90.05582,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
@@ -46,63 +46,79 @@
     {
       "CourseCode": "PHYS1101",
       "LetterGrade": "CB",
-      "Grade": 63.692345,
+      "Grade": 65.75206,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "PHYS1103",
-      "LetterGrade": "AA",
-      "Grade": 86.47023,
+      "LetterGrade": "CC",
+      "Grade": 55.396954,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "TRD121",
-      "LetterGrade": "CB",
-      "Grade": 65.194214,
+      "LetterGrade": "CC",
+      "Grade": 52.650723,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
-      "CourseCode": "CSE1241",
-      "LetterGrade": "CC",
-      "Grade": 59.890205,
+      "CourseCode": "ATA122",
+      "LetterGrade": "CB",
+      "Grade": 64.60008,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
-      "CourseCode": "ATA122",
+      "CourseCode": "CSE1242",
       "LetterGrade": "AA",
-      "Grade": 90.1299,
+      "Grade": 88.51302,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "MATH1002",
-      "LetterGrade": "FF",
-      "Grade": 11.363207,
+      "LetterGrade": "BB",
+      "Grade": 70.693886,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
-      "Passed": false
+      "Passed": true
     },
     {
       "CourseCode": "MATH2256",
-      "LetterGrade": "AA",
-      "Grade": 93.606186,
+      "LetterGrade": "BA",
+      "Grade": 81.36444,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "PHYS1102",
-      "LetterGrade": "AA",
-      "Grade": 95.520584,
+      "LetterGrade": "CC",
+      "Grade": 53.89766,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "TRD122",
+      "LetterGrade": "CB",
+      "Grade": 61.261684,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "BUS2005",
+      "LetterGrade": "CC",
+      "Grade": 56.883682,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
       "Passed": true
@@ -110,55 +126,23 @@
     {
       "CourseCode": "PHYS1104",
       "LetterGrade": "BB",
-      "Grade": 72.363716,
-      "Season": "SPRING",
-      "RecordYear": "FRESHMAN",
-      "Passed": true
-    },
-    {
-      "CourseCode": "TRD122",
-      "LetterGrade": "BA",
-      "Grade": 77.111206,
-      "Season": "SPRING",
-      "RecordYear": "FRESHMAN",
-      "Passed": true
-    },
-    {
-      "CourseCode": "CAS2004",
-      "LetterGrade": "FF",
-      "Grade": 8.401851,
-      "Season": "SPRING",
-      "RecordYear": "FRESHMAN",
-      "Passed": false
-    },
-    {
-      "CourseCode": "MATH1002",
-      "LetterGrade": "BB",
-      "Grade": 72.03081,
+      "Grade": 70.40173,
       "Season": "FALL",
       "RecordYear": "SOPHOMORE",
       "Passed": true
-    },
-    {
-      "CourseCode": "CAS2004",
-      "LetterGrade": "BB",
-      "Grade": 68.86951,
-      "Season": "FALL",
-      "RecordYear": "SOPHOMORE",
-      "Passed": true
-    },
-    {
-      "CourseCode": "CSE1242",
-      "LetterGrade": "FD",
-      "Grade": 33.696827,
-      "Season": "FALL",
-      "RecordYear": "SOPHOMORE",
-      "Passed": false
     },
     {
       "CourseCode": "CSE2023",
       "LetterGrade": "CC",
-      "Grade": 57.36936,
+      "Grade": 54.025513,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE2225",
+      "LetterGrade": "CB",
+      "Grade": 63.123943,
       "Season": "FALL",
       "RecordYear": "SOPHOMORE",
       "Passed": true
@@ -166,77 +150,133 @@
     {
       "CourseCode": "ECON2004",
       "LetterGrade": "BA",
-      "Grade": 82.45096,
+      "Grade": 78.45285,
       "Season": "FALL",
       "RecordYear": "SOPHOMORE",
       "Passed": true
     },
     {
       "CourseCode": "EE2031",
-      "LetterGrade": "BA",
-      "Grade": 79.855576,
+      "LetterGrade": "AA",
+      "Grade": 99.19339,
       "Season": "FALL",
       "RecordYear": "SOPHOMORE",
       "Passed": true
     },
     {
       "CourseCode": "MATH2055",
-      "LetterGrade": "BA",
-      "Grade": 79.622406,
+      "LetterGrade": "AA",
+      "Grade": 87.27196,
       "Season": "FALL",
       "RecordYear": "SOPHOMORE",
       "Passed": true
     },
     {
       "CourseCode": "MATH2059",
-      "LetterGrade": "DD",
-      "Grade": 42.11162,
+      "LetterGrade": "CC",
+      "Grade": 57.755524,
       "Season": "FALL",
       "RecordYear": "SOPHOMORE",
-      "Passed": false
+      "Passed": true
     },
     {
-      "CourseCode": "CSE1242",
-      "LetterGrade": "BA",
-      "Grade": 76.896324,
+      "CourseCode": "PHYS1104",
+      "LetterGrade": "CC",
+      "Grade": 54.602913,
       "Season": "SPRING",
       "RecordYear": "SOPHOMORE",
       "Passed": true
     },
     {
-      "CourseCode": "MATH2059",
-      "LetterGrade": "DD",
-      "Grade": 41.426342,
+      "CourseCode": "CSE2246",
+      "LetterGrade": "BA",
+      "Grade": 79.28398,
       "Season": "SPRING",
       "RecordYear": "SOPHOMORE",
-      "Passed": false
+      "Passed": true
     },
     {
       "CourseCode": "CSE2138",
-      "LetterGrade": "BA",
-      "Grade": 82.26201,
+      "LetterGrade": "DD",
+      "Grade": 45.274483,
+      "Season": "SPRING",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE2260",
+      "LetterGrade": "AA",
+      "Grade": 92.041016,
       "Season": "SPRING",
       "RecordYear": "SOPHOMORE",
       "Passed": true
     },
     {
       "CourseCode": "EE2032",
-      "LetterGrade": "CB",
-      "Grade": 62.515305,
+      "LetterGrade": "FF",
+      "Grade": 22.73507,
+      "Season": "SPRING",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "STAT2253",
+      "LetterGrade": "BA",
+      "Grade": 77.72261,
       "Season": "SPRING",
       "RecordYear": "SOPHOMORE",
       "Passed": true
     },
     {
-      "CourseCode": "STAT2253",
-      "LetterGrade": "FF",
-      "Grade": 14.7123,
-      "Season": "SPRING",
-      "RecordYear": "SOPHOMORE",
-      "Passed": false
+      "CourseCode": "EE2032",
+      "LetterGrade": "AA",
+      "Grade": 90.539795,
+      "Season": "FALL",
+      "RecordYear": "JUNIOR",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE3215",
+      "LetterGrade": "AA",
+      "Grade": 89.38304,
+      "Season": "FALL",
+      "RecordYear": "JUNIOR",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE3033",
+      "LetterGrade": "CC",
+      "Grade": 54.860382,
+      "Season": "FALL",
+      "RecordYear": "JUNIOR",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE3055",
+      "LetterGrade": "AA",
+      "Grade": 99.405045,
+      "Season": "FALL",
+      "RecordYear": "JUNIOR",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE3063",
+      "LetterGrade": "CC",
+      "Grade": 55.223175,
+      "Season": "FALL",
+      "RecordYear": "JUNIOR",
+      "Passed": true
+    },
+    {
+      "CourseCode": "IE3081",
+      "LetterGrade": "BB",
+      "Grade": 69.54149,
+      "Season": "FALL",
+      "RecordYear": "JUNIOR",
+      "Passed": true
     }
   ],
-  "FirstName": "Dürnev",
-  "MiddleName": "Mehir",
-  "LastName": "BÜYÜKBULUT"
+  "FirstName": "Emiray",
+  "MiddleName": null,
+  "LastName": "YILMAZ"
 }

@@ -1,28 +1,36 @@
 {
   "ID": "150121225",
   "Grade": "SOPHOMORE",
-  "AdvisorName": "Ince KILIÇ",
+  "AdvisorName": "Fatma Corut ERGİN",
   "CourseRecords": [
+    {
+      "CourseCode": "ATA121",
+      "LetterGrade": "FF",
+      "Grade": 24.387428,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
     {
       "CourseCode": "MBG1201",
       "LetterGrade": "CB",
-      "Grade": 65.37903,
+      "Grade": 63.19993,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "CSE1200",
-      "LetterGrade": "FF",
-      "Grade": 3.6899881,
+      "LetterGrade": "CB",
+      "Grade": 64.52911,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
-      "Passed": false
+      "Passed": true
     },
     {
       "CourseCode": "CSE1241",
-      "LetterGrade": "DD",
-      "Grade": 45.99565,
+      "LetterGrade": "CB",
+      "Grade": 60.934845,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
@@ -30,109 +38,189 @@
     {
       "CourseCode": "MATH1001",
       "LetterGrade": "AA",
-      "Grade": 96.71857,
+      "Grade": 92.48154,
+      "Season": "FALL",
+      "RecordYear": "FRESHMAN",
+      "Passed": true
+    },
+    {
+      "CourseCode": "PHYS1101",
+      "LetterGrade": "CC",
+      "Grade": 54.45845,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "PHYS1103",
-      "LetterGrade": "AA",
-      "Grade": 92.78572,
+      "LetterGrade": "CC",
+      "Grade": 57.267277,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "TRD121",
-      "LetterGrade": "DC",
-      "Grade": 51.955868,
+      "LetterGrade": "FD",
+      "Grade": 33.318333,
       "Season": "FALL",
       "RecordYear": "FRESHMAN",
-      "Passed": true
+      "Passed": false
     },
     {
       "CourseCode": "ATA121",
-      "LetterGrade": "BA",
-      "Grade": 80.6177,
+      "LetterGrade": "BB",
+      "Grade": 71.16518,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
-      "CourseCode": "CSE1200",
-      "LetterGrade": "AA",
-      "Grade": 99.859344,
+      "CourseCode": "TRD121",
+      "LetterGrade": "CC",
+      "Grade": 57.30207,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "ATA122",
-      "LetterGrade": "BA",
-      "Grade": 79.540634,
+      "LetterGrade": "AA",
+      "Grade": 88.75472,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "CSE1242",
-      "LetterGrade": "FD",
-      "Grade": 38.889854,
+      "LetterGrade": "FF",
+      "Grade": 1.7699343,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
       "Passed": false
     },
     {
       "CourseCode": "MATH1002",
-      "LetterGrade": "BB",
-      "Grade": 67.586075,
+      "LetterGrade": "CC",
+      "Grade": 53.132957,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "MATH2256",
-      "LetterGrade": "BA",
-      "Grade": 77.73802,
+      "LetterGrade": "FD",
+      "Grade": 38.271317,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
-      "Passed": true
+      "Passed": false
     },
     {
       "CourseCode": "PHYS1102",
-      "LetterGrade": "CB",
-      "Grade": 65.689835,
+      "LetterGrade": "FF",
+      "Grade": 28.070986,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
-      "Passed": true
+      "Passed": false
     },
     {
       "CourseCode": "PHYS1104",
-      "LetterGrade": "AA",
-      "Grade": 88.86427,
+      "LetterGrade": "BB",
+      "Grade": 74.378174,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
       "Passed": true
     },
     {
       "CourseCode": "TRD122",
-      "LetterGrade": "BA",
-      "Grade": 76.35715,
+      "LetterGrade": "FF",
+      "Grade": 17.01174,
       "Season": "SPRING",
       "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "YDIS1002",
+      "LetterGrade": "FF",
+      "Grade": 26.589733,
+      "Season": "SPRING",
+      "RecordYear": "FRESHMAN",
+      "Passed": false
+    },
+    {
+      "CourseCode": "CSE1242",
+      "LetterGrade": "AA",
+      "Grade": 91.042786,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
       "Passed": true
     },
     {
-      "CourseCode": "IKT1054",
+      "CourseCode": "MATH2256",
+      "LetterGrade": "FF",
+      "Grade": 22.53986,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "PHYS1102",
+      "LetterGrade": "FF",
+      "Grade": 4.3556905,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "TRD122",
+      "LetterGrade": "CB",
+      "Grade": 61.504593,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "YDIS1002",
+      "LetterGrade": "CB",
+      "Grade": 64.79956,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "CSE2023",
+      "LetterGrade": "FF",
+      "Grade": 20.228817,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": false
+    },
+    {
+      "CourseCode": "ECON2004",
       "LetterGrade": "DC",
-      "Grade": 52.30402,
-      "Season": "SPRING",
-      "RecordYear": "FRESHMAN",
+      "Grade": 49.428368,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH2055",
+      "LetterGrade": "CB",
+      "Grade": 64.770355,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
+      "Passed": true
+    },
+    {
+      "CourseCode": "MATH2059",
+      "LetterGrade": "AA",
+      "Grade": 85.17933,
+      "Season": "FALL",
+      "RecordYear": "SOPHOMORE",
       "Passed": true
     }
   ],
-  "FirstName": "Belemir",
+  "FirstName": "Üzeyir",
   "MiddleName": null,
-  "LastName": "DURSUN"
+  "LastName": "KAYA"
 }
