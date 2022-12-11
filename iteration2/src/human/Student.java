@@ -4,6 +4,7 @@ import iteration2.src.Department;
 import iteration2.src.RandomNumberGenerator;
 import iteration2.src.Transcript;
 import iteration2.src.course.*;
+import iteration2.src.input_output.HorizontalLineType;
 import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
@@ -108,62 +109,23 @@ public class Student extends Human{
                 //Logger.log("Registration process of " + this.getFullName() + " ended");
 
                 Logger.log("");
-                Logger.log("");
             }
         }
-
 
         collisions.clear();
 
         if(collisions.size() == 0){
-
             enrollCourseSections(enrolledSections, Department.getInstance().getCurrentSeason());
 
+            Logger.log("Student schedule is : ");
+            Logger.log("");
+            Logger.logStudentSchedule(enrolledSections, HorizontalLineType.EqualsSign, '|');
             Logger.log("");
 
-            String schedule = generateWeeklySchedule();
-            Logger.log(schedule);
         }
 
         Logger.log("Registration process of " + this.getFullName() + " ended");
-
         Logger.log("");
-        Logger.log("");
-    }
-
-    public String generateWeeklySchedule(){
-
-        String program = this.getFullName() + "'s Weekly Schedule\n";
-
-        if(this.enrolledSections.size() == 0){
-            program = "The student " + this.getFullName() + " doesn't have any enrolled courses";
-        }
-
-        List<Section[]> schedule = Section.combineSchedules(this.enrolledSections);
-
-        for(int i = 0; i<schedule.size(); i++){
-
-            program += Section.CLASS_DAYS[i] + ": ";
-
-            Section[] day = schedule.get(i);
-
-            for(int j = 0; j<schedule.get(0).length; j++){
-
-                Section sec = day[j];
-
-                if(sec == null)
-                    continue;
-
-
-                program += sec.getCourse().getCode();
-
-                program += "(" + Section.CLASS_HOURS[j%8] + ") ";
-
-            }
-            program += "\n";
-        }
-
-        return program;
     }
 
     public void addToRegistrationList(Section section){
