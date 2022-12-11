@@ -38,27 +38,23 @@ public class Simulation {
 
         for(Student s: students){
 
-            int nteCounter = 0;
-            int teCounter = 0;
-            int fteCounter = 0;
-
             for(Course c : courses){
 
                 if(c.canStudentTakeCourse(s)){
                     if(c instanceof MandatoryCourse){
-                        s.tryToRegister(s,c,0);
+                        s.tryToRegister(s,c);
                     } else if(c instanceof NonTechnicalElectiveCourse
-                            && c.isStudentGradeRequirementMet(s, currentSeason) && nteCounter == 0){
-                            nteCounter = s.tryToRegister(s,c,nteCounter);
+                            && c.isStudentGradeRequirementMet(s, currentSeason)){
+                            s.tryToRegister(s,c);
                     }else if(c instanceof TechnicalElectiveCourse
-                            && c.isStudentGradeRequirementMet(s, currentSeason) && teCounter == 0) {
-                        teCounter = s.tryToRegister(s,c,teCounter);
+                            && c.isStudentGradeRequirementMet(s, currentSeason)) {
+                            s.tryToRegister(s,c);
                     }else if(c instanceof FacultyTechnicalElectiveCourse
-                            && c.isStudentGradeRequirementMet(s, currentSeason) && fteCounter == 0){
-                        fteCounter = s.tryToRegister(s,c,fteCounter);
+                            && c.isStudentGradeRequirementMet(s, currentSeason)){
+                            s.tryToRegister(s,c);
                     }else if(c instanceof TechnicalElectiveCourse
-                            && c.isStudentGradeRequirementMet(s, currentSeason) && teCounter < 2){
-                        teCounter = s.tryToRegister(s,c,teCounter);
+                            && c.isStudentGradeRequirementMet(s, currentSeason)){
+                            s.tryToRegister(s,c);
 
                     }
                 }

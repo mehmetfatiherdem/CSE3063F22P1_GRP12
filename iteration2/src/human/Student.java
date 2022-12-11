@@ -145,35 +145,36 @@ public class Student extends Human{
 
         this.enrolledSections.add(section);
     }
-    public  int tryToRegister(Student student,Course course, int counter){
+    public void tryToRegister(Student student, Course course){
+
+        String courseTypeOfTheCounter = "";
+
+        if(course instanceof NonTechnicalElectiveCourse){
+            courseTypeOfTheCounter = "NTE";
+        } else if(course instanceof TechnicalElectiveCourse){
+            courseTypeOfTheCounter = "TE";
+        }else if(course instanceof FacultyTechnicalElectiveCourse){
+            courseTypeOfTheCounter = "FTE";
+        }else if(course instanceof MandatoryCourse){
+            courseTypeOfTheCounter = "Mandatory";
+        }
+
+        int counter = student.getChosenCourseTypeCounterInFall().get(courseTypeOfTheCounter);
 
         var courseSections = course.getAvailableCourseSections();
 
         if(courseSections.size() == 0)
-            return counter;
-       if(courseSections.size() > 0){
-            for(int i = 0; i < courseSections.size(); i++){
-                if(!courseSections.get(i).isSectionFull()){
-                    student.addToRegistrationList(courseSections.get(i));
-                    break;
-                }
-            }
-        }
+            return;
+
+        student.addToRegistrationList(courseSections.get(0));
 
         var labSections = course.getAvailableLabSections();
 
         if(labSections.size() > 0){
-            for(int i = 0; i < labSections.size(); i++){
-                if(!labSections.get(i).isSectionFull()){
-
-                    student.addToRegistrationList(labSections.get(i));
-                    break;
-                }
-            }
-
+            student.addToRegistrationList(labSections.get(0));
         }
 
-        return counter + 1;
+        student.getChosenCourseTypeCounterInFall().put(courseTypeOfTheCounter, counter + 1);
     }
 
     public String getStudentID() {
