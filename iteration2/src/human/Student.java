@@ -145,7 +145,7 @@ public class Student extends Human{
 
         this.enrolledSections.add(section);
     }
-    public void tryToRegister(Student student, Course course){
+    public void tryToRegister(Course course){
 
         String courseTypeOfTheCounter = "";
 
@@ -159,22 +159,22 @@ public class Student extends Human{
             courseTypeOfTheCounter = "Mandatory";
         }
 
-        int counter = student.getChosenCourseTypeCounterInFall().get(courseTypeOfTheCounter);
+        int counter = this.getChosenCourseTypeCounterInFall().get(courseTypeOfTheCounter);
 
         var courseSections = course.getAvailableCourseSections();
 
         if(courseSections.size() == 0)
             return;
 
-        student.addToRegistrationList(courseSections.get(0));
+        this.addToRegistrationList(courseSections.get(0));
 
         var labSections = course.getAvailableLabSections();
 
         if(labSections.size() > 0){
-            student.addToRegistrationList(labSections.get(0));
+            this.addToRegistrationList(labSections.get(0));
         }
 
-        student.getChosenCourseTypeCounterInFall().put(courseTypeOfTheCounter, counter + 1);
+        this.getChosenCourseTypeCounterInFall().put(courseTypeOfTheCounter, counter + 1);
     }
 
     public String getStudentID() {

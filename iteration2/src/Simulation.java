@@ -42,20 +42,16 @@ public class Simulation {
 
                 if(c.canStudentTakeCourse(s)){
                     if(c instanceof MandatoryCourse){
-                        s.tryToRegister(s,c);
+                        s.tryToRegister(c);
                     } else if(c instanceof NonTechnicalElectiveCourse
                             && c.isStudentGradeRequirementMet(s, currentSeason)){
-                            s.tryToRegister(s,c);
+                            s.tryToRegister(c);
                     }else if(c instanceof TechnicalElectiveCourse
-                            && c.isStudentGradeRequirementMet(s, currentSeason)) {
-                            s.tryToRegister(s,c);
+                            && c.isStudentGradeRequirementMet(s, currentSeason) && ((TechnicalElectiveCourse) c).isCreditsRequirementMet(s)) {
+                            s.tryToRegister(c);
                     }else if(c instanceof FacultyTechnicalElectiveCourse
                             && c.isStudentGradeRequirementMet(s, currentSeason)){
-                            s.tryToRegister(s,c);
-                    }else if(c instanceof TechnicalElectiveCourse
-                            && c.isStudentGradeRequirementMet(s, currentSeason)){
-                            s.tryToRegister(s,c);
-
+                            s.tryToRegister(c);
                     }
                 }
             }
