@@ -29,7 +29,7 @@ public class Student extends Human{
     private float notTakeChance;
     private Transcript transcript;
     private List<Section> enrolledSections = new ArrayList<>();
-    private Map<String, Integer> chosenCourseTypeCounterInFall = new HashMap<>(){{
+    private Map<String, Integer> chosenCourseTypeCounterInRegistration = new HashMap<>(){{
         put("Mandatory", 0);
         put("NTE", 0);
         put("TE", 0);
@@ -159,7 +159,7 @@ public class Student extends Human{
             courseTypeOfTheCounter = "Mandatory";
         }
 
-        int counter = this.getChosenCourseTypeCounterInFall().get(courseTypeOfTheCounter);
+        int counter = this.getChosenCourseTypeCounterInRegistration().get(courseTypeOfTheCounter);
 
         var courseSections = course.getAvailableCourseSections();
 
@@ -174,7 +174,7 @@ public class Student extends Human{
             this.addToRegistrationList(labSections.get(0));
         }
 
-        this.getChosenCourseTypeCounterInFall().put(courseTypeOfTheCounter, counter + 1);
+        this.getChosenCourseTypeCounterInRegistration().put(courseTypeOfTheCounter, counter + 1);
     }
 
     public String getStudentID() {
@@ -212,8 +212,8 @@ public class Student extends Human{
         return notTakeChance;
     }
 
-    public Map<String, Integer> getChosenCourseTypeCounterInFall() {
-        return chosenCourseTypeCounterInFall;
+    public Map<String, Integer> getChosenCourseTypeCounterInRegistration() {
+        return chosenCourseTypeCounterInRegistration;
     }
 
     public void setGrade(Grade grade) {

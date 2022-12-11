@@ -7,13 +7,18 @@ import iteration2.src.human.Lecturer;
 import iteration2.src.human.Student;
 import iteration2.src.input_output.Logger;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class TechnicalElectiveCourse extends ElectiveCourse{
 
     public static final int REQUIRED_CREDITS = 155;
 
-    public static final int MAX_CHOOSABLE_NUMBER_IN_FALL = 2; // TODO: I took this information from the Google Classroom but couldn't find anything to verify it. We should check this
+    public static final Map<Integer, Integer> maxNumberThatCanBeTakenInASemester = new HashMap<>(){{
+        put(7, 1);
+        put(8, 3);
+    }};
 
     public TechnicalElectiveCourse(String code, String name, int credits, int theoreticalHours, int appliedHours,
                                    Grade firstYearToTake, Season firstSeasonToTake, List<Lecturer> lecturers, List<Assistant> assistants){
@@ -33,7 +38,7 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
         boolean canBeRegistered = !isMaxChoosableNumberExceeded(student, dep.getCurrentSeason());
 
         if(!canBeRegistered){
-            Logger.log("You've already taken " + MAX_CHOOSABLE_NUMBER_IN_FALL + " TE in the Fall Semester which is the max number for that season. " + student.getFullName() + " could not take TE(" + this.getCode() + ")");
+            Logger.log("You've already taken " + maxNumberThatCanBeTakenInASemester.get((student.getGrade().getValue() * 2) + (dep.getCurrentSeason().getValue() + 1)) + " TE in the " + dep.getCurrentSeason() + " Semester which is the max number for that season. " + student.getFullName() + " could not take TE(" + this.getCode() + ")");
         }
 
         return canBeRegistered;
@@ -43,14 +48,13 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
         return REQUIRED_CREDITS <= student.getCompletedCredits();
     }
 
+    @Override
     public boolean isMaxChoosableNumberExceeded(Student student, Season season){
-        boolean isExceeded = false;
 
-        //TODO: add an else if when we find out about the Spring requirement
-        if(season == Season.FALL){
-            isExceeded = student.getChosenCourseTypeCounterInFall().get("TE") > MAX_CHOOSABLE_NUMBER_IN_FALL;
-        }
-        return isExceeded;
+        int semester = (student.getGrade().getValue() * 2) + (season.getValue() + 1);
+
+        return student.getChosenCourseTypeCounterInRegistration().get("TE") > maxNumberThatCanBeTakenInASemester.get(semester);
+
     }
 
     @Override
