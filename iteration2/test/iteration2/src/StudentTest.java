@@ -2,6 +2,7 @@ package iteration2.src;
 
 import iteration2.src.course.*;
 import iteration2.src.human.*;
+import iteration2.src.input_output.HorizontalLineType;
 import iteration2.src.input_output.Logger;
 import junit.framework.Assert;
 import org.junit.jupiter.api.BeforeAll;
@@ -19,23 +20,26 @@ class StudentTest {
     Human student = new Student("Ahmet","Şahin ","150115655", Grade.FRESHMAN , new Advisor("Mustafa","Ağaoğlu"),records);
     Transcript transcript = new Transcript(records);
     List<Section> courseSection = new ArrayList<>();
+    List<Assistant> assistants = new ArrayList<>();
+    List<Lecturer> lecturers = new ArrayList<>();
 
     @BeforeEach
     void setup(){
-        records.add(new CourseRecord(new MandatoryCourse("CSE 2025","Data Structures",8,3,2,Grade.JUNIOR,Season.FALL),LetterGrade.AA,Season.FALL,Grade.FRESHMAN,90F,Boolean.TRUE));
-        records.add(new CourseRecord(new MandatoryCourse("MATH2055", "Differential Equations", 4, 3, 0,Grade.JUNIOR,Season.FALL),LetterGrade.AA,Season.FALL,Grade.FRESHMAN,90F,Boolean.TRUE));
-        courseSection.add(new CourseSection(new MandatoryCourse("MATH2055", "Differential Equations", 4, 3, 0,Grade.JUNIOR,Season.FALL),3,new Lecturer("Borahan","Tümer")));
+        lecturers.add(new Lecturer("Borahan","TÜMER"));
+        lecturers.add(new Lecturer("Sanem","ARSLAN"));
+        assistants.add(new Assistant("Birol","GENÇYILMAZ"));
+        records.add(new CourseRecord(new MandatoryCourse("CSE 2025","Data Structures",8,3,2,Grade.JUNIOR,Season.FALL,lecturers,assistants),LetterGrade.AA,Season.FALL,Grade.FRESHMAN,90F,Boolean.TRUE));
+        records.add(new CourseRecord(new MandatoryCourse("MATH2055", "Differential Equations", 4, 3, 0,Grade.JUNIOR,Season.FALL,lecturers,assistants),LetterGrade.AA,Season.FALL,Grade.FRESHMAN,90F,Boolean.TRUE));
+        courseSection.add(new CourseSection(new MandatoryCourse("MATH2055", "Differential Equations", 4, 3, 0,Grade.JUNIOR,Season.FALL,lecturers,assistants),"2",3,lecturers.get(0)));
         ((Student)student).getEnrolledCourses().add(courseSection.get(0));
 
         System.out.println();
         System.out.println("Student test starting...");
         System.out.println();
     }
-
     @Test
     void checkIfPrerequisitesArePassed() {
-        assertEquals(4, Calculator.add(2, 2));
-
+        assertEquals(true,transcript.checkIfPrerequisitesArePassed(records.get(0).getCourse()));
     }
     @Test
     void didStudentPass() {
