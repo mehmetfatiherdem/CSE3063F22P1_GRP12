@@ -8,7 +8,9 @@ import iteration2.src.input_output.HorizontalLineType;
 import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Student extends Human{
     public static float minFailChance;
@@ -27,6 +29,12 @@ public class Student extends Human{
     private float notTakeChance;
     private Transcript transcript;
     private List<Section> enrolledSections = new ArrayList<>();
+    private Map<String, Integer> chosenCourseTypeCounterInRegistration = new HashMap<>(){{
+        put("Mandatory", 0);
+        put("NTE", 0);
+        put("TE", 0);
+        put("FTE", 0);
+    }};
 
     public Student(String firstName, String middleName, String lastName,String studentID,Grade grade ,Advisor advisor,List<CourseRecord> transcript){
         super(firstName, middleName, lastName);
@@ -137,35 +145,36 @@ public class Student extends Human{
 
         this.enrolledSections.add(section);
     }
-    public  int tryToRegister(Student student,Course course, int counter){
+    public void tryToRegister(Course course){
+
+        String courseTypeOfTheCounter = "";
+
+        if(course instanceof NonTechnicalElectiveCourse){
+            courseTypeOfTheCounter = "NTE";
+        } else if(course instanceof TechnicalElectiveCourse){
+            courseTypeOfTheCounter = "TE";
+        }else if(course instanceof FacultyTechnicalElectiveCourse){
+            courseTypeOfTheCounter = "FTE";
+        }else if(course instanceof MandatoryCourse){
+            courseTypeOfTheCounter = "Mandatory";
+        }
+
+        int counter = this.getChosenCourseTypeCounterInRegistration().get(courseTypeOfTheCounter);
 
         var courseSections = course.getAvailableCourseSections();
 
         if(courseSections.size() == 0)
-            return counter;
-       if(courseSections.size() > 0){
-            for(int i = 0; i < courseSections.size(); i++){
-                if(!courseSections.get(i).isSectionFull()){
-                    student.addToRegistrationList(courseSections.get(i));
-                    break;
-                }
-            }
-        }
+            return;
+
+        this.addToRegistrationList(courseSections.get(0));
 
         var labSections = course.getAvailableLabSections();
 
         if(labSections.size() > 0){
-            for(int i = 0; i < labSections.size(); i++){
-                if(!labSections.get(i).isSectionFull()){
-
-                    student.addToRegistrationList(labSections.get(i));
-                    break;
-                }
-            }
-
+            this.addToRegistrationList(labSections.get(0));
         }
 
-        return counter + 1;
+        this.getChosenCourseTypeCounterInRegistration().put(courseTypeOfTheCounter, counter + 1);
     }
 
     public String getStudentID() {
@@ -201,6 +210,10 @@ public class Student extends Human{
 
     public float getNotTakeChance(){
         return notTakeChance;
+    }
+
+    public Map<String, Integer> getChosenCourseTypeCounterInRegistration() {
+        return chosenCourseTypeCounterInRegistration;
     }
 
     public void setGrade(Grade grade) {
