@@ -20,9 +20,10 @@ public class ElectiveCourse extends Course {
         return;
     }
 
-    public boolean isMaxChoosableNumberExceeded(Student student, Season season){
+    public boolean isMaxChoosableNumberExceeded(Student student, Season season, String courseTypeCode, int maxNumberThatCanBeTakenInASemester){
 
-       return false;
+        return student.getChosenCourseTypeCounterInRegistration().get(courseTypeCode) > maxNumberThatCanBeTakenInASemester;
 
     }
+
 }

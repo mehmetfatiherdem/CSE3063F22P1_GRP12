@@ -31,8 +31,9 @@ public class FacultyTechnicalElectiveCourse extends ElectiveCourse{
     public Boolean canStudentTakeCourse(Student student) {
 
         var dep = Department.getInstance();
-
-        boolean canBeRegistered = !isMaxChoosableNumberExceeded(student, dep.getCurrentSeason());
+        int semester = (student.getGrade().getValue() * 2) + (dep.getCurrentSeason().getValue() + 1);
+        int maxNum = maxNumberThatCanBeTakenInASemester.get(semester);
+        boolean canBeRegistered = !isMaxChoosableNumberExceeded(student, dep.getCurrentSeason(), "FTE", maxNum);
 
         if(!canBeRegistered){
             Logger.log("You've already taken " + maxNumberThatCanBeTakenInASemester.get((student.getGrade().getValue() * 2) + (dep.getCurrentSeason().getValue() + 1)) + " FTE in the " + dep.getCurrentSeason() + " Semester which is the max number for that season. " + student.getFullName() + " could not take FTE(" + this.getCode() + ")");
@@ -42,11 +43,9 @@ public class FacultyTechnicalElectiveCourse extends ElectiveCourse{
     }
 
     @Override
-    public boolean isMaxChoosableNumberExceeded(Student student, Season season){
+    public boolean isMaxChoosableNumberExceeded(Student student, Season season, String courseTypeCode, int maxNumberThatCanBeTakenInASemester){
 
-        int semester = (student.getGrade().getValue() * 2) + (season.getValue() + 1);
-
-        return student.getChosenCourseTypeCounterInRegistration().get("FTE") > maxNumberThatCanBeTakenInASemester.get(semester);
+        return super.isMaxChoosableNumberExceeded(student, season, courseTypeCode, maxNumberThatCanBeTakenInASemester);
 
     }
 }
