@@ -235,7 +235,7 @@ public class Student extends Human{
     }
 
     public int getStudentSemester() {
-        return 2 * getGrade().getValue() + Department.getInstance().getCurrentSeason().getValue() + 1;
+        return 2 * getGrade().getValue() + Department.getInstance().getCurrentSeason().getValue();
     }
 
     public float getFailChance(){
