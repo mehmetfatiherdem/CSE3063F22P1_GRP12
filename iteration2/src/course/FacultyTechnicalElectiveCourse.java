@@ -35,7 +35,7 @@ public class FacultyTechnicalElectiveCourse extends ElectiveCourse{
         int noOfCoursesTillSemester = getTotalNumberOfCoursesUntilSemester(semester);
 
         boolean canTake = student.getTranscript().getNumberOfFTElectivesPassed() < noOfCoursesTillSemester;
-        canTake &= student.didStudentPass(this);
+        canTake &= !student.didStudentPass(this);
         return canTake;
     }
 

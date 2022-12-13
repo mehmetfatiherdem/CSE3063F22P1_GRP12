@@ -36,7 +36,7 @@ public class NonTechnicalElectiveCourse extends ElectiveCourse{
         int noOfCoursesTillSemester = getTotalNumberOfCoursesUntilSemester(semester);
 
         boolean canTake = student.getTranscript().getNumberOfNTElectivesPassed() < noOfCoursesTillSemester;
-        canTake &= student.didStudentPass(this);
+        canTake &= !student.didStudentPass(this);
         return canTake;
     }
 
