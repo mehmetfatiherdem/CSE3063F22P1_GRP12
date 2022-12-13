@@ -6,6 +6,7 @@ import iteration2.src.RegistrationSystem;
 import iteration2.src.Transcript;
 import iteration2.src.course.*;
 import iteration2.src.data_structures.Tuple;
+import iteration2.src.input_output.HorizontalLineType;
 import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
@@ -150,6 +151,14 @@ public class Student extends Human{
 
 
         saveToTranscript();
+
+        Logger.log("");
+        Logger.log("Student Name : " + getFullName());
+        Logger.log("Student ID : " + studentID);
+        Logger.log("Advisor Name : "  + advisor.getFullName());
+        Logger.log("");
+
+        Logger.logStudentSchedule(enrolledSections, HorizontalLineType.EqualsSign,'|');
     }
 
     private void handleUnacceptedCollisions(Supplier<List<Tuple<Section,Section>>> collisionCheckCallback){
