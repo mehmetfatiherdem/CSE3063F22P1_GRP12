@@ -10,11 +10,11 @@ public class Tuple<K,V> {
         this.value = value;
     }
 
-    public K GetKey(){
+    public K getKey(){
         return key;
     }
 
-    public V GetValue(){
+    public V getValue(){
         return value;
     }
 }

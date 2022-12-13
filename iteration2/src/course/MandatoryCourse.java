@@ -16,14 +16,6 @@ public class MandatoryCourse extends Course{
     }
 
     @Override
-    public Boolean canStudentTakeCourse(Student student) {
-        if(!super.canStudentTakeCourse(student))
-            return false;
-
-        return student.checkIfPrerequisitesArePassed(this);
-    }
-
-    @Override
     public Boolean isAnyCourseSectionAvailable(){
         if(!super.isAnyCourseSectionAvailable()){
             Department.getInstance().addNewCourseSection(this);

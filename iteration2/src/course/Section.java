@@ -110,6 +110,22 @@ public abstract class Section {
     }
 
     // Getters
+    public int getSectionPriority(){
+        int priority = 0;
+
+        if(course instanceof MandatoryCourse)
+            priority = 3;
+        if(course instanceof TechnicalElectiveCourse)
+            priority = 2;
+        if(course instanceof FacultyTechnicalElectiveCourse)
+            priority = 1;
+
+        if(this instanceof CourseSection)
+            priority += 1;
+
+        return priority;
+    }
+
     public Course getCourse() {
         return course;
     }
@@ -158,6 +174,7 @@ public abstract class Section {
     public boolean isSectionFull(){
         return course.getQuota() <= studentList.size();
     }
+
 
     @Override
     public String toString(){

@@ -166,8 +166,8 @@ public class Department {
                 Course course = mandatoryCoursesForSemester.get(i);
                 var schedules = courseSchedules.get(i);
 
-                course.addCourseSection(schedules.GetKey());
-                course.addLabSection(schedules.GetValue());
+                course.addCourseSection(schedules.getKey());
+                course.addLabSection(schedules.getValue());
             }
         }
     }
@@ -189,7 +189,7 @@ public class Department {
 
         for(int i = 0; i < len ; i++){
             var division = divisions.get(i);
-            List<Integer> theoreticalDivision = division.GetKey();
+            List<Integer> theoreticalDivision = division.getKey();
             availableClassHours = getScheduleAtPosition(0,40);
             long schedule = getRandomDividedScheduleFrom(availableClassHours,theoreticalDivision);
             technicalElectives.get(i).addCourseSection(schedule);
@@ -213,8 +213,8 @@ public class Department {
 
             for (int i = 0; i < len; i++){
                 var courseDivisions = courseDivisons.get(i);
-                List<Integer> theoreticalDivision = courseDivisions.GetKey();
-                List<Integer> appliedDivision = courseDivisions.GetValue();
+                List<Integer> theoreticalDivision = courseDivisions.getKey();
+                List<Integer> appliedDivision = courseDivisions.getValue();
 
                 long theoreticalSchedule = assignScheduleToSection(availableClassHours,theoreticalDivision);
 

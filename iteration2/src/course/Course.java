@@ -97,21 +97,16 @@ public abstract class Course {
         labSections.add(new LabSection(this,sectionCode.toString(),schedule,assistant));
     }
 
-    public boolean isStudentGradeRequirementMet(Student s, Season currentSeason){
-        return true;
+    public boolean isStudentGradeRequirementMet(Student student){
+        int studentSemester = 2 * student.getGrade().getValue() + Department.getInstance().getCurrentSeason().getValue();
+        int courseSemester = 2 * firstYearToTake.getValue() + firstSeasonToTake.getValue();
+
+        return courseSemester <= studentSemester;
     }
 
     public Boolean canStudentTakeCourse(Student student){
-        if((student.getGrade().getValue() < firstYearToTake.getValue()
-                || (student.getGrade().getValue() == firstYearToTake.getValue()
-                && Department.getInstance().getCurrentSeason().getValue() < firstSeasonToTake.getValue()))
-                || student.didStudentPass(this) || !student.checkIfPrerequisitesArePassed(this)){
-            Logger.log("In order to take " + code + " a student grade should be greater than or equal to " + firstYearToTake
-                    + ", the current season must be " + firstSeasonToTake + " and the student shouldn't pass the this course in the past semesters");
-            return false;
-        }
-
-        return true;
+        return isStudentGradeRequirementMet(student) && !student.didStudentPass(this)
+                && student.checkIfPrerequisitesArePassed(this);
     }
 
 
@@ -125,6 +120,23 @@ public abstract class Course {
 
         return sections;
     }
+
+    public List<Section> getAlternativeSections(Section section){
+        List<Section> alternatives = new ArrayList<>();
+
+        if(section instanceof CourseSection) {
+            for (Section s : courseSections)
+                if (!section.equals(s))
+                    alternatives.add(s);
+        }
+        else{
+            for (Section s : labSections)
+                if(!section.equals(s))
+                    alternatives.add(s);
+        }
+        return alternatives;
+    }
+
     public List<LabSection> getAvailableLabSections(){
         List<LabSection> sections = new ArrayList<>();
 

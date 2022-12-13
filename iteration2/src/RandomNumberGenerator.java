@@ -3,7 +3,6 @@ package iteration2.src;
 import java.util.Random;
 
 public class RandomNumberGenerator {
-
     private static Random rng = new Random(System.currentTimeMillis());
 
     private RandomNumberGenerator() { }
