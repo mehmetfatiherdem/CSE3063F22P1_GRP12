@@ -76,7 +76,7 @@ public class RegistrationSystem {
 
     public int getTheNumberOfNonTechnicalElectiveCoursesStudentCanTake(Student student){
         int noOfNTEPassed = student.getTranscript().getNumberOfNTElectivesPassed();
-        int noOfNTERequired = TechnicalElectiveCourse.getTotalNumberOfCoursesUntilSemester(student.getStudentSemester());
+        int noOfNTERequired = NonTechnicalElectiveCourse.getTotalNumberOfCoursesUntilSemester(student.getStudentSemester());
         return noOfNTERequired - noOfNTEPassed;
     }
 

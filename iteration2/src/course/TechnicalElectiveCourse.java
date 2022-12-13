@@ -54,7 +54,7 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
     public static int getTotalNumberOfCoursesUntilSemester(int semester){
         int noOfCoursesTillSemester = 0;
 
-        for(int i = 0; i < semester; i++){
+        for(int i = 0; i <= semester; i++){
             noOfCoursesTillSemester += numberOfCoursesTakeableBySemester.get(i);
         }
 
