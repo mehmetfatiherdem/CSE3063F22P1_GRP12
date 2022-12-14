@@ -64,11 +64,11 @@ public class Simulation {
             var fteCourses = system.getOpenFacultyTechnicalElectiveCourses(s);
             var nteCourses = system.getOpenNonTechnicalElectiveCourses(s);
 
-            int noOfOpenFTECourses = system.getTheNumberOfFacultyTechnicalElectiveCoursesStudentCanTake(s);
-            int noOfOpenTECourses = system.getTheNumberOfTechnicalElectiveCoursesStudentCanTake(s);
-            int noOfOpenNTECourses = system.getTheNumberOfNonTechnicalElectiveCoursesStudentCanTake(s);
+            int noOfTakeableFTECourses = system.getTheNumberOfFacultyTechnicalElectiveCoursesStudentCanTake(s);
+            int noOfTakeableTECourses = system.getTheNumberOfTechnicalElectiveCoursesStudentCanTake(s);
+            int noOfTakeableNTECourses = system.getTheNumberOfNonTechnicalElectiveCoursesStudentCanTake(s);
 
-            s.startRegistration(mandatoryCourses, teCourses, fteCourses, nteCourses, noOfOpenTECourses, noOfOpenFTECourses, noOfOpenNTECourses);
+            s.startRegistration(mandatoryCourses, teCourses, fteCourses, nteCourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
         }
     }
 
