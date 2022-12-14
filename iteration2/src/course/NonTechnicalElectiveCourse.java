@@ -44,7 +44,7 @@ public class NonTechnicalElectiveCourse extends ElectiveCourse{
         int noOfCoursesTillSemester = 0;
 
         for(int i = 0; i <= semester; i++){
-            noOfCoursesTillSemester += numberOfCoursesTakeableBySemester.get(i);
+            noOfCoursesTillSemester += numberOfCoursesTakeableBySemester.get(i).intValue();
         }
 
         return noOfCoursesTillSemester;
