@@ -107,17 +107,16 @@ public class Student extends Human{
     }
 
     public void tryToRegister(Course course){
-        var courseSections = course.getAvailableCourseSections();
-
-        if(courseSections.size() == 0)
+        if(!course.isAnyCourseSectionAvailable())
             return;
 
+        var courseSections = course.getAvailableCourseSections();
         enrolledSections.add(courseSections.get(0));
 
-        var labSections = course.getAvailableLabSections();
-
-        if(labSections.size() > 0)
+        if(course.isAnyLabSectionAvailable()){
+            var labSections = course.getAvailableLabSections();
             enrolledSections.add(courseSections.get(0));
+        }
     }
 
     private boolean studentWantsToTake(){

@@ -98,10 +98,7 @@ public abstract class Course {
     }
 
     public boolean isStudentGradeRequirementMet(Student student){
-        int studentSemester = 2 * student.getGrade().getValue() + Department.getInstance().getCurrentSeason().getValue();
-        int courseSemester = 2 * firstYearToTake.getValue() + firstSeasonToTake.getValue();
-
-        return courseSemester <= studentSemester;
+        return getCourseSemester() <= student.getStudentSemester();
     }
 
     public Boolean canStudentTakeCourse(Student student){
@@ -150,6 +147,9 @@ public abstract class Course {
 
     //Getters
     public abstract int getCoursePriority();
+    public int getCourseSemester(){
+        return 2 * firstYearToTake.getValue() + firstSeasonToTake.getValue();
+    }
     public int getCredits() {
         return credits;
     }

@@ -40,10 +40,9 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
         int semester = student.getStudentSemester();
         int noOfCoursesTillSemester = getTotalNumberOfCoursesUntilSemester(semester);
 
-        boolean canTake = student.getTranscript().getNumberOfTElectivesPassed() < noOfCoursesTillSemester;
-        canTake &= !student.didStudentPass(this);
-        canTake &= isCreditsRequirementMet(student);
-        return canTake;
+        return student.getTranscript().getNumberOfTElectivesPassed() < noOfCoursesTillSemester
+        && !student.didStudentPass(this)
+        && isCreditsRequirementMet(student);
     }
 
     public boolean isCreditsRequirementMet(Student student){
