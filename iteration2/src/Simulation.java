@@ -67,6 +67,10 @@ public class Simulation {
             int noOfTakeableTECourses = system.getTheNumberOfTECoursesStudentCanTake(s);
             int noOfTakeableNTECourses = system.getTheNumberOfNTECoursesStudentCanTake(s);
 
+            if(noOfTakeableFTECourses > openFTECourses.size() || noOfTakeableNTECourses > openNTECourses.size() || noOfTakeableTECourses > openTECourses.size()){
+                Logger.log("");
+            }
+
             s.startRegistration(openMandatoryCourses, openTECourses, openFTECourses, openNTECourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
         }
     }

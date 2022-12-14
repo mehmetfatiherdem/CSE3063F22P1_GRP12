@@ -80,17 +80,7 @@ public class Transcript {
         return takenCourseRecords;
     }
 
-    public int getNumberOfNTElectivesPassed(){
-        int i=0;
-        for(CourseRecord r:takenCourseRecords){
-            Course course = r.getCourse();
-            if(course instanceof NonTechnicalElectiveCourse && didStudentPass(course)){
-                i++;
-            }
-        }
 
-        return i;
-    }
     public List<CourseRecord> getNonGradedCourses(){
         List<CourseRecord> courseRecordList = new ArrayList<>();
         for(CourseRecord r:takenCourseRecords){
@@ -112,7 +102,7 @@ public class Transcript {
         else if(score>=85.0f && score < 90.0f){return  LetterGrade.BA;}
         else{return  LetterGrade.AA;}
     }
-    public int getNumberOfTElectivesPassed(){
+    public int getNumberOfTECoursesPassed(){
         int i=0;
         for(CourseRecord r:takenCourseRecords){
             Course course = r.getCourse();
@@ -122,7 +112,7 @@ public class Transcript {
         }
         return i;
     }
-    public int getNumberOfFTElectivesPassed(){
+    public int getNumberOfFTECoursesPassed(){
         int i=0;
         for(CourseRecord r:takenCourseRecords){
             Course course = r.getCourse();
@@ -130,6 +120,18 @@ public class Transcript {
                 i++;
             }
         }
+        return i;
+    }
+
+    public int getNumberOfNTECoursesPassed(){
+        int i=0;
+        for(CourseRecord r:takenCourseRecords){
+            Course course = r.getCourse();
+            if(course instanceof NonTechnicalElectiveCourse && didStudentPass(course)){
+                i++;
+            }
+        }
+
         return i;
     }
     public boolean didStudentFailBefore(Course course){

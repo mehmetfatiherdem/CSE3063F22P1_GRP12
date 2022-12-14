@@ -1,11 +1,9 @@
 package iteration2.src.course;
 
-import iteration2.src.Department;
 import iteration2.src.human.Assistant;
 import iteration2.src.human.Grade;
 import iteration2.src.human.Lecturer;
 import iteration2.src.human.Student;
-import iteration2.src.input_output.Logger;
 
 import java.util.HashMap;
 import java.util.List;
@@ -35,7 +33,7 @@ public class NonTechnicalElectiveCourse extends ElectiveCourse{
         int semester = student.getStudentSemester();
         int noOfCoursesTillSemester = getTotalNumberOfCoursesUntilSemester(semester);
 
-        return student.getTranscript().getNumberOfNTElectivesPassed() < noOfCoursesTillSemester
+        return student.getTranscript().getNumberOfNTECoursesPassed() < noOfCoursesTillSemester
                 && !student.didStudentPass(this);
     }
 

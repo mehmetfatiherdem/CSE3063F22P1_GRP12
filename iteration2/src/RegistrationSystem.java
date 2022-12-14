@@ -41,19 +41,22 @@ public class RegistrationSystem {
     }
 
     public int getTheNumberOfTECoursesStudentCanTake(Student student){
-        int noOfTEPassed = student.getTranscript().getNumberOfTElectivesPassed();
+        if(student.getCompletedCredits() < TechnicalElectiveCourse.REQUIRED_CREDITS)
+            return 0;
+
+        int noOfTEPassed = student.getTranscript().getNumberOfTECoursesPassed();
         int noOfTERequired = TechnicalElectiveCourse.getTotalNumberOfCoursesUntilSemester(student.getStudentSemester());
         return noOfTERequired - noOfTEPassed;
     }
 
     public int getTheNumberOfNTECoursesStudentCanTake(Student student){
-        int noOfNTEPassed = student.getTranscript().getNumberOfNTElectivesPassed();
+        int noOfNTEPassed = student.getTranscript().getNumberOfNTECoursesPassed();
         int noOfNTERequired = NonTechnicalElectiveCourse.getTotalNumberOfCoursesUntilSemester(student.getStudentSemester());
         return noOfNTERequired - noOfNTEPassed;
     }
 
     public int getTheNumberOfFTECoursesStudentCanTake(Student student){
-        int noOfFTEPassed = student.getTranscript().getNumberOfFTElectivesPassed();
+        int noOfFTEPassed = student.getTranscript().getNumberOfFTECoursesPassed();
         int noOfFTERequired = FacultyTechnicalElectiveCourse.getTotalNumberOfCoursesUntilSemester(student.getStudentSemester());
         return noOfFTERequired - noOfFTEPassed;
     }
