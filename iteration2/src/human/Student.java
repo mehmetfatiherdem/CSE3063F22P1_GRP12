@@ -68,9 +68,9 @@ public class Student extends Human{
                                   List<FacultyTechnicalElectiveCourse> openFTECourses, List<NonTechnicalElectiveCourse> openNTECourses,
                                   int noOfTakeableTECourses, int noOfTakeableFTECourses,int noOfTakeableNTECourses){
 
-        Logger.log("");
+        Logger.newLine();
         Logger.log("Registration process of " + this.getFullName() + " started");
-        Logger.log("");
+        Logger.newLine();
 
         for(var c : openMandatoryCourses){
             if(!studentWantsToTake())
@@ -152,11 +152,11 @@ public class Student extends Human{
 
         saveToTranscript();
 
-        Logger.log("");
+        Logger.newLine();
         Logger.log("Student Name : " + getFullName());
         Logger.log("Student ID : " + studentID);
         Logger.log("Advisor Name : "  + advisor.getFullName());
-        Logger.log("");
+        Logger.newLine();
 
         Logger.logStudentSchedule(enrolledSections, HorizontalLineType.EqualsSign,'|');
     }
@@ -179,9 +179,9 @@ public class Student extends Human{
                     var alternativeSection = pickAlternativeSection(s);
 
                     if(alternativeSection != null){
-                        Logger.log("");
+                        Logger.newLine();
                         Logger.log("Student replaced section " + s.toString() + " with section " + alternativeSection.toString());
-                        Logger.log("");
+                        Logger.newLine();
                         enrolledSections.remove(s);
                         enrolledSections.add(alternativeSection);
                         resolved = true;
@@ -197,15 +197,15 @@ public class Student extends Human{
 
                 if(s1Priority == s2Priority){
                     Section sectionToRemove = temp[RandomNumberGenerator.randomIntegerBetween(0,2)];
-                    Logger.log("");
+                    Logger.newLine();
                     Logger.log("Student removed the section " + sectionToRemove.toString());
-                    Logger.log("");
+                    Logger.newLine();
                     enrolledSections.remove(sectionToRemove);
                 }
                 else{
-                    Logger.log("");
+                    Logger.newLine();
                     Logger.log("Student removed the section " + (s1Priority > s2Priority ? s2 : s1) + "due to high priority of other section");
-                    Logger.log("");
+                    Logger.newLine();
                     enrolledSections.remove(s1Priority > s2Priority ? s2 : s1);
                 }
             }

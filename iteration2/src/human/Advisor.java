@@ -24,7 +24,7 @@ public class Advisor extends Lecturer {
     //Kursları mandatory ve elective çakışmasına göre onaylasın ya da onaylamasın.
 
     public List<Tuple<Section,Section>> examineRegistration(Student student){
-        Logger.log("");
+        Logger.newLine();
         Logger.log("The advisor " + getFullName() + " started examining the registration of " + student.getFullName());
 
         List<Section> sections= student.getEnrolledCourses();

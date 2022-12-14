@@ -91,7 +91,7 @@ public class RegistrationSystem {
             }
         }
 
-        Logger.log("");
+        Logger.newLine();
 
         if(highlyCollidingSections.size() == 0)
             Logger.log(student.getFullName() + "'s selected courses are adequate to send to advisor approval!");

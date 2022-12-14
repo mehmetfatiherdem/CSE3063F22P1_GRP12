@@ -36,21 +36,21 @@ public class Simulation {
 
         registrationProcess(students);
 
-        Logger.log("");
+        Logger.newLine();
         Logger.log("Registration process has ended");
 
-        Logger.log("");
+        Logger.newLine();
         Logger.log("The grading process has started!");
 
         gradingProcess(students);
 
-        Logger.log("");
+        Logger.newLine();
         Logger.log("The grading process has ended");
 
         JsonParser parser = new JsonParser();
         parser.serializeStudents(students);
 
-        Logger.log("");
+        Logger.newLine();
         Logger.log("The simulation has ended!");
     }
 
@@ -68,7 +68,7 @@ public class Simulation {
             int noOfTakeableNTECourses = system.getTheNumberOfNTECoursesStudentCanTake(s);
 
             if(noOfTakeableFTECourses > openFTECourses.size() || noOfTakeableNTECourses > openNTECourses.size() || noOfTakeableTECourses > openTECourses.size()){
-                Logger.log("");
+                Logger.newLine();
             }
 
             s.startRegistration(openMandatoryCourses, openTECourses, openFTECourses, openNTECourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
@@ -79,9 +79,9 @@ public class Simulation {
         for(Student s : students){
             List<CourseRecord> nonGradedCourses = s.getTranscript().getNonGradedCourses();
 
-            Logger.log("");
+            Logger.newLine();
             Logger.log(s.getFullName() + "'s grades : ");
-            Logger.log("");
+            Logger.newLine();
 
             for(CourseRecord r:nonGradedCourses){
                 float rand = RandomNumberGenerator.RandomFloat();
