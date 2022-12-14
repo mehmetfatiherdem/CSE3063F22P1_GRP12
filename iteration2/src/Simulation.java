@@ -36,7 +36,7 @@ public class Simulation {
 
         Logger.newLine();
         Logger.log("THE SIMULATION HAS STARTED!");
-        Logger.log("THE REGISTRATION PROCESS HAS STARTED!");
+
         registrationProcess(students);
 
         Logger.newLine();
@@ -54,11 +54,12 @@ public class Simulation {
         parser.serializeStudents(students);
 
         Logger.newLine();
-        Logger.log("The simulation has ended!");
+        Logger.log("THE SIMULATION HAS ENDED!");
     }
 
     private static void registrationProcess(List<Student> students){
         RegistrationSystem system = RegistrationSystem.getInstance();
+        Logger.log("THE REGISTRATION PROCESS HAS STARTED!");
 
         for(Student s: students) {
             var openMandatoryCourses = system.getOpenMandatoryCourses(s);
@@ -70,9 +71,28 @@ public class Simulation {
             int noOfTakeableTECourses = system.getTheNumberOfTECoursesStudentCanTake(s);
             int noOfTakeableNTECourses = system.getTheNumberOfNTECoursesStudentCanTake(s);
 
-            if(noOfTakeableFTECourses > openFTECourses.size() || noOfTakeableNTECourses > openNTECourses.size() || noOfTakeableTECourses > openTECourses.size()){
-                Logger.newLine();
-            }
+            String studentName = s.getFullName();
+
+            Logger.newLine();
+
+            Logger.log("STUDENT NAME : " + studentName);
+            Logger.log("STUDENT ID : " + s.getStudentID());
+            Logger.log("STUDENT GRADE : " + s.getGrade().toString());
+            Logger.log("ADVISOR : " + s.getAdvisor().getFullName());
+
+            Logger.log("COURSES OPENED FOR THE STUDENT :");
+            Logger.incrementIndentation();
+            Logger.logCourseCodes("MANDATORY COURSES : ", (List<Course>)(List<?>)openMandatoryCourses);
+            Logger.logCourseCodes("TECHNICAL ELECTIVE COURSES : ", (List<Course>)(List<?>)openTECourses);
+            Logger.logCourseCodes("FACULTY TECHNICAL ELECTIVE COURSES : ", (List<Course>)(List<?>)openFTECourses);
+            Logger.logCourseCodes("NON-TECHNICAL ELECTIVE COURSES : ", (List<Course>)(List<?>)openNTECourses);
+            Logger.decrementIndentation();
+
+            Logger.newLine();
+
+            Logger.log("THE REGISTRATION PROCESS OF " + studentName + " HAS STARTED :");
+
+            Logger.newLine();
 
             s.startRegistration(openMandatoryCourses, openTECourses, openFTECourses, openNTECourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
         }

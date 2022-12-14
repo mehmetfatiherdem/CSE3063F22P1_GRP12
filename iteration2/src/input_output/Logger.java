@@ -128,6 +128,20 @@ public class Logger {
         ignoreIndentation = false;
     }
 
+    public static void logCourseCodes(String frontText,List<Course> courses){
+        StringBuilder builder = new StringBuilder(frontText);
+
+        for(Course c : courses){
+            builder.append(c.getCode());
+            builder.append(", ");
+        }
+
+        int len = builder.length() - 1;
+        builder.delete(len - 2, len);
+
+        log(builder.toString());
+    }
+
     public static void logSimulationEntities(){
         Department department = Department.getInstance();
         List<Student> students = department.getStudents();
@@ -145,6 +159,7 @@ public class Logger {
 
         log("DEPARTMENT INFORMATION :");
         incrementIndentation();
+
         log("DEPARTMENT NAME : " + department.getDepartmentName());
         log("DEPARTMENT CODE : " + department.getDepartmentCode());
 
@@ -221,19 +236,7 @@ public class Logger {
         decrementIndentation();
     }
 
-    private static void logCourseCodes(String frontText,List<Course> courses){
-        StringBuilder builder = new StringBuilder(frontText);
 
-        for(Course c : courses){
-            builder.append(c.getCode());
-            builder.append(", ");
-        }
-
-        int len = builder.length() - 1;
-        builder.delete(len - 2, len);
-
-        log(builder.toString());
-    }
 
     private static void logStudents(List<Student> students){
         newLine();
