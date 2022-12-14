@@ -89,7 +89,12 @@ public class Student extends Human{
     private void startRegistrationOnElectiveCourses(List<ElectiveCourse> openCourses, int noOfTakeableCourses) {
         for(int i = 0; i < noOfTakeableCourses; i++){
             int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, openCourses.size());
-            var course = openCourses.get(randomIndex);
+            Course course;
+            try {
+                course = openCourses.get(randomIndex);
+            }catch (Exception e){
+                course = null;
+            }
 
             if(!transcript.didStudentFailBefore(course) || !studentWantsToRetake())
                 continue;

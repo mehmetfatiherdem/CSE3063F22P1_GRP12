@@ -34,4 +34,8 @@ public class EngineeringProject extends Course{
     public boolean isCreditsRequirementMet(Student student){
         return REQUIRED_CREDITS <= student.getCompletedCredits();
     }
+
+    public int getCoursePriority(){
+        return 3;
+    }
 }
