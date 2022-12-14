@@ -17,18 +17,21 @@ public class MandatoryCourse extends Course{
 
     @Override
     public Boolean isAnyCourseSectionAvailable(){
-        if(!super.isAnyCourseSectionAvailable()){
+        if(theoreticalHours == 0)
+            return false;
+        if(!super.isAnyCourseSectionAvailable())
             Department.getInstance().addNewCourseSection(this);
-        }
 
         return true;
     }
 
     @Override
     public Boolean isAnyLabSectionAvailable(){
-        if(!super.isAnyLabSectionAvailable()){
+        if(appliedHours == 0)
+            return false;
+        if(!super.isAnyLabSectionAvailable())
             Department.getInstance().addNewLabSection(this);
-        }
+
         return true;
     }
 

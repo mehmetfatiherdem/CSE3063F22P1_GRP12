@@ -149,13 +149,10 @@ public class Department {
 
     private void generateWeeklyScheduleForMandatoryCourses(){
         for(int semester = 0; semester < 8; semester++){
-            int grade = semester/2;
-            int season = semester % 2;
-
             List<Course> mandatoryCoursesForSemester = new ArrayList<>();
 
             for(Course c : mandatoryCourses)
-                if(c.getFirstYearToTake().getValue() == grade && c.getFirstSeasonToTake().getValue() == season)
+                if(semester == c.getCourseSemester())
                     mandatoryCoursesForSemester.add(c);
 
             List<Tuple<Long,Long>> courseSchedules = generateCollisionlessWeeklyScheduleForCourses(mandatoryCoursesForSemester);
