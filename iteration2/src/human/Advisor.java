@@ -36,7 +36,7 @@ public class Advisor extends Lecturer {
             if(!checkTypesOfCollidingSections(c.getKey(),c.getValue()))
                 unaccepted.add(c);
 
-        if(unaccepted.size() == 0)
+        if(unaccepted.size() > 0)
             Logger.log("The advisor" + "did not approve the registration of " + student.getFullName() + " due to high priority course(s) having collisions");
         else
             Logger.log("The advisor approved the registration of " + student.getFullName() + " !");
@@ -45,7 +45,7 @@ public class Advisor extends Lecturer {
     }
 
     public boolean checkTypesOfCollidingSections(Section section1, Section section2){
-        int priority1 = section1.getSectionPriority();
-        return priority1 != section2.getSectionPriority() || priority1 <= 2;
+        float total = section1.getSectionPriority() + section2.getSectionPriority();
+        return total < 5;
     }
 }

@@ -89,14 +89,9 @@ public class Student extends Human{
     private void startRegistrationOnElectiveCourses(List<ElectiveCourse> openCourses, int noOfTakeableCourses) {
         for(int i = 0; i < noOfTakeableCourses; i++){
             int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, openCourses.size());
-            Course course;
-            try {
-                course = openCourses.get(randomIndex);
-            }catch (Exception e){
-                course = null;
-            }
+            Course course = openCourses.get(randomIndex);
 
-            if(!transcript.didStudentFailBefore(course) || !studentWantsToRetake())
+            if(transcript.didStudentFailBefore(course) && !studentWantsToRetake())
                 continue;
             if(!studentWantsToTake())
                 continue;
@@ -107,15 +102,14 @@ public class Student extends Human{
     }
 
     public void tryToRegister(Course course){
-        if(!course.isAnyCourseSectionAvailable())
-            return;
-
-        var courseSections = course.getAvailableCourseSections();
-        enrolledSections.add(courseSections.get(0));
+        if(course.isAnyCourseSectionAvailable()){
+            var courseSections = course.getAvailableCourseSections();
+            enrolledSections.add(courseSections.get(0));
+        }
 
         if(course.isAnyLabSectionAvailable()){
             var labSections = course.getAvailableLabSections();
-            enrolledSections.add(courseSections.get(0));
+            enrolledSections.add(labSections.get(0));
         }
     }
 
@@ -139,15 +133,17 @@ public class Student extends Human{
     }
 
     private void endRegistration(){
+        RegistrationSystem system = RegistrationSystem.getInstance();
+
         Supplier<List<Tuple<Section,Section>>> checkCollisionCallback = () -> {
-            return RegistrationSystem.getInstance().checkEnrolledSections(this);
+            return system.checkEnrolledSections(this);
         };
 
         //Validated by the registration system
         handleUnacceptedCollisions(checkCollisionCallback);
 
         checkCollisionCallback = () -> {
-          return RegistrationSystem.getInstance().sendToAdvisorApproval(this);
+          return system.sendToAdvisorApproval(this);
         };
 
         //Validated by the advisor
@@ -167,16 +163,18 @@ public class Student extends Human{
 
     private void handleUnacceptedCollisions(Supplier<List<Tuple<Section,Section>>> collisionCheckCallback){
         List<Tuple<Section,Section>> unacceptedCollisions;
+        int failCounter = 0;
 
         while ((unacceptedCollisions = collisionCheckCallback.get()).size() > 0){
             for(var collision : unacceptedCollisions){
+                failCounter++;
                 Section s1 = collision.getKey();
                 Section s2 = collision.getValue();
                 Section[] temp = new Section[] {s1, s2};
 
                 boolean resolved = false;
 
-                for(int i = 0; i < 2; i++){
+                for(int i = 0; i < 2 && failCounter <= 3; i++){
                     Section s = temp[i];
                     var alternativeSection = pickAlternativeSection(s);
 
