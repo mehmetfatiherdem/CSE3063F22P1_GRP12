@@ -10,4 +10,9 @@ public class CourseSection extends Section{
     public Lecturer getLecturer(){
         return (Lecturer)instructor;
     }
+
+    @Override
+    public int getSectionPriority(){
+        return super.getSectionPriority() + 1;
+    }
 }

@@ -49,4 +49,8 @@ public class NonTechnicalElectiveCourse extends ElectiveCourse{
 
         return noOfCoursesTillSemester;
     }
+
+    public int getCoursePriority(){
+        return 0;
+    }
 }

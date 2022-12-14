@@ -149,6 +149,7 @@ public abstract class Course {
     }
 
     //Getters
+    public abstract int getCoursePriority();
     public int getCredits() {
         return credits;
     }
@@ -160,9 +161,6 @@ public abstract class Course {
     }
     public List<Course> getPrerequisites() {
         return prerequisites;
-    }
-    public int getEcts() {
-        return ects;
     }
     public int getTheoreticalHours() {
         return theoreticalHours;
@@ -186,14 +184,6 @@ public abstract class Course {
         List<Section> allSections = new ArrayList<>(courseSections);
         allSections.addAll(labSections);
         return allSections;
-    }
-
-    public List<CourseSection> getCourseSections(){
-        return courseSections;
-    }
-
-    public List<LabSection> getLabSections(){
-        return labSections;
     }
     public int getQuota() {
         return quota;

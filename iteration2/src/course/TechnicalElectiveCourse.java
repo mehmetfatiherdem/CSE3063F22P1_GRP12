@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Map;
 
 public class TechnicalElectiveCourse extends ElectiveCourse{
-
     public static final int REQUIRED_CREDITS = 155;
 
     public static final Map<Integer, Integer> numberOfCoursesTakeableBySemester = new HashMap<>(){{
@@ -59,5 +58,9 @@ public class TechnicalElectiveCourse extends ElectiveCourse{
         }
 
         return noOfCoursesTillSemester;
+    }
+
+    public int getCoursePriority(){
+        return 2;
     }
 }

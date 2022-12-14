@@ -55,4 +55,8 @@ public class MandatoryCourse extends Course{
 
         return sections;
     }
+
+    public int getCoursePriority(){
+        return 3;
+    }
 }
