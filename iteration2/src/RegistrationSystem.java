@@ -25,36 +25,36 @@ public class RegistrationSystem {
         return (List<MandatoryCourse>)(List<?>)getTakeableCourses((List<Course>)(List<?>)mandatoryCourses,student);
     }
 
-    public List<NonTechnicalElectiveCourse> getOpenNonTechnicalElectiveCourses(Student student){
+    public List<NonTechnicalElectiveCourse> getOpenNTECourses(Student student){
         var nteCourses = Department.getInstance().getNonTechnicalElectiveCourses();
         return (List<NonTechnicalElectiveCourse>)(List<?>)getTakeableCourses((List<Course>)(List<?>)nteCourses,student);
     }
 
-    public List<FacultyTechnicalElectiveCourse> getOpenFacultyTechnicalElectiveCourses(Student student){
+    public List<FacultyTechnicalElectiveCourse> getOpenFTECourses(Student student){
         var fteCourses = Department.getInstance().getFacultyTechnicalElectiveCourses();
         return (List<FacultyTechnicalElectiveCourse>)(List<?>)getTakeableCourses((List<Course>)(List<?>)fteCourses,student);
     }
 
-    public List<TechnicalElectiveCourse> getOpenTechnicalElectiveCourses(Student student){
+    public List<TechnicalElectiveCourse> getOpenTECourses(Student student){
         var teCourses = Department.getInstance().getTechnicalElectiveCourses();
         return (List<TechnicalElectiveCourse>)(List<?>)getTakeableCourses((List<Course>)(List<?>)teCourses,student);
     }
 
-    public int getTheNumberOfTechnicalElectiveCoursesStudentCanTake(Student student){
+    public int getTheNumberOfTECoursesStudentCanTake(Student student){
         int noOfTEPassed = student.getTranscript().getNumberOfTElectivesPassed();
         int noOfTERequired = TechnicalElectiveCourse.getTotalNumberOfCoursesUntilSemester(student.getStudentSemester());
         return noOfTERequired - noOfTEPassed;
     }
 
-    public int getTheNumberOfNonTechnicalElectiveCoursesStudentCanTake(Student student){
+    public int getTheNumberOfNTECoursesStudentCanTake(Student student){
         int noOfNTEPassed = student.getTranscript().getNumberOfNTElectivesPassed();
         int noOfNTERequired = NonTechnicalElectiveCourse.getTotalNumberOfCoursesUntilSemester(student.getStudentSemester());
         return noOfNTERequired - noOfNTEPassed;
     }
 
-    public int getTheNumberOfFacultyTechnicalElectiveCoursesStudentCanTake(Student student){
+    public int getTheNumberOfFTECoursesStudentCanTake(Student student){
         int noOfFTEPassed = student.getTranscript().getNumberOfFTElectivesPassed();
-        int noOfFTERequired = TechnicalElectiveCourse.getTotalNumberOfCoursesUntilSemester(student.getStudentSemester());
+        int noOfFTERequired = FacultyTechnicalElectiveCourse.getTotalNumberOfCoursesUntilSemester(student.getStudentSemester());
         return noOfFTERequired - noOfFTEPassed;
     }
 

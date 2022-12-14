@@ -5,7 +5,6 @@ import iteration2.src.human.*;
 import iteration2.src.input_output.JsonParser;
 import iteration2.src.input_output.Logger;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Simulation {
@@ -59,16 +58,16 @@ public class Simulation {
         RegistrationSystem system = RegistrationSystem.getInstance();
 
         for(Student s: students) {
-            var mandatoryCourses = system.getOpenMandatoryCourses(s);
-            var teCourses = system.getOpenTechnicalElectiveCourses(s);
-            var fteCourses = system.getOpenFacultyTechnicalElectiveCourses(s);
-            var nteCourses = system.getOpenNonTechnicalElectiveCourses(s);
+            var openMandatoryCourses = system.getOpenMandatoryCourses(s);
+            var openTECourses = system.getOpenTECourses(s);
+            var openFTECourses = system.getOpenFTECourses(s);
+            var openNTECourses = system.getOpenNTECourses(s);
 
-            int noOfTakeableFTECourses = system.getTheNumberOfFacultyTechnicalElectiveCoursesStudentCanTake(s);
-            int noOfTakeableTECourses = system.getTheNumberOfTechnicalElectiveCoursesStudentCanTake(s);
-            int noOfTakeableNTECourses = system.getTheNumberOfNonTechnicalElectiveCoursesStudentCanTake(s);
+            int noOfTakeableFTECourses = system.getTheNumberOfFTECoursesStudentCanTake(s);
+            int noOfTakeableTECourses = system.getTheNumberOfTECoursesStudentCanTake(s);
+            int noOfTakeableNTECourses = system.getTheNumberOfNTECoursesStudentCanTake(s);
 
-            s.startRegistration(mandatoryCourses, teCourses, fteCourses, nteCourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
+            s.startRegistration(openMandatoryCourses, openTECourses, openFTECourses, openNTECourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
         }
     }
 
