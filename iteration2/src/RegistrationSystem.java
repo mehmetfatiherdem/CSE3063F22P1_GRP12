@@ -22,50 +22,22 @@ public class RegistrationSystem {
 
     public List<MandatoryCourse> getOpenMandatoryCourses(Student student){
         var mandatoryCourses = Department.getInstance().getMandatoryCourses();
-
-        List<MandatoryCourse> openMandatoryCourses = new ArrayList<>();
-        for(MandatoryCourse c : mandatoryCourses){
-            if(c.canStudentTakeCourse(student))
-                openMandatoryCourses.add(c);
-        }
-
-        return openMandatoryCourses;
+        return (List<MandatoryCourse>)(List<?>)getTakeableCourses((List<Course>)(List<?>)mandatoryCourses,student);
     }
 
     public List<NonTechnicalElectiveCourse> getOpenNonTechnicalElectiveCourses(Student student){
         var nteCourses = Department.getInstance().getNonTechnicalElectiveCourses();
-
-        List<NonTechnicalElectiveCourse> openNTECourses = new ArrayList<>();
-        for(NonTechnicalElectiveCourse c : nteCourses){
-            if(c.canStudentTakeCourse(student))
-                openNTECourses.add(c);
-        }
-
-        return openNTECourses;
+        return (List<NonTechnicalElectiveCourse>)(List<?>)getTakeableCourses((List<Course>)(List<?>)nteCourses,student);
     }
 
     public List<FacultyTechnicalElectiveCourse> getOpenFacultyTechnicalElectiveCourses(Student student){
         var fteCourses = Department.getInstance().getFacultyTechnicalElectiveCourses();
-
-        List<FacultyTechnicalElectiveCourse> openFTECourses = new ArrayList<>();
-        for(FacultyTechnicalElectiveCourse c : fteCourses){
-            if(c.canStudentTakeCourse(student))
-                openFTECourses.add(c);
-        }
-
-        return openFTECourses;
+        return (List<FacultyTechnicalElectiveCourse>)(List<?>)getTakeableCourses((List<Course>)(List<?>)fteCourses,student);
     }
 
     public List<TechnicalElectiveCourse> getOpenTechnicalElectiveCourses(Student student){
         var teCourses = Department.getInstance().getTechnicalElectiveCourses();
-
-        List<TechnicalElectiveCourse> openTECourses = new ArrayList<>();
-        for(TechnicalElectiveCourse c : teCourses){
-            if(c.canStudentTakeCourse(student))
-                openTECourses.add(c);
-        }
-
-        return openTECourses;
+        return (List<TechnicalElectiveCourse>)(List<?>)getTakeableCourses((List<Course>)(List<?>)teCourses,student);
     }
 
     public int getTheNumberOfTechnicalElectiveCoursesStudentCanTake(Student student){
@@ -128,5 +100,16 @@ public class RegistrationSystem {
 
     public List<Tuple<Section,Section>> sendToAdvisorApproval(Student student){
         return student.getAdvisor().examineRegistration(student);
+    }
+
+    private List<Course> getTakeableCourses(List<Course> from, Student student){
+        List<Course> openCourses = new ArrayList<>();
+
+        for(Course c : from){
+            if(c.canStudentTakeCourse(student))
+                openCourses.add(c);
+        }
+
+        return openCourses;
     }
 }
