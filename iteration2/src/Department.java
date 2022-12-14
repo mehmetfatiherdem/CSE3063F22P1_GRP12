@@ -10,7 +10,8 @@ import java.util.List;
 public class Department {
     private static Department instance;
 
-    private final String code = "CSE";
+    private final String departmentCode = "CSE";
+    private final String departmentName = "Computer Engineering Department";
     private Season currentSeason;
     private List<MandatoryCourse> mandatoryCourses;
     private List<TechnicalElectiveCourse> technicalElectiveCourses;
@@ -79,14 +80,30 @@ public class Department {
     }
 
     // Getters
-    public String getCode() {
-        return code;
+    public String getDepartmentCode() {
+        return departmentCode;
+    }
+
+    public String getDepartmentName(){
+        return departmentName;
     }
     public Season getCurrentSeason(){
         return currentSeason;
     }
     public List<Student> getStudents() {
         return students;
+    }
+
+    public List<Lecturer> getLecturers(){
+        return lecturers;
+    }
+
+    public List<Assistant> getAssistants(){
+        return assistants;
+    }
+
+    public List<Advisor> getAdvisors(){
+        return advisors;
     }
     public List<Course> getAllCourses() {
         List<Course> courses = new ArrayList<>(mandatoryCourses);

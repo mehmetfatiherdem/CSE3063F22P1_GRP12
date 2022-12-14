@@ -32,8 +32,11 @@ public class Simulation {
     }
 
     private static void runSimulation(List<Student> students){
-        Logger.log("The simulation has started!");
+        Logger.logSimulationEntities();
 
+        Logger.newLine();
+        Logger.log("THE SIMULATION HAS STARTED!");
+        Logger.log("THE REGISTRATION PROCESS HAS STARTED!");
         registrationProcess(students);
 
         Logger.newLine();

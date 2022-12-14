@@ -1,6 +1,8 @@
 package iteration2.src.input_output;
 
-import iteration2.src.course.Section;
+import iteration2.src.Department;
+import iteration2.src.course.*;
+import iteration2.src.human.*;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -126,6 +128,53 @@ public class Logger {
         ignoreIndentation = false;
     }
 
+    public static void logSimulationEntities(){
+        Department department = Department.getInstance();
+        List<Student> students = department.getStudents();
+        List<Lecturer> lecturers = department.getLecturers();
+        List<Assistant> assistants = department.getAssistants();
+        List<Advisor> advisors = department.getAdvisors();
+        List<MandatoryCourse> mandatoryCourses = department.getMandatoryCourses();
+        List<TechnicalElectiveCourse> technicalElectiveCourses = department.getTechnicalElectiveCourses();
+        List<FacultyTechnicalElectiveCourse> facultyTechnicalElectiveCourses = department.getFacultyTechnicalElectiveCourses();
+        List<NonTechnicalElectiveCourse> nonTechnicalElectiveCourses = department.getNonTechnicalElectiveCourses();
+
+        log("SEMESTER : " + department.getCurrentSeason().toString());
+
+        newLine();
+
+        log("DEPARTMENT INFORMATION :");
+        incrementIndentation();
+        log("DEPARTMENT NAME : " + department.getDepartmentName());
+        log("DEPARTMENT CODE : " + department.getDepartmentCode());
+
+        log("LECTURERS :");
+        logPeopleNames((List<Human>)(List<?>)lecturers);
+
+        log("ASSISTANTS :");
+        logPeopleNames((List<Human>)(List<?>)assistants);
+
+        log("ADVISORS :");
+        logPeopleNames((List<Human>)(List<?>)advisors);
+
+        log("COURSES :");
+        incrementIndentation();
+        log("MANDATORY COURSES :");
+        logCourses((List<Course>)(List<?>)mandatoryCourses);
+        log("TECHNICAL ELECTIVE COURSES :");
+        logCourses((List<Course>)(List<?>)technicalElectiveCourses);
+        log("FACULTY TECHNICAL ELECTIVE COURSES :");
+        logCourses((List<Course>)(List<?>)facultyTechnicalElectiveCourses);
+        log("NON-TECHNICAL ELECTIVE COURSES :");
+        logCourses((List<Course>)(List<?>)nonTechnicalElectiveCourses);
+        decrementIndentation();
+
+        log("STUDENTS : ");
+        logStudents(students);
+
+        decrementIndentation();
+    }
+
     private static void addCell(String cellText,char verticalLine ,StringBuilder schedule){
         int textLength = cellText.length();
         int gapLength = cellWidth - textLength;
@@ -142,6 +191,65 @@ public class Logger {
     private static void appendGap(int width, StringBuilder builder){
         for (int i = 0; i < width; i++)
             builder.append(" ");
+    }
+
+    private static void logPeopleNames(List<Human> people){
+        incrementIndentation();
+
+        for(Human h : people){
+            log(h.getFullName());
+        }
+
+        decrementIndentation();
+    }
+
+    private static void logCourses(List<Course> courses){
+        newLine();
+        incrementIndentation();
+
+        for (Course c : courses){
+            log("COURSE CODE : " + c.getCode());
+            log("COURSE NAME : " + c.getName());
+            log("CREDITS : " + c.getCredits());
+            log("QUOTA : " + c.getQuota());
+            log("THEORETICAL HOURS : " + c.getTheoreticalHours());
+            log("APPLIED HOURS : " + c.getAppliedHours());
+            logCourseCodes("PREREQUISITES : ", c.getPrerequisites());
+            newLine();
+        }
+
+        decrementIndentation();
+    }
+
+    private static void logCourseCodes(String frontText,List<Course> courses){
+        StringBuilder builder = new StringBuilder(frontText);
+
+        for(Course c : courses){
+            builder.append(c.getCode());
+            builder.append(", ");
+        }
+
+        int len = builder.length() - 1;
+        builder.delete(len - 2, len);
+
+        log(builder.toString());
+    }
+
+    private static void logStudents(List<Student> students){
+        newLine();
+        incrementIndentation();
+
+        for (Student s : students){
+            log("STUDENT NAME : " + s.getFullName());
+            log("STUDENT ID : " + s.getStudentID());
+            log("STUDENT GRADE : " + s.getGrade().toString());
+            log("ADVISOR : " + s.getAdvisor().getFullName());
+            log("COMPLETED CREDITS : " + s.getCompletedCredits());
+            log("GPA : " + s.getTranscript().calculateGPA());
+            newLine();
+        }
+
+        decrementIndentation();
     }
 
     private static PrintWriter openLogFile(){
