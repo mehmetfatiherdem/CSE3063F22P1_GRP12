@@ -20,7 +20,7 @@ public class NonTechnicalElectiveCourse extends ElectiveCourse{
         put(3,0);
         put(4,0);
         put(5,0);
-        put(6,0);
+        put(6,1);
         put(7,1);
     }};
 
