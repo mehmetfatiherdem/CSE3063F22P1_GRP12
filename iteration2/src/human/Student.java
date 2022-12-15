@@ -69,7 +69,7 @@ public class Student extends Human{
                                   int noOfTakeableTECourses, int noOfTakeableFTECourses,int noOfTakeableNTECourses){
 
         Logger.newLine();
-        Logger.log("Registration process of " + this.getFullName() + " started");
+        Logger.log(getFullName() + " starts registering to courses");
         Logger.newLine();
 
         for(var c : openMandatoryCourses){
@@ -102,14 +102,21 @@ public class Student extends Human{
     }
 
     public void tryToRegister(Course course){
+        Section s;
         if(course.isAnyCourseSectionAvailable()){
             var courseSections = course.getAvailableCourseSections();
-            enrolledSections.add(courseSections.get(0));
+            s = courseSections.get(0);
+            enrolledSections.add(s);
+
+            Logger.log(getFullName() + " registers to " + s.toString());
         }
 
         if(course.isAnyLabSectionAvailable()){
             var labSections = course.getAvailableLabSections();
-            enrolledSections.add(labSections.get(0));
+            s = labSections.get(0);
+            enrolledSections.add(s);
+
+            Logger.log(getFullName() + " registers to " + s.toString());
         }
     }
 
@@ -139,24 +146,23 @@ public class Student extends Human{
             return system.checkEnrolledSections(this);
         };
 
-        //Validated by the registration system
+        Logger.newLine();
+        Logger.log(getFullName() + " ends registering and checks their schedule to see if they can send their registration to advisor approval :");
+        Logger.newLine();
+
         handleUnacceptedCollisions(checkCollisionCallback);
 
         checkCollisionCallback = () -> {
           return system.sendToAdvisorApproval(this);
         };
 
-        //Validated by the advisor
+        Logger.newLine();
+        Logger.log(getFullName() + " sends an approval request of their registration to their advisor " + advisor.getFullName());
+        Logger.newLine();
+
         handleUnacceptedCollisions(checkCollisionCallback);
 
-
         saveToTranscript();
-
-        Logger.newLine();
-        Logger.log("Student Name : " + getFullName());
-        Logger.log("Student ID : " + studentID);
-        Logger.log("Advisor Name : "  + advisor.getFullName());
-        Logger.newLine();
 
         Logger.logStudentSchedule(enrolledSections, HorizontalLineType.EqualsSign,'|');
     }
@@ -166,6 +172,9 @@ public class Student extends Human{
         int failCounter = 0;
 
         while ((unacceptedCollisions = collisionCheckCallback.get()).size() > 0){
+            Logger.log(getFullName() + " starts solving their collision issues");
+            Logger.newLine();
+
             for(var collision : unacceptedCollisions){
                 failCounter++;
                 Section s1 = collision.getKey();
@@ -179,9 +188,7 @@ public class Student extends Human{
                     var alternativeSection = pickAlternativeSection(s);
 
                     if(alternativeSection != null){
-                        Logger.newLine();
-                        Logger.log("Student replaced section " + s.toString() + " with section " + alternativeSection.toString());
-                        Logger.newLine();
+                        Logger.log(getFullName() + " replaces " + s.toString() + " with " + alternativeSection.toString());
                         enrolledSections.remove(s);
                         enrolledSections.add(alternativeSection);
                         resolved = true;
@@ -195,19 +202,17 @@ public class Student extends Human{
                 int s1Priority = s1.getSectionPriority();
                 int s2Priority = s2.getSectionPriority();
 
-                if(s1Priority == s2Priority){
-                    Section sectionToRemove = temp[RandomNumberGenerator.randomIntegerBetween(0,2)];
-                    Logger.newLine();
-                    Logger.log("Student removed the section " + sectionToRemove.toString());
-                    Logger.newLine();
-                    enrolledSections.remove(sectionToRemove);
-                }
-                else{
-                    Logger.newLine();
-                    Logger.log("Student removed the section " + (s1Priority > s2Priority ? s2 : s1) + "due to high priority of other section");
-                    Logger.newLine();
-                    enrolledSections.remove(s1Priority > s2Priority ? s2 : s1);
-                }
+                Section sectionToRemove;
+
+                if(s1Priority == s2Priority)
+                    sectionToRemove = temp[RandomNumberGenerator.randomIntegerBetween(0,2)];
+                else
+                    sectionToRemove = s1Priority > s2Priority ? s2 : s1;
+
+                enrolledSections.remove(sectionToRemove);
+
+                Logger.log(getFullName() + " removes " + sectionToRemove.toString());
+                Logger.newLine();
             }
         }
     }
@@ -242,14 +247,6 @@ public class Student extends Human{
 
     public float getFailChance(){
         return failChance;
-    }
-
-    public float getRetakeChance(){
-        return retakeChance;
-    }
-
-    public float getNotTakeChance(){
-        return notTakeChance;
     }
 
     public void setGrade(Grade grade) {

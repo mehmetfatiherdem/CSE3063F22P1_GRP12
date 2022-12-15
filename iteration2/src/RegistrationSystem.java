@@ -62,7 +62,6 @@ public class RegistrationSystem {
     }
 
     public List<Tuple<Section,Section>> checkEnrolledSections(Student student){
-
         var collisions = Section.checkForCollisions(student.getEnrolledCourses());
 
         List<Tuple<Section,Section>> highlyCollidingSections = new ArrayList<>();
@@ -77,8 +76,15 @@ public class RegistrationSystem {
             if(noOfCollisions >= 2) {
                 highlyCollidingSections.add(c);
 
-                Logger.log("The courses " + sec1.toString() + " ,and " + sec2.toString() + " have a collision of length " + noOfCollisions);
-                Logger.log("Two courses can not collide by more than 2 hours!");
+                Logger.log("THE COURSES " + sec1.toString() + ", AND " + sec2.toString() + " HAVE A COLLISION OF LENGTH " + noOfCollisions + " :");
+                Logger.incrementIndentation();
+
+                for(var coll : collisionsBetween){
+                    Logger.log("ON " + Section.CLASS_DAYS[coll.getKey()] + " AT " + Section.CLASS_HOURS[coll.getValue()]);
+                }
+
+                Logger.decrementIndentation();
+                Logger.log("TWO COURSES MUST NOT COLLIDE BY MORE THAN 1 HOUR!");
                 continue;
             }
 
@@ -86,17 +92,28 @@ public class RegistrationSystem {
                 int collisionDay = d.getKey();
                 int collisionHour = d.getValue();
 
-                Logger.log("Warning : There is a collision between " + sec1.toString()
-                        + " and " + sec2.toString() + " on " + Section.CLASS_DAYS[collisionDay] + " at " + Section.CLASS_HOURS[collisionHour]);
+                Logger.log("WARNING : THERE IS A COLLISION BETWEEN " + sec1.toString()
+                        + " AND " + sec2.toString() + " ON " + Section.CLASS_DAYS[collisionDay] + " AT " + Section.CLASS_HOURS[collisionHour]);
             }
         }
 
         Logger.newLine();
 
-        if(highlyCollidingSections.size() == 0)
-            Logger.log(student.getFullName() + "'s selected courses are adequate to send to advisor approval!");
-        else
-            Logger.log("There are preventing collisions among the courses " + student.getFullName() + " has selected!");
+        if(highlyCollidingSections.size() == 0){
+            Logger.log(student.getFullName() + "'S SELECTED COURSES ARE ADEQUATE TO BE SENT TO ADVISOR APPROVAL!");
+        }
+        else{
+            Logger.log("THERE ARE PREVENTING COLLISIONS AMONG THE COURSES " + student.getFullName() + " HAS SELECTED :");
+            Logger.incrementIndentation();
+
+            for (var coll : highlyCollidingSections){
+                Logger.log("BETWEEN " + coll.getKey().toString() + " AND " + coll.getValue().toString());
+            }
+
+            Logger.decrementIndentation();
+        }
+
+        Logger.newLine();
 
         return highlyCollidingSections;
     }

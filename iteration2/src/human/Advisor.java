@@ -24,8 +24,7 @@ public class Advisor extends Lecturer {
     //Kursları mandatory ve elective çakışmasına göre onaylasın ya da onaylamasın.
 
     public List<Tuple<Section,Section>> examineRegistration(Student student){
-        Logger.newLine();
-        Logger.log("The advisor " + getFullName() + " started examining the registration of " + student.getFullName());
+        Logger.log("The advisor " + getFullName() + " starts examining the registration of " + student.getFullName());
 
         List<Section> sections= student.getEnrolledCourses();
         var collisions= Section.checkForCollisions(sections);
@@ -36,10 +35,12 @@ public class Advisor extends Lecturer {
             if(!checkTypesOfCollidingSections(c.getKey(),c.getValue()))
                 unaccepted.add(c);
 
-        if(unaccepted.size() > 0)
-            Logger.log("The advisor" + "did not approve the registration of " + student.getFullName() + " due to high priority course(s) having collisions");
-        else
-            Logger.log("The advisor approved the registration of " + student.getFullName() + " !");
+        if(unaccepted.size() == 0){
+            Logger.log("The advisor " + getFullName() + " approves the registration of " + student.getFullName());
+        }
+        else{
+            Logger.log("The advisor " + getFullName() + " does not approve the registration of " + student.getFullName() + " due to high priority courses having collisions");
+        }
 
         return unaccepted;
     }

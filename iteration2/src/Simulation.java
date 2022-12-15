@@ -36,6 +36,7 @@ public class Simulation {
 
         Logger.newLine();
         Logger.log("THE SIMULATION HAS STARTED!");
+        Logger.newLine();
 
         registrationProcess(students);
 
@@ -74,6 +75,8 @@ public class Simulation {
             String studentName = s.getFullName();
 
             Logger.newLine();
+            Logger.log("STUDENT INFORMATION :");
+            Logger.incrementIndentation();
 
             Logger.log("STUDENT NAME : " + studentName);
             Logger.log("STUDENT ID : " + s.getStudentID());
@@ -88,11 +91,10 @@ public class Simulation {
             Logger.logCourseCodes("NON-TECHNICAL ELECTIVE COURSES : ", (List<Course>)(List<?>)openNTECourses);
             Logger.decrementIndentation();
 
+            Logger.decrementIndentation();
             Logger.newLine();
 
             Logger.log("THE REGISTRATION PROCESS OF " + studentName + " HAS STARTED :");
-
-            Logger.newLine();
 
             s.startRegistration(openMandatoryCourses, openTECourses, openFTECourses, openNTECourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
         }
