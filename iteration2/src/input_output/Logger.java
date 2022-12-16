@@ -131,13 +131,15 @@ public class Logger {
     public static void logCourseCodes(String frontText,List<Course> courses){
         StringBuilder builder = new StringBuilder(frontText);
 
-        for(Course c : courses){
-            builder.append(c.getCode());
-            builder.append(", ");
-        }
+        if(courses.size() > 0){
+            for(Course c : courses){
+                builder.append(c.getCode());
+                builder.append(", ");
+            }
 
-        int len = builder.length() - 1;
-        builder.delete(len - 2, len);
+            int len = builder.length() - 1;
+            builder.delete(len - 2, len);
+        }
 
         log(builder.toString());
     }
