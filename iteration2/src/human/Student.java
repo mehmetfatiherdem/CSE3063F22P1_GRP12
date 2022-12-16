@@ -59,6 +59,10 @@ public class Student extends Human{
     public void saveToTranscript(){
         for(Section s: enrolledSections){
             s.addToStudentList(this);
+
+            if(s instanceof LabSection && s.getCourse().getTheoreticalHours() != 0)
+                continue;
+
             transcript.addCourseRecord(s.getCourse(), LetterGrade.NOT_GRADED,
                     Department.getInstance().getCurrentSeason(), null, this.getGrade(), false);
         }
