@@ -3,12 +3,17 @@ package iteration2.src.input_output;
 import iteration2.src.course.Section;
 
 import javax.crypto.SecretKey;
+
+import org.apache.log4j.LogManager;
+
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.util.List;
 
 public class Logger {
+    private static Logger logger = LogManager.getLogger();
+    
     private static final String logTxt = "iteration2/output/log.txt";
     private static boolean enabled = true;
 
@@ -26,7 +31,7 @@ public class Logger {
         if(!enabled)
             return;
 
-        System.out.println(message);
+       logger.info(message);
 
         var writer = openLogFile();
         writer.append(message + "\n");
@@ -37,7 +42,7 @@ public class Logger {
         if(!enabled)
             return;
 
-        System.out.println(obj);
+        logger.info(obj);
 
         var writer = openLogFile();
         writer.append(obj + "\n");
