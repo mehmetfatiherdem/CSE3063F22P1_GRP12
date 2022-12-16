@@ -106,21 +106,51 @@ public class Student extends Human{
     }
 
     public void tryToRegister(Course course){
-        Section s;
-        if(course.isAnyCourseSectionAvailable()){
-            var courseSections = course.getAvailableCourseSections();
-            s = courseSections.get(0);
-            enrolledSections.add(s);
+        boolean availableSection = false;
+        List<CourseSection> courseSections = course.getCourseSections();
 
-            Logger.log(getFullName() + " registers to " + s.toString());
+        if(courseSections.size() == 0){
+            Logger.incrementIndentation();
+            Logger.log("THERE ARE NO COURSE SECTIONS AVAILABLE FOR " + course.getCode());
+            Logger.decrementIndentation();
         }
 
-        if(course.isAnyLabSectionAvailable()){
-            var labSections = course.getAvailableLabSections();
-            s = labSections.get(0);
-            enrolledSections.add(s);
+        for (CourseSection s : courseSections){
+            if(!s.isSectionFull()){
+                enrolledSections.add(s);
+                Logger.log(getFullName() + " registers to " + s.toString());
+                availableSection = true;
+                break;
+            }
+            else{
+                Logger.incrementIndentation();
+                Logger.log("THE QUOTA OF " + s.toString() + " IS FULL");
+                Logger.decrementIndentation();
+            }
+        }
 
+        if(!availableSection){
+            course.requestNewCourseSection();
+            List<CourseSection> availableSections;
+
+            if((availableSections = course.getAvailableCourseSections()).size() > 0){
+                Section s = availableSections.get(0);
+                enrolledSections.add(availableSections.get(0));
+                Logger.log(getFullName() + " registers to " + s.toString());
+            }
+        }
+
+        List<LabSection> availableSections;
+
+        if((availableSections = course.getAvailableLabSections()).size() > 0){
+            Section s = availableSections.get(0);
+            enrolledSections.add(s);
             Logger.log(getFullName() + " registers to " + s.toString());
+        }
+        else{
+            Logger.incrementIndentation();
+            Logger.log("THERE ARE NO LAB SECTIONS AVAILABLE FOR " + course.getCode());
+            Logger.decrementIndentation();
         }
     }
 

@@ -52,22 +52,6 @@ public abstract class Course {
         //Each and every semester, at least one section of all mandatory courses should be registrable without any collision
     }
 
-    public Boolean isAnyCourseSectionAvailable(){
-        for(CourseSection s: courseSections){
-            if(!s.isSectionFull())
-                return  true;
-        }
-
-        return false;
-    }
-    public  Boolean isAnyLabSectionAvailable(){
-        for(LabSection s:labSections){
-            if(!s.isSectionFull())
-                return true;
-        }
-
-        return false;
-    }
     public void addPrerequisite(Course prerequisite){
         prerequisites.add(prerequisite);
     }
@@ -145,6 +129,8 @@ public abstract class Course {
         return sections;
     }
 
+    public void requestNewCourseSection(){ }
+
     //Getters
     public abstract int getCoursePriority();
     public int getCourseSemester(){
@@ -179,6 +165,10 @@ public abstract class Course {
     }
     public List<Assistant> getAssistants() {
         return assistants;
+    }
+
+    public List<CourseSection> getCourseSections(){
+        return courseSections;
     }
     public List<Section> getAllSections() {
         List<Section> allSections = new ArrayList<>(courseSections);
