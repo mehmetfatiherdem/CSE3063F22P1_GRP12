@@ -38,10 +38,10 @@ public class CourseRecord {
         this.course = course;
     }
     public void setScore(float score) {
-       if(score < 0){
-       return;
-       }
-        this.score = score;
+       if(score < 0)
+           return;
+
+       this.score = score;
     }
     public void setIsPassed(Boolean isPassed) {
         this.isPassed = isPassed;

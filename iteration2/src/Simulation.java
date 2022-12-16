@@ -119,13 +119,15 @@ public class Simulation {
                 float rand = RandomNumberGenerator.RandomFloat();
 
                 if(rand <= student.getFailChance()){
-                    r.setScore(RandomNumberGenerator.RandomFloatBetween(0.0f, LetterGrade.DD.getNumVal()-0.01f));
+                    float score = RandomNumberGenerator.RandomFloatBetween(0f, 39.99f);
+                    r.setScore(score);
                     r.setIsPassed(false);
-                    r.setlGrade(Transcript.getLetterGradeOfScore(r.getScore()));
+                    r.setlGrade(Transcript.getLetterGradeOfScore(score));
                 }else{
-                    r.setScore(RandomNumberGenerator.RandomFloatBetween(LetterGrade.DD.getNumVal(),100.0f));
+                    float score = RandomNumberGenerator.RandomFloatBetween(40.0f, 100.0f);
+                    r.setScore(score);
                     r.setIsPassed(true);
-                    r.setlGrade(Transcript.getLetterGradeOfScore(r.getScore()));
+                    r.setlGrade(Transcript.getLetterGradeOfScore(score));
                 }
 
                 Logger.log("");
