@@ -63,6 +63,47 @@ public class Logger {
         ignoreIndentation = false;
     }
 
+    public static void newLine(HorizontalLineType lineType){
+        ignoreIndentation = true;
+
+        switch (lineType){
+            case Dash:
+                log("---------------------------------------------------------------------------------------------------" +
+                        "-----------------------------------------------------------------------------------------------" +
+                        "-----------------------------------------------------------------------------------------------" +
+                        "-----------------------------------------------------------------------------------------------" +
+                        "-----------------------------------------------------------------------------------------------" +
+                        "-------------------");
+                break;
+            case Dot:
+                log("..................................................................................................." +
+                        "..............................................................................................." +
+                        "..............................................................................................." +
+                        "..............................................................................................." +
+                        "..............................................................................................." +
+                        "...................");
+                break;
+            case Star:
+                log("***************************************************************************************************" +
+                        "***********************************************************************************************" +
+                        "***********************************************************************************************" +
+                        "***********************************************************************************************" +
+                        "***********************************************************************************************" +
+                        "*******************");
+                break;
+            case EqualsSign:
+                log("===================================================================================================" +
+                        "===============================================================================================" +
+                        "===============================================================================================" +
+                        "===============================================================================================" +
+                        "===============================================================================================" +
+                        "===================");
+                break;
+        }
+
+        ignoreIndentation = false;
+    }
+
     public static void log(String message){
         if(!enabled)
             return;
@@ -78,6 +119,21 @@ public class Logger {
         closeLogFile(writer);
     }
 
+    public static void logSchedule(long schedule){
+        StringBuilder scheduleString = new StringBuilder(Long.toBinaryString(schedule));
+
+        for(int n=scheduleString.length(); n < 48; n++)
+            scheduleString.insert(0, "0");
+
+        scheduleString.insert(8,"_");
+        scheduleString.insert(17,"_");
+        scheduleString.insert(26,"_");
+        scheduleString.insert(35,"_");
+        scheduleString.insert(44,"_");
+
+        log(scheduleString.toString());
+    }
+
     public static void logStudentSchedule(List<Section> enrolledSections, HorizontalLineType horizontalLineType, char verticalLine){
         var schedule = Section.combineSchedules(enrolledSections);
         StringBuilder scheduleBuilder = new StringBuilder();
@@ -88,13 +144,17 @@ public class Logger {
             verticalLine = '|';
 
         if(horizontalLineType == HorizontalLineType.Dash)
-            horizontalLine = "\n" + indentationString + "-------------------------------------------------------------------------------------------------------------------------\n";
+            horizontalLine = "\n" + indentationString + "---------------------------------------------------------------" +
+                    "----------------------------------------------------------\n";
         else if(horizontalLineType == HorizontalLineType.Star)
-            horizontalLine = "\n" + indentationString + "*************************************************************************************************************************\n";
+            horizontalLine = "\n" + indentationString + "***************************************************************" +
+                    "**********************************************************\n";
         else if(horizontalLineType == HorizontalLineType.Dot)
-            horizontalLine = "\n" + indentationString + ".........................................................................................................................\n";
+            horizontalLine = "\n" + indentationString + "..............................................................." +
+                    "..........................................................\n";
         else
-            horizontalLine = "\n" + indentationString + "=========================================================================================================================\n";
+            horizontalLine = "\n" + indentationString + "===============================================================" +
+                    "==========================================================\n";
 
         scheduleBuilder.append(horizontalLine);
         scheduleBuilder.append(indentationString + verticalLine + "              " + verticalLine + "    Monday    " + verticalLine + "   Tuesday    " +
@@ -137,7 +197,7 @@ public class Logger {
                 builder.append(", ");
             }
 
-            int len = builder.length() - 1;
+            int len = builder.length();
             builder.delete(len - 2, len);
         }
 
@@ -155,6 +215,7 @@ public class Logger {
         List<FacultyTechnicalElectiveCourse> facultyTechnicalElectiveCourses = department.getFacultyTechnicalElectiveCourses();
         List<NonTechnicalElectiveCourse> nonTechnicalElectiveCourses = department.getNonTechnicalElectiveCourses();
 
+        newLine(HorizontalLineType.Star);
         log("SEMESTER : " + department.getCurrentSeason().toString());
 
         newLine();
@@ -190,6 +251,7 @@ public class Logger {
         logStudents(students);
 
         decrementIndentation();
+        newLine(HorizontalLineType.Star);
     }
 
     private static void addCell(String cellText,char verticalLine ,StringBuilder schedule){
