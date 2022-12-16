@@ -113,7 +113,7 @@ public class Logger {
 
         var writer = openLogFile();
 
-        writer.append(log);
+        //writer.append(log);
         System.out.print(log);
 
         closeLogFile(writer);

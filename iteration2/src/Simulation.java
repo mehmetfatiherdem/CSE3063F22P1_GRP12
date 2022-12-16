@@ -41,8 +41,8 @@ public class Simulation {
         Logger.newLine();
         gradingProcess(students, studentGpas);
 
-        JsonParser parser = new JsonParser();
-        parser.serializeStudents(students);
+        //JsonParser parser = new JsonParser();
+        //parser.serializeStudents(students);
 
         Logger.newLine();
         Logger.log("THE SIMULATION HAS ENDED!");
