@@ -10,6 +10,7 @@ import java.util.List;
 
 public class Simulation {
     public static void main(String[] args) {
+        //Logger.disable();
         runSimulation(init());
     }
 

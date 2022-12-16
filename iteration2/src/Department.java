@@ -3,6 +3,7 @@ package iteration2.src;
 import iteration2.src.course.*;
 import iteration2.src.data_structures.Tuple;
 import iteration2.src.human.*;
+import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -11,6 +11,7 @@ import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.function.Supplier;
 
 public class Student extends Human{
@@ -174,85 +175,121 @@ public class Student extends Human{
     }
 
     private void endRegistration(){
-        RegistrationSystem system = RegistrationSystem.getInstance();
-
-        Supplier<List<Tuple<Section,Section>>> checkCollisionCallback = () -> {
-            return system.checkEnrolledSections(this);
-        };
-
-        Logger.newLine();
-        Logger.log(getFullName() + " ends registering and checks their schedule to see if they can send their registration to advisor approval :");
-        Logger.newLine();
-
-        handleUnacceptedCollisions(checkCollisionCallback,
-                getFullName() + " checks again to see if they can send their registration to advisor approval :");
-
-        checkCollisionCallback = () -> {
-          return system.sendToAdvisorApproval(this);
-        };
-
-        Logger.newLine();
-        Logger.log(getFullName() + " sends an approval request of their registration to their advisor " + advisor.getFullName());
-        Logger.newLine();
-
-        handleUnacceptedCollisions(checkCollisionCallback,
-                getFullName() + " sends another approval request of their registration to their advisor");
+        registrationSystemCheck(getFullName() + " ends registering and checks their schedule to see if they can send their registration to advisor approval :");
+        advisorApproval();
 
         saveToTranscript();
 
         Logger.logStudentSchedule(enrolledSections, HorizontalLineType.EqualsSign,'|');
     }
 
-    private void handleUnacceptedCollisions(Supplier<List<Tuple<Section,Section>>> collisionCheckCallback, String preCollisionCheckLog){
+    private void registrationSystemCheck(String preCheckLog){
+        Supplier<List<Tuple<Section,Section>>> checkCollisionCallback = () -> {
+            return RegistrationSystem.getInstance().checkEnrolledSections(this);
+        };
+
+        Logger.newLine();
+        Logger.log(preCheckLog);
+        Logger.newLine();
+
+        handleUnacceptedCollisions(checkCollisionCallback, null ,
+                getFullName() + " checks again to see if they can send their registration to advisor approval :");
+    }
+
+    private void advisorApproval(){
+        Supplier<List<Tuple<Section,Section>>> checkCollisionCallback = () -> {
+            return RegistrationSystem.getInstance().sendToAdvisorApproval(this);
+        };
+
+        Runnable registrationSystemRecheck = () -> {
+          registrationSystemCheck(getFullName() + " checks their schedule to see if they can send their registration to advisor approval :");
+        };
+
+        Logger.newLine();
+        Logger.log(getFullName() + " sends an approval request of their registration to their advisor " + advisor.getFullName());
+        Logger.newLine();
+
+        handleUnacceptedCollisions(checkCollisionCallback, registrationSystemRecheck,
+                getFullName() + " sends another approval request of their registration to their advisor");
+    }
+
+    private void handleUnacceptedCollisions(Supplier<List<Tuple<Section,Section>>> collisionCheckCallback,Runnable onReplacCallback,String collisionRecheckLog){
         List<Tuple<Section,Section>> unacceptedCollisions;
-        int failCounter = 0;
+        int replaceCounter = 0;
 
         while ((unacceptedCollisions = collisionCheckCallback.get()).size() > 0){
-            Logger.log(getFullName() + " starts solving their collision issues");
+            Logger.log(getFullName() + " starts looking into their collision issues");
             Logger.newLine();
 
+            boolean replace = false;
+
             for(var collision : unacceptedCollisions){
-                failCounter++;
+                replaceCounter++;
                 Section s1 = collision.getKey();
                 Section s2 = collision.getValue();
                 Section[] temp = new Section[] {s1, s2};
 
-                boolean resolved = false;
-
-                for(int i = 0; i < 2 && failCounter <= 3; i++){
-                    Section s = temp[i];
-                    var alternativeSection = pickAlternativeSection(s);
-
-                    if(alternativeSection != null){
-                        Logger.log(getFullName() + " replaces " + s.toString() + " with " + alternativeSection.toString());
-                        enrolledSections.remove(s);
-                        enrolledSections.add(alternativeSection);
-                        resolved = true;
-                        break;
-                    }
+                if(replaceCounter <= 3 && tryToReplace(new Section[]{s1, s2})){
+                    replace = true;
+                    continue;
                 }
 
-                if(resolved)
-                    continue;
-
-                int s1Priority = s1.getSectionPriority();
-                int s2Priority = s2.getSectionPriority();
-
-                Section sectionToRemove;
-
-                if(s1Priority == s2Priority)
-                    sectionToRemove = temp[RandomNumberGenerator.randomIntegerBetween(0,2)];
-                else
-                    sectionToRemove = s1Priority > s2Priority ? s2 : s1;
-
-                enrolledSections.remove(sectionToRemove);
-
-                Logger.log(getFullName() + " removes " + sectionToRemove.toString());
-                Logger.newLine();
+                removeEither(s1, s2);
             }
 
-            Logger.log(preCollisionCheckLog);
+            if(replace && onReplacCallback != null)
+                onReplacCallback.run();
+
+            Logger.log(collisionRecheckLog);
         }
+    }
+
+    private void removeEither(Section s1, Section s2) {
+        int s1Priority = s1.getSectionPriority();
+        int s2Priority = s2.getSectionPriority();
+
+        Section sectionToRemove;
+
+        if(s1Priority == s2Priority){
+            if(RandomNumberGenerator.randomIntegerBetween(0,2) == 0)
+                sectionToRemove = s1;
+            else
+                sectionToRemove = s2;
+        }
+        else{
+            sectionToRemove = s1Priority > s2Priority ? s2 : s1;
+        }
+
+        boolean notRemovedBefore = enrolledSections.remove(sectionToRemove);
+
+        if(notRemovedBefore){
+            Logger.log(getFullName() + " removes " + sectionToRemove.toString());
+            Logger.newLine();
+        }
+    }
+
+    private boolean tryToReplace(Section[] sections) {
+        boolean resolved = false;
+        
+        for(int i = 0; i < 2; i++){
+            Section s = sections[i];
+            var alternativeSection = pickAlternativeSection(s);
+
+            if(alternativeSection != null){
+
+                var notRemovedBefore = enrolledSections.remove(s);
+
+                if(notRemovedBefore)
+                    Logger.log(getFullName() + " replaces " + s.toString() + " with " + alternativeSection.toString());
+                else
+                    Logger.log(getFullName() + " registers to " + alternativeSection.toString() + " in place of " + s.toString() + " which they removed earlier");
+                enrolledSections.add(alternativeSection);
+                resolved = true;
+                break;
+            }
+        }
+        
+        return resolved;
     }
 
     public String getStudentID() {
