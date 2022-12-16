@@ -150,7 +150,8 @@ public class Student extends Human{
         Logger.log(getFullName() + " ends registering and checks their schedule to see if they can send their registration to advisor approval :");
         Logger.newLine();
 
-        handleUnacceptedCollisions(checkCollisionCallback);
+        handleUnacceptedCollisions(checkCollisionCallback,
+                getFullName() + " checks again to see if they can send their registration to advisor approval :");
 
         checkCollisionCallback = () -> {
           return system.sendToAdvisorApproval(this);
@@ -160,14 +161,15 @@ public class Student extends Human{
         Logger.log(getFullName() + " sends an approval request of their registration to their advisor " + advisor.getFullName());
         Logger.newLine();
 
-        handleUnacceptedCollisions(checkCollisionCallback);
+        handleUnacceptedCollisions(checkCollisionCallback,
+                getFullName() + " sends another approval request of their registration to their advisor");
 
         saveToTranscript();
 
         Logger.logStudentSchedule(enrolledSections, HorizontalLineType.EqualsSign,'|');
     }
 
-    private void handleUnacceptedCollisions(Supplier<List<Tuple<Section,Section>>> collisionCheckCallback){
+    private void handleUnacceptedCollisions(Supplier<List<Tuple<Section,Section>>> collisionCheckCallback, String preCollisionCheckLog){
         List<Tuple<Section,Section>> unacceptedCollisions;
         int failCounter = 0;
 
@@ -214,6 +216,8 @@ public class Student extends Human{
                 Logger.log(getFullName() + " removes " + sectionToRemove.toString());
                 Logger.newLine();
             }
+
+            Logger.log(preCollisionCheckLog);
         }
     }
 

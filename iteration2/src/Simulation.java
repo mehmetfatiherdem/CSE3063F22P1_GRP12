@@ -5,12 +5,10 @@ import iteration2.src.human.*;
 import iteration2.src.input_output.JsonParser;
 import iteration2.src.input_output.Logger;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Simulation {
-
-    //TODO:Revise these implementations ,of which some are unwise, and move them into their related classes in the next iteration
-    //TODO:Do something about brute forcing of trying to take electives and hence the long long lines of unnecessary logs
     public static void main(String[] args) {
         runSimulation(init());
     }
@@ -38,18 +36,10 @@ public class Simulation {
         Logger.log("THE SIMULATION HAS STARTED!");
         Logger.newLine();
 
-        registrationProcess(students);
+        List<Float> studentGpas = registrationProcess(students);
 
         Logger.newLine();
-        Logger.log("Registration process has ended");
-
-        Logger.newLine();
-        Logger.log("The grading process has started!");
-
-        gradingProcess(students);
-
-        Logger.newLine();
-        Logger.log("The grading process has ended");
+        gradingProcess(students, studentGpas);
 
         JsonParser parser = new JsonParser();
         parser.serializeStudents(students);
@@ -58,30 +48,36 @@ public class Simulation {
         Logger.log("THE SIMULATION HAS ENDED!");
     }
 
-    private static void registrationProcess(List<Student> students){
+    private static List<Float> registrationProcess(List<Student> students){
         RegistrationSystem system = RegistrationSystem.getInstance();
         Logger.log("THE REGISTRATION PROCESS HAS STARTED!");
 
-        for(Student s: students) {
-            var openMandatoryCourses = system.getOpenMandatoryCourses(s);
-            var openTECourses = system.getOpenTECourses(s);
-            var openFTECourses = system.getOpenFTECourses(s);
-            var openNTECourses = system.getOpenNTECourses(s);
+        List<Float> studentGPAs = new ArrayList<>();
 
-            int noOfTakeableFTECourses = system.getTheNumberOfFTECoursesStudentCanTake(s);
-            int noOfTakeableTECourses = system.getTheNumberOfTECoursesStudentCanTake(s);
-            int noOfTakeableNTECourses = system.getTheNumberOfNTECoursesStudentCanTake(s);
+        for(Student student: students) {
+            var openMandatoryCourses = system.getOpenMandatoryCourses(student);
+            var openTECourses = system.getOpenTECourses(student);
+            var openFTECourses = system.getOpenFTECourses(student);
+            var openNTECourses = system.getOpenNTECourses(student);
 
-            String studentName = s.getFullName();
+            int noOfTakeableFTECourses = system.getTheNumberOfFTECoursesStudentCanTake(student);
+            int noOfTakeableTECourses = system.getTheNumberOfTECoursesStudentCanTake(student);
+            int noOfTakeableNTECourses = system.getTheNumberOfNTECoursesStudentCanTake(student);
+
+            String studentName = student.getFullName();
 
             Logger.newLine();
             Logger.log("STUDENT INFORMATION :");
             Logger.incrementIndentation();
 
+            float gpa = student.getTranscript().calculateGPA();
+            studentGPAs.add(gpa);
+
             Logger.log("STUDENT NAME : " + studentName);
-            Logger.log("STUDENT ID : " + s.getStudentID());
-            Logger.log("STUDENT GRADE : " + s.getGrade().toString());
-            Logger.log("ADVISOR : " + s.getAdvisor().getFullName());
+            Logger.log("STUDENT ID : " + student.getStudentID());
+            Logger.log("STUDENT GRADE : " + student.getGrade().toString());
+            Logger.log("STUDENT GPA : " + gpa);
+            Logger.log("ADVISOR : " + student.getAdvisor().getFullName());
 
             Logger.log("COURSES OPENED FOR THE STUDENT :");
             Logger.incrementIndentation();
@@ -96,22 +92,33 @@ public class Simulation {
 
             Logger.log("THE REGISTRATION PROCESS OF " + studentName + " HAS STARTED :");
 
-            s.startRegistration(openMandatoryCourses, openTECourses, openFTECourses, openNTECourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
+            student.startRegistration(openMandatoryCourses, openTECourses, openFTECourses, openNTECourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
         }
+
+        Logger.newLine();
+        Logger.log("THE REGISTRATION PROCESS HAS ENDED");
+        return studentGPAs;
     }
 
-    private static void gradingProcess(List<Student> students){
-        for(Student s : students){
-            List<CourseRecord> nonGradedCourses = s.getTranscript().getNonGradedCourses();
+    private static void gradingProcess(List<Student> students, List<Float> oldGPAs){
+        Logger.log("THE GRADING PROCESS HAS STARTED!");
+
+        int len = students.size();
+        for(int i = 0; i <  len; i++){
+            Student student = students.get(i);
+
+            List<CourseRecord> nonGradedCourses = student.getTranscript().getNonGradedCourses();
 
             Logger.newLine();
-            Logger.log(s.getFullName() + "'s grades : ");
+            Logger.log(student.getFullName() + " (" + student.getStudentID() + ") :");
             Logger.newLine();
+
+            Logger.incrementIndentation();
 
             for(CourseRecord r:nonGradedCourses){
                 float rand = RandomNumberGenerator.RandomFloat();
 
-                if(rand <= s.getFailChance()){
+                if(rand <= student.getFailChance()){
                     r.setScore(RandomNumberGenerator.RandomFloatBetween(0.0f, LetterGrade.DD.getNumVal()-0.01f));
                     r.setIsPassed(false);
                     r.setlGrade(Transcript.getLetterGradeOfScore(r.getScore()));
@@ -121,11 +128,19 @@ public class Simulation {
                     r.setlGrade(Transcript.getLetterGradeOfScore(r.getScore()));
                 }
 
-                Logger.log("    " + r.getCourse().getName() + " (" + r.getCourse().getCode() + ") :");
-                Logger.log("        Score : " + r.getScore());
-                Logger.log("        Letter Grade : " + r.getlGrade().toString());
-                Logger.log("        Status : " + (r.getIsPassed() ? "Passed" : "Failed"));
+                Logger.log("");
+                Logger.log(r.getCourse().getName() + " (" + r.getCourse().getCode() + ") :");
+
+                Logger.incrementIndentation();
+                Logger.log("SCORE : " + r.getScore());
+                Logger.log("LETTER GRADE : " + r.getlGrade().toString());
+                Logger.log("STATUS : " + (r.getIsPassed() ? "PASSED" : "FAILED"));
+                Logger.decrementIndentation();
             }
+
+            Logger.decrementIndentation();
+            Logger.log("THE GPA AT THE START OF THIS SEMESTER : " + oldGPAs.get(i));
+            Logger.log("THE GPA AT THE END OF THIS SEMESTER : " + student.getTranscript().calculateGPA());
         }
     }
 }

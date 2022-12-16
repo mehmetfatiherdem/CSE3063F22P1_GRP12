@@ -31,15 +31,29 @@ public class Advisor extends Lecturer {
 
         List<Tuple<Section,Section>> unaccepted = new ArrayList<>();
 
-        for(var c: collisions)
-            if(!checkTypesOfCollidingSections(c.getKey(),c.getValue()))
+        for(var c: collisions){
+            Section section1 = c.getKey();
+            Section section2 = c.getValue();
+
+            if(!checkTypesOfCollidingSections(section1,section2)){
                 unaccepted.add(c);
+                Logger.log("The advisor " + getFullName() + " does not approve the collision between " + section1.toString() + " and " + section2.toString());
+            }
+        }
 
         if(unaccepted.size() == 0){
             Logger.log("The advisor " + getFullName() + " approves the registration of " + student.getFullName());
         }
         else{
-            Logger.log("The advisor " + getFullName() + " does not approve the registration of " + student.getFullName() + " due to high priority courses having collisions");
+            Logger.log("The advisor " + getFullName() + " does not approve the registration of " + student.getFullName() + " due to high priority courses having collisions :");
+
+            Logger.incrementIndentation();
+
+            for(var c : unaccepted){
+                Logger.log("Between " + c.getKey().toString() + " and " + c.getValue().toString());
+            }
+
+            Logger.decrementIndentation();
         }
 
         return unaccepted;
