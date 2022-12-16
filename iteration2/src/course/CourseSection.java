@@ -6,9 +6,7 @@ import iteration2.src.input_output.Logger;
 public class CourseSection extends Section{
     public CourseSection(Course course, String sectionCode, long classHours, Lecturer instructor) {
         super(course, sectionCode ,classHours, instructor);
-        Logger.incrementIndentation();
-        Logger.log("ADDING NEW COURSE SECTION FOR THE COURSE " + course.getCode() + " WITH THE CODE " + toString());
-        Logger.decrementIndentation();
+
     }
 
     public Lecturer getLecturer(){

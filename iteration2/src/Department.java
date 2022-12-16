@@ -71,13 +71,29 @@ public class Department {
     }
 
     public void addNewCourseSection(MandatoryCourse course){
+        int theoreticalHours = course.getTheoreticalHours();
+        if(theoreticalHours == 0)
+            return;
+
         long schedule = getNewSectionSchedule(course,course.getTheoreticalHours());
         course.addCourseSection(schedule);
+
+        Logger.incrementIndentation();
+        Logger.log("ADDING NEW COURSE SECTION FOR THE COURSE " + course.getCode() + " WITH THE CODE " + toString());
+        Logger.decrementIndentation();
     }
 
     public void addNewLabSection(MandatoryCourse course){
+        int appliedHours = course.getAppliedHours();
+        if(appliedHours == 0)
+            return;
+
         long schedule = getNewSectionSchedule(course,course.getAppliedHours());
         course.addLabSection(schedule);
+
+        Logger.incrementIndentation();
+        Logger.log("ADDING NEW LAB SECTION FOR THE COURSE " + course.getCode() + " WITH THE CODE " + toString());
+        Logger.decrementIndentation();
     }
 
     // Getters
