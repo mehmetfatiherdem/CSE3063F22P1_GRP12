@@ -8,7 +8,7 @@ import iteration2.src.human.Student;
 
 import java.util.List;
 
-public class ElectiveCourse extends Course {
+public abstract class ElectiveCourse extends Course{
 
     public ElectiveCourse(String code, String name, int credits, int theoreticalHours, int appliedHours,
                           Grade firstYearToTake, Season firstSeasonToTake, List<Lecturer> lecturers, List<Assistant> assistants){
@@ -19,11 +19,4 @@ public class ElectiveCourse extends Course {
     public void addPrerequisite(Course prerequisite){
         return;
     }
-
-    public boolean isMaxChoosableNumberExceeded(Student student, Season season, String courseTypeCode, int maxNumberThatCanBeTakenInASemester){
-
-        return student.getChosenCourseTypeCounterInRegistration().get(courseTypeCode) > maxNumberThatCanBeTakenInASemester;
-
-    }
-
 }

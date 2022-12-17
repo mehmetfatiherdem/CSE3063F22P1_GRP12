@@ -38,11 +38,12 @@ public class CourseRecord {
         this.course = course;
     }
     public void setScore(float score) {
-       if(score < 0){
-       return;
-       }
-        this.score = score;
+       if(score < 0)
+           return;
+
+       this.score = score;
     }
+
     public void setIsPassed(Boolean isPassed) {
         this.isPassed = isPassed;
     }
@@ -53,7 +54,6 @@ public class CourseRecord {
         this.season = season;
     }
 
-
     public CourseRecord(Course course, LetterGrade lGrade, Season season, Grade grade, Float score, Boolean isPassed){
         this.course=course;
         this.lGrade=lGrade;
@@ -61,8 +61,5 @@ public class CourseRecord {
         this.grade = grade;
         this.score = score;
         this.isPassed=isPassed;
-
     }
-    
-
 }

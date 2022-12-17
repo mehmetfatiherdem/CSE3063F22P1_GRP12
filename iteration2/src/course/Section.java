@@ -109,26 +109,6 @@ public abstract class Section {
         return schedule;
     }
 
-    // Getters
-    public Course getCourse() {
-        return course;
-    }
-
-    public String getSectionCode(){
-        return sectionCode;
-    }
-    public long getClassSchedule() {
-        return classSchedule;
-    }
-    public List<Student> getStudentList() {
-        return studentList;
-    }
-
-    //Setters
-    public void setCourse(Course course) {
-        this.course = course;
-    }
-
     //Checks if there's any collision between two schedules
     private static boolean checkCollisionBetween(long sch1, long sch2) {
         return (sch1 & sch2) != 0L;
@@ -138,11 +118,11 @@ public abstract class Section {
     private static void traverseBits(long bitmask, Consumer<Integer> setBitCallback) {
         for (int i = 0; i < NO_OF_WEEKLY_CLASS_HOURS; i++) {
 
-            //If the leftmost bit is 1
+            //If the rightmost bit is 1
             if ((bitmask & 1L) == 1L) {
                 setBitCallback.accept(i);
             }
-            
+
             //Right shift the bitmask and assign it to bitmask again
             bitmask >>= 1L;
 
@@ -158,9 +138,19 @@ public abstract class Section {
     public boolean isSectionFull(){
         return course.getQuota() <= studentList.size();
     }
-
     @Override
     public String toString(){
         return course.getCode() + "." + sectionCode;
+    }
+
+    // Getters
+    public int getSectionPriority(){
+        return course.getCoursePriority();
+    }
+    public Course getCourse() {
+        return course;
+    }
+    public long getClassSchedule() {
+        return classSchedule;
     }
 }

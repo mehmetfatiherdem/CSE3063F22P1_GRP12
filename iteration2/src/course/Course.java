@@ -1,11 +1,9 @@
 package iteration2.src.course;
-import iteration2.src.Department;
-import iteration2.src.RandomNumberGenerator;
+import iteration2.src.MathHelper;
 import iteration2.src.human.Assistant;
 import iteration2.src.human.Grade;
 import iteration2.src.human.Lecturer;
 import iteration2.src.human.Student;
-import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,46 +45,33 @@ public abstract class Course {
         if(appliedHours > 0)
             this.assistants = assistants;
 
-        this.quota = RandomNumberGenerator.randomIntegerBetween(minQuota,maxQuota + 1);
+        this.quota = MathHelper.randomIntegerBetween(minQuota,maxQuota + 1);
 
         //Each and every semester, at least one section of all mandatory courses should be registrable without any collision
     }
 
-    public Boolean isAnyCourseSectionAvailable(){
-        for(CourseSection s: courseSections){
-            if(!s.isSectionFull())
-                return  true;
-        }
-
-        return false;
-    }
-    public  Boolean isAnyLabSectionAvailable(){
-        for(LabSection s:labSections){
-            if(!s.isSectionFull())
-                return true;
-        }
-
-        return false;
-    }
     public void addPrerequisite(Course prerequisite){
         prerequisites.add(prerequisite);
     }
-    public void addCourseSection(long schedule){
+    public CourseSection addCourseSection(long schedule){
         if(theoreticalHours == 0)
-            return;
+            return null;
 
-        int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, lecturers.size());
+        int randomIndex = MathHelper.randomIntegerBetween(0, lecturers.size());
         Lecturer lecturer = lecturers.get(randomIndex);
         String sectionCode = String.valueOf(courseSections.size() + 1);
 
-        courseSections.add(new CourseSection(this,sectionCode,schedule,lecturer));
+        CourseSection newSection = new CourseSection(this,sectionCode,schedule,lecturer);
+        courseSections.add(newSection);
+
+        return newSection;
     }
 
-    public void addLabSection(long schedule){
+    public LabSection addLabSection(long schedule){
         if(appliedHours == 0)
-            return;
+            return null;
 
-        int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, assistants.size());
+        int randomIndex = MathHelper.randomIntegerBetween(0, assistants.size());
         Assistant assistant = assistants.get(randomIndex);
 
         StringBuilder sectionCode = new StringBuilder();
@@ -94,24 +79,19 @@ public abstract class Course {
         sectionCode.append('.');
         sectionCode.append(labSections.size() + 1);
 
-        labSections.add(new LabSection(this,sectionCode.toString(),schedule,assistant));
+        LabSection newSection = new LabSection(this,sectionCode.toString(),schedule,assistant);
+        labSections.add(newSection);
+
+        return newSection;
     }
 
-    public boolean isStudentGradeRequirementMet(Student s, Season currentSeason){
-        return true;
+    public boolean isStudentGradeRequirementMet(Student student){
+        return getCourseSemester() <= student.getStudentSemester();
     }
 
     public Boolean canStudentTakeCourse(Student student){
-        if((student.getGrade().getValue() < firstYearToTake.getValue()
-                || (student.getGrade().getValue() == firstYearToTake.getValue()
-                && Department.getInstance().getCurrentSeason().getValue() < firstSeasonToTake.getValue()))
-                || student.didStudentPass(this) || !student.checkIfPrerequisitesArePassed(this)){
-            Logger.log("In order to take " + code + " a student grade should be greater than or equal to " + firstYearToTake
-                    + ", the current season must be " + firstSeasonToTake + " and the student shouldn't pass the this course in the past semesters");
-            return false;
-        }
-
-        return true;
+        return isStudentGradeRequirementMet(student) && !student.didStudentPass(this)
+                && student.checkIfPrerequisitesArePassed(this);
     }
 
 
@@ -125,6 +105,23 @@ public abstract class Course {
 
         return sections;
     }
+
+    public List<Section> getAlternativeSections(Section section){
+        List<Section> alternatives = new ArrayList<>();
+
+        if(section instanceof CourseSection) {
+            for (Section s : courseSections)
+                if (!section.equals(s))
+                    alternatives.add(s);
+        }
+        else{
+            for (Section s : labSections)
+                if(!section.equals(s))
+                    alternatives.add(s);
+        }
+        return alternatives;
+    }
+
     public List<LabSection> getAvailableLabSections(){
         List<LabSection> sections = new ArrayList<>();
 
@@ -136,7 +133,13 @@ public abstract class Course {
         return sections;
     }
 
+    public void requestNewCourseSection(){ }
+
     //Getters
+    public abstract int getCoursePriority();
+    public int getCourseSemester(){
+        return 2 * firstYearToTake.getValue() + firstSeasonToTake.getValue();
+    }
     public int getCredits() {
         return credits;
     }
@@ -148,9 +151,6 @@ public abstract class Course {
     }
     public List<Course> getPrerequisites() {
         return prerequisites;
-    }
-    public int getEcts() {
-        return ects;
     }
     public int getTheoreticalHours() {
         return theoreticalHours;
@@ -170,18 +170,14 @@ public abstract class Course {
     public List<Assistant> getAssistants() {
         return assistants;
     }
-    public List<Section> getAllSections() {
-        List<Section> allSections = new ArrayList<>(courseSections);
-        allSections.addAll(labSections);
-        return allSections;
-    }
 
     public List<CourseSection> getCourseSections(){
         return courseSections;
     }
-
-    public List<LabSection> getLabSections(){
-        return labSections;
+    public List<Section> getAllSections() {
+        List<Section> allSections = new ArrayList<>(courseSections);
+        allSections.addAll(labSections);
+        return allSections;
     }
     public int getQuota() {
         return quota;
