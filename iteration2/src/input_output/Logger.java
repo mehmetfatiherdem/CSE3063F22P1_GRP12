@@ -221,8 +221,8 @@ public class Logger {
         List<NonTechnicalElectiveCourse> nonTechnicalElectiveCourses = department.getNonTechnicalElectiveCourses();
 
         newLine(HorizontalLineType.Star);
+        newLine();
         log("SEMESTER : " + department.getCurrentSeason().toString());
-
         newLine();
 
         log("DEPARTMENT INFORMATION :");
