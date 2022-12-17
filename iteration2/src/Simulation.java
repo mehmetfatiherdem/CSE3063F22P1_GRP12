@@ -112,8 +112,15 @@ public class Simulation {
         Logger.log("THE GRADING PROCESS HAS STARTED!");
 
         int len = students.size();
-        for(int i = 0; i <  len; i++){
+        Season semester = Department.getInstance().getCurrentSeason();
+
+        for(int i = 0; i < len; i++){
             Student student = students.get(i);
+
+            if(semester == Season.SPRING){
+
+            }
+
             List<CourseRecord> nonGradedCourses = student.getTranscript().getNonGradedCourses();
 
             for(CourseRecord r:nonGradedCourses) {
@@ -132,6 +139,8 @@ public class Simulation {
                 }
             }
 
+            Logger.newLine();
+            Logger.newLine(HorizontalLineType.Dash);
             Logger.newLine();
             Logger.log(student.getFullName() + " (" + student.getStudentID() + ") :");
 
@@ -152,6 +161,9 @@ public class Simulation {
                 Logger.log("STATUS : " + (r.getIsPassed() ? "PASSED" : "FAILED"));
                 Logger.decrementIndentation();
             }
+
+            Logger.newLine();
+            Logger.newLine(HorizontalLineType.Dash);
 
             Logger.decrementIndentation();
             Logger.decrementIndentation();
