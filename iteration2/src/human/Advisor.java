@@ -17,12 +17,6 @@ public class Advisor extends Lecturer {
     public Advisor(String firstName, String middleName, String lastName) {
         super(firstName, middleName, lastName);
     }
-    
-    /*public void approveRegistration() {
-        Logger.log("Advisor approved all courses.");
-        
-    }*/
-    //Kursları mandatory ve elective çakışmasına göre onaylasın ya da onaylamasın.
 
     public List<Tuple<Section,Section>> examineRegistration(Student student){
         Logger.newLine(HorizontalLineType.Dot);
