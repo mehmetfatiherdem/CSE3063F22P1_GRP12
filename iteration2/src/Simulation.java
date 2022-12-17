@@ -27,6 +27,8 @@ public class Simulation {
         Department department = Department.getInstance();
         department.initialize(season,courses,lecturers,assistants,advisors,students);
 
+        Logger.clearLogFile();
+
         return students;
     }
 
@@ -42,8 +44,8 @@ public class Simulation {
         Logger.newLine();
         gradingProcess(students, studentGpas);
 
-        //JsonParser parser = new JsonParser();
-        //parser.serializeStudents(students);
+        JsonParser parser = new JsonParser();
+        parser.serializeStudents(students);
 
         Logger.newLine();
         Logger.log("THE SIMULATION HAS ENDED!");
@@ -111,14 +113,21 @@ public class Simulation {
     private static void gradingProcess(List<Student> students, List<Float> oldGPAs){
         Logger.log("THE GRADING PROCESS HAS STARTED!");
 
-        int len = students.size();
         Season semester = Department.getInstance().getCurrentSeason();
 
-        for(int i = 0; i < len; i++){
+        for(int i = 0; i < students.size(); i++){
             Student student = students.get(i);
+            Grade studentOldGrade = student.getGrade();
+            Grade studentNewGrade = Grade.SENIOR;
 
             if(semester == Season.SPRING){
+                if (studentOldGrade == Grade.SENIOR){
+                    students.remove(i--);
+                    continue;
+                }
 
+                studentNewGrade = Grade.values()[studentOldGrade.getValue() + 1];
+                student.setGrade(studentNewGrade);
             }
 
             List<CourseRecord> nonGradedCourses = student.getTranscript().getNonGradedCourses();
@@ -145,6 +154,7 @@ public class Simulation {
             Logger.log(student.getFullName() + " (" + student.getStudentID() + ") :");
 
             Logger.incrementIndentation();
+            Logger.log("STUDENT'S NEW GRADE : " + studentNewGrade.toString());
             Logger.log("THE GPA AT THE START OF THIS SEMESTER : " + MathHelper.roundFloat(oldGPAs.get(i),2));
             Logger.log("THE GPA AT THE END OF THIS SEMESTER : " + MathHelper.roundFloat(student.getTranscript().calculateGPA(),2));
             Logger.newLine();
