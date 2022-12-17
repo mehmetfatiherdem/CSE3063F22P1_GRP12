@@ -2,10 +2,10 @@ package iteration2.src;
 
 import java.util.Random;
 
-public class RandomNumberGenerator {
+public class MathHelper {
     private static Random rng = new Random(System.currentTimeMillis());
 
-    private RandomNumberGenerator() { }
+    private MathHelper() { }
 
     public static float RandomFloat(){
         return rng.nextFloat();
@@ -32,5 +32,15 @@ public class RandomNumberGenerator {
             throw new IllegalArgumentException("Max must be greater than min");
 
         return rng.nextInt(max - min) + min;
+    }
+
+    public static float roundFloat(float num, int noOfDecimalDigits){
+        if(noOfDecimalDigits > 6)
+            noOfDecimalDigits = 6;
+
+        int powOf10 = (int)Math.pow(10,noOfDecimalDigits);
+        float temp = num * powOf10;
+
+        return Math.round(temp) / (float)powOf10;
     }
 }

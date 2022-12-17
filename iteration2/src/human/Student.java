@@ -1,7 +1,7 @@
 package iteration2.src.human;
 
 import iteration2.src.Department;
-import iteration2.src.RandomNumberGenerator;
+import iteration2.src.MathHelper;
 import iteration2.src.RegistrationSystem;
 import iteration2.src.Transcript;
 import iteration2.src.course.*;
@@ -11,7 +11,6 @@ import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class Student extends Human{
@@ -40,9 +39,9 @@ public class Student extends Human{
         this.advisor = advisor;
         this.transcript = new Transcript(transcript);
 
-        failChance = RandomNumberGenerator.RandomFloatBetween(minFailChance, maxFailChance);
-        retakeChance = RandomNumberGenerator.RandomFloatBetween(minRetakeChance, maxRetakeChance);
-        notTakeChance = RandomNumberGenerator.RandomFloatBetween(minNotTakeChance, maxNotTakeChance);
+        failChance = MathHelper.RandomFloatBetween(minFailChance, maxFailChance);
+        retakeChance = MathHelper.RandomFloatBetween(minRetakeChance, maxRetakeChance);
+        notTakeChance = MathHelper.RandomFloatBetween(minNotTakeChance, maxNotTakeChance);
     }
 
     public Student(String firstName, String lastName,String studentID, Grade grade ,Advisor advisor, List<CourseRecord> transcript){
@@ -98,7 +97,7 @@ public class Student extends Human{
         ElectiveCourse lastRemoved = null;
 
         for(int i = 0; i < noOfTakeableCourses; i++){
-            int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, openCourses.size());
+            int randomIndex = MathHelper.randomIntegerBetween(0, openCourses.size());
             Course course = openCourses.get(randomIndex);
 
             if(transcript.didStudentFailBefore(course) && !studentWantsToRetake()){
@@ -175,12 +174,12 @@ public class Student extends Human{
     }
 
     private boolean studentWantsToTake(){
-        float rand = RandomNumberGenerator.RandomFloat();
+        float rand = MathHelper.RandomFloat();
         return rand > notTakeChance;
     }
 
     private boolean studentWantsToRetake(){
-        float rand = RandomNumberGenerator.RandomFloat();
+        float rand = MathHelper.RandomFloat();
         return rand <= retakeChance;
     }
 
@@ -352,7 +351,7 @@ public class Student extends Human{
         Section sectionToRemove;
 
         if(s1Priority == s2Priority){
-            if(RandomNumberGenerator.randomIntegerBetween(0,2) == 0)
+            if(MathHelper.randomIntegerBetween(0,2) == 0)
                 sectionToRemove = s1;
             else
                 sectionToRemove = s2;
@@ -418,7 +417,7 @@ public class Student extends Human{
         if(alternativeSections.size() == 0)
             return null;
 
-        return alternativeSections.get(RandomNumberGenerator.randomIntegerBetween(0,alternativeSections.size()));
+        return alternativeSections.get(MathHelper.randomIntegerBetween(0,alternativeSections.size()));
     }
 
     private void addIfNotAlreadyContained(List<Section> sections, Section addition){

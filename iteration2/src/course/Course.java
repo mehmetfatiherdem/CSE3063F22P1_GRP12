@@ -1,11 +1,9 @@
 package iteration2.src.course;
-import iteration2.src.Department;
-import iteration2.src.RandomNumberGenerator;
+import iteration2.src.MathHelper;
 import iteration2.src.human.Assistant;
 import iteration2.src.human.Grade;
 import iteration2.src.human.Lecturer;
 import iteration2.src.human.Student;
-import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +45,7 @@ public abstract class Course {
         if(appliedHours > 0)
             this.assistants = assistants;
 
-        this.quota = RandomNumberGenerator.randomIntegerBetween(minQuota,maxQuota + 1);
+        this.quota = MathHelper.randomIntegerBetween(minQuota,maxQuota + 1);
 
         //Each and every semester, at least one section of all mandatory courses should be registrable without any collision
     }
@@ -59,7 +57,7 @@ public abstract class Course {
         if(theoreticalHours == 0)
             return null;
 
-        int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, lecturers.size());
+        int randomIndex = MathHelper.randomIntegerBetween(0, lecturers.size());
         Lecturer lecturer = lecturers.get(randomIndex);
         String sectionCode = String.valueOf(courseSections.size() + 1);
 
@@ -73,7 +71,7 @@ public abstract class Course {
         if(appliedHours == 0)
             return null;
 
-        int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, assistants.size());
+        int randomIndex = MathHelper.randomIntegerBetween(0, assistants.size());
         Assistant assistant = assistants.get(randomIndex);
 
         StringBuilder sectionCode = new StringBuilder();

@@ -54,7 +54,6 @@ public class CourseRecord {
         this.season = season;
     }
 
-
     public CourseRecord(Course course, LetterGrade lGrade, Season season, Grade grade, Float score, Boolean isPassed){
         this.course=course;
         this.lGrade=lGrade;

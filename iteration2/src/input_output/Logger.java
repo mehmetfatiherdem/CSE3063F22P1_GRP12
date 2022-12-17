@@ -1,6 +1,7 @@
 package iteration2.src.input_output;
 
 import iteration2.src.Department;
+import iteration2.src.MathHelper;
 import iteration2.src.course.*;
 import iteration2.src.human.*;
 
@@ -310,7 +311,7 @@ public class Logger {
             log("STUDENT GRADE : " + s.getGrade().toString());
             log("ADVISOR : " + s.getAdvisor().getFullName());
             log("COMPLETED CREDITS : " + s.getCompletedCredits());
-            log("GPA : " + s.getTranscript().calculateGPA());
+            log("GPA : " + MathHelper.roundFloat(s.getTranscript().calculateGPA(),2));
             newLine();
         }
 

@@ -80,7 +80,7 @@ public class Simulation {
             Logger.log("STUDENT NAME : " + studentName);
             Logger.log("STUDENT ID : " + student.getStudentID());
             Logger.log("STUDENT GRADE : " + student.getGrade().toString());
-            Logger.log("STUDENT GPA : " + gpa);
+            Logger.log("STUDENT GPA : " + MathHelper.roundFloat(gpa,2));
             Logger.log("ADVISOR : " + student.getAdvisor().getFullName());
 
             Logger.log("COURSES OPENED FOR THE STUDENT :");
@@ -117,15 +117,15 @@ public class Simulation {
             List<CourseRecord> nonGradedCourses = student.getTranscript().getNonGradedCourses();
 
             for(CourseRecord r:nonGradedCourses) {
-                float rand = RandomNumberGenerator.RandomFloat();
+                float rand = MathHelper.RandomFloat();
 
                 if (rand <= student.getFailChance()) {
-                    float score = RandomNumberGenerator.RandomFloatBetween(0f, 39.99f);
+                    float score = MathHelper.RandomFloatBetween(0f, 39.99f);
                     r.setScore(score);
                     r.setIsPassed(false);
                     r.setlGrade(Transcript.getLetterGradeOfScore(score));
                 } else {
-                    float score = RandomNumberGenerator.RandomFloatBetween(40.0f, 100.0f);
+                    float score = MathHelper.RandomFloatBetween(40.0f, 100.0f);
                     r.setScore(score);
                     r.setIsPassed(true);
                     r.setlGrade(Transcript.getLetterGradeOfScore(score));
@@ -136,9 +136,10 @@ public class Simulation {
             Logger.log(student.getFullName() + " (" + student.getStudentID() + ") :");
 
             Logger.incrementIndentation();
-            Logger.log("THE GPA AT THE START OF THIS SEMESTER : " + oldGPAs.get(i));
-            Logger.log("THE GPA AT THE END OF THIS SEMESTER : " + student.getTranscript().calculateGPA());
-            Logger.log("THIS SEMESTER'S COURSE DETAILS :");
+            Logger.log("THE GPA AT THE START OF THIS SEMESTER : " + MathHelper.roundFloat(oldGPAs.get(i),2));
+            Logger.log("THE GPA AT THE END OF THIS SEMESTER : " + MathHelper.roundFloat(student.getTranscript().calculateGPA(),2));
+            Logger.newLine();
+            Logger.log("ALL COURSES' DETAILS OF THIS SEMESTER:");
             Logger.incrementIndentation();
 
             for(CourseRecord r : nonGradedCourses){
@@ -146,7 +147,7 @@ public class Simulation {
                 Logger.log(r.getCourse().getName() + " (" + r.getCourse().getCode() + ") :");
 
                 Logger.incrementIndentation();
-                Logger.log("SCORE : " + r.getScore());
+                Logger.log("SCORE : " + MathHelper.roundFloat(r.getScore(),0));
                 Logger.log("LETTER GRADE : " + r.getlGrade().toString());
                 Logger.log("STATUS : " + (r.getIsPassed() ? "PASSED" : "FAILED"));
                 Logger.decrementIndentation();

@@ -9,8 +9,6 @@ import iteration2.src.human.Grade;
 
 public class Transcript {
     private List<CourseRecord> takenCourseRecords;
-    //GPA FALAN BASTIRILICAK
-    //TODO:add constructor and take course records as parameters as they'll be parsed from json data, and call calculateGPA inside the constructor
     public Transcript(List<CourseRecord> takenCourseRecords){
         this.takenCourseRecords = takenCourseRecords;
 

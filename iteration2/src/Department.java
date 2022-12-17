@@ -293,7 +293,7 @@ public class Department {
             int remainder = noOfHours;
 
             for(int i = 0; i < 3; i++){
-                float random = RandomNumberGenerator.RandomFloat();
+                float random = MathHelper.RandomFloat();
 
                 if(random <= threeConsecutiveHoursCumulativeProbability && remainder >= 3){
                     division.add(3);
@@ -341,12 +341,12 @@ public class Department {
                 break;
             }
 
-            int randomDay = RandomNumberGenerator.randomIntegerBetween(0,availableDays.size());
+            int randomDay = MathHelper.randomIntegerBetween(0,availableDays.size());
             randomDay = availableDays.get(randomDay);
             daysUsed.add(randomDay);
 
             var availableHours = getAvailablePositionsOnDay(availableClassHours,randomDay,noOfHours);
-            int randomStartingHour = RandomNumberGenerator.randomIntegerBetween(0,availableHours.size());
+            int randomStartingHour = MathHelper.randomIntegerBetween(0,availableHours.size());
             randomStartingHour = availableHours.get(randomStartingHour);
 
             long scheduleForTheseHours = getScheduleAtPosition(randomStartingHour,noOfHours);
