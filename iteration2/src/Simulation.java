@@ -136,12 +136,12 @@ public class Simulation {
                 float rand = MathHelper.RandomFloat();
 
                 if (rand <= student.getFailChance()) {
-                    float score = MathHelper.RandomFloatBetween(0f, 39.99f);
+                    float score = MathHelper.randomFloatBetween(0f, 39.99f);
                     r.setScore(score);
                     r.setIsPassed(false);
                     r.setlGrade(Transcript.getLetterGradeOfScore(score));
                 } else {
-                    float score = MathHelper.RandomFloatBetween(40.0f, 100.0f);
+                    float score = MathHelper.randomFloatBetween(40.0f, 100.0f);
                     r.setScore(score);
                     r.setIsPassed(true);
                     r.setlGrade(Transcript.getLetterGradeOfScore(score));

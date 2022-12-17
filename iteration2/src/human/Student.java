@@ -39,9 +39,9 @@ public class Student extends Human{
         this.advisor = advisor;
         this.transcript = new Transcript(transcript);
 
-        failChance = MathHelper.RandomFloatBetween(minFailChance, maxFailChance);
-        retakeChance = MathHelper.RandomFloatBetween(minRetakeChance, maxRetakeChance);
-        notTakeChance = MathHelper.RandomFloatBetween(minNotTakeChance, maxNotTakeChance);
+        failChance = MathHelper.randomFloatBetween(minFailChance, maxFailChance);
+        retakeChance = MathHelper.randomFloatBetween(minRetakeChance, maxRetakeChance);
+        notTakeChance = MathHelper.randomFloatBetween(minNotTakeChance, maxNotTakeChance);
     }
 
     public Student(String firstName, String lastName,String studentID, Grade grade ,Advisor advisor, List<CourseRecord> transcript){

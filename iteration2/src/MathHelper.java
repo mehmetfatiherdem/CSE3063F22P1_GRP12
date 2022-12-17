@@ -11,7 +11,7 @@ public class MathHelper {
         return rng.nextFloat();
     }
 
-    public static float RandomFloatBetween(float min, float max){
+    public static float randomFloatBetween(float min, float max){
         if(max == min)
             return max;
         if(max < min)
