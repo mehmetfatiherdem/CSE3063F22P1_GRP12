@@ -43,6 +43,7 @@ public class CourseRecord {
 
        this.score = score;
     }
+
     public void setIsPassed(Boolean isPassed) {
         this.isPassed = isPassed;
     }
@@ -61,8 +62,5 @@ public class CourseRecord {
         this.grade = grade;
         this.score = score;
         this.isPassed=isPassed;
-
     }
-    
-
 }

@@ -114,31 +114,35 @@ public class Simulation {
         int len = students.size();
         for(int i = 0; i <  len; i++){
             Student student = students.get(i);
-
             List<CourseRecord> nonGradedCourses = student.getTranscript().getNonGradedCourses();
 
-            Logger.newLine();
-            Logger.log(student.getFullName() + " (" + student.getStudentID() + ") :");
-            Logger.newLine();
-
-            Logger.incrementIndentation();
-
-            for(CourseRecord r:nonGradedCourses){
+            for(CourseRecord r:nonGradedCourses) {
                 float rand = RandomNumberGenerator.RandomFloat();
 
-                if(rand <= student.getFailChance()){
+                if (rand <= student.getFailChance()) {
                     float score = RandomNumberGenerator.RandomFloatBetween(0f, 39.99f);
                     r.setScore(score);
                     r.setIsPassed(false);
                     r.setlGrade(Transcript.getLetterGradeOfScore(score));
-                }else{
+                } else {
                     float score = RandomNumberGenerator.RandomFloatBetween(40.0f, 100.0f);
                     r.setScore(score);
                     r.setIsPassed(true);
                     r.setlGrade(Transcript.getLetterGradeOfScore(score));
                 }
+            }
 
-                Logger.log("");
+            Logger.newLine();
+            Logger.log(student.getFullName() + " (" + student.getStudentID() + ") :");
+
+            Logger.incrementIndentation();
+            Logger.log("THE GPA AT THE START OF THIS SEMESTER : " + oldGPAs.get(i));
+            Logger.log("THE GPA AT THE END OF THIS SEMESTER : " + student.getTranscript().calculateGPA());
+            Logger.log("THIS SEMESTER'S COURSE DETAILS :");
+            Logger.incrementIndentation();
+
+            for(CourseRecord r : nonGradedCourses){
+                Logger.newLine();
                 Logger.log(r.getCourse().getName() + " (" + r.getCourse().getCode() + ") :");
 
                 Logger.incrementIndentation();
@@ -149,8 +153,7 @@ public class Simulation {
             }
 
             Logger.decrementIndentation();
-            Logger.log("THE GPA AT THE START OF THIS SEMESTER : " + oldGPAs.get(i));
-            Logger.log("THE GPA AT THE END OF THIS SEMESTER : " + student.getTranscript().calculateGPA());
+            Logger.decrementIndentation();
         }
     }
 }

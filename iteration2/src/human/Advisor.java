@@ -2,6 +2,7 @@ package iteration2.src.human;
 
 import iteration2.src.course.Section;
 import iteration2.src.data_structures.Tuple;
+import iteration2.src.input_output.HorizontalLineType;
 import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
@@ -24,6 +25,8 @@ public class Advisor extends Lecturer {
     //Kursları mandatory ve elective çakışmasına göre onaylasın ya da onaylamasın.
 
     public List<Tuple<Section,Section>> examineRegistration(Student student){
+        Logger.newLine(HorizontalLineType.Dot);
+        Logger.newLine();
         Logger.log("The advisor " + getFullName() + " starts examining the registration of " + student.getFullName());
 
         List<Section> sections= student.getEnrolledCourses();
@@ -41,6 +44,8 @@ public class Advisor extends Lecturer {
             }
         }
 
+        Logger.newLine();
+
         if(unaccepted.size() == 0){
             Logger.log("The advisor " + getFullName() + " approves the registration of " + student.getFullName());
         }
@@ -55,6 +60,10 @@ public class Advisor extends Lecturer {
 
             Logger.decrementIndentation();
         }
+
+        Logger.newLine();
+        Logger.newLine(HorizontalLineType.Dot);
+        Logger.newLine();
 
         return unaccepted;
     }

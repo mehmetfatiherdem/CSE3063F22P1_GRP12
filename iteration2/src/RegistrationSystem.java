@@ -80,7 +80,6 @@ public class RegistrationSystem {
             if(noOfCollisions >= 2) {
                 highlyCollidingSections.add(c);
 
-                Logger.newLine();
                 Logger.log("THE COURSES " + sec1.toString() + ", AND " + sec2.toString() + " HAVE A COLLISION OF LENGTH " + noOfCollisions + " :");
                 Logger.incrementIndentation();
 

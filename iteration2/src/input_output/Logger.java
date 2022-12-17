@@ -300,8 +300,6 @@ public class Logger {
         decrementIndentation();
     }
 
-
-
     private static void logStudents(List<Student> students){
         newLine();
         incrementIndentation();

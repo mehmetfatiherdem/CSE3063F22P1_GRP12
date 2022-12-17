@@ -307,7 +307,7 @@ public class Student extends Human{
         return anyReplacement;
     }
 
-    private static void eliminateResolvedCollisions(List<Tuple<Section, Section>> unacceptedCollisions, int i, Section sectionRemoved) {
+    private void eliminateResolvedCollisions(List<Tuple<Section, Section>> unacceptedCollisions, int i, Section sectionRemoved) {
         for(int j = i + 1; j < unacceptedCollisions.size(); j++){
             var collision = unacceptedCollisions.get(j);
             Section s1 = collision.getKey();
