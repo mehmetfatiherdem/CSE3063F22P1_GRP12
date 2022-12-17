@@ -11,6 +11,7 @@ import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 public class Student extends Human{
@@ -83,14 +84,16 @@ public class Student extends Human{
             tryToRegister(c);
         }
 
-        startRegistrationOnElectiveCourses((List<ElectiveCourse>)(List<?>) openTECourses, noOfTakeableTECourses);
-        startRegistrationOnElectiveCourses((List<ElectiveCourse>)(List<?>) openFTECourses, noOfTakeableFTECourses);
-        startRegistrationOnElectiveCourses((List<ElectiveCourse>)(List<?>) openNTECourses, noOfTakeableNTECourses);
+        registerToElectiveCourses((List<ElectiveCourse>)(List<?>) openTECourses, noOfTakeableTECourses);
+        registerToElectiveCourses((List<ElectiveCourse>)(List<?>) openFTECourses, noOfTakeableFTECourses);
+        registerToElectiveCourses((List<ElectiveCourse>)(List<?>) openNTECourses, noOfTakeableNTECourses);
 
-        endRegistration();
+        endRegistration(openTECourses,openFTECourses,openNTECourses);
     }
 
-    private void startRegistrationOnElectiveCourses(List<ElectiveCourse> openCourses, int noOfTakeableCourses) {
+    private ElectiveCourse registerToElectiveCourses(List<ElectiveCourse> openCourses, int noOfTakeableCourses) {
+        ElectiveCourse lastRemoved = null;
+
         for(int i = 0; i < noOfTakeableCourses; i++){
             int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, openCourses.size());
             Course course = openCourses.get(randomIndex);
@@ -101,8 +104,10 @@ public class Student extends Human{
                 continue;
 
             tryToRegister(course);
-            openCourses.remove(randomIndex);
+            lastRemoved = openCourses.remove(randomIndex);
         }
+
+        return lastRemoved;
     }
 
     public void tryToRegister(Course course){
@@ -164,16 +169,21 @@ public class Student extends Human{
         return rand <= retakeChance;
     }
 
-    private void endRegistration(){
-        registrationSystemCheck(getFullName() + " ends registering and checks their schedule to see if they can send their registration to advisor approval :");
-        advisorApproval();
+    private void endRegistration(List<TechnicalElectiveCourse> openTECourses, List<FacultyTechnicalElectiveCourse> openFTECourses,
+                                 List<NonTechnicalElectiveCourse> openNTECourses){
+
+        registrationSystemCheck(openTECourses,openFTECourses,openNTECourses,
+                getFullName() + " ends registering and checks their schedule to see if they can send their registration to advisor approval :");
+
+        advisorApproval(openTECourses,openFTECourses,openNTECourses);
 
         saveToTranscript();
 
         Logger.logStudentSchedule(enrolledSections, HorizontalLineType.EqualsSign,'|');
     }
 
-    private void registrationSystemCheck(String preCheckLog){
+    private void registrationSystemCheck(List<TechnicalElectiveCourse> openTECourses, List<FacultyTechnicalElectiveCourse> openFTECourses,
+                                         List<NonTechnicalElectiveCourse> openNTECourses,String preCheckLog){
         Supplier<List<Tuple<Section,Section>>> checkCollisionCallback = () -> {
             return RegistrationSystem.getInstance().checkEnrolledSections(this);
         };
@@ -182,28 +192,34 @@ public class Student extends Human{
         Logger.log(preCheckLog);
         Logger.newLine();
 
-        checkFixLoop(checkCollisionCallback, null ,
+        checkFixLoop(openTECourses,openFTECourses,openNTECourses,checkCollisionCallback, null ,
                 getFullName() + " checks again to see if they can send their registration to advisor approval :");
     }
 
-    private void advisorApproval(){
+    private void advisorApproval(List<TechnicalElectiveCourse> openTECourses, List<FacultyTechnicalElectiveCourse> openFTECourses,
+                                 List<NonTechnicalElectiveCourse> openNTECourses){
+
         Supplier<List<Tuple<Section,Section>>> checkCollisionCallback = () -> {
             return RegistrationSystem.getInstance().sendToAdvisorApproval(this);
         };
 
         Runnable registrationSystemRecheck = () -> {
-          registrationSystemCheck(getFullName() + " checks their schedule to see if they can send their registration to advisor approval :");
+          registrationSystemCheck(openTECourses,openFTECourses,openNTECourses,
+                  getFullName() + " checks their schedule to see if they can send their registration to advisor approval :");
         };
 
         Logger.newLine();
         Logger.log(getFullName() + " sends an approval request of their registration to their advisor " + advisor.getFullName());
         Logger.newLine();
 
-        checkFixLoop(checkCollisionCallback, registrationSystemRecheck,
+        checkFixLoop(openTECourses,openFTECourses,openNTECourses,checkCollisionCallback, registrationSystemRecheck,
                 getFullName() + " sends another approval request of their registration to their advisor");
     }
 
-    private void checkFixLoop(Supplier<List<Tuple<Section,Section>>> collisionCheckCallback, Runnable onReplaceCallback, String collisionRecheckLog){
+    private void checkFixLoop(List<TechnicalElectiveCourse> openTECourses, List<FacultyTechnicalElectiveCourse> openFTECourses,
+                              List<NonTechnicalElectiveCourse> openNTECourses,Supplier<List<Tuple<Section,
+            Section>>> collisionCheckCallback, Runnable onReplaceCallback, String collisionRecheckLog){
+
         List<Tuple<Section,Section>> unacceptedCollisions;
         List<Section> alreadyTriedSections = new ArrayList<>();
 
@@ -211,18 +227,20 @@ public class Student extends Human{
             Logger.log(getFullName() + " starts looking into their collision issues");
             Logger.newLine();
 
-            boolean replace = false;
+            boolean replacement = false;
 
-            replace = handleUnacceptedCollisions(unacceptedCollisions, alreadyTriedSections);
+            replacement = handleUnacceptedCollisions(openTECourses,openFTECourses,openNTECourses,unacceptedCollisions, alreadyTriedSections);
 
-            if(replace && onReplaceCallback != null)
+            if(replacement && onReplaceCallback != null)
                 onReplaceCallback.run();
 
             Logger.log(collisionRecheckLog);
         }
     }
 
-    private boolean handleUnacceptedCollisions(List<Tuple<Section, Section>> unacceptedCollisions, List<Section> alreadyTriedSections) {
+    private boolean handleUnacceptedCollisions(List<TechnicalElectiveCourse> openTECourses, List<FacultyTechnicalElectiveCourse> openFTECourses,
+                                               List<NonTechnicalElectiveCourse> openNTECourses,List<Tuple<Section, Section>> unacceptedCollisions, List<Section> alreadyTriedSections) {
+
         boolean anyReplacement = false;
 
         for (var collision : unacceptedCollisions){
@@ -248,7 +266,14 @@ public class Student extends Human{
 
             sectionRemoved = removeEither(s1, s2);
             eliminateResolvedCollisions(unacceptedCollisions,i,sectionRemoved);
+
+            if(!(sectionRemoved.getCourse() instanceof ElectiveCourse))
+                continue;
+
+            anyReplacement |= tryToRegisterToAnotherElective(openTECourses, openFTECourses, openNTECourses,
+                    alreadyTriedSections, sectionRemoved);
         }
+
         return anyReplacement;
     }
 
@@ -261,32 +286,6 @@ public class Student extends Human{
             if(sectionRemoved.equals(s1) || sectionRemoved.equals(s2))
                 unacceptedCollisions.remove(j--);
         }
-    }
-
-    private Section removeEither(Section s1, Section s2) {
-        int s1Priority = s1.getSectionPriority();
-        int s2Priority = s2.getSectionPriority();
-
-        Section sectionToRemove;
-
-        if(s1Priority == s2Priority){
-            if(RandomNumberGenerator.randomIntegerBetween(0,2) == 0)
-                sectionToRemove = s1;
-            else
-                sectionToRemove = s2;
-        }
-        else{
-            sectionToRemove = s1Priority > s2Priority ? s2 : s1;
-        }
-
-        boolean notRemovedBefore = enrolledSections.remove(sectionToRemove);
-
-        if(notRemovedBefore){
-            Logger.log(getFullName() + " removes " + sectionToRemove.toString());
-            Logger.newLine();
-        }
-
-        return sectionToRemove;
     }
 
     private Section tryToReplace(List<Section> alreadyTriedSections,Section[] sections) {
@@ -316,6 +315,63 @@ public class Student extends Human{
         return sectionRemoved;
     }
 
+    private Section removeEither(Section s1, Section s2) {
+        int s1Priority = s1.getSectionPriority();
+        int s2Priority = s2.getSectionPriority();
+
+        Section sectionToRemove;
+
+        if(s1Priority == s2Priority){
+            if(RandomNumberGenerator.randomIntegerBetween(0,2) == 0)
+                sectionToRemove = s1;
+            else
+                sectionToRemove = s2;
+        }
+        else{
+            sectionToRemove = s1Priority > s2Priority ? s2 : s1;
+        }
+
+        boolean notRemovedBefore = enrolledSections.remove(sectionToRemove);
+
+        if(notRemovedBefore){
+            Logger.log(getFullName() + " removes " + sectionToRemove.toString());
+            Logger.newLine();
+        }
+
+        return sectionToRemove;
+    }
+
+    private boolean tryToRegisterToAnotherElective(List<TechnicalElectiveCourse> openTECourses, List<FacultyTechnicalElectiveCourse> openFTECourses,
+                                                   List<NonTechnicalElectiveCourse> openNTECourses, List<Section> alreadyTriedSections,Section sectionRemoved) {
+        List<ElectiveCourse> electives = null;
+        Course removedCourse = sectionRemoved.getCourse();
+
+        if(removedCourse instanceof TechnicalElectiveCourse)
+            electives = (List<ElectiveCourse>)(List<?>) openTECourses;
+        else if(removedCourse instanceof FacultyTechnicalElectiveCourse)
+            electives = (List<ElectiveCourse>)(List<?>) openFTECourses;
+        else if(removedCourse instanceof NonTechnicalElectiveCourse)
+            electives = (List<ElectiveCourse>)(List<?>) openNTECourses;
+
+        if(electives == null || electives.size() == 0)
+            return false;
+
+        ElectiveCourse newRegistration = registerToElectiveCourses(electives,1);
+
+        if(newRegistration == null)
+            return false;
+
+        Section newSection = null;
+        for (var s : enrolledSections)
+            if(s.getCourse().equals(newRegistration))
+                newSection = s;
+
+        if(newSection == null)
+            return false;
+
+        addIfNotAlreadyContained(alreadyTriedSections,newSection);
+        return true;
+    }
     private Section pickAlternativeSection(List<Section> alreadyTriedSections,Section section){
         var alternativeSections = section.getCourse().getAlternativeSections(section);
 
