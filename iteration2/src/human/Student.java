@@ -56,17 +56,7 @@ public class Student extends Human{
         return transcript.didStudentPass(course);
     }
 
-    public void saveToTranscript(){
-        for(Section s: enrolledSections){
-            s.addToStudentList(this);
 
-            if(s instanceof LabSection && s.getCourse().getTheoreticalHours() != 0)
-                continue;
-
-            transcript.addCourseRecord(s.getCourse(), LetterGrade.NOT_GRADED,
-                    Department.getInstance().getCurrentSeason(), null, this.getGrade(), false);
-        }
-    }
 
     public void startRegistration(List<MandatoryCourse> openMandatoryCourses, List<TechnicalElectiveCourse> openTECourses,
                                   List<FacultyTechnicalElectiveCourse> openFTECourses, List<NonTechnicalElectiveCourse> openNTECourses,
@@ -114,7 +104,7 @@ public class Student extends Human{
         return lastRemoved;
     }
 
-    public void tryToRegister(Course course, Section insteadOf){
+    private void tryToRegister(Course course, Section insteadOf){
         boolean availableSection = false;
         List<CourseSection> courseSections = course.getCourseSections();
 
@@ -423,6 +413,18 @@ public class Student extends Human{
     private void addIfNotAlreadyContained(List<Section> sections, Section addition){
         if(!sections.contains(addition))
             sections.add(addition);
+    }
+
+    private void saveToTranscript(){
+        for(Section s: enrolledSections){
+            s.addToStudentList(this);
+
+            if(s instanceof LabSection && s.getCourse().getTheoreticalHours() != 0)
+                continue;
+
+            transcript.addCourseRecord(s.getCourse(), LetterGrade.NOT_GRADED,
+                    Department.getInstance().getCurrentSeason(), null, this.getGrade(), false);
+        }
     }
 
     public String getStudentID() {
