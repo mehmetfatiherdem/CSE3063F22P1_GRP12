@@ -73,63 +73,74 @@ public class Student extends Human{
                                   List<FacultyTechnicalElectiveCourse> openFTECourses, List<NonTechnicalElectiveCourse> openNTECourses,
                                   int noOfTakeableTECourses, int noOfTakeableFTECourses,int noOfTakeableNTECourses){
 
+        Logger.newLine(HorizontalLineType.EqualsSign);
         Logger.newLine();
         Logger.log(getFullName() + " starts registering to courses");
         Logger.newLine();
 
         for(var c : openMandatoryCourses){
-            if(!studentWantsToTake())
+            if(!studentWantsToTake()){
+                Logger.log(getFullName() + " does not want to take " + c.getCode() + " in the current semester");
                 continue;
+            }
 
-            tryToRegister(c);
+            tryToRegister(c,null);
         }
 
-        registerToElectiveCourses((List<ElectiveCourse>)(List<?>) openTECourses, noOfTakeableTECourses);
-        registerToElectiveCourses((List<ElectiveCourse>)(List<?>) openFTECourses, noOfTakeableFTECourses);
-        registerToElectiveCourses((List<ElectiveCourse>)(List<?>) openNTECourses, noOfTakeableNTECourses);
+        registerToElectiveCourses((List<ElectiveCourse>)(List<?>) openTECourses, noOfTakeableTECourses,null);
+        registerToElectiveCourses((List<ElectiveCourse>)(List<?>) openFTECourses, noOfTakeableFTECourses,null);
+        registerToElectiveCourses((List<ElectiveCourse>)(List<?>) openNTECourses, noOfTakeableNTECourses,null);
 
         endRegistration(openTECourses,openFTECourses,openNTECourses);
     }
 
-    private ElectiveCourse registerToElectiveCourses(List<ElectiveCourse> openCourses, int noOfTakeableCourses) {
+    private ElectiveCourse registerToElectiveCourses(List<ElectiveCourse> openCourses, int noOfTakeableCourses, Section insteadOf) {
         ElectiveCourse lastRemoved = null;
 
         for(int i = 0; i < noOfTakeableCourses; i++){
             int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, openCourses.size());
             Course course = openCourses.get(randomIndex);
 
-            if(transcript.didStudentFailBefore(course) && !studentWantsToRetake())
+            if(transcript.didStudentFailBefore(course) && !studentWantsToRetake()){
+                Logger.log(getFullName() + " does not want to retake the " + course.getCode() + " which they failed earlier");
                 continue;
+            }
             if(!studentWantsToTake())
                 continue;
 
-            tryToRegister(course);
+            tryToRegister(course,insteadOf);
             lastRemoved = openCourses.remove(randomIndex);
         }
 
         return lastRemoved;
     }
 
-    public void tryToRegister(Course course){
+    public void tryToRegister(Course course, Section insteadOf){
         boolean availableSection = false;
         List<CourseSection> courseSections = course.getCourseSections();
 
         if(courseSections.size() == 0){
             Logger.incrementIndentation();
-            Logger.log("THERE ARE NO COURSE SECTIONS AVAILABLE FOR " + course.getCode());
+            Logger.log("(!) THERE ARE NO COURSE SECTIONS AVAILABLE FOR " + course.getCode());
             Logger.decrementIndentation();
         }
 
         for (CourseSection s : courseSections){
             if(!s.isSectionFull()){
                 enrolledSections.add(s);
-                Logger.log(getFullName() + " registers to " + s.toString());
+
+                if(insteadOf == null)
+                    Logger.log(getFullName() + " registers to " + s.toString());
+                else
+                    Logger.log(getFullName() + " registers to " + s.toString() + " in place of the " + insteadOf.toString() + " which they removed previously");
+
                 availableSection = true;
                 break;
             }
             else{
+                Logger.log(getFullName() + " tries to register to " + s.toString());
                 Logger.incrementIndentation();
-                Logger.log("THE QUOTA OF " + s.toString() + " IS FULL");
+                Logger.log("(!) THE QUOTA OF " + s.toString() + " IS FULL");
                 Logger.decrementIndentation();
             }
         }
@@ -141,7 +152,11 @@ public class Student extends Human{
             if((availableSections = course.getAvailableCourseSections()).size() > 0){
                 Section s = availableSections.get(0);
                 enrolledSections.add(availableSections.get(0));
-                Logger.log(getFullName() + " registers to " + s.toString());
+
+                if(insteadOf == null)
+                    Logger.log(getFullName() + " registers to " + s.toString());
+                else
+                    Logger.log(getFullName() + " registers to " + s.toString() + " in place of the " + insteadOf.toString() + " which they removed previously");
             }
         }
 
@@ -154,7 +169,7 @@ public class Student extends Human{
         }
         else{
             Logger.incrementIndentation();
-            Logger.log("THERE ARE NO LAB SECTIONS AVAILABLE FOR " + course.getCode());
+            Logger.log("(!) THERE ARE NO LAB SECTIONS AVAILABLE FOR " + course.getCode());
             Logger.decrementIndentation();
         }
     }
@@ -172,14 +187,27 @@ public class Student extends Human{
     private void endRegistration(List<TechnicalElectiveCourse> openTECourses, List<FacultyTechnicalElectiveCourse> openFTECourses,
                                  List<NonTechnicalElectiveCourse> openNTECourses){
 
+        Logger.newLine();
         registrationSystemCheck(openTECourses,openFTECourses,openNTECourses,
                 getFullName() + " ends registering and checks their schedule to see if they can send their registration to advisor approval :");
 
         advisorApproval(openTECourses,openFTECourses,openNTECourses);
+        Logger.newLine();
+
+        Logger.log("THE STUDENT'S REGISTRATION IS COMPLETED!");
+        Logger.log("TRANSCRIPT IS BEING UPDATED WITH THE NEWLY REGISTERED COURSES");
 
         saveToTranscript();
 
-        Logger.logStudentSchedule(enrolledSections, HorizontalLineType.EqualsSign,'|');
+        Logger.log("STUDENT'S TRANSCRIPT IS UPDATED!");
+        Logger.log("STUDENT'S SCHEDULE IS BEING CREATED :");
+        Logger.newLine();
+        Logger.log("STUDENT NAME : " + getFullName());
+        Logger.log("STUDENT ID : " + getStudentID());
+        Logger.log("ADVISOR NAME : " +getAdvisor().getFullName());
+
+        Logger.logStudentSchedule(enrolledSections, HorizontalLineType.Dash,'|');
+        Logger.newLine(HorizontalLineType.EqualsSign);
     }
 
     private void registrationSystemCheck(List<TechnicalElectiveCourse> openTECourses, List<FacultyTechnicalElectiveCourse> openFTECourses,
@@ -234,7 +262,9 @@ public class Student extends Human{
             if(replacement && onReplaceCallback != null)
                 onReplaceCallback.run();
 
+            Logger.newLine();
             Logger.log(collisionRecheckLog);
+            Logger.newLine();
         }
     }
 
@@ -333,10 +363,8 @@ public class Student extends Human{
 
         boolean notRemovedBefore = enrolledSections.remove(sectionToRemove);
 
-        if(notRemovedBefore){
+        if(notRemovedBefore)
             Logger.log(getFullName() + " removes " + sectionToRemove.toString());
-            Logger.newLine();
-        }
 
         return sectionToRemove;
     }
@@ -356,7 +384,7 @@ public class Student extends Human{
         if(electives == null || electives.size() == 0)
             return false;
 
-        ElectiveCourse newRegistration = registerToElectiveCourses(electives,1);
+        ElectiveCourse newRegistration = registerToElectiveCourses(electives,1,sectionRemoved);
 
         if(newRegistration == null)
             return false;

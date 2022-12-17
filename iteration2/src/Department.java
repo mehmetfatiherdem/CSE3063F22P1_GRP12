@@ -76,10 +76,10 @@ public class Department {
             return;
 
         long schedule = getNewSectionSchedule(course,course.getTheoreticalHours());
-        course.addCourseSection(schedule);
+        CourseSection newSection = course.addCourseSection(schedule);
 
         Logger.incrementIndentation();
-        Logger.log("ADDING NEW COURSE SECTION FOR THE COURSE " + course.getCode() + " WITH THE CODE " + toString());
+        Logger.log("=> ADDING NEW COURSE SECTION FOR THE COURSE " + course.getCode() + " WITH THE CODE " + newSection.toString());
         Logger.decrementIndentation();
     }
 
@@ -92,7 +92,7 @@ public class Department {
         course.addLabSection(schedule);
 
         Logger.incrementIndentation();
-        Logger.log("ADDING NEW LAB SECTION FOR THE COURSE " + course.getCode() + " WITH THE CODE " + toString());
+        Logger.log("=> ADDING NEW LAB SECTION FOR THE COURSE " + course.getCode() + " WITH THE CODE " + toString());
         Logger.decrementIndentation();
     }
 

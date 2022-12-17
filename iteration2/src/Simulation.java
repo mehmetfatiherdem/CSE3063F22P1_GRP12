@@ -2,6 +2,7 @@ package iteration2.src;
 
 import iteration2.src.course.*;
 import iteration2.src.human.*;
+import iteration2.src.input_output.HorizontalLineType;
 import iteration2.src.input_output.JsonParser;
 import iteration2.src.input_output.Logger;
 
@@ -50,6 +51,9 @@ public class Simulation {
 
     private static List<Float> registrationProcess(List<Student> students){
         RegistrationSystem system = RegistrationSystem.getInstance();
+
+        Logger.newLine(HorizontalLineType.Star);
+        Logger.newLine();
         Logger.log("THE REGISTRATION PROCESS HAS STARTED!");
 
         List<Float> studentGPAs = new ArrayList<>();
@@ -91,12 +95,16 @@ public class Simulation {
             Logger.newLine();
 
             Logger.log("THE REGISTRATION PROCESS OF " + studentName + " HAS STARTED :");
+            Logger.newLine();
 
-            student.startRegistration(openMandatoryCourses, openTECourses, openFTECourses, openNTECourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
+            student.startRegistration(openMandatoryCourses, openTECourses, openFTECourses,
+                    openNTECourses, noOfTakeableTECourses, noOfTakeableFTECourses, noOfTakeableNTECourses);
         }
 
         Logger.newLine();
         Logger.log("THE REGISTRATION PROCESS HAS ENDED");
+        Logger.newLine();
+        Logger.newLine(HorizontalLineType.Star);
         return studentGPAs;
     }
 

@@ -3,6 +3,7 @@ package iteration2.src;
 import iteration2.src.course.*;
 import iteration2.src.data_structures.Tuple;
 import iteration2.src.human.Student;
+import iteration2.src.input_output.HorizontalLineType;
 import iteration2.src.input_output.Logger;
 
 import java.util.ArrayList;
@@ -66,6 +67,9 @@ public class RegistrationSystem {
 
         List<Tuple<Section,Section>> highlyCollidingSections = new ArrayList<>();
 
+        Logger.newLine(HorizontalLineType.Star);
+        Logger.newLine();
+
         for(var c : collisions){
             Section sec1 = c.getKey();
             Section sec2 = c.getValue();
@@ -76,6 +80,7 @@ public class RegistrationSystem {
             if(noOfCollisions >= 2) {
                 highlyCollidingSections.add(c);
 
+                Logger.newLine();
                 Logger.log("THE COURSES " + sec1.toString() + ", AND " + sec2.toString() + " HAVE A COLLISION OF LENGTH " + noOfCollisions + " :");
                 Logger.incrementIndentation();
 
@@ -113,6 +118,8 @@ public class RegistrationSystem {
             Logger.decrementIndentation();
         }
 
+        Logger.newLine();
+        Logger.newLine(HorizontalLineType.Star);
         Logger.newLine();
 
         return highlyCollidingSections;

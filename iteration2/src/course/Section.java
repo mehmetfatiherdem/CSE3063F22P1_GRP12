@@ -118,7 +118,7 @@ public abstract class Section {
     private static void traverseBits(long bitmask, Consumer<Integer> setBitCallback) {
         for (int i = 0; i < NO_OF_WEEKLY_CLASS_HOURS; i++) {
 
-            //If the leftmost bit is 1
+            //If the rightmost bit is 1
             if ((bitmask & 1L) == 1L) {
                 setBitCallback.accept(i);
             }

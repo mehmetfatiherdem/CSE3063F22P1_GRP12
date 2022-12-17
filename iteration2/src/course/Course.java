@@ -55,20 +55,23 @@ public abstract class Course {
     public void addPrerequisite(Course prerequisite){
         prerequisites.add(prerequisite);
     }
-    public void addCourseSection(long schedule){
+    public CourseSection addCourseSection(long schedule){
         if(theoreticalHours == 0)
-            return;
+            return null;
 
         int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, lecturers.size());
         Lecturer lecturer = lecturers.get(randomIndex);
         String sectionCode = String.valueOf(courseSections.size() + 1);
 
-        courseSections.add(new CourseSection(this,sectionCode,schedule,lecturer));
+        CourseSection newSection = new CourseSection(this,sectionCode,schedule,lecturer);
+        courseSections.add(newSection);
+
+        return newSection;
     }
 
-    public void addLabSection(long schedule){
+    public LabSection addLabSection(long schedule){
         if(appliedHours == 0)
-            return;
+            return null;
 
         int randomIndex = RandomNumberGenerator.randomIntegerBetween(0, assistants.size());
         Assistant assistant = assistants.get(randomIndex);
@@ -78,7 +81,10 @@ public abstract class Course {
         sectionCode.append('.');
         sectionCode.append(labSections.size() + 1);
 
-        labSections.add(new LabSection(this,sectionCode.toString(),schedule,assistant));
+        LabSection newSection = new LabSection(this,sectionCode.toString(),schedule,assistant);
+        labSections.add(newSection);
+
+        return newSection;
     }
 
     public boolean isStudentGradeRequirementMet(Student student){
