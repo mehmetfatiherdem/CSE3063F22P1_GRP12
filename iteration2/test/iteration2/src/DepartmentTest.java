@@ -1,5 +1,7 @@
-package iteration2.src;
+package iteration2.test.iteration2.src;
 
+import iteration2.src.Department;
+import iteration2.src.MathHelper;
 import iteration2.src.course.*;
 import iteration2.src.data_structures.Tuple;
 import iteration2.src.human.*;
@@ -13,19 +15,19 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 class DepartmentTest {
-     private final String code = "CSE";
-     private Season currentSeason;
-     List<CourseRecord> records = new ArrayList<>();
-     List<Assistant> assistants = new ArrayList<>();
-     List<Lecturer> lecturers = new ArrayList<>();
-     List<MandatoryCourse> mandatoryCourses = new ArrayList<>();
-     List<TechnicalElectiveCourse> technicalElectiveCourses= new ArrayList<>();
-     List<FacultyTechnicalElectiveCourse> facultyTechnicalElectiveCourses= new ArrayList<>();
-     List<NonTechnicalElectiveCourse> nonTechnicalElectiveCourses= new ArrayList<>();
-     List<Student> students= new ArrayList<>();
-     List<Advisor> advisors = new ArrayList<>();
-     List<Course> courses = new ArrayList<>();
-     boolean initialized;
+    private final String code = "CSE";
+    private Season currentSeason;
+    List<CourseRecord> records = new ArrayList<>();
+    List<Assistant> assistants = new ArrayList<>();
+    List<Lecturer> lecturers = new ArrayList<>();
+    List<MandatoryCourse> mandatoryCourses = new ArrayList<>();
+    List<TechnicalElectiveCourse> technicalElectiveCourses= new ArrayList<>();
+    List<FacultyTechnicalElectiveCourse> facultyTechnicalElectiveCourses= new ArrayList<>();
+    List<NonTechnicalElectiveCourse> nonTechnicalElectiveCourses= new ArrayList<>();
+    List<Student> students= new ArrayList<>();
+    List<Advisor> advisors = new ArrayList<>();
+    List<Course> courses = new ArrayList<>();
+    boolean initialized;
 
     @BeforeEach
     void setup(){
@@ -131,8 +133,8 @@ class DepartmentTest {
         return schedule;
     }
     void generateWeeklyScheduleForAllCourses(){
-         generateWeeklyScheduleForMandatoryCourses();
-         generateWeeklyScheduleForElectiveCourses();
+        generateWeeklyScheduleForMandatoryCourses();
+        generateWeeklyScheduleForElectiveCourses();
     }
     void generateWeeklyScheduleForMandatoryCourses(){
         for(int semester = 0; semester < 8; semester++){
@@ -153,8 +155,8 @@ class DepartmentTest {
                 Course course = mandatoryCoursesForSemester.get(i);
                 var schedules = courseSchedules.get(i);
 
-                course.addCourseSection(schedules.GetKey());
-                course.addLabSection(schedules.GetValue());
+                course.addCourseSection(schedules.getKey());
+                course.addLabSection(schedules.getValue());
             }
         }
     }
@@ -176,7 +178,7 @@ class DepartmentTest {
 
         for(int i = 0; i < len ; i++){
             var division = divisions.get(i);
-            List<Integer> theoreticalDivision = division.GetKey();
+            List<Integer> theoreticalDivision = division.getKey();
             availableClassHours = getScheduleAtPosition(0,40);
             long schedule = getRandomDividedScheduleFrom(availableClassHours,theoreticalDivision);
             technicalElectives.get(i).addCourseSection(schedule);
@@ -200,8 +202,8 @@ class DepartmentTest {
 
             for (int i = 0; i < len; i++){
                 var courseDivisions = courseDivisons.get(i);
-                List<Integer> theoreticalDivision = courseDivisions.GetKey();
-                List<Integer> appliedDivision = courseDivisions.GetValue();
+                List<Integer> theoreticalDivision = courseDivisions.getKey();
+                List<Integer> appliedDivision = courseDivisions.getValue();
 
                 long theoreticalSchedule = assignScheduleToSection(availableClassHours,theoreticalDivision);
 
@@ -252,7 +254,7 @@ class DepartmentTest {
             int remainder = noOfHours;
 
             for(int i = 0; i < 3; i++){
-                float random = RandomNumberGenerator.RandomFloat();
+                float random = MathHelper.RandomFloat();
 
                 if(random <= threeConsecutiveHoursCumulativeProbability && remainder >= 3){
                     division.add(3);
@@ -300,12 +302,12 @@ class DepartmentTest {
                 break;
             }
 
-            int randomDay = RandomNumberGenerator.randomIntegerBetween(0,availableDays.size());
+            int randomDay = MathHelper.randomIntegerBetween(0,availableDays.size());
             randomDay = availableDays.get(randomDay);
             daysUsed.add(randomDay);
 
             var availableHours = getAvailablePositionsOnDay(currentWeeklySchedule,randomDay,noOfHours);
-            int randomStartingHour = RandomNumberGenerator.randomIntegerBetween(0,availableHours.size());
+            int randomStartingHour = MathHelper.randomIntegerBetween(0,availableHours.size());
             randomStartingHour = availableHours.get(randomStartingHour);
 
             long scheduleForTheseHours = getScheduleAtPosition(randomStartingHour,noOfHours);
@@ -358,7 +360,7 @@ class DepartmentTest {
         for(int day = 0; day < 5; day++)
             availablePositions.addAll(getAvailablePositionsOnDay(availableClassHours,day,noOfClassHours));
 
-        int randomPosition = RandomNumberGenerator.randomIntegerBetween(0,availablePositions.size());
+        int randomPosition = MathHelper.randomIntegerBetween(0,availablePositions.size());
 
         try {
             randomPosition = availablePositions.get(randomPosition);
@@ -396,7 +398,7 @@ class DepartmentTest {
     }
     @Test
     void getCode() {
-        assertEquals("CSE",Department.getInstance().getCode());
+        assertEquals("CSE",Department.getInstance().getDepartmentCode());
     }
     @Test
     void getCurrentSeason() {
