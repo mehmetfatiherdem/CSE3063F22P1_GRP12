@@ -31,6 +31,10 @@ public class Logger {
         enabled = false;
     }
 
+    public static void clearLogFile(){
+        closeLogFile(openLogFile(false));
+    }
+
     public static void decrementIndentation(){
         setIndentation(indentation - 1);
     }
@@ -112,9 +116,9 @@ public class Logger {
         String log = ignoreIndentation ? "" : getIndentationString();
         log += message + "\n";
 
-        var writer = openLogFile();
+        var writer = openLogFile(true);
 
-        //writer.append(log);
+        writer.append(log);
         System.out.print(log);
 
         closeLogFile(writer);
@@ -318,11 +322,11 @@ public class Logger {
         decrementIndentation();
     }
 
-    private static PrintWriter openLogFile(){
+    private static PrintWriter openLogFile(boolean append){
         PrintWriter writer = null;
 
         try{
-            writer = new PrintWriter(new FileOutputStream(logTxt,true));
+            writer = new PrintWriter(new FileOutputStream(logTxt,append));
         }catch(FileNotFoundException exc){
             System.out.println("Output file not found!");
         }
