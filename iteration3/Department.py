@@ -1,21 +1,11 @@
 class Department:
     instance
-    #departmentCode
-    #departmentName
-    #currentSeason
-    #mandatoryCourses
-    #technicalElectiveCourses
-    #facultyTechnicalElectiveCourses
-    #nonTechnicalElectiveCourses
-    #students
-    #lecturers
-    #assistants
-    #advisors
-    #initialized
-    
     
     def __init__ (self):
         self.departmentHead = 'lol'
+        pass
+    
+    def getInstance():
         pass
     
     def initialize(currentSeason, courses, lecturers, assistants, advisors, students):
