@@ -26,6 +26,26 @@ class Course(ABC):
     def addPrerequisite(self, prerequisite):
         self.prerequisites.append(prerequisite)
 
-    @abstractmethod
+   
     def addCourseSection(self, schedule):
         pass
+    
+    def addLabSection(self,schedule):
+        pass
+    
+    def isStudentGradeRequirementMet(self,student):
+        pass
+    
+    def canStudentTakeCourse(self,stuent):
+        pass
+    
+    def getAvailableCourseSections(self):
+        pass
+    
+    def getAlternativeSections(self,section):
+        pass
+    
+    def getAvailableLabSections(self):
+        pass
+    
+    #getters setters not written
