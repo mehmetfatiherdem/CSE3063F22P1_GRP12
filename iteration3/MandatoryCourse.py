@@ -1,3 +1,5 @@
+import Course
+
 class MandatoryCourse(Course):
     def __init__(self, code, name, credits, theoreticalHours, appliedHours, firstYearToTake, firstSeasonToTake, lecturers, assistants):
         pass
