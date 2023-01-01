@@ -1,7 +1,7 @@
 from iteration3.FacultyMember import FacultyMember
 class Assistant(FacultyMember):
-    def __init__(self, first_name: str, last_name: str):
-        super().__init__(first_name, last_name)
+    def __init__(self, firstName: str, lastName: str):
+        super().__init__(firstName, lastName)
 
-    def __init__(self, first_name: str, middle_name: str, last_name: str):
-        super().__init__(first_name, middle_name, last_name)
+    def __init__(self, firstName: str, middleName: str, lastName: str):
+        super().__init__(firstName, middleName, lastName)
