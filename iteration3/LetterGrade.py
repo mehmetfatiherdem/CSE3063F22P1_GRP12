@@ -11,9 +11,3 @@ class LetterGrade(Enum):
     FF = 0
     ZZ = 0
     NOT_GRADED = 0
-
-    def __init__(self, num_val):
-        self.num_val = num_val
-    
-    def get_num_val(self):
-        return self.num_val
