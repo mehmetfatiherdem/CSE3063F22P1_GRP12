@@ -11,14 +11,20 @@ class NonTechnicalElectiveCourse(ElectiveCourse):
     }
 
     def __init__(self, code, name, credits, theoreticalHours, appliedHours, firstYearToTake, firstSeasonToTake, lecturers, assistants):
-       pass
+       super().__init__(code, name, credits, theoreticalHours, appliedHours, firstYearToTake, firstSeasonToTake, lecturers, assistants)
     
-    def canStudentTakeCourse(student):
-        pass
+    def canStudentTakeCourse(self, student):
+        semester = student.get_student_semester()
+        no_of_courses_till_semester = self.get_total_number_of_courses_until_semester(semester)
+        return student.get_transcript().get_number_of_nte_courses_passed() < no_of_courses_till_semester \
+            and not student.did_student_pass(self)
     
     @staticmethod
     def getTotalNumberOfCoursesUntilSemester(semester):
-       pass
+        no_of_courses_till_semester = 0
+        for i in range(semester + 1):
+            no_of_courses_till_semester += NonTechnicalElectiveCourse.number_of_courses_takeable_by_semester[i]
+        return no_of_courses_till_semester
     
     def getCoursePriority():
-        pass
+        return 0
