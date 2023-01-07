@@ -23,11 +23,10 @@ class FacultyTechnicalElectiveCourse:
 
     @staticmethod
     def get_total_number_of_courses_until_semester(semester):
-        global number_of_courses_takeable_by_semester
         no_of_courses_till_semester = 0
-        
+
         for i in range(semester + 1):
-            no_of_courses_till_semester += number_of_courses_takeable_by_semester[i]
+            no_of_courses_till_semester += FacultyTechnicalElectiveCourse.number_of_courses_takeable_by_semester[i]
 
         return no_of_courses_till_semester
 
