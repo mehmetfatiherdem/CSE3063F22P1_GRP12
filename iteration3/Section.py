@@ -1,4 +1,6 @@
-class Section:
+import abc
+
+class Section(abc.ABC):
     NO_OF_WEEKLY_CLASS_HOURS = 56
     classDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     classHours = ['8.30-9.20', '9.30-10.20', '10.30-11.20', '11.30-12.20',
