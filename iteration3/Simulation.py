@@ -1,3 +1,5 @@
+import random
+
 from iteration3.Department import Department
 from iteration3.Grade import Grade
 from iteration3.HorizontalLineType import HorizontalLineType
@@ -82,7 +84,7 @@ class Simulation:
             Logger.log("STUDENT NAME : " + student_name)
             Logger.log("STUDENT ID : " + student.get_student_id())
             Logger.log("STUDENT GRADE : " + student.get_grade().to_string())
-            Logger.log("STUDENT GPA : " + MathHelper.round_float(gpa, 2))
+            Logger.log("STUDENT GPA : " + round(gpa, 2))
             Logger.log("ADVISOR : " + student.get_advisor().get_full_name())
 
             Logger.log("COURSES OPENED FOR THE STUDENT :")
@@ -139,15 +141,15 @@ class Simulation:
 
             for r in non_graded_courses:
                 # Generate a random float between 0 and 1
-                rand = MathHelper.random_float()
+                rand = random.random()
 
                 if rand <= student.get_fail_chance():
-                    score = MathHelper.random_float_between(0.0, 39.99)
+                    score = random.uniform(0.0, 39.99)
                     r.set_score(score)
                     r.set_is_passed(False)
                     r.set_l_grade(Transcript.get_letter_grade_of_score(score))
                 else:
-                    score = MathHelper.random_float_between(40.0, 100.0)
+                    score = random.uniform(40.0, 100.0)
                     r.set_score(score)
                     r.set_is_passed(True)
                     r.set_l_grade(Transcript.get_letter_grade_of_score(score))
@@ -159,9 +161,9 @@ class Simulation:
 
             Logger.increment_indentation()
             Logger.log(f"STUDENT'S NEW GRADE : {student_new_grade.toString()}")
-            Logger.log(f"THE GPA AT THE START OF THIS SEMESTER : {MathHelper.round_float(old_gpas[i], 2)}")
+            Logger.log(f"THE GPA AT THE START OF THIS SEMESTER : {round(old_gpas[i], 2)}")
             Logger.log(
-                f"THE GPA AT THE END OF THIS SEMESTER : {MathHelper.round_float(student.getTranscript().calculateGPA(), 2)}")
+                f"THE GPA AT THE END OF THIS SEMESTER : {round(student.getTranscript().calculateGPA(), 2)}")
             Logger.new_line()
             Logger.log("ALL COURSES' DETAILS OF THIS SEMESTER:")
             Logger.increment_indentation()
@@ -171,7 +173,7 @@ class Simulation:
                 Logger.log(f"{r.getCourse().getName()} ({r.getCourse().getCode()}) :")
 
                 Logger.increment_indentation()
-                Logger.log(f"SCORE : {MathHelper.round_float(r.get_score(), 0)}")
+                Logger.log(f"SCORE : {round(r.get_score(), 0)}")
                 Logger.log(f"LETTER GRADE : {r.get_l_grade().toString()}")
                 Logger.log(f"STATUS : {'PASSED' if r.get_is_passed() else 'FAILED'}")
                 Logger.decrement_indentation()
