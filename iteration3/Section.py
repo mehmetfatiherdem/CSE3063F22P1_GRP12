@@ -1,4 +1,7 @@
 import abc
+from iteration3.Student import Student
+from iteration3.Course import Course
+from iteration3.FacultyMember import FacultyMember
 
 class Section(abc.ABC):
     NO_OF_WEEKLY_CLASS_HOURS = 56
@@ -20,7 +23,7 @@ class Section(abc.ABC):
 
         # The callback for calculating the day and hour of a collision and adding it to the list
         def collision_callback(collisions, i):
-            collisions.append(Tuple(i // 8, i % 8))
+            collisions.append((i // 8, i % 8))
 
         # Calls the collision_callback for each set bit (1) in the collision_detector with their positions from left to right
         self.traverse_bits(collision_detector, collision_callback, collisions)
@@ -41,7 +44,7 @@ class Section(abc.ABC):
                 # If there's a collision between a schedule and the combined bitmask, then check all the combined sections to find the collision(s) between sections
                 for s in combined_sections:
                     if classes.check_collision_between(s.class_schedule, sec.class_schedule):
-                        collisions.append(Tuple(sec, s))
+                        collisions.append((sec, s))
 
             # Adds the schedule to the combined_schedule
             combined_schedule |= sec.class_schedule
