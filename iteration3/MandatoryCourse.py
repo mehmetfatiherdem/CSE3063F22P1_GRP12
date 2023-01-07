@@ -1,10 +1,10 @@
-import Course
-from typing import List
-import Department
-from Human import Assistant
-from Human import Grade
-from Human import Lecturer
-from Human import Student
+from iteration3.Course import Course
+
+from iteration3.Department import Department
+from iteration3.Assistant import Assistant
+from iteration3.Grade import Grade
+from iteration3.Lecturer import Lecturer
+from iteration3.Student import Student
 
 
 class MandatoryCourse(Course):
