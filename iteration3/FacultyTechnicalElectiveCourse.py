@@ -1,3 +1,9 @@
+from iteration3.Course import Course
+from iteration3.Assistant import Assistant
+from iteration3.Grade import Grade
+from iteration3.Lecturer import Lecturer
+from iteration3.Student import Student
+
 class FacultyTechnicalElectiveCourse:
 
     number_of_courses_takeable_by_semester = {
