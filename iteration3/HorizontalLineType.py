@@ -1,7 +1,7 @@
 from enum import Enum
+
 class HorizontalLineType(Enum):
-    Dash
-    Star
-    Dot
-    EqualsSign
-    
+    DASH = "-"
+    STAR = "*"
+    DOT = "."
+    EQUALS_SIGN = "="
