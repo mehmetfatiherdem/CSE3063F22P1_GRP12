@@ -1,9 +1,16 @@
-from abc import ABC
-import Course
+import abc
+from typing import List
 
-class ElectiveCourse(Course, ABC):
-    def __init__(self, code: str, name: str, credits: int, theoretical_hours: int, applied_hours: int, first_year_to_take: Grade, first_season_to_take: Season, lecturers: List[Lecturer], assistants: List[Assistant]):
+from iteration3.Course import Course
+from iteration3.Assistant import Assistant
+from iteration3.Grade import Grade
+from iteration3.Lecturer import Lecturer
+from iteration3.Student import Student
+
+class ElectiveCourse(Course):
+    def __init__(self, code, name, credits, theoretical_hours, applied_hours, first_year_to_take, first_season_to_take, lecturers, assistants):
         super().__init__(code, name, credits, theoretical_hours, applied_hours, first_year_to_take, first_season_to_take, lecturers, assistants)
-    
-    def add_prerequisite(self, prerequisite: Course):
-        return
+
+    @abc.abstractmethod
+    def add_prerequisite(self, prerequisite):
+        pass
