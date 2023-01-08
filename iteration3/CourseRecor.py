@@ -1,58 +1,58 @@
-import Course
-
 class CourseRecord:
-    #TODO: gereksiz getter setterları sil!.
-    def __init__(self, course: Course, l_grade: LetterGrade, season: Season, grade: Grade,
-                 score: float, is_passed: bool):
+    def __init__(self, course, lGrade, season, grade, score, isPassed):
         self.course = course
-        self.l_grade = l_grade
+        self.lGrade = lGrade
         self.season = season
         self.grade = grade
         self.score = score
-        self.is_passed = is_passed
+        self.isPassed = isPassed
 
     @property
-    def course(self) -> Course:
-        return self.course
-
-    @property
-    def score(self) -> float:
-        return self.score
-
-    @property
-    def is_passed(self) -> bool:
-        return self.is_passed
-
-    @property
-    def season(self) -> Season:
-        return self.season
-
-    @property
-    def l_grade(self) -> LetterGrade:
-        return self.l_grade
-
-    @property
-    def grade(self) -> Grade:
-        return self.grade
+    def course(self):
+        return self._course
 
     @course.setter
-    def course(self, course: Course):
-        self.course = course
+    def course(self, course):
+        self._course = course
+
+    @property
+    def score(self):
+        return self._score
 
     @score.setter
-    def score(self, score: float):
+    def score(self, score):
         if score < 0:
             return
-        self.score = score
+        self._score = score
 
-    @is_passed.setter
-    def is_passed(self, is_passed: bool):
-        self.is_passed = is_passed
+    @property
+    def isPassed(self):
+        return self._isPassed
 
-    @l_grade.setter
-    def l_grade(self, l_grade: LetterGrade):
-        self.l_grade = l_grade
+    @isPassed.setter
+    def isPassed(self, isPassed):
+        self._isPassed = isPassed
+
+    @property
+    def season(self):
+        return self._season
 
     @season.setter
-    def season(self, season: Season):
-        self.season = season
+    def season(self, season):
+        self._season = season
+
+    @property
+    def lGrade(self):
+        return self._lGrade
+
+    @lGrade.setter
+    def lGrade(self, lGrade):
+        self._lGrade = lGrade
+
+    @property
+    def grade(self):
+        return self._grade
+
+    @grade.setter
+    def grade(self, grade):
+        self._grade = grade
