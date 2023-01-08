@@ -1,6 +1,7 @@
-class LabSection:
-    def __init__(self):
-        pass
+from iteration3.Section import Section
+class LabSection(Section):
+    def __init__(self, course, section_code, class_hours, instructor):
+        super().__init__(course, section_code, class_hours, instructor)
 
-    def getAssistant():
-        pass
+    def get_assistant(self):
+        return self.instructor
