@@ -1,4 +1,10 @@
-class Advisor:
+from iteration3.HorizontalLineType import HorizontalLineType
+from iteration3.Lecturer import Lecturer
+from iteration3.Logger import Logger
+from iteration3.Section import Section
+
+
+class Advisor(Lecturer):
     def __init__(self, first_name: str, last_name: str):
         super().__init__(first_name, last_name)
     

@@ -1,7 +1,7 @@
-import iteration2.src.math_helper
-from iteration2.src.human import Assistant, Grade, Lecturer, Student
-from iteration2.src.course_section import CourseSection
-from iteration2.src.lab_section import LabSection
+from iteration3.MathHelper import math_helper
+from iteration3.Human import Assistant, Grade, Lecturer, Student
+from iteration3.CourseSection import CourseSection
+from iteration3.LabSection import LabSection
 from typing import List
 
 class Course:

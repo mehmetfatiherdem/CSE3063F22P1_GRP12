@@ -1,5 +1,9 @@
 from iteration3.CourseRecor import CourseRecord
-from iteration3.LectureGrade import LetterGrade
+from iteration3.LetterGrade import LetterGrade
+
+from iteration3.FacultyTechnicalElectiveCourse import FacultyTechnicalElectiveCourse
+from iteration3.NonTechnicalElectiveCourse import NonTechnicalElectiveCourse
+from iteration3.TechnicalElectiveCourse import TechnicalElectiveCourse
 
 
 class Transcript:
